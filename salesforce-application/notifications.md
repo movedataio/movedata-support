@@ -95,5 +95,65 @@ Each notification row includes an action menu (accessed via the dropdown arrow) 
 
 **Mark for review**: Flags the notification for manual review, adding it to a special review queue for investigation.
 
-### Notification Details
+### Notification Detail View
+
+Clicking on a notification's key from the list view opens the comprehensive Notification Detail View. This interface provides complete visibility into notification processing, data transformation, and resulting Salesforce records.
+
+#### **Detail View Header**
+
+The notification detail page opens with key information displayed prominently at the top:
+
+* **Notification Key**: The unique notification key (e.g., "20250804020604208082333CBF4A794N")&#x20;
+* **Event Description**: Full descriptive name of the notification event
+* **Action Buttons**:
+  * **Reprocess**: Retry processing this notification if it failed or needs to be run again
+  * **Mark for Review**: Flag this notification for manual investigation
+
+**Status Summary**:
+
+* **Status**: Current processing state (Success, Failed, Processing, etc.)
+* **Platform**: Source fundraising platform (Raisely, GiveEasy, etc.)
+* **Created Date**: When the notification was first received
+* **Update Date**: When the notification was last modified
+
+### **Notification Summary**
+
+The Summary tab provides an overview of notification processing and results, organised into three main sections:
+
+**Details Section**
+
+The Details section shows core processing information:
+
+* **Notification Key**: The unique notification key (e.g., "20250804020604208082333CBF4A794N")&#x20;
+* **Name**: Full descriptive name of the notification event
+* **Status**: Current processing status with any relevant status messages
+* **Message**: Processing outcome description (e.g., "Successfully executed")
+* **Created Date**: Initial notification timestamp
+* **Update Date**: Most recent processing timestamp
+
+**Payloads Section**
+
+The Payloads section provides access to the raw data at different stages of processing:
+
+{% hint style="info" %}
+_Use the arrow indicators to expand these sections and view the complete payload data._
+{% endhint %}
+
+**{Platform} Notification**: Expandable section containing the original, unprocessed data as received from the fundraising platform. This shows exactly what was sent by the platform before any MoveData transformation.  For some platforms, MoveData downloads additional data from a platform's API and appends this to a sub-section called Metadata.
+
+**MoveData Notification**: Expandable section containing the standardised notification data after MoveData has processed and transformed the original platform data. This represents the clean, standardised format used for Salesforce record creation.
+
+**Records Section**
+
+The Records section displays all Salesforce records that were created or updated as a result of processing this notification.  This is often grouped by the execution phases of the transaction.
+
+Each record link includes:
+
+* **Salesforce Icon**: Visual indicator of the record type
+* **Record Name**: Clickable link that opens the record in Salesforce
+* **Object Type**: Salesforce object type (Contact, Campaign, Opportunity, etc.)
+
+### **Notification Execution Log**
+
+
 
