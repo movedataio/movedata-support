@@ -1,0 +1,78 @@
+<svg width="900" height="350" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="900" height="350" fill="#f8f9fa"/>
+  
+  <!-- Stage 1: Action -->
+  <rect x="50" y="50" width="220" height="250" rx="15" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+  <text x="160" y="80" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#1976d2">Stage 1: Action</text>
+  <text x="160" y="100" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#333">Transaction/Event in</text>
+  <text x="160" y="115" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#333">Fundraising Platform</text>
+  
+  <!-- Stage 1 Event Types -->
+  <text x="160" y="140" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#1976d2">Event Types:</text>
+  <text x="160" y="155" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#555">Donations</text>
+  <text x="160" y="168" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#555">Event Registrations</text>
+  <text x="160" y="181" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#555">Supporter Updates</text>
+  <text x="160" y="194" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#555">Peer-to-Peer Activities</text>
+  <text x="160" y="207" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#555">Product Sales</text>
+  
+  <!-- Stage 1 Capture Methods -->
+  <text x="160" y="230" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#1976d2">Capture Methods:</text>
+  <text x="160" y="245" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#555">Real-time API | Polling | CSV</text>
+  <text x="160" y="265" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#777">Event Intelligence</text>
+  
+  <!-- Arrow 1 to 2 -->
+  <path d="M 290 175 L 340 175" stroke="#666" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- Stage 2: Transformation & Standardisation -->
+  <rect x="360" y="50" width="220" height="250" rx="15" fill="#e8f5e8" stroke="#388e3c" stroke-width="2"/>
+  <text x="470" y="80" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#388e3c">Stage 2</text>
+  <text x="470" y="100" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#333">Transformation &</text>
+  <text x="470" y="115" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#333">Standardisation</text>
+  
+  <!-- Stage 2 Data Assembly -->
+  <text x="470" y="140" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#388e3c">Data Assembly:</text>
+  <text x="470" y="155" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#555">Primary Event Data</text>
+  <text x="470" y="168" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#555">Supporting Data</text>
+  <text x="470" y="181" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#555">Supporter Context</text>
+  <text x="470" y="194" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#555">Campaign Attribution</text>
+  <text x="470" y="207" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#555">Platform Metadata</text>
+  
+  <!-- Stage 2 Process -->
+  <text x="470" y="230" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#388e3c">Standardisation:</text>
+  <text x="470" y="245" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#555">Field Mapping | Validation</text>
+  <text x="470" y="265" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#777">Standardised Notification</text>
+  
+  <!-- Arrow 2 to 3 -->
+  <path d="M 600 175 L 650 175" stroke="#666" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- Stage 3: Execution -->
+  <rect x="670" y="50" width="220" height="250" rx="15" fill="#fff3e0" stroke="#f57c00" stroke-width="2"/>
+  <text x="780" y="80" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#f57c00">Stage 3: Execution</text>
+  <text x="780" y="100" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#333">Execution of Notification</text>
+  <text x="780" y="115" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#333">in MoveData</text>
+  
+  <!-- Stage 3 Components -->
+  <text x="780" y="140" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#f57c00">MoveData Extensions:</text>
+  <text x="780" y="155" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#555">Donation & Commerce Support</text>
+  <text x="780" y="168" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#555">NPSP & Nonprofit Cloud</text>
+  
+  <text x="780" y="190" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#f57c00">Custom Business Rules:</text>
+  <text x="780" y="205" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#555">Lightning Flows & Turnkey Config</text>
+  
+  <text x="780" y="225" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#f57c00">Lightning Application:</text>
+  <text x="780" y="240" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#555">Visibility & Management</text>
+  
+  <text x="780" y="265" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#777">Salesforce Records</text>
+  
+  <!-- Arrow marker definition -->
+  <defs>
+    <marker id="arrowhead" markerWidth="12" markerHeight="8" 
+     refX="11" refY="4" orient="auto">
+      <polygon points="0 0, 12 4, 0 8" fill="#666"/>
+    </marker>
+  </defs>
+  
+  <!-- Title -->
+  <text x="450" y="30" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#333">The MoveData Lifecycle</text>
+</svg>
