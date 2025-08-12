@@ -29,8 +29,8 @@ Logic is required to map Raisely notifications to your Salesforce data. To quick
 
 | Extension                 | Supported |
 | ------------------------- | --------- |
-| Fundraising and Donations | ✔         |
-| Ticketing and Commerce    | ✔         |
+| Fundraising and Donations | ✅         |
+| Ticketing and Commerce    | ✅         |
 
 {% hint style="info" %}
 * The Fundraising and Donations Extension is relevant to processing fundraising activity and donation information into Salesforce
