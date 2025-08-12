@@ -1,8 +1,6 @@
 # Enthuse
 
-## Enthuse
-
-#### Overview
+### Overview
 
 The MoveData Enthuse integration provides seamless, automated synchronisation between your Enthuse fundraising platform and Salesforce. This comprehensive integration ensures that all donation activities, supporter data, campaign information, and recurring donations are automatically transferred to your Salesforce environment, eliminating manual data entry whilst maintaining complete data accuracy.
 
@@ -14,7 +12,7 @@ The MoveData Enthuse integration provides seamless, automated synchronisation be
 * **Recurring donation management** with schedule tracking and status updates
 * **Marketing preference** synchronisation for GDPR compliance
 
-#### Integration Summary
+### Integration Summary
 
 | Field     | Value                                        |
 | --------- | -------------------------------------------- |
@@ -22,11 +20,11 @@ The MoveData Enthuse integration provides seamless, automated synchronisation be
 | Method    | Pull (Polling)                               |
 | Frequency | Configurable (10 minutes to 24 hours)        |
 
-#### Demonstration Video
+### Demonstration Video
 
 {% embed url="https://www.youtube.com/watch?v=IWc1n8Q4Fnw" %}
 
-#### Supported Modes
+### Supported Modes
 
 Logic is required to map Enthuse notifications to your Salesforce data. To quickly and easily do so we recommend using one of the supported MoveData Extensions.
 
@@ -43,7 +41,7 @@ We do not currently integrate information from Enthuse's `Events` product (which
 The Fundraising and Donations Extension is relevant to processing fundraising activity and donation information into Salesforce
 {% endhint %}
 
-#### Setup
+### Setup
 
 **Enthuse API Credentials**
 
@@ -71,7 +69,7 @@ To obtain these credentials, please raise a support ticket directly with Enthuse
 
 The integration will automatically begin synchronising data based on your configured schedule.
 
-#### Configurable Options
+### Configurable Options
 
 | Option                            | Description                                                                                                                          |
 | --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
@@ -80,7 +78,7 @@ The integration will automatically begin synchronising data based on your config
 | **Data Synchronisation Interval** | Frequency of data polling (configurable from 10 minutes to 24 hours)                                                                 |
 | **Data Delay Buffer**             | Time offset for data retrieval to ensure complete records (default: 24 hours)                                                        |
 
-#### Data Migration
+### Data Migration
 
 Data Migration is available upon request. This is a custom service provided by MoveData and is delivered by MoveData Professional Services.
 
@@ -88,7 +86,7 @@ Data Migration is available upon request. This is a custom service provided by M
 * Historical data available based on your Enthuse data retention policies
 * Configurable date ranges for initial data import
 
-#### Additional Field Mappings
+### Additional Field Mappings
 
 Where possible, all fields are mapped to the appropriate schemas. Often there are fields that do not fit explicitly into a schema and these are appended as custom fields. Enthuse custom codes are automatically included in fundraiser and team records.
 
@@ -104,7 +102,7 @@ Enthuse allows organisations to add custom codes to fundraising pages for additi
 custom.codeNominalCode = "LM:U/4900"
 ```
 
-#### Reference
+### Reference
 
 The following custom fields are automatically included in MoveData notifications:
 
@@ -184,7 +182,7 @@ Enthuse supports multiple fee models that are automatically detected and process
 
 The integration uses OAuth2 client credentials flow to authenticate with Enthuse's API.
 
-#### Other Resources
+### Other Resources
 
 **Enthuse API Documentation:**\
 [https://enthuse.readme.io/](https://enthuse.readme.io/)
