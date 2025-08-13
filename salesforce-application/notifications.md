@@ -29,6 +29,8 @@ A notification represents a single event or transaction that has been captured f
 
 ### Notifications List View
 
+<figure><img src="../.gitbook/assets/notification-list-view.png" alt=""><figcaption></figcaption></figure>
+
 The Notifications interface displays a comprehensive list of all notifications processed by MoveData, with the following key elements:
 
 #### **List View Header**
@@ -62,6 +64,8 @@ MoveData notifications can have several status values that indicate their curren
 
 #### Pre-built Filter Views
 
+<figure><img src="../.gitbook/assets/integration-view-lists.png" alt=""><figcaption></figcaption></figure>
+
 MoveData provides several pre-built filter views accessible from the dropdown menu next to "All Notifications":
 
 * **All Notifications**: Complete list of all notifications
@@ -72,6 +76,8 @@ MoveData provides several pre-built filter views accessible from the dropdown me
 
 #### Advanced Filtering
 
+<figure><img src="../.gitbook/assets/integration-view-filters.png" alt=""><figcaption></figcaption></figure>
+
 Use the filter panel to create custom views:
 
 1. **Add Filter**: Click "Add Filter" to create custom filter criteria
@@ -81,6 +87,8 @@ Use the filter panel to create custom views:
 
 #### Search Functionality
 
+<figure><img src="../.gitbook/assets/integration-view-search.png" alt=""><figcaption></figcaption></figure>
+
 The search bar allows you to quickly locate specific notifications:
 
 * Search by notification name or description
@@ -88,6 +96,8 @@ The search bar allows you to quickly locate specific notifications:
 * Use partial text matching to find related notifications
 
 #### Context Menu
+
+<figure><img src="../.gitbook/assets/integration-view-context-menu.png" alt=""><figcaption></figcaption></figure>
 
 Each notification row includes an action menu (accessed via the dropdown arrow) with the following options:
 
@@ -102,6 +112,8 @@ Each notification row includes an action menu (accessed via the dropdown arrow) 
 ### Notification Detail View
 
 Clicking on a notification's key from the list view opens the comprehensive Notification Detail View. This interface provides complete visibility into notification processing, data transformation, and resulting Salesforce records.
+
+<figure><img src="../.gitbook/assets/notification-detail-summary.png" alt=""><figcaption></figcaption></figure>
 
 #### **Detail View Header**
 
@@ -161,6 +173,8 @@ Each record link includes:
 
 The Notification Execution Log, accessible via the Execution tab(s), provide detailed, real-time visibility into every step of notification processing. This comprehensive log shows the chronological sequence of processing stages, timing information, and the ability to inspect variables and data at each step.
 
+<figure><img src="../.gitbook/assets/execution-log.png" alt=""><figcaption></figcaption></figure>
+
 #### Execution Log Interface
 
 The Execution Log is organised into:
@@ -171,6 +185,8 @@ The Execution Log is organised into:
 * **Detail**: Detailed information supporting the subject in the message
 
 #### Variable Inspector
+
+<figure><img src="../.gitbook/assets/execution-log-variables.png" alt=""><figcaption></figcaption></figure>
 
 The Variable Inspector provides detailed visibility into the variables at any point during a processing phase / group.  For example, the Contact phase of a donation notification will contain contact-specific for the contact being processed.  These variables are presented using the name that is made available to Salesforce Lightning Flows; to write your own business logic using these variables, please refer to the Developer site.
 
