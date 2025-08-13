@@ -35,7 +35,7 @@ We do not currently integrate information from Enthuse's `Events` product (which
 | Extension                 | Supported |
 | ------------------------- | --------- |
 | Fundraising and Donations | ✅         |
-| Ticketing and Commerce    | ❌         |
+| Commerce                  | ❌         |
 
 {% hint style="info" %}
 The Fundraising and Donations Extension is relevant to processing fundraising activity and donation information into Salesforce
