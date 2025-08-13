@@ -1,3 +1,10 @@
+---
+description: >-
+  The Facebook integration automates the transfer of fundraising donation data
+  to Salesforce through CSV file processing, creating intelligent campaign
+  hierarchies and supporting UK Gift Aid.
+---
+
 # Facebook
 
 ## Overview
