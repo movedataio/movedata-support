@@ -9,7 +9,7 @@ description: >-
 
 ## Overview
 
-The MoveData Facebook integration provides seamless data synchronisation between your Facebook fundraising activities and Salesforce. This powerful integration processes Facebook donation reports, ensuring that all donation activities and supporter information are transferred to your Salesforce environment, eliminating manual data entry whilst maintaining complete data accuracy.
+The MoveData Facebook integration provides seamless data synchronisation between your Facebook fundraising activities and Salesforce. This powerful integration processes Facebook donation reports, ensuring that all donation activities and supporter information are automatically transferred to your Salesforce environment, eliminating manual data entry whilst maintaining complete data accuracy.
 
 **Key Benefits:**
 
@@ -29,7 +29,7 @@ The MoveData Facebook integration provides seamless data synchronisation between
 
 ## Supported Modes
 
-Logic is required to map Facebook donation notifications to your Salesforce data. To quickly and easily do so we recommend using one of the supported MoveData Extensions.
+Logic is required to map Facebook donation notifications to your Salesforce data. To quickly and easily do so, we recommend using one of the supported MoveData Extensions.
 
 | Extension                 | Supported |
 | ------------------------- | --------- |
@@ -40,23 +40,23 @@ Logic is required to map Facebook donation notifications to your Salesforce data
 
 **Facebook Transaction Report Export**
 
-To set up Facebook integration, you will need to export transaction reports from Facebook's fundraising platform:
+To set up the Facebook integration, you will need to export transaction reports from Facebook's fundraising platform:
 
-1. Login to your Facebook fundraising admin dashboard or Facebook Business Manager
+1. Log in to your Facebook fundraising admin dashboard or Facebook Business Manager
 2. Navigate to **Charitable Giving Tools** or **Fundraising Reports**
 3. Generate and download your **Transaction Report** as a CSV file
-4. Ensure the export includes all required fields (see Field Mapping section below)
+4. Ensure the export includes all required fields (see Additional Field Mappings section below)
 
 **MoveData Facebook Configuration**
 
 1. Open the MoveData app and select the **Integrations** tab
 2. Click **New Integration** and select **Facebook** from the list of available integrations
-3. Add a Name for your integration and click **Save**
+3. Add a name for your integration and click **Save**
 4. Configure your integration settings based on your requirements
 
 **CSV File Processing**
 
-The Facebook integration processes CSV files containing transaction data. Upload your exported Facebook transaction report through the [Integration](../salesforce-application/integrations.md) tab in the MoveData application.
+The Facebook integration processes CSV files containing transaction data. Upload your exported Facebook transaction report through the Integrations tab in the MoveData application.
 
 ## Configurable Options
 
@@ -64,7 +64,7 @@ There are no configurable options for the Facebook integration.
 
 ## Data Migration
 
-Data Migration can be completed via the file upload functionality.  You will need to download and export the relevant Facebook donation reports.
+Data migration can be completed via the file upload functionality. You will need to download and export the relevant Facebook donation reports.
 
 ## Additional Field Mappings
 
@@ -95,7 +95,7 @@ The Facebook integration automatically creates a three-tier campaign hierarchy i
 
 The following custom fields are automatically included in MoveData notifications:
 
-### **Donation Custom Fields**
+### Donation Custom Fields
 
 | Attribute Name     | Description                                | Example          |
 | ------------------ | ------------------------------------------ | ---------------- |
@@ -106,7 +106,7 @@ The following custom fields are automatically included in MoveData notifications
 | `senderCurrency`   | Original currency if different from payout | `USD`            |
 | `netPayoutAmount`  | Net amount after Facebook fees             | `95.50`          |
 
-### **Campaign Custom Fields**
+### Campaign Custom Fields
 
 | Attribute Name   | Description                            | Example                                  |
 | ---------------- | -------------------------------------- | ---------------------------------------- |
@@ -116,7 +116,7 @@ The following custom fields are automatically included in MoveData notifications
 | `charityId`      | Facebook charity identifier            | `987654321`                              |
 | `permalinkUrl`   | Full URL to Facebook fundraising page  | `https://facebook.com/fundraisers/...`   |
 
-### **Contact Custom Fields (Gift Aid)**
+### Contact Custom Fields (Gift Aid)
 
 | Attribute Name    | Description                               | Example            |
 | ----------------- | ----------------------------------------- | ------------------ |
