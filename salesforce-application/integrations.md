@@ -52,9 +52,7 @@ Each integration row includes an action menu (accessed via the dropdown arrow) w
 
 ### New Integration Wizard
 
-The "New Integration" button launches a comprehensive wizard that guides you through establishing connections with supported fundraising platforms.
-
-#### New Integration Wizard
+The "New Integration" button launches a comprehensive wizard tht guides you through establishing connections with supported fundraising platforms.
 
 <figure><img src="../.gitbook/assets/integration-listview-new_1.png" alt=""><figcaption></figcaption></figure>
 
@@ -87,3 +85,29 @@ The wizard requires you to assign a meaningful name to your integration:
 Review the integration and click "Create" to create the integration.  The wizard will navigate to the Integration Detail View. &#x20;
 
 If further information is required, a second wizard will appear with platform-specific configuration options.
+
+### Integration Detail View
+
+<figure><img src="../.gitbook/assets/integration-view-detail.png" alt=""><figcaption></figcaption></figure>
+
+Clicking on an integration's key from the list view opens the comprehensive Integration Detail View. This interface provides complete visibility into integration configuration, processing settings, and helpful resources for managing your data connections.
+
+**Integration Header**
+
+* **Integration Name**: The descriptive name assigned to this integration
+* **Edit Button**: Located in the top right for modifying integration settings (if configurable)
+
+**Configuration Settings**
+
+The configuration section displays platform-specific settings and options:
+
+* **Integration Name**: Field for the integration name
+* **Platform Specific Options**: These options are platform specific and can be found in more detail in the [Integrations](broken-reference) section.
+
+**For File-Based Integrations**
+
+* **Upload File Button**: Ability to launch a file upload wizard and process the file's data.
+
+**Resources Panel**
+
+The Resources panel provides helpful links and contextual support information.
