@@ -1,3 +1,9 @@
+---
+description: >-
+  Guide to the MoveData Notifications interface covering list navigation,
+  filtering, and monitoring.
+---
+
 # Notifications
 
 ### Understanding MoveData Notifications
@@ -82,8 +88,6 @@ The search bar allows you to quickly locate specific notifications:
 * Use partial text matching to find related notifications
 
 #### Context Menu
-
-At the end of each notification is a context menu with the following options:
 
 Each notification row includes an action menu (accessed via the dropdown arrow) with the following options:
 
