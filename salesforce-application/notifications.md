@@ -155,5 +155,54 @@ Each record link includes:
 
 ### **Notification Execution Log**
 
+The Notification Execution Log, accessible via the Execution tab(s), provide detailed, real-time visibility into every step of notification processing. This comprehensive log shows the chronological sequence of processing stages, timing information, and the ability to inspect variables and data at each step.
 
+#### Execution Log Interface
+
+The Execution Log is organised into:
+
+* **Time**: Exact time when each processing step occurred (e.g., "12:06:08")
+* **Group**: The name of the processing stage being executed
+* **Message**: High level message or subject for the detail
+* **Detail**: Detailed information supporting the subject in the message
+
+#### Variable Inspector
+
+The Variable Inspector provides detailed visibility into the variables at any point during a processing phase / group.  For example, the Contact phase of a donation notification will contain contact-specific for the contact being processed.  These variables are presented using the name that is made available to Salesforce Lightning Flows; to write your own business logic using these variables, please refer to the Developer site.
+
+**Accessing Variable Data**
+
+1. **Variable Popup**: Click the "View Variables" button to open the detailed Variable Inspector window
+
+The Variable Inspector window shows:
+
+* **Variable Groups**: Data organised by logical categories (Core, Address, Uncategorised, etc.)
+* **Search Functionality**: Quickly locate specific variables using the search bar
+* **Variable Details Table**: Complete listing with columns for:
+  * **Variable Name**: The field identifier used in processing
+  * **Type**: Data type (text, number, boolean, date, etc.)
+  * **Description**: Human-readable explanation of the variable's purpose
+  * **Value**: Current value at this processing stage
+
+**Filter Options**:
+
+* **Hide Null Variables**: Checkbox to focus only on variables with values
+* **Variable Group Tabs**: Switch between different categories of variables
+
+### Using the Execution Log for Troubleshooting
+
+**Identifying Processing Issues**
+
+1. **Scan Timeline**: Look for any stages that show error indicators or unusual timing
+2. **Check Stage Output**: Click on failed or suspicious stages to examine their data output
+3. **Compare Variables**: Use the Variable Inspector to see how data changes between stages
+4. **Trace Data Flow**: Follow specific field values through multiple processing stages
+
+**Data Validation**
+
+* **Field Mapping Verification**: Confirm that source data is correctly mapped to expected variables&#x20;
+* **Business Rule Application**: See how custom business rules modify data during processing&#x20;
+* **Transformation Tracking**: Follow how raw platform data becomes standardised MoveData format
+
+The Notification Execution Log serves as your comprehensive diagnostic tool for understanding exactly how MoveData processes each notification, providing complete transparency into the data transformation pipeline and enabling effective troubleshooting of any integration issues.
 
