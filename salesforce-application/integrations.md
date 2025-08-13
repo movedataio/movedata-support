@@ -1,3 +1,9 @@
+---
+description: >-
+  The Integrations article provides a comprehensive guide to managing data
+  connections between fundraising platforms and Salesforce through MoveData.
+---
+
 # Integrations
 
 ### Understanding MoveData Integrations
