@@ -102,3 +102,13 @@ The three primary MoveData extensions are as follows:
 
 ## Extension-Specific Settings
 
+Once you have installed MoveData extensions, additional configuration tabs will appear in the Settings interface. These extension-specific settings allow you to customise how MoveData processes different types of data from your fundraising platforms into Salesforce.
+
+Each extension provides a comprehensive suite of configuration options including record matching rules, field mapping preferences, data formatting settings, and business logic controls. These settings ensure that data from your external platforms integrates seamlessly with your existing Salesforce data model and organisational processes.
+
+{% hint style="info" %}
+**Detailed Configuration**: For comprehensive guidance on configuring each extension's settings, please refer to the specific extension documentation within this knowledge base.
+{% endhint %}
+
+The extension-specific settings are designed to be intuitive whilst providing the flexibility needed to accommodate diverse organisational requirements and platform configurations.
+
