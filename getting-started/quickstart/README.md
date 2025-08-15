@@ -6,7 +6,9 @@ description: How to get MoveData installed and running in 45 minutes
 
 ## MoveData Quickstart Guide
 
-Get your MoveData integration up and running in Salesforce in approximately 45 minutes. This guide will walk you through the complete setup process from installation to viewing your data in Salesforce.
+Get your MoveData integration up and running in Salesforce in approximately 30 - 60 minutes. This guide will walk you through the complete setup process from installation to viewing your data in Salesforce.
+
+{% embed url="https://www.youtube.com/watch?v=qlzpclwUBoU" %}
 
 ### Prerequisites
 
