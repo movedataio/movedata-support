@@ -31,3 +31,4 @@
 * [Facebook](integrations/facebook.md)
 * [Funraisin'](integrations/funraisin.md)
 * [Good2Give](integrations/good2give.md)
+* [JustGiving](integrations/justgiving.md)
