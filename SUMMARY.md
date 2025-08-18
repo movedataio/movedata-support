@@ -34,3 +34,4 @@
 * [JustGiving](integrations/justgiving.md)
 * [TapRaise](integrations/tapraise.md)
 * [GoFundraise](integrations/gofundraise.md)
+* [PayPal Giving Fund](integrations/paypal-giving-fund.md)
