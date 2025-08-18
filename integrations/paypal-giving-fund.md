@@ -1,3 +1,10 @@
+---
+description: >-
+  Process PayPal Giving Fund payout reports into Salesforce. Supports Facebook,
+  GoFundMe & PayPal donations with smart campaign hierarchies and anonymous
+  donation consolidation options.
+---
+
 # PayPal Giving Fund
 
 ## Overview
