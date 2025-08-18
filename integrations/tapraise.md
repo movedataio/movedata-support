@@ -151,7 +151,7 @@ All TapRaise data is organised under a single default campaign:
 | `recruitingOrganization`   | Agency/organisation conducting recruitment | `Trust Marketing Groep`        |
 | `calls`                    | Call centre verification data (JSON)       | Detailed call attempt logs     |
 
-### Other Resources
+## Other Resources
 
 **TapRaise Platform:**\
 [https://tapraise.com/](https://tapraise.com/)
