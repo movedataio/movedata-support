@@ -1,3 +1,9 @@
+---
+description: >-
+  This integration enables seamless data transfer from your Funraisin platform,
+  automatically syncing fundraising and commerce transactions.
+---
+
 # Funraisin'
 
 ## Overview
@@ -43,20 +49,22 @@ To set up the Funraisin integration, you will need your Funraisin API credential
 1. **API Endpoint** - Your Funraisin platform URL (e.g., `https://fundraise.your-organisation.org`)
 2. **API Key** - Your Funraisin API access key (32-character hexadecimal string)
 
-To obtain these credentials, please contact your Funraisin administrator or raise a support ticket with Funraisin requesting API access for your MoveData integration.
+<figure><img src="../.gitbook/assets/funraisin-admin.png" alt=""><figcaption></figcaption></figure>
 
-**MoveData Funraisin Configuration**
+To obtain these credentials, please follow the below steps:
 
-1. Open the MoveData app in Salesforce and select the **Integrations** tab
-2. Click **New Integration** and select **Funraisin** from the list of available integrations
-3. Add a descriptive name for your integration and click **Save**
-4. Enter your Funraisin credentials in the configuration screen:
-   * **Endpoint**: Your Funraisin platform URL
-   * **API Key**: Your 32-character API key
-5. Configure additional options as needed (see Configurable Options below)
-6. Click **Save** to complete the setup
+1. Log into your Funraisin Management Admin site (e.g., `https://fundraise.your-organisation.org/management`)
+2. Open the user your wish to user for the integration by selecting **Admin → Accounts**
+3. Ensure **API Access** is enabled
+4. Copy the 32-digit API Key
 
-The integration will automatically begin synchronising data based on your configured polling schedule.
+**MoveData Funraisin Configuration Screen**
+
+<figure><img src="../.gitbook/assets/funraisin-movedata-integration.png" alt=""><figcaption></figcaption></figure>
+
+Enter your Funraisin API Endpoint & API Key. Referring to the Funraisin Configurable Options, complete your configuration and click **Save** to continue.
+
+The integration will automatically begin synchronising data based on the default polling schedule of 10 minutes.
 
 ## Configurable Options
 
@@ -82,7 +90,7 @@ Data Migration is available upon request. This is a custom service provided by M
 * Configurable date ranges for initial data import
 * Supports all data types: donations, events, teams, members, sales, raffles, and registrations
 
-## Supported Domains
+## Supported Types
 
 The Funraisin integration supports comprehensive data synchronisation across multiple domains:
 
