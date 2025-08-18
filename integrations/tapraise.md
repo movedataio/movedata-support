@@ -1,3 +1,10 @@
+---
+description: >-
+  Automate face-to-face fundraising data from TapRaise to Salesforce. Sync
+  pledges, donations, recruiter performance & call centre data in real-time for
+  complete F2F campaign visibility.
+---
+
 # TapRaise
 
 ## Overview
