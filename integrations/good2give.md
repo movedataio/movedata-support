@@ -1,3 +1,10 @@
+---
+description: >-
+  Good2Give enables Australian and New Zealand organisations to streamline their
+  workplace giving programmes by automatically processing employee and employer
+  matching donations.
+---
+
 # Good2Give
 
 ## Overview
