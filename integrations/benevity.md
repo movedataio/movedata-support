@@ -1,3 +1,10 @@
+---
+description: >-
+  Process Benevity workplace giving CSV reports automatically into Salesforce.
+  Handles employee donations and employer matching with intelligent soft credit
+  allocation.
+---
+
 # Benevity
 
 ## Overview
