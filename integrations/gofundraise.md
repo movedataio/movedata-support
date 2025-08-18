@@ -1,3 +1,10 @@
+---
+description: >-
+  GoFundraise integration automates data flow from fundraising campaigns to
+  Salesforce. Supports events, P2P fundraising, donations & custom fields with
+  intelligent campaign hierarchies.
+---
+
 # GoFundraise
 
 ## Overview
