@@ -1,3 +1,10 @@
+---
+description: >-
+  MoveData's JustGiving integration automatically polls APIs every 12 hours to
+  synchronise fundraising data into Salesforce, creating campaign structures and
+  donations (including UK Gift Aid)
+---
+
 # JustGiving
 
 ## Overview
