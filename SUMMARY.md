@@ -26,12 +26,18 @@
 
 ## Integrations
 
+* [Benevity](integrations/benevity.md)
+* [Charitable Giving](integrations/charitable-giving.md)
+* [Charities Aid Foundation](integrations/charities-aid-foundation.md)
 * [Enthuse](integrations/enthuse.md)
 * [Facebook](integrations/facebook.md)
 * [Funraisin'](integrations/funraisin.md)
+* [GiveEasy](integrations/giveeasy.md)
+* [GiveWP](integrations/givewp.md)
 * [GoFundraise](integrations/gofundraise.md)
 * [Good2Give](integrations/good2give.md)
 * [JustGiving](integrations/justgiving.md)
+* [Much Loved](integrations/much-loved.md)
 * [PayPal Giving Fund](integrations/paypal-giving-fund.md)
 * [Raisely](integrations/raisely.md)
 * [TapRaise](integrations/tapraise.md)

@@ -120,7 +120,7 @@ The Good2Give integration provides sophisticated handling of employer-matched do
 * MoveData automatically links employee donations with their corresponding employer matches
 * Soft credits are created to recognise both the employee donor and employer matcher
 
-#### Reference
+## Reference
 
 The following custom fields are automatically included in MoveData notifications:
 
@@ -178,7 +178,7 @@ The following custom fields are automatically included in MoveData notifications
 
 * **Invalid Dates**: Malformed dates in the CSV will cause processing errors.  This can happen if the file has be resaved using Microsoft Excel.
 
-#### Other Resources
+## Other Resources
 
 **Good2Give Platform:**\
 [https://good2give.ngo/](https://good2give.ngo/)
