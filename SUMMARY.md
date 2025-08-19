@@ -37,6 +37,7 @@
 * [GiveWP](integrations/givewp.md)
 * [GoFundraise](integrations/gofundraise.md)
 * [Good2Give](integrations/good2give.md)
+* [Grassrootz](integrations/grassrootz.md)
 * [JustGiving](integrations/justgiving.md)
 * [Much Loved](integrations/much-loved.md)
 * [PayPal Giving Fund](integrations/paypal-giving-fund.md)
