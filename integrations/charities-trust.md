@@ -20,11 +20,11 @@ The MoveData Charities Trust integration provides seamless, automated synchronis
 
 ## Integration Summary
 
-| Field     | Value                                                        |
-| --------- | ------------------------------------------------------------ |
-| Product   | [https://charitiesaid.org.uk/](https://charitiesaid.org.uk/) |
-| Method    | CSV File Processing                                          |
-| Frequency | Manual Upload                                                |
+| Field     | Value                                                      |
+| --------- | ---------------------------------------------------------- |
+| Product   | [https://charitiestrust.org/](https://charitiestrust.org/) |
+| Method    | CSV File Processing                                        |
+| Frequency | Manual Upload                                              |
 
 ## Supported Modes
 
