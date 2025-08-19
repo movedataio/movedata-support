@@ -157,7 +157,7 @@ The following custom fields are automatically included in MoveData notifications
 | `responseCode`       | Response Code from Payment Gateway           | `00`                                                                                                      |
 | `gatewayDescription` | Payment Gateway Transaction Description      | `Donation (18275406) of AUD22.85 from Dan RG21...`                                                        |
 | `receiptDownloadUrl` | Raisely Receipt PDF Link                     | `https://api.raisely.com/v3/receipt/...pdf`                                                               |
-| `cardMethodType`     | Payment Method Type                          | `card`                                                                                                    |
+| `cardMethodType`     | Payment Method Type                          | `card`, `apple_pay`, `google_pay`                                                                         |
 
 #### Recurring Donation Custom Fields
 

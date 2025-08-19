@@ -182,6 +182,7 @@ The Grassrootz integration provides extensive custom field mapping to capture th
 | `settlementDate`         | Transaction settlement date      | `2024-05-24`                        |
 | `source`                 | Donation source                  | `gr-public`                         |
 | `timezone`               | Transaction timezone             | `Australia/West`                    |
+| `cardMethodType`         | Payment Method Type              | `card`, `apple_pay`, `google_pay`   |
 
 #### Multi-Currency Fields (when inferSettlementCurrency is enabled)
 
