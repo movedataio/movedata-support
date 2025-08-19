@@ -29,6 +29,7 @@
 * [Benevity](integrations/benevity.md)
 * [Charitable Giving](integrations/charitable-giving.md)
 * [Charities Aid Foundation](integrations/charities-aid-foundation.md)
+* [Charities Trust](integrations/charities-trust.md)
 * [Enthuse](integrations/enthuse.md)
 * [Facebook](integrations/facebook.md)
 * [Funraisin'](integrations/funraisin.md)
