@@ -1,39 +1,119 @@
 ---
 description: >-
-  MoveData uses the Salesforce Duplicate Rules to match against existing Contact
-  and Account records.
+  Learn how MoveData integrates with Salesforce Duplicate Rules to ensure clean
+  data whilst preventing the creation of duplicate records in your organisation.
 ---
 
 # Duplicate Rules
 
-## How does MoveData use the Salesforce Duplicate Rules? <a href="#h_1a69ba115b" id="h_1a69ba115b"></a>
+## Understanding Duplicate Management with MoveData
 
-When your Source Platform provides a unique identifier for Contact or Account records, MoveData will save that value against the associated record and match on that unique identifier going forward.
+MoveData intelligently works with your existing Salesforce duplicate rules to maintain data quality whilst ensuring seamless integration of fundraising platform data. Rather than bypassing your duplicate detection, MoveData leverages Salesforce's powerful duplicate management system to identify existing records and append new data appropriately.
 
-If a match is not determined from the Source Platform's unique identifier, MoveData will run your Salesforce Duplicate Rules whereby Salesforce will determine if a matching record already exists based on the information issued by your Source Platform. If Salesforce reports a match then MoveData will use that matched record, otherwise MoveData will create a new record to represent the Contact or Account issued by your Source Platform.
+Proper duplicate rule configuration is essential for maintaining data quality whilst enabling seamless fundraising platform integration. Following these guidelines ensures your Salesforce org remains clean and organised whilst automatically processing supporter data from your fundraising activities.
 
-Importantly, the MoveData Authorised User cannot run duplicate rules where `Operation on Create` and/or `Operation on Edit` is set to `Alert`. This is because `Alert` instructs Salesforce to terminate processing where a matched record is encountered, and in a MoveData context this results in a failure since Salesforce terminates the processing of the notification.
+This approach ensures that when a donor makes multiple donations across different platforms or timeframes, their information is consolidated as a single record rather than creating multiple duplicate entries in your Salesforce org.
 
-As such, the MoveData Authorised User must only run rules where `Operation on Create` and/or `Operation on Edit` is set to `Report`. In this configuration, Salesforce will inform MoveData when a matched record exists and allow the processing of the notification to continue. In this scenario, MoveData will use the matched record reported by Salesforce.
+### How MoveData Handles Record Matching
 
-Note
+<figure><img src="../.gitbook/assets/duplicate-rules-process (1).png" alt=""><figcaption></figcaption></figure>
 
-* Exclude the MoveData Authorised User from all rules where `Operation on Create` and/or `Operation on Edit` are set to `Alert`
-* Include the MoveData Authorised User under applicable rules where `Operation on Create` and/or `Operation on Edit` are set to `Report`
-* If you wish to disable functionality to match on the Source Platform's unique identifier (so that only the Salesforce Duplicate Rules run) you can do so in `Settings → Accounts → Disable Platform Key Match → True: Skip Platform Key` and `Settings → Contacts → Disable Platform Key Match → True: Skip Platform Key`. This is useful in scenarios where the the Source Platform bases their unique identifier on email only but in Salesforce you want to match on some other combination (e.g. First Name, Last Name, Email).
+MoveData employs a two-stage matching process to identify existing records:
 
-### Exclude MoveData Authorised User from Alert duplicate rules <a href="#h_00af8ef02b" id="h_00af8ef02b"></a>
+**Stage 1: Platform Unique Identifier Matching**
 
-The below example demonstrates how to exclude an `Alert` rule from applying against the MoveData Authorised User. This is achieved using the `Alias` of the executing user (which in this example is `movedata`) and a `not equal to` condition.
+When your fundraising platform provides a unique identifier for contacts or accounts (such as a donor ID), MoveData stores this value against the corresponding Salesforce record. In subsequent integrations, MoveData first attempts to match using this platform-specific identifier, ensuring perfect accuracy for returning supporters.
 
-<figure><img src="../.gitbook/assets/duplicate-rules-exclude.png" alt=""><figcaption></figcaption></figure>
+**Stage 2: Salesforce Duplicate Rules**
 
-### Include MoveData Authorised User under Report duplicate rules <a href="#h_58791193df" id="h_58791193df"></a>
+If no match is found using the platform's unique identifier, MoveData executes your configured Salesforce duplicate rules. This allows Salesforce to determine whether a matching record exists based on the criteria you've established (typically email address, name combinations, or other identifying information).
 
-There is no explicit need to include the MoveData Authorised User under `Report` rules because, in the absence of any specific conditions, these will apply against all users by default. However, if you wish to narrow the a `Report` rule to apply only against the MoveData Authorised User, you can use the `equals` condition to restrict accordingly.
+When Salesforce identifies a matching record, MoveData updates the existing record rather than creating a new one. If no match is found, MoveData creates a new record to represent the supporter from your fundraising platform.
 
-<figure><img src="../.gitbook/assets/duplicate-rules-include.png" alt=""><figcaption></figcaption></figure>
+## Duplicate Rule Configuration Requirements
 
-### What if I only have Alert duplicate rules? <a href="#h_55cb0484ef" id="h_55cb0484ef"></a>
+For MoveData to function correctly with your duplicate rules, specific configurations are required based on how Salesforce handles different rule actions:
 
-In scenarios where you only have `Alert` rules and do not have `Report` rules you can clone your `Alert` rules to create new versions configured to `Report`. Following the examples above, the MoveData Authorised User should be included under the `Report` rules and excluded from the `Alert` rules.
+### **Report vs Alert Rules**
+
+<figure><img src="../.gitbook/assets/duplicate-rules-actions.png" alt=""><figcaption></figcaption></figure>
+
+#### **Report Rules (Required for MoveData)**
+
+Rules configured with `Operation on Create` and `Operation on Edit` set to `Report` allow processing to continue whilst informing MoveData when potential duplicates are detected. MoveData then uses the matched record identified by Salesforce, ensuring data consolidation without interrupting the integration flow.
+
+#### **Alert Rules (Must Exclude MoveData)**
+
+{% hint style="warning" %}
+**Critical Configuration Requirement**: The MoveData Authorised User must be excluded from all Alert duplicate rules and included under Report duplicate rules for successful integration processing.
+{% endhint %}
+
+Rules configured with `Operation on Create` and `Operation on Edit` set to `Alert` terminate processing when duplicates are encountered. This causes MoveData integrations to fail because Salesforce stops processing the notification entirely.
+
+## Configuration Steps
+
+These steps guide you through configuring the Salesforce Duplicate Rules in a way that can be programatically used by MoveData and continue to work for your users.
+
+### **Preparation**
+
+* Identify the Authorised User in MoveData's Settings
+* View the Authorised User in Setup → Users → Users.  Record the `alias` of the user.
+
+### **Step 1: Review Existing Duplicate Rules**
+
+1. **Navigate to Setup**: Go to Setup → Duplicate Management → Duplicate Rules
+2. **Audit current rules**: Review all active duplicate rules for Contacts, Accounts, and any other relevant objects
+3. **Identify rule types**: Note which rules are configured as `Alert` vs `Report`
+4. **Check rule scope**: Ensure rules cover the objects MoveData will be creating or updating
+
+### **Step 2: Exclude MoveData from Alert Rules**
+
+We need to ensure MoveData does not trigger any duplicate rules with `Alert` actions enabled.  For any duplicate rules configured with `Alert` actions:
+
+1. **Edit the duplicate rule**: Click on the rule name to access configuration
+2. **Add exclusion criteria**: In the rule conditions, add a condition to exclude the MoveData Authorised User
+3. **Use alias condition**: Add a condition where `User: Alias not equal to movedata` (or your specific MoveData user alias)
+4. **Save and activate**: Ensure the rule remains active with the new exclusion
+
+### **Step 3: Configure Report Rules for MoveData**
+
+{% hint style="info" %}
+If you only have Alert rules but wish for these to also be run by MoveData, clone them and create `Report` versions.
+{% endhint %}
+
+You may wish for MoveData to trigger rules for MoveData.  To do this, you need to ensure MoveData can access Report-level duplicate rules:
+
+1. **Review Report rules**: Identify existing rules configured with `Report` actions to be used by MoveData.
+2. **Verify scope**: Ensure these rules apply to the MoveData Authorised User (they typically apply to all users by default)
+
+## Advanced Configuration Options
+
+### **Disable Platform Key Matching**
+
+If you prefer to rely solely on Salesforce duplicate rules rather than platform unique identifiers for contacts and accounts:
+
+1. **Navigate to MoveData Settings**: Open the MoveData app → Settings
+2. **Navigate to Correct MoveData Extension**: Click the tab for the relevant MoveData Extension (eg. Donations & Fundraising).
+3. **Configure Contact settings**: Go to Accounts panel → Disable Platform Key Match → Select "True: Skip Platform Key"
+4. **Configure Account settings**: Go to Contacts panel → Disable Platform Key Match → Select "True: Skip Platform Key"
+
+This configuration is useful when you have fundraisers making donations on behalf of users.  Often, they will be passed to MoveData with the on behalf of name but with the fundraiser's key, resulting in a change to the fundraiser's contact record.
+
+## Testing Your Configuration
+
+**Validation Steps**
+
+1. **Create test records**: Use the MoveData integration to process a small sample of data
+2. **Verify duplicate detection**: Send the same supporter information multiple times to confirm existing records are updated rather than duplicated
+3. **Check rule execution**: Review the duplicate rule entry in the execution logs to ensure rules are firing correctly
+4. **Monitor notifications**: Use the MoveData app to confirm successful processing without errors
+
+## **Common Issues and Solutions**
+
+**Integration failures due to Alert rules:**
+
+* Solution: Verify MoveData Authorised User is excluded from all Alert duplicate rules
+
+**Unexpected duplicate creation:**
+
+* Solution: Review Report rule criteria to ensure appropriate matching fields are configured
