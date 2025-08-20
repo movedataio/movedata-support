@@ -24,6 +24,11 @@
 * [Integrations](salesforce-application/integrations.md)
 * [Settings](salesforce-application/settings.md)
 
+## Configuration
+
+* [Duplicate Rules](configuration/duplicate-rules.md)
+* [Permission Sets](configuration/permission-sets.md)
+
 ## Integrations
 
 * [Benevity](integrations/benevity.md)
