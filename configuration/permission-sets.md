@@ -1,3 +1,10 @@
+---
+description: >-
+  MoveData uses Salesforce permission sets to control user access. Assign both
+  Application permissions (for basic MoveData access) and Extension permissions
+  (for specific features) to users.
+---
+
 # Permission Sets
 
 ## Overview
