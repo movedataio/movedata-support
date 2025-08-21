@@ -39,7 +39,7 @@ By completing this quickstart, you'll have:
 
 ## The Quickstart Setup Process
 
-## Step 1: Install MoveData
+### Step 1: Install MoveData
 
 _Video timestamp: 2:50_
 
@@ -187,11 +187,11 @@ _Video timestamp: 10:52_
 
 **✅ Success Check:** All records are created correctly and relationships are established
 
-### 🎉 Congratulations!
+## 🎉 Congratulations!
 
 You've successfully completed the MoveData setup! As demonstrated in the video, you now have real-time data synchronisation flowing from your fundraising platform directly into Salesforce.
 
-### What's Next?
+## What's Next?
 
 #### Immediate Actions
 
