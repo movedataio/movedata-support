@@ -15,7 +15,7 @@ Notifications that use the Donation schema have the following elements:
 * `action`: Denotes what the notification is for.  Values can be:
   * `metadata`: A notification containing metadata such as campaigns, recurring changes, fundraisers, etc.
   * `donation`: A notification containing donation information.
-* `campaign`: An array of Campaign entries.&#x20;
+* [`campaign`](campaign.md): An array of Campaign entries.&#x20;
 * `anonymous`: A boolean flag identifying if the donation is to be anonymous.
 * `donor`: A Party entry for the party responsible for the donation.
 * `tribute`: A Tribute entry; used to identify a donation is in memory or tribute of someone.&#x20;
