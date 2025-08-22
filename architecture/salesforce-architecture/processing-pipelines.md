@@ -1,8 +1,12 @@
 # Processing Pipelines
 
-### TODO: Explain How Pipelines are registered and used
+MoveData's processing pipeline system provides a flexible, metadata-driven framework for transforming standardised notifications into Salesforce records. Pipelines define the sequence of operations required to process different types of data (donations, commerce, etc) and can be customised to meet specific organisational requirements.
 
-## Metadata-Driven Configuration
+## Pipeline Registration Process
+
+Pipelines are registered through the MoveData Schema Mapping system, which connects standardised notification schemas to their appropriate processing pipelines.
+
+### Metadata-Driven Configuration
 
 The platform uses Salesforce Custom Metadata Types for configuration management:
 
@@ -11,7 +15,58 @@ The platform uses Salesforce Custom Metadata Types for configuration management:
 
 These keys for these entries can be found in the Reference for each extension.
 
-## Notification Processing Pipeline
+### Schema Mapping
+
+Each MoveData extension registers its processing capabilities by creating entries in the `movedata__Movedata_Schema_Map__mdt` custom metadata type. These entries define:
+
+* **Schema Type**: The standardised notification schema (e.g., 'donation', 'commerce')
+* **Pipeline Class**: The Apex class responsible for processing notifications of this schema type
+* **Extension Name**: The MoveData extension that provides this processing capability
+* **Active Status**: Whether this pipeline is currently enabled for processing
+
+**Pipeline Discovery:** When a notification arrives, MoveData uses the schema type to lookup the appropriate pipeline:
+
+1. **Schema Identification**: The notification's schema type is extracted from the incoming data
+2. **Metadata Lookup**: MoveData queries `movedata__Movedata_Schema_Map__mdt` to find active pipelines for this schema
+3. **Pipeline Selection**: The appropriate pipeline class is identified and instantiated
+4. **Processing Initiation**: The pipeline begins processing the notification through its defined phases
+
+**MoveData Extensions:** When a MoveData extension is installed, a pipeline is registered to handle respective schema type.
+
+### Pipeline Architecture
+
+Each processing pipeline follows a consistent multi-phase architecture that ensures comprehensive data processing:
+
+**Phase-Based Processing:** Pipelines are organised into logical phases that handle different aspects of the notification.  For example, for fundraising donations, the Donation pipeline has five phases: the Account, Contact, Campaign, Recurring and Donation phases.
+
+**Phase Orchestration:** The pipeline engine coordinates phase execution:
+
+* **Sequential Processing**: Phases execute in a defined order to maintain data dependencies.  For example, an Account must be created before a Contact.
+* **Conditional Execution**: Phases only execute if relevant data is present in the notification
+* **Error Handling**: Phases can halt processing based on configuration
+* **Audit Logging**: Each phase execution is logged for troubleshooting and compliance
+
+### Pipeline Configuration
+
+Individual pipeline phases can be extensively configured through the `movedata__MoveData_Pipeline__mdt` metadata type:
+
+**Phase Control Settings:**
+
+* **Enable/Disable**: Individual phases can be enabled or disabled without affecting the entire pipeline
+* **SObject Override**: The target Salesforce object for a phase can be overridden (e.g., using Person Accounts instead of Contacts)
+* **Field Dependencies**: Fieldsets can be specified to ensure required fields are loaded during processing
+* **Business Logic**: Apex and Lightning Flows are specified to handle business logic for specific actions within a phase such as mapping data or post-upsert.
+
+### Extension-Provided Pipelines
+
+MoveData extensions provide pre-built pipelines optimised for different schemas or domains.  These are:
+
+* Fundraising and Donations &#x20;
+* Commerce
+
+Whilst rare, organisations can develop custom handlers for schemas using Apex.
+
+## Example: Notification Processing Pipeline
 
 The diagram below illustrates the processing of a MoveData notification, using a donation notification processed by the NPSP Fundraising and Donations extension as an example.
 
