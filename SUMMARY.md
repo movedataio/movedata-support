@@ -13,4 +13,5 @@
 ## Architecture
 
 * [Architectural Overview](architecture/architectural-overview.md)
-* [Salesforce Architecture](architecture/salesforce-architecture.md)
+* [Salesforce Architecture](architecture/salesforce-architecture/README.md)
+  * [Processing Pipelines](architecture/salesforce-architecture/processing-pipelines.md)
