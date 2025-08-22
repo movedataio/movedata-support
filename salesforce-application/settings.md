@@ -8,6 +8,8 @@ description: >-
 
 ## General Settings
 
+<figure><img src="../.gitbook/assets/movedata-settings.png" alt=""><figcaption></figcaption></figure>
+
 The General tab contains core configuration options that apply across all your MoveData integrations.
 
 ### Authorise MoveData
