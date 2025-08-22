@@ -5,3 +5,4 @@
 ## configuration
 
 * [Install MoveData](configuration/install-movedata.md)
+* [Setup Wizard](configuration/setup-wizard.md)

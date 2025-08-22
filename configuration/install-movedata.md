@@ -2,7 +2,6 @@
 description: >-
   Step-by-step guide to installing MoveData in Salesforce. Covers direct
   installation, configuration settings, verification steps, and troubleshooting.
-  Takes 10-15 minutes.
 ---
 
 # Install MoveData
