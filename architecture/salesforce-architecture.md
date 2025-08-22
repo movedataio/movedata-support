@@ -94,31 +94,23 @@ The diagram below illustrates the processing of a MoveData notification, using a
 
 ## Customisation Framework
 
-### Lightning Flow Integration
-
-MoveData's architecture leverages Salesforce Lightning Flows for business rule implementation:
-
-* **Declarative Configuration**: Visual workflow builder for complex business logic
-* **Organisational Customisation**: Tailored rules specific to nonprofit requirements
-* **Turnkey Templates**: Pre-built flows for common nonprofit scenarios
-
 ### Metadata-Driven Configuration
 
 The platform uses Salesforce Custom Metadata Types for configuration management:
 
 * **Schema Mapping**: `movedata__Movedata_Schema_Map__mdt` defines processing pipelines
 * **Pipeline Configuration**: `movedata__MoveData_Pipeline__mdt` controls phase behaviour
-* **Field Mapping**: Flexible field-to-field mapping configuration
-* **Business Rules**: Declarative rule definition and management
 
-### Extension Points
+These keys for these entries can be found in the Reference for each extension.
 
-The architecture provides multiple extension points for customisation:
+### Externalised Business Rules
 
-* **Pre-Processing Hooks**: Custom logic before record processing
-* **Transformation Rules**: Custom field mapping and data transformation
-* **Post-Processing Actions**: Additional logic after record creation/update
-* **Custom Schemas**: Support for organisation-specific data structures
+MoveData's architecture leverages Salesforce Lightning Flows for business rule implementation:
+
+* **Declarative Configuration**: Visual Lightning Flow builder for complex business logic
+* **Organisational Customisation**: Tailored rules specific to nonprofit requirements
+* **Turnkey Templates**: Pre-built flows for common nonprofit scenarios
+* **Full Extensibility**: Business logic & rules are externalise as Flows to support custom rules
 
 ## Performance and Scalability
 
@@ -126,7 +118,6 @@ The architecture provides multiple extension points for customisation:
 
 * **Batch Processing**: Handles high-volume events efficiently
 * **Intelligent Caching**: Reduces database queries through smart caching strategies
-* **Asynchronous Execution**: Non-blocking processing for optimal performance
 
 ### Error Handling and Recovery
 
@@ -148,27 +139,14 @@ MoveData leverages Salesforce's enterprise security framework:
 
 ### Data Protection
 
-* **Encryption**: Data encrypted at rest and in transit
-* **Privacy Controls**: Supports data privacy and consent management
+* **Encryption**: Data transmitted to Salesforce is encrypted in transit
 * **Access Controls**: Role-based access to integration functionality
 * **Compliance**: Supports GDPR, CCPA, and other privacy regulations
 
 ## Monitoring and Maintenance
 
-### Real-time Visibility
-
 The MoveData Lightning Application provides comprehensive monitoring capabilities:
 
-* **Integration Dashboard**: Real-time view of processing status
-* **Performance Metrics**: Detailed analytics on integration performance
+* **Notification Dashboard**: Real-time view of processing status
+* **Execution Logs**: Detailed logs on each notification
 * **Error Reporting**: Immediate notification of processing issues
-* **Data Quality Insights**: Monitoring of data transformation accuracy
-
-### Operational Excellence
-
-* **Health Checks**: Automated monitoring of integration health
-* **Performance Optimisation**: Continuous improvement recommendations
-* **Capacity Planning**: Insights for scaling integration capacity
-* **Best Practices**: Guidance for optimal configuration and usage
-
-This architecture ensures that MoveData provides a robust, scalable, and highly customisable integration platform that grows with your organisation's needs whilst maintaining the reliability and security expected in enterprise nonprofit environments.
