@@ -8,11 +8,12 @@ The platform operates as a native Salesforce application that transforms fundrai
 
 ## Core Architecture Components
 
-### Managed Package Foundation
+### Salesforce Managed Package
 
 MoveData operates as a Salesforce managed package, which provides several key advantages:
 
-* **Native Integration**: Runs entirely within your Salesforce org with no external dependencies
+* **Native Integration**: Runs natively entirely within your Salesforce org
+* **Data Integrity**: Rolls back changes when an error occurs
 * **Security**: Leverages Salesforce's enterprise-grade security model
 * **Upgrades**: Updates and improvements delivered through the managed package
 * **Customisation**: Full access to Salesforce's declarative customisation tools
@@ -41,12 +42,33 @@ This schema-driven architecture means that adding an additional fundraising plat
 
 ### Extension Architecture
 
+**Deployment and Maintenance Benefits:**
+
+The extension architecture delivers significant operational advantages:
+
+* **Rapid Implementation**: Extensions install with pre-configured business rules, field mappings, and processing logic, reducing setup time from weeks to hours
+* **Feature Upgrades**: Extensions receive continuous improvements and new features through managed package updates, ensuring your integrations stay current with platform developments
+* **Best Practice Implementation**: Extensions incorporate nonprofit industry best practices and lessons learned from hundreds of implementations
+
+**Extensibility and Customisation:**
+
+Each extension serves as a foundation that can be extended with complimentary flow:
+
+* **Lightning Flow Integration**: Add additional flows to the existing processing logic using MoveData's execution pipeline.
+* **Business Rule Customisation**: Implement unique organisational requirements whilst maintaining the benefits of standardised processing
+* **Modular Enhancement**: Combine multiple extensions or add custom components to create comprehensive processing pipelines
+
+This approach ensures that organisations can deploy proven solutions immediately whilst retaining the flexibility to adapt and evolve their integrations as requirements change.
+
+**Out-of-the-box Extensions:**
+
 MoveData's modular extension system provides out-of-the-box support for different Salesforce data models:
 
 * **NPSP Fundraising and Donations Extension**: Comprehensive processing for Nonprofit Success Pack environments
 * **Nonprofit Cloud Extension**: Native support for Salesforce's purpose-built nonprofit solution
 * **Commerce Extension**: Specialised handling for ticketing and product sales
-* **Custom Extensions**: Framework for organisation-specific processing requirements
+
+If the above extensions are not suitable, custom handlers using Apex and Lightning Flows can be developed.
 
 ## Notification Processing Pipeline
 
@@ -59,50 +81,16 @@ The diagram below illustrates the processing of a MoveData notification, using a
 1. **Notification Dispatch**: A notification is dispatched to the MoveData engine hosted within Salesforce, triggered by events from integrated fundraising platforms.
 2. **Schema Identification**: The engine interrogates the notification to identify the schema type. In this example, the notification uses the donation schema.
 3. **Pipeline Registration Lookup**: A lookup into the MoveData Schema Metadata (`movedata__Movedata_Schema_Map__mdt`) identifies that the donation schema has a pipeline registered by the NPSP Fundraising and Donations extension.
-4. **Pipeline Initialisation**: The appropriate pipeline is loaded and begins processing the notification through its defined phases.
-5. **Phase Processing**: The NPSP Fundraising and Donations extension pipeline processes through five phases (Account, Contact, Campaign, Recurring Donation, and Donation) to handle the notification comprehensively.
-6. **Contact Phase Initiation**: Since this notification contains Contact information for the donor, the pipeline triggers the Contact phase and begins working through the provided data.
-7. **Phase Status Check**: The pipeline checks the MoveData Pipeline Metadata (`movedata__MoveData_Pipeline__mdt`) to determine if the Contact phase is disabled. Finding it active, the pipeline advances to the next action.
-8. **SObject Override Verification**: The pipeline checks the MoveData Pipeline Metadata to see if the SObject used in the Contact phase is overridden. With no override present, the pipeline defaults to the Contact object.
-9. **Fieldset Loading**: The pipeline reads the MoveData Pipeline Metadata to identify any fieldsets that need to be loaded. If fieldset references exist, they instruct the pipeline which fields to retrieve from Salesforce when matching existing records, ensuring all fields referenced in flows are preloaded to prevent execution failures.
-10. **Duplicate Detection**: MoveData performs comprehensive duplicate checking using Lightning Flows and Salesforce Duplicate Rules to determine if an existing record matches the incoming data. This process respects your organisation's existing duplicate management configuration.
-11. **Business Rules Application**: Regardless of whether an existing record is found, mapping rules execute to apply additions and changes to the Contact record. This stage contains the majority of business logic and field transformation rules.
-12. **Record Persistence**: The processed record is returned from the mapping action, and the pipeline performs an upsert operation to persist the Contact data to Salesforce.
-13. **Post-Processing Activities**: Following the upsert, additional actions handle post-processing requirements such as linking the contact record to other objects, creating related child records, or triggering subsequent workflows.
-14. **Phase Progression**: The pipeline advances to the next phase once all contact entries in the notification have been processed successfully. In this scenario, the pipeline would proceed to address Campaign information in the notification.
-15. **Completion and Logging**: Once all phases have been processed successfully, MoveData persists execution logs and results, marking the notification as successful and providing comprehensive audit trails.
-
-## Data Flow Architecture
-
-### Three-Stage Lifecycle
-
-MoveData's architecture implements a comprehensive three-stage lifecycle:
-
-**Stage 1: Action**
-
-* Captures events from fundraising platforms through real-time APIs, polling, or CSV processing
-* Handles donations, event registrations, supporter updates, peer-to-peer activities, and product sales
-* Provides event intelligence with rich contextual information
-
-**Stage 2: Transformation & Standardisation**
-
-* Assembles primary event data with supporting information and supporter context
-* Applies field mapping, data validation, and business logic
-* Creates standardised notifications independent of source platform
-
-**Stage 3: Execution**
-
-* Processes notifications through MoveData extensions and custom business rules
-* Implements Lightning Flow-based business logic
-* Creates and updates Salesforce records with complete audit trails
-
-### Integration Methods
-
-The architecture supports multiple integration approaches:
-
-* **Real-time Webhooks**: Instant processing of platform events as they occur
-* **API Polling**: Regular synchronisation for platforms supporting API access
-* **CSV Processing**: Batch processing for platforms with limited connectivity options
+4. **Phase Initialisation**: The appropriate pipeline is loaded and begins processing the notification through its defined phases (Account, Contact, Campaigns, Recurring Donations, Donations).  The notification has no account but contains the Contact who made the donation. The pipeline triggers the Contact phase and begins working through the provided data.
+5. **Enable / Disabled Checked**: The pipeline checks the MoveData Pipeline Metadata (`movedata__MoveData_Pipeline__mdt`) to see if the Contact phase is disabled. It is not, so the pipeline advances to the next action.
+6. **Determine SObject Type**: The pipeline checks the MoveData Pipeline Metadata to see if the SObject used in the Contact phase is overridden. This can be done by noting the SObject in the metadata or trigger a flow to dynamically determine the SObject type.  In this example, there is no entry so pipeline defaults to `Contact` SObject type.
+7. **Fieldset Loading**: The pipeline reads the MoveData Pipeline Metadata to identify any fieldsets that need to be loaded. If fieldset references exist, they instruct the pipeline which fields to retrieve from Salesforce when matching existing records, ensuring all fields referenced in flows are preloaded to prevent execution failures.  If you reference a field in a flow / decision and depend on it's data, you need to ensure it has been preloaded.
+8. **Duplicate Detection**: MoveData performs comprehensive duplicate checking using Lightning Flows and Salesforce Duplicate Rules to determine if an existing record matches the incoming data. MoveData will attempt to match on existing keys and if there is no match, will execute the organisation's Salesforce Duplicate Rules.
+9. **Populate Record**: Regardless of whether an existing record is found, mapping rules execute to apply additions and changes to the Contact record. This stage contains the majority of business logic and field transformation rules.
+10. **Record Persistence**: The processed record is returned from the mapping action, and the pipeline performs an `upsert` operation to persist the Contact data to Salesforce.
+11. **Post-Processing Activities**: Following the `upsert`, additional actions handle post-processing requirements such as linking the contact record to other objects and creating related child records.
+12. **Phase Progression**: The pipeline advances to the next phase once all contact entries in the notification have been processed successfully. In this scenario, the pipeline would proceed to address Campaign information in the notification.
+13. **Completion and Logging**: Once all phases have been processed successfully, MoveData persists execution logs and results, marking the notification as successful and providing comprehensive audit trails.
 
 ## Customisation Framework
 
