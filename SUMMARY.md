@@ -9,3 +9,8 @@
   * [Permission Sets](https://jgilray.gitbook.io/movedata-v2/configuration/permission-sets)
   * [Integrations](https://jgilray.gitbook.io/movedata-v2/salesforce-application/integrations)
   * [Notifications](https://jgilray.gitbook.io/movedata-v2/salesforce-application/notifications)
+
+## Architecture
+
+* [Architectural Overview](architecture/architectural-overview.md)
+* [Salesforce Architecture](architecture/salesforce-architecture.md)
