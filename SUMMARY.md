@@ -9,14 +9,7 @@
 * [The MoveData Lifecycle](getting-started/the-movedata-lifecycle.md)
 * [Salesforce Key Concepts](getting-started/salesforce-key-concepts.md)
 * [MoveData Key Concepts](getting-started/movedata-key-concepts.md)
-* [Quickstart](getting-started/quickstart/README.md)
-  * [Install MoveData](getting-started/quickstart/install-movedata.md)
-  * [Complete Setup Wizard](getting-started/quickstart/complete-setup-wizard.md)
-  * [Configure Settings](getting-started/quickstart/configure-settings.md)
-  * [Configure Duplicate Rules](getting-started/quickstart/configure-duplicate-rules.md)
-  * [Assign Permissions](getting-started/quickstart/assign-permissions.md)
-  * [Connect Integrations](getting-started/quickstart/connect-integrations.md)
-  * [View Resulting Records](getting-started/quickstart/view-resulting-records.md)
+* [Quickstart](getting-started/quickstart.md)
 
 ## Salesforce Application
 

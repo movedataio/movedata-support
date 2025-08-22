@@ -1,2 +1,0 @@
-# View Resulting Records
-
