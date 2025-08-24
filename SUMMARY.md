@@ -2,4 +2,7 @@
 
 * [Overview](README.md)
 * [Schema](schema.md)
-{!files}
+* [Address](address.md)
+* [Campaign](campaign.md)
+* [Communication](communication.md)
+* [Marketing](marketing.md)
