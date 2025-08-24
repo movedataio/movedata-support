@@ -1,6 +1,6 @@
 # Marketing
 
-* `type`: Marketing type or category (e.g., "paid_search", "social", "email")
+* `type`: Marketing platform type (e.g., "ga", "pixel")
 * `source`: Traffic source (e.g., "google", "facebook", "newsletter") - equivalent to utm_source
 * `campaign`: Marketing campaign name or identifier - equivalent to utm_campaign
 * `medium`: Marketing medium (e.g., "cpc", "email", "social", "banner") - equivalent to utm_medium
