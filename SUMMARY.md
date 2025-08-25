@@ -5,6 +5,8 @@
 * [Address](address.md)
 * [Campaign](campaign.md)
 * [Communication](communication.md)
+* [Financial](financial.md)
+* [Financialentry](financialentry.md)
 * [Marketing](marketing.md)
 * [Organisation](organisation.md)
 * [Person](person.md)
