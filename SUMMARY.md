@@ -5,6 +5,7 @@
 ## Flows: Contact
 
 * [Contact Platform Key Flow](flows-contact/contact-platform-key-flow.md)
+* [Contact Record Match Flow](flows-contact/contact-record-match-flow.md)
 
 ## Flows: Campaign
 
