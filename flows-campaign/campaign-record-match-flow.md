@@ -15,6 +15,8 @@ This document is to support working through a visual flow.
 
 This utility flow performs duplicate detection for campaign records by using platform keys to identify existing campaigns in Salesforce, enabling proper record matching and preventing duplicate creation during data imports.
 
+If there is no match, MoveData will execute the Salesforce Duplicate Detection rules after the flow (if configured).
+
 ## Purpose
 
 The flow provides duplicate detection capabilities that:
