@@ -6,6 +6,7 @@
 
 * [Contact Platform Key Flow](flows-contact/contact-platform-key-flow.md)
 * [Contact Record Match Flow](flows-contact/contact-record-match-flow.md)
+* [Contact Mapping Flow](flows-contact/contact-mapping-flow.md)
 * [Contact Details Helper Flow](flows-contact/contact-details-helper-flow.md)
 * [Contact Platform Key Helper Flow](flows-contact/contact-platform-key-helper-flow.md)
 
