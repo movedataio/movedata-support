@@ -10,7 +10,7 @@ Notifications that use the Donation schema have the following elements:
 * `prefix`: Notes the prefix to be appended to every key. Used to prevent overlapping keys when there are multiple instances of the same platform integrated with MoveData (e.g., "usa")
 * `client`: Used when a platform inherits a specific client as part of its implementation (e.g., "csv")
 * `action`: Denotes what the notification is for. Values can be: "metadata" (containing metadata such as campaigns, recurring changes, fundraisers, etc.) or "donation" (containing donation information)
-* `campaign`: An array of Campaign entries
+* `campaign`: An array of Campaign objects.  Each campaign represents a fundraising effort associated with a donation or registration. [📖 Reference](./campaign)
 * `anonymous`: A boolean flag identifying if the donation is to be anonymous
 * `donor`: A Party entry for the party responsible for the donation
 * `tribute`: A Tribute entry; used to identify a donation is in memory or tribute of someone
