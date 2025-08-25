@@ -5,6 +5,7 @@
 ## Flows: Account
 
 * [Account Platform Key Flow](flows-account/account-platform-key-flow.md)
+* [Account Record Match Flow](flows-account/account-record-match-flow.md)
 
 ## Flows: Contact
 
