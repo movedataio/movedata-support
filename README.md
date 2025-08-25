@@ -2,6 +2,8 @@
 
 ## Donation Schema
 
+The Donation Schema is produced by donation & fundraising integrations.  It supports fundraising registrations & donations, associated organisations and contacts, tributes, matched donations and recurring donations.
+
 ### Example
 
 <details>
