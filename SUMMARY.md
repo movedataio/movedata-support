@@ -15,3 +15,4 @@
 * [Question](question.md)
 * [Recurring](recurring.md)
 * [Relationship](relationship.md)
+* [Tribute](tribute.md)
