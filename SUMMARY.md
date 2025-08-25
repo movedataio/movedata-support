@@ -2,9 +2,4 @@
 
 * [Overview](README.md)
 * [Schema](schema.md)
-* [Address](address.md)
-* [Campaign](campaign.md)
-* [Communication](communication.md)
-* [Marketing](marketing.md)
-* [Organisation](organisation.md)
-* [Person](person.md)
+{!files}
