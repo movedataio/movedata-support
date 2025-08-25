@@ -11,9 +11,9 @@
 * `campaign`: [[📖 Campaign](campaign.md)] An array of Campaign objects.  Each campaign represents a fundraising effort associated with a donation or registration.
 * `anonymous`: A boolean flag identifying if the donation is to be anonymous
 * `donor`: [[📖 Person](person.md) and [📖 Organisation](organisation.md)] Primary contact person or organization responsible for the donation
-* `tribute`: A Tribute entry; used to identify a donation is in memory or tribute of someone
-* `matched`: A Matched entry containing information about a matching donation
-* `recurring`: A Recurring entry; identifies start date, amount, frequency around a recurring donation
+* `tribute`: [[📖 Tribute](tribute.md)] A Tribute entry; used to identify a donation is in memory or tribute of someone
+* `matched`: [[📖 Matched](matched.md)] A Matched entry containing information about a matching donation
+* `recurring`: [[📖 Recurring](recurring.md)] A Recurring entry; identifies start date, amount, frequency around a recurring donation
 * `donation`: [[📖 Donation](donation.md)] A Donation entry containing dates, descriptions and financially-related information
 * `newsletter`: A boolean flag (that can also be null) to identify if the subject of the notification has opted into or out of communications. Superseded by communications entries on party entries
 * `custom`: A key/value object with values that do not fit within the schema
