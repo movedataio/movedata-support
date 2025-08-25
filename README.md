@@ -166,9 +166,13 @@
 
 ### Reference
 
+#### Schema Reference
+
 {% content-ref url="schema.md" %}
 [schema.md](schema.md)
 {% endcontent-ref %}
+
+#### Related Entities
 
 {% content-ref url="address.md" %}
 [address.md](address.md)
@@ -220,4 +224,8 @@
 
 {% content-ref url="relationship.md" %}
 [relationship.md](relationship.md)
+{% endcontent-ref %}
+
+{% content-ref url="tribute.md" %}
+[tribute.md](tribute.md)
 {% endcontent-ref %}
