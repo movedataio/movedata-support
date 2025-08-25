@@ -198,8 +198,8 @@
 [marketing.md](marketing.md)
 {% endcontent-ref %}
 
-{% content-ref url="marketing.md" %}
-[marketing.md](marketing.md)
+{% content-ref url="matched.md" %}
+[matched.md](matched.md)
 {% endcontent-ref %}
 
 {% content-ref url="organisation.md" %}
@@ -212,6 +212,10 @@
 
 {% content-ref url="question.md" %}
 [question.md](question.md)
+{% endcontent-ref %}
+
+{% content-ref url="recurring.md" %}
+[recurring.md](recurring.md)
 {% endcontent-ref %}
 
 {% content-ref url="relationship.md" %}
