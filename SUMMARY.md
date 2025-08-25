@@ -8,6 +8,8 @@
 * [Catalog](catalog.md)
 * [Communication](communication.md)
 * [Marketing](marketing.md)
+* [Order](order.md)
+* [Orderitem](orderitem.md)
 * [Organisation](organisation.md)
 * [Person](person.md)
 * [Question](question.md)
