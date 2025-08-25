@@ -178,64 +178,56 @@ The Commerce Schema is produced by integrations that deal with sales.  The can b
 
 #### Schema Reference
 
-{% content-ref url="broken-reference" %}
-[Broken link](broken-reference)
+{% content-ref url="schema.md" %}
+[schema.md](schema.md)
 {% endcontent-ref %}
 
 #### Related Entities
 
-{% content-ref url="broken-reference" %}
-[Broken link](broken-reference)
+{% content-ref url="address.md" %}
+[address.md](address.md)
 {% endcontent-ref %}
 
-{% content-ref url="broken-reference" %}
-[Broken link](broken-reference)
+{% content-ref url="brand.md" %}
+[brand.md](brand.md)
 {% endcontent-ref %}
 
-{% content-ref url="broken-reference" %}
-[Broken link](broken-reference)
+{% content-ref url="campaign.md" %}
+[campaign.md](campaign.md)
 {% endcontent-ref %}
 
-{% content-ref url="broken-reference" %}
-[Broken link](broken-reference)
+{% content-ref url="catalog.md" %}
+[catalog.md](catalog.md)
 {% endcontent-ref %}
 
-{% content-ref url="broken-reference" %}
-[Broken link](broken-reference)
+{% content-ref url="communication.md" %}
+[communication.md](communication.md)
 {% endcontent-ref %}
 
-{% content-ref url="broken-reference" %}
-[Broken link](broken-reference)
+{% content-ref url="marketing.md" %}
+[marketing.md](marketing.md)
 {% endcontent-ref %}
 
-{% content-ref url="broken-reference" %}
-[Broken link](broken-reference)
+{% content-ref url="order.md" %}
+[order.md](order.md)
 {% endcontent-ref %}
 
-{% content-ref url="broken-reference" %}
-[Broken link](broken-reference)
+{% content-ref url="orderitem.md" %}
+[orderitem.md](orderitem.md)
 {% endcontent-ref %}
 
-{% content-ref url="broken-reference" %}
-[Broken link](broken-reference)
+{% content-ref url="organisation.md" %}
+[organisation.md](organisation.md)
 {% endcontent-ref %}
 
-{% content-ref url="broken-reference" %}
-[Broken link](broken-reference)
+{% content-ref url="person.md" %}
+[person.md](person.md)
 {% endcontent-ref %}
 
-{% content-ref url="broken-reference" %}
-[Broken link](broken-reference)
+{% content-ref url="question.md" %}
+[question.md](question.md)
 {% endcontent-ref %}
 
-{% content-ref url="broken-reference" %}
-[Broken link](broken-reference)
-{% endcontent-ref %}
-
-{% content-ref url="broken-reference" %}
-[Broken link](broken-reference)
-{% endcontent-ref %}
-
-{% content-ref url="broken-reference" %}
-[Broken link](broken-reference)
+{% content-ref url="relationship.md" %}
+[relationship.md](relationship.md)
 {% endcontent-ref %}
