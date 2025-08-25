@@ -8,6 +8,7 @@ This document is to support working through a visual flow.
 ## Overview
 
 **Flow Name:** MoveData\_Donation\_Campaign\_Key\
+**Label:** \[MoveData] Donation: Campaign - Platform Key\
 **Type:** Auto-Launched Flow Template\
 **API Version:** 60.0\
 **Status:** Active
