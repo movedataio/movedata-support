@@ -1,4 +1,4 @@
-# {!name}
+# Campaign
 
 * `salesforceKey`: Salesforce platform key for the campaign - used for CRM integration
 * `key`: Unique identifier for the campaign in the dispatching platform

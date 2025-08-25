@@ -1,4 +1,4 @@
-# {!name}
+# Organisation
 
 * `salesforceKey`: Salesforce ID for Organisation - included for consistency with other Salesforce records
 * `key`: Dispatching Platform Key for Organisation

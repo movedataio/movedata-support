@@ -1,4 +1,4 @@
-# {!name}
+# Address
 
 * `key`: Dispatching Platform Key for Address - regularly not available.
 * `type`: Address Type - eg. home, work

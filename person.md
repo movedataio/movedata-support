@@ -1,4 +1,4 @@
-# {!name}
+# Person
 
 * `salesforceKey`: Salesforce ID for Contact - used for specific anonymous user scenarios
 * `key`: Dispatching Platform Key for Contacts
