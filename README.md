@@ -1,5 +1,9 @@
 # Overview
 
+## Donation Schema
+
+### Example
+
 <details>
 
 <summary>Example Notification</summary>
@@ -159,6 +163,8 @@
 ```
 
 </details>
+
+### Reference
 
 {% content-ref url="schema.md" %}
 [schema.md](schema.md)
