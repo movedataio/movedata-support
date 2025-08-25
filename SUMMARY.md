@@ -2,6 +2,10 @@
 
 * [Welcome to the NPSP Fundraising & Donations Extension](README.md)
 
+## Flows: Contact
+
+* [Contact Platform Key Flow](flows-contact/contact-platform-key-flow.md)
+
 ## Flows: Campaign
 
 * [Campaign Platform Key Flow](flows-campaign/campaign-platform-key-flow.md)
