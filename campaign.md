@@ -11,7 +11,7 @@
 * `targetAmount`: Target fundraising amount for the campaign
 * `amount`: Current amount raised for the campaign
 * `currency`: Currency code for the campaign amounts (e.g., USD, EUR, AUD)
-* `primaryContact`: Primary contact person or organization for the campaign [📖 Person](person.md) and [📖 Organisation](organisation.md)
+* `primaryContact`: [[📖 Person](person.md) and [📖 Organisation](organisation.md)] Primary contact person or organization for the campaign 
 * `mailingAddress`: Mailing address for the campaign organization
 * `otherAddress`: Secondary or alternative address for the campaign
 * `eventDate`: Date when the campaign event will take place (if applicable)
