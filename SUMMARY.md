@@ -5,3 +5,4 @@
 ## Flows: Campaign
 
 * [Campaign Mapping Flow](flows-campaign/campaign-mapping-flow.md)
+* [Campaign Platform Key Flow](flows-campaign/campaign-platform-key-flow.md)
