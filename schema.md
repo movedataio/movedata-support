@@ -10,11 +10,11 @@
 * `action`: Denotes what the notification is for. Values can be: "metadata" (containing metadata such as campaigns, recurring changes, fundraisers, etc.) or "donation" (containing donation information)
 * `campaign`: [[📖 Campaign](campaign.md)] An array of Campaign objects.  Each campaign represents a fundraising effort associated with a donation or registration.
 * `anonymous`: A boolean flag identifying if the donation is to be anonymous
-* `donor`: A Party entry for the party responsible for the donation
+* `donor`: [[📖 Person](person.md) and [📖 Organisation](organisation.md)] Primary contact person or organization responsible for the donation
 * `tribute`: A Tribute entry; used to identify a donation is in memory or tribute of someone
 * `matched`: A Matched entry containing information about a matching donation
 * `recurring`: A Recurring entry; identifies start date, amount, frequency around a recurring donation
-* `donation`: A Donation entry containing dates, descriptions and financially-related information
+* `donation`: [[📖 Donation](donation.md)] A Donation entry containing dates, descriptions and financially-related information
 * `newsletter`: A boolean flag (that can also be null) to identify if the subject of the notification has opted into or out of communications. Superseded by communications entries on party entries
 * `custom`: A key/value object with values that do not fit within the schema
 * `questions`: [[📖 Question](question.md)] An array of Question objects used to hold custom questions and answers

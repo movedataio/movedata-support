@@ -5,6 +5,7 @@
 * [Address](address.md)
 * [Campaign](campaign.md)
 * [Communication](communication.md)
+* [Donation](donation.md)
 * [Financial](financial.md)
 * [Financialentry](financialentry.md)
 * [Marketing](marketing.md)
