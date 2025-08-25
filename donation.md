@@ -1,7 +1,7 @@
 # Donation
 
 * `key`: Unique key identifying the donation.
-* `parentKey`: Key referencing the recurring donation entity, if applicable.
+* `parentKey`: [[📖 Recurring](recurring.md)] Key referencing the recurring donation entity, if applicable.
 * `status`: Current status of the donation (e.g., success, refunded, pledge).
 * `receiptNumber`: Receipt number associated with the donation.
 * `amount`: Total amount donated.
