@@ -170,64 +170,64 @@ The Donation Schema is produced by donation & fundraising integrations.  It supp
 
 #### Schema Reference
 
-{% content-ref url="schema.md" %}
-[schema.md](schema.md)
+{% content-ref url="schema-reference/schema.md" %}
+[schema.md](schema-reference/schema.md)
 {% endcontent-ref %}
 
 #### Related Entities
 
-{% content-ref url="address.md" %}
-[address.md](address.md)
+{% content-ref url="related-entities/address.md" %}
+[address.md](related-entities/address.md)
 {% endcontent-ref %}
 
-{% content-ref url="campaign.md" %}
-[campaign.md](campaign.md)
+{% content-ref url="related-entities/campaign.md" %}
+[campaign.md](related-entities/campaign.md)
 {% endcontent-ref %}
 
-{% content-ref url="communication.md" %}
-[communication.md](communication.md)
+{% content-ref url="related-entities/communication.md" %}
+[communication.md](related-entities/communication.md)
 {% endcontent-ref %}
 
-{% content-ref url="donation.md" %}
-[donation.md](donation.md)
+{% content-ref url="related-entities/donation.md" %}
+[donation.md](related-entities/donation.md)
 {% endcontent-ref %}
 
-{% content-ref url="financial.md" %}
-[financial.md](financial.md)
+{% content-ref url="related-entities/financial.md" %}
+[financial.md](related-entities/financial.md)
 {% endcontent-ref %}
 
-{% content-ref url="financialentry.md" %}
-[financialentry.md](financialentry.md)
+{% content-ref url="related-entities/financialentry.md" %}
+[financialentry.md](related-entities/financialentry.md)
 {% endcontent-ref %}
 
-{% content-ref url="marketing.md" %}
-[marketing.md](marketing.md)
+{% content-ref url="related-entities/marketing.md" %}
+[marketing.md](related-entities/marketing.md)
 {% endcontent-ref %}
 
-{% content-ref url="matched.md" %}
-[matched.md](matched.md)
+{% content-ref url="related-entities/matched.md" %}
+[matched.md](related-entities/matched.md)
 {% endcontent-ref %}
 
-{% content-ref url="organisation.md" %}
-[organisation.md](organisation.md)
+{% content-ref url="related-entities/organisation.md" %}
+[organisation.md](related-entities/organisation.md)
 {% endcontent-ref %}
 
-{% content-ref url="person.md" %}
-[person.md](person.md)
+{% content-ref url="related-entities/person.md" %}
+[person.md](related-entities/person.md)
 {% endcontent-ref %}
 
-{% content-ref url="question.md" %}
-[question.md](question.md)
+{% content-ref url="related-entities/question.md" %}
+[question.md](related-entities/question.md)
 {% endcontent-ref %}
 
-{% content-ref url="recurring.md" %}
-[recurring.md](recurring.md)
+{% content-ref url="related-entities/recurring.md" %}
+[recurring.md](related-entities/recurring.md)
 {% endcontent-ref %}
 
-{% content-ref url="relationship.md" %}
-[relationship.md](relationship.md)
+{% content-ref url="related-entities/relationship.md" %}
+[relationship.md](related-entities/relationship.md)
 {% endcontent-ref %}
 
-{% content-ref url="tribute.md" %}
-[tribute.md](tribute.md)
+{% content-ref url="related-entities/tribute.md" %}
+[tribute.md](related-entities/tribute.md)
 {% endcontent-ref %}

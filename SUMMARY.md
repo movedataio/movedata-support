@@ -1,18 +1,24 @@
 # Table of contents
 
 * [Overview](README.md)
-* [Schema](schema.md)
-* [Address](address.md)
-* [Campaign](campaign.md)
-* [Communication](communication.md)
-* [Donation](donation.md)
-* [Financial](financial.md)
-* [Financialentry](financialentry.md)
-* [Marketing](marketing.md)
-* [Matched](matched.md)
-* [Organisation](organisation.md)
-* [Person](person.md)
-* [Question](question.md)
-* [Recurring](recurring.md)
-* [Relationship](relationship.md)
-* [Tribute](tribute.md)
+
+## Schema Reference
+
+* [Schema](schema-reference/schema.md)
+
+## Related Entities
+
+* [Address](related-entities/address.md)
+* [Campaign](related-entities/campaign.md)
+* [Communication](related-entities/communication.md)
+* [Donation](related-entities/donation.md)
+* [Financial](related-entities/financial.md)
+* [Financialentry](related-entities/financialentry.md)
+* [Marketing](related-entities/marketing.md)
+* [Matched](related-entities/matched.md)
+* [Organisation](related-entities/organisation.md)
+* [Person](related-entities/person.md)
+* [Question](related-entities/question.md)
+* [Recurring](related-entities/recurring.md)
+* [Relationship](related-entities/relationship.md)
+* [Tribute](related-entities/tribute.md)
