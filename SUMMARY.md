@@ -9,3 +9,4 @@
 * [Organisation](organisation.md)
 * [Person](person.md)
 * [Question](question.md)
+* [Relationship](relationship.md)
