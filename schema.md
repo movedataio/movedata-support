@@ -1,6 +1,4 @@
-# Schema
-
-Notifications that use the Donation schema have the following elements:
+# {!name}
 
 * `schema`: This is always "donation"
 * `schemaVersion`: Identifies the version of the donation schema using major, minor, and build structure

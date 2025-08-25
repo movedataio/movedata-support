@@ -1,4 +1,4 @@
-# Marketing
+# {!name}
 
 * `type`: Marketing platform type (e.g., "ga", "pixel")
 * `source`: Traffic source (e.g., "google", "facebook", "newsletter") - equivalent to utm_source

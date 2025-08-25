@@ -1,4 +1,4 @@
-# Communication
+# {!name}
 
 * `any`: General permission to contact through any method
 * `email`: Permission to contact via email
