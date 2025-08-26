@@ -49,3 +49,4 @@
 * [Deprecated Flow Components](apex-flow-components/deprecated-flow-components.md)
 * [GAU Campaign Copy Flow Component](apex-flow-components/gau-campaign-copy-flow-component.md)
 * [Create Contact / Account Affiliations Flow Component](apex-flow-components/create-contact-account-affiliations-flow-component.md)
+* [Create Campaign Members Flow Component](apex-flow-components/create-campaign-members-flow-component.md)
