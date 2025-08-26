@@ -33,3 +33,4 @@
 
 * [Recurring Platform Key Flow](flows-recurring-donations/recurring-platform-key-flow.md)
 * [Recurring Record Match Flow](flows-recurring-donations/recurring-record-match-flow.md)
+* [Recurring Mapping Flow](flows-recurring-donations/recurring-mapping-flow.md)
