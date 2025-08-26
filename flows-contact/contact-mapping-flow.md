@@ -171,21 +171,6 @@ Calls the Contact Details Helper subflow with:
 5. **Address Inheritance**: Copy account address if inheritance is enabled
 6. **Contact Details Processing**: Call helper subflow for complete data transformation
 
-## Address Inheritance Features
-
-### Inheritance Conditions
-
-* **Configuration Enabled**: `Config_ContactAddressInheritAccount = true`
-* **No Contact Address**: Contact address fields are empty
-* **Account Has Address**: Parent account has address data
-* **Quality Preservation**: Inherits account's address quality score
-
-### Inheritance Benefits
-
-* **Data Completion**: Fills missing contact addresses from reliable sources
-* **Quality Consistency**: Maintains quality scoring across inherited data
-* **Audit Trail**: Comprehensive logging of inheritance decisions
-
 ## Dependencies
 
 * [`MoveData_Donation_Helper_Set_Contact_Details`](contact-details-helper-flow.md) (Subflow)
