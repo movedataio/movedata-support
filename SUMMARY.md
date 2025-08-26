@@ -6,6 +6,8 @@
 
 * [Account Platform Key Flow](flows-account/account-platform-key-flow.md)
 * [Account Record Match Flow](flows-account/account-record-match-flow.md)
+* [Account Details Helper Flow](flows-account/account-details-helper-flow.md)
+* [Account Platform Key Helper Flow](flows-account/account-platform-key-helper-flow.md)
 
 ## Flows: Contact
 
