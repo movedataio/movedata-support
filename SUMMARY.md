@@ -51,3 +51,4 @@
 * [Create Contact / Account Affiliations Flow Component](apex-flow-components/create-contact-account-affiliations-flow-component.md)
 * [Create Campaign Members Flow Component](apex-flow-components/create-campaign-members-flow-component.md)
 * [Initialise Campaign Member Statuses Flow Component](apex-flow-components/initialise-campaign-member-statuses-flow-component.md)
+* [NPSP Soft Creditor Flow Component](apex-flow-components/npsp-soft-creditor-flow-component.md)
