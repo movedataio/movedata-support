@@ -328,7 +328,7 @@
 * **Purpose:** Short code identifier for campaign naming conventions
 * **Source Flows:** [Campaign Name Flow](../flows-campaign/campaign-name-flow.md)
 
-## md_npsp_pack Fields
+## Extension Custom Fields
 
 ### Campaign URL (`md_npsp_pack__Campaign_URL__c`)
 * **Type:** URL field
@@ -425,9 +425,9 @@ The NPSP Recurring Donation object (`npe03__Recurring_Donation__c`) includes com
 * **Purpose:** Preferred day of month for recurring payments
 * **Source Flows:** [Recurring Mapping Flow](../flows-recurring-donations/recurring-mapping-flow.md)
 
-## Custom Fields
+## Extension Custom Fields
 
-### Platform Key (`Platform_Key__c`)
+### Platform Key (`md_npsp__pack__Platform_Key__c`)
 * **Type:** Text field (100 characters)
 * **Purpose:** Stores unique identifiers from external donation platforms
 * **Source Flows:** [Recurring Record Match Flow](../flows-recurring-donations/recurring-record-match-flow.md), [Recurring Mapping Flow](../flows-recurring-donations/recurring-mapping-flow.md), [Donation Record Match Flow](../flows-donations/donation-record-match-flow.md), [Donation Mapping Flow](../flows-donations/donation-mapping-flow.md)
