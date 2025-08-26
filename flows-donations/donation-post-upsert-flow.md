@@ -1,8 +1,8 @@
 # Donation Post-Upsert Flow
 
 {% hint style="info" %}
-This flow is documenting and should be viewed within Salesforce (Setup -> Process Automations -> Flows).\
-This document is to support working through a visual flow.
+This flow is self-documenting and should be viewed within Salesforce (Setup -> Process Automations -> Flows).\
+This document is to support working through a visual flow.  Please Note: The flow commentary is produced using AI.
 {% endhint %}
 
 ## Overview
