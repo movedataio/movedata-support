@@ -1,7 +1,24 @@
+---
+layout:
+  width: wide
+  title:
+    visible: true
+  description:
+    visible: true
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+  metadata:
+    visible: true
+---
+
 # Donation Mapping Flow
 
 {% hint style="info" %}
-This flow is self-documenting and should be viewed within Salesforce (Setup -> Process Automations -> Flows). This document is to support working through a visual flow.  Please Note: The flow commentary is produced using AI.
+This flow is self-documenting and should be viewed within Salesforce (Setup -> Process Automations -> Flows). This document is to support working through a visual flow. Please Note: The flow commentary is produced using AI.
 {% endhint %}
 
 ## Overview
@@ -32,48 +49,48 @@ The flow processes incoming donation data and maps it to appropriate Salesforce 
 
 The flow interacts with multiple Salesforce objects and their fields. Below is a comprehensive mapping of all fields utilized:
 
-| Object | Field API Name | Field Type | Purpose in Flow |
-|--------|----------------|------------|-----------------|
-| **Opportunity** | Id | ID | Primary record identifier |
-| | Name | Text (120) | Donation name using dynamic patterns |
-| | Amount | Currency | Primary donation amount |
-| | StageName | Picklist | Status-based stage assignment |
-| | Probability | Percent | Stage-based probability setting |
-| | CloseDate | Date | Transaction/completion date |
-| | Description | Long Text Area | Message/description from donation |
-| | AccountId | Lookup to Account | Associated account relationship |
-| | RecordTypeId | Lookup to RecordType | "Donation" record type assignment |
-| | CampaignId | Lookup to Campaign | Campaign association |
-| | IsPrivate | Checkbox | Anonymous donation privacy flag |
-| | npsp__Primary_Contact__c | Lookup to Contact | NPSP primary contact relationship |
-| | npsp__Matching_Gift__c | Lookup to Opportunity | Link to original matched donation |
-| | npsp__Matching_Gift_Account__c | Lookup to Account | Matching gift employer account |
-| | npsp__Matching_Gift_Employer__c | Text | Matching gift employer name |
-| | npsp__Matching_Gift_Status__c | Picklist | Matching gift processing status |
-| | npe03__Recurring_Donation__c | Lookup to Recurring Donation | Parent recurring donation link |
-| | movedata__Platform_Key__c | Text | External platform identifier |
-| | md_npsp_pack__Fee__c | Currency | Aggregate processing fees |
-| | md_npsp_pack__Gateway_Fee__c | Currency | Payment processor charges |
-| | md_npsp_pack__Platform_Fee__c | Currency | Fundraising platform charges |
-| | md_npsp_pack__Tax__c | Currency | Overall tax amounts |
-| | md_npsp_pack__Gateway_Fee_Tax__c | Currency | Tax on gateway charges |
-| | md_npsp_pack__Platform_Fee_Tax__c | Currency | Tax on platform charges |
-| | md_npsp_pack__Receipt_Number__c | Text (50) | Donation receipt number |
-| **Contact** | Id | ID | Contact record identifier |
-| | FirstName | Text (40) | Contact first name for naming |
-| | LastName | Text (80) | Contact last name for naming |
-| | Name | Formula | Full name for donation naming |
-| | AccountId | Lookup to Account | Account relationship resolution |
-| **Account** | Id | ID | Account record identifier |
-| | Name | Text | Account name for donation naming |
-| **Campaign** | Id | ID | Campaign record identifier |
-| **npe03__Recurring_Donation__c** | Id | ID | Recurring donation record identifier |
-| | npe03__Contact__c | Lookup to Contact | Recurring donation contact |
-| | md_npsp_pack__Platform_Key__c | Text (100) | Platform identifier for matching |
-| **npe01__OppPayment__c** | npe01__Opportunity__c | Master-Detail to Opportunity | Payment-opportunity relationship |
-| | npe01__Payment_Amount__c | Currency | Refund payment amount |
-| | npe01__Payment_Date__c | Date | Refund transaction date |
-| | npe01__Paid__c | Checkbox | Payment completion status |
+| Object                                | Field API Name                            | Field Type                   | Purpose in Flow                      |
+| ------------------------------------- | ----------------------------------------- | ---------------------------- | ------------------------------------ |
+| **Opportunity**                       | Id                                        | ID                           | Primary record identifier            |
+|                                       | Name                                      | Text (120)                   | Donation name using dynamic patterns |
+|                                       | Amount                                    | Currency                     | Primary donation amount              |
+|                                       | StageName                                 | Picklist                     | Status-based stage assignment        |
+|                                       | Probability                               | Percent                      | Stage-based probability setting      |
+|                                       | CloseDate                                 | Date                         | Transaction/completion date          |
+|                                       | Description                               | Long Text Area               | Message/description from donation    |
+|                                       | AccountId                                 | Lookup to Account            | Associated account relationship      |
+|                                       | RecordTypeId                              | Lookup to RecordType         | "Donation" record type assignment    |
+|                                       | CampaignId                                | Lookup to Campaign           | Campaign association                 |
+|                                       | IsPrivate                                 | Checkbox                     | Anonymous donation privacy flag      |
+|                                       | npsp\_\_Primary\_Contact\_\_c             | Lookup to Contact            | NPSP primary contact relationship    |
+|                                       | npsp\_\_Matching\_Gift\_\_c               | Lookup to Opportunity        | Link to original matched donation    |
+|                                       | npsp\_\_Matching\_Gift\_Account\_\_c      | Lookup to Account            | Matching gift employer account       |
+|                                       | npsp\_\_Matching\_Gift\_Employer\_\_c     | Text                         | Matching gift employer name          |
+|                                       | npsp\_\_Matching\_Gift\_Status\_\_c       | Picklist                     | Matching gift processing status      |
+|                                       | npe03\_\_Recurring\_Donation\_\_c         | Lookup to Recurring Donation | Parent recurring donation link       |
+|                                       | movedata\_\_Platform\_Key\_\_c            | Text                         | External platform identifier         |
+|                                       | md\_npsp\_pack\_\_Fee\_\_c                | Currency                     | Aggregate processing fees            |
+|                                       | md\_npsp\_pack\_\_Gateway\_Fee\_\_c       | Currency                     | Payment processor charges            |
+|                                       | md\_npsp\_pack\_\_Platform\_Fee\_\_c      | Currency                     | Fundraising platform charges         |
+|                                       | md\_npsp\_pack\_\_Tax\_\_c                | Currency                     | Overall tax amounts                  |
+|                                       | md\_npsp\_pack\_\_Gateway\_Fee\_Tax\_\_c  | Currency                     | Tax on gateway charges               |
+|                                       | md\_npsp\_pack\_\_Platform\_Fee\_Tax\_\_c | Currency                     | Tax on platform charges              |
+|                                       | md\_npsp\_pack\_\_Receipt\_Number\_\_c    | Text (50)                    | Donation receipt number              |
+| **Contact**                           | Id                                        | ID                           | Contact record identifier            |
+|                                       | FirstName                                 | Text (40)                    | Contact first name for naming        |
+|                                       | LastName                                  | Text (80)                    | Contact last name for naming         |
+|                                       | Name                                      | Formula                      | Full name for donation naming        |
+|                                       | AccountId                                 | Lookup to Account            | Account relationship resolution      |
+| **Account**                           | Id                                        | ID                           | Account record identifier            |
+|                                       | Name                                      | Text                         | Account name for donation naming     |
+| **Campaign**                          | Id                                        | ID                           | Campaign record identifier           |
+| **npe03\_\_Recurring\_Donation\_\_c** | Id                                        | ID                           | Recurring donation record identifier |
+|                                       | npe03\_\_Contact\_\_c                     | Lookup to Contact            | Recurring donation contact           |
+|                                       | md\_npsp\_pack\_\_Platform\_Key\_\_c      | Text (100)                   | Platform identifier for matching     |
+| **npe01\_\_OppPayment\_\_c**          | npe01\_\_Opportunity\_\_c                 | Master-Detail to Opportunity | Payment-opportunity relationship     |
+|                                       | npe01\_\_Payment\_Amount\_\_c             | Currency                     | Refund payment amount                |
+|                                       | npe01\_\_Payment\_Date\_\_c               | Date                         | Refund transaction date              |
+|                                       | npe01\_\_Paid\_\_c                        | Checkbox                     | Payment completion status            |
 
 ## Input Variables
 
