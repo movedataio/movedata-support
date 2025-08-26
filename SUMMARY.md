@@ -40,3 +40,4 @@
 
 * [Donation Platform Key Flow](flows-donations/donation-platform-key-flow.md)
 * [Donation Record Match Flow](flows-donations/donation-record-match-flow.md)
+* [Donation Mapping Flow](flows-donations/donation-mapping-flow.md)
