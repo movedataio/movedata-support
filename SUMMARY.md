@@ -50,3 +50,4 @@
 * [GAU Campaign Copy Flow Component](apex-flow-components/gau-campaign-copy-flow-component.md)
 * [Create Contact / Account Affiliations Flow Component](apex-flow-components/create-contact-account-affiliations-flow-component.md)
 * [Create Campaign Members Flow Component](apex-flow-components/create-campaign-members-flow-component.md)
+* [Initialise Campaign Member Statuses Flow Component](apex-flow-components/initialise-campaign-member-statuses-flow-component.md)
