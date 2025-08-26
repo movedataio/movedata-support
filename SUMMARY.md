@@ -2,32 +2,32 @@
 
 * [Welcome to the NPSP Fundraising & Donations Extension](README.md)
 
-## Flows: Account
+## Flows: Accounts
 
-* [Account Platform Key Flow](flows-account/account-platform-key-flow.md)
-* [Account Record Match Flow](flows-account/account-record-match-flow.md)
-* [Account Mapping Flow](flows-account/account-mapping-flow.md)
-* [Account Post-Upsert Flow](flows-account/account-post-upsert-flow.md)
-* [Account Details Helper Flow](flows-account/account-details-helper-flow.md)
-* [Account Platform Key Helper Flow](flows-account/account-platform-key-helper-flow.md)
-* [Get Account ID Helper Flow](flows-account/get-account-id-helper-flow.md)
+* [Account Platform Key Flow](flows-accounts/account-platform-key-flow.md)
+* [Account Record Match Flow](flows-accounts/account-record-match-flow.md)
+* [Account Mapping Flow](flows-accounts/account-mapping-flow.md)
+* [Account Post-Upsert Flow](flows-accounts/account-post-upsert-flow.md)
+* [Account Details Helper Flow](flows-accounts/account-details-helper-flow.md)
+* [Account Platform Key Helper Flow](flows-accounts/account-platform-key-helper-flow.md)
+* [Get Account ID Helper Flow](flows-accounts/get-account-id-helper-flow.md)
 
-## Flows: Contact
+## Flows: Contacts
 
-* [Contact Platform Key Flow](flows-contact/contact-platform-key-flow.md)
-* [Contact Record Match Flow](flows-contact/contact-record-match-flow.md)
-* [Contact Mapping Flow](flows-contact/contact-mapping-flow.md)
-* [Contact Post-Upsert Flow](flows-contact/contact-post-upsert-flow.md)
-* [Contact Details Helper Flow](flows-contact/contact-details-helper-flow.md)
-* [Contact Platform Key Helper Flow](flows-contact/contact-platform-key-helper-flow.md)
+* [Contact Platform Key Flow](flows-contacts/contact-platform-key-flow.md)
+* [Contact Record Match Flow](flows-contacts/contact-record-match-flow.md)
+* [Contact Mapping Flow](flows-contacts/contact-mapping-flow.md)
+* [Contact Post-Upsert Flow](flows-contacts/contact-post-upsert-flow.md)
+* [Contact Details Helper Flow](flows-contacts/contact-details-helper-flow.md)
+* [Contact Platform Key Helper Flow](flows-contacts/contact-platform-key-helper-flow.md)
 
-## Flows: Campaign
+## Flows: Campaigns
 
-* [Campaign Platform Key Flow](flows-campaign/campaign-platform-key-flow.md)
-* [Campaign Record Match Flow](flows-campaign/campaign-record-match-flow.md)
-* [Campaign Name Flow](flows-campaign/campaign-name-flow.md)
-* [Campaign Mapping Flow](flows-campaign/campaign-mapping-flow.md)
-* [Campaign Post-Upsert Flow](flows-campaign/campaign-post-upsert-flow.md)
+* [Campaign Platform Key Flow](flows-campaigns/campaign-platform-key-flow.md)
+* [Campaign Record Match Flow](flows-campaigns/campaign-record-match-flow.md)
+* [Campaign Name Flow](flows-campaigns/campaign-name-flow.md)
+* [Campaign Mapping Flow](flows-campaigns/campaign-mapping-flow.md)
+* [Campaign Post-Upsert Flow](flows-campaigns/campaign-post-upsert-flow.md)
 
 ## Flows: Recurring Donations
 
@@ -35,3 +35,7 @@
 * [Recurring Record Match Flow](flows-recurring-donations/recurring-record-match-flow.md)
 * [Recurring Mapping Flow](flows-recurring-donations/recurring-mapping-flow.md)
 * [Recurring Post-Upsert Flow](flows-recurring-donations/recurring-post-upsert-flow.md)
+
+## Flows: Donations
+
+* [Donation Platform Key Flow](flows-donations/donation-platform-key-flow.md)
