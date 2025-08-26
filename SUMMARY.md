@@ -28,3 +28,7 @@
 * [Campaign Name Flow](flows-campaign/campaign-name-flow.md)
 * [Campaign Mapping Flow](flows-campaign/campaign-mapping-flow.md)
 * [Campaign Post-Upsert Flow](flows-campaign/campaign-post-upsert-flow.md)
+
+## Group 1
+
+* [Recurring Platform Key Flow](group-1/recurring-platform-key-flow.md)
