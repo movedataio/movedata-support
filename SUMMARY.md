@@ -1,6 +1,7 @@
 # Table of contents
 
 * [Welcome to the NPSP Fundraising & Donations Extension](README.md)
+* [Release Notes](release-notes.md)
 
 ## Flows: Accounts
 
