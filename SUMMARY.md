@@ -47,3 +47,4 @@
 ## Apex Flow Components
 
 * [Deprecated Flow Components](apex-flow-components/deprecated-flow-components.md)
+* [GAU Campaign Copy Flow Component](apex-flow-components/gau-campaign-copy-flow-component.md)
