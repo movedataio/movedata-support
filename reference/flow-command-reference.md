@@ -14,7 +14,7 @@ If you wish to end the execution of a MoveData flow and mark it as `Failed`, you
 
 | Diagram                                          | Flow                                   | Flow Detail                                                                                                                        |
 | ------------------------------------------------ | -------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| ![](../.gitbook/assets/break_example.drawio.png) | ![](../.gitbook/assets/flow_break.png) | <p><img src="../.gitbook/assets/flow_break_var.png" alt=""><br><img src="../.gitbook/assets/flow_break_assignment.png" alt=""></p> |
+| ![](../.gitbook/assets/break_example.drawio.png) | ![](../.gitbook/assets/flow_break.png) | <p><img src="../.gitbook/assets/flow_break_var.png" alt=""><br><br><img src="../.gitbook/assets/flow_break_assignment.png" alt=""></p> |
 
 This command is most commonly used during the “Record Match” action when finding the record for the phase. A common example is enabling a developer to select a record and skip any further entries in the phase (as there can be multiple campaigns) and to ensure the “Mapping” action does not run and overwrite the values on the determined record. To see this in action, please take a look at this knowledge base article.
 
