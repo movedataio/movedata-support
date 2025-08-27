@@ -19,3 +19,4 @@
 ## Reference
 
 * [Flow Command Reference](reference/flow-command-reference.md)
+* [Flow Variable Reference](reference/flow-variable-reference.md)
