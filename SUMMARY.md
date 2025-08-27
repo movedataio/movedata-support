@@ -16,11 +16,6 @@
   * [Integrations](https://jgilray.gitbook.io/movedata-v2/salesforce-application/integrations)
   * [Notifications](https://jgilray.gitbook.io/movedata-v2/salesforce-application/notifications)
 
-## Development Guides <a href="#guides" id="guides"></a>
-
-* [Table of Contents](guides/table-of-contents/README.md)
-  * [Disable a Phase](guides/table-of-contents/disable-a-phase.md)
-
 ## Pipelines
 
 * [Pipeline Overview](pipelines/pipeline-overview.md)
@@ -30,6 +25,11 @@
 * [Donation Pipeline](pipelines/donation-pipeline/README.md)
   * [NPSP Fundraising & Donations Extension](https://www.google.com)
   * [Non-Profit Cloud Extension](https://www.google.com)
+
+## Development Guides <a href="#guides" id="guides"></a>
+
+* [Table of Contents](guides/table-of-contents/README.md)
+  * [Disable a Phase](guides/table-of-contents/disable-a-phase.md)
 
 ## Reference
 
