@@ -106,6 +106,12 @@ The purpose of the Platform Key flow is to create a unique key that can be used 
 
 Implementing your own Platform Key logic can be important if you are already persisting a key for existing data and want MoveData to use this format to retrieve and persist records. The `Result` is available in all flows that run after the Platform Key flow with the variable name `PlatformKey`.
 
+To register a platform key generator, you need to create the following metadata entry:
+
+* Label: `PIPELINE_*_*_PLATFORM_KEY` or similar (see [Broken link](broken-reference "mention"))
+* Handler: Salesforce Lightning Flow - Flow API Name
+* Type: `Flow`
+
 **Flow Parameters**
 
 * _Input_
@@ -118,5 +124,47 @@ Implementing your own Platform Key logic can be important if you are already per
 
 ### Record Match Flow
 
+The Record Match flow is used to see if a record already exists. Generally, it will simply take the `PlatformKey` that has been generated and check to see if a record exists. If a record is found, the Salesforce Record Id must be returned as the `Result`; otherwise, the `Result` needs to be `null`.  &#x20;
 
+If an organisation has specific needs such as mapping to a specific campaign when a donation belongs to a recurring donation, then this is where you would write an extension to achieve this.
 
+You can register multiple flows for the stage.  You may wish to implement specific match logic but fall back a registered MoveData flow if no match is found.
+
+To register a record match flow, you need to create the following metadata entry:
+
+* Label: `PIPELINE_*_*_PLATFORM_KEY` or similar (see [Broken link](broken-reference "mention"))
+* Handler: Salesforce Lightning Flow - Flow API Name
+* Type: `Flow`
+* Sort Order: (A number - lower values with run first)
+
+**Flow Parameters**
+
+* _Input_
+  * All Variables per the executing Phase (click `View Variables` in Execution Log)
+* _Output_
+  * `Result` (Type: Text, Direction: Output Enabled) - generated Platform Key
+* _Lifetime Variable_
+  * `PlatformKey` (Type: Text) - generated Platform Key
+    * Available in all subsequent stages of the phase.
+
+### Mapping Flow
+
+This is where the majority of business logic resides.
+
+TODO: Finish Mapping Flow text
+
+MoveData passes a `Record` variable as an input / output SObject Record variable to facilitate the setting of data using Salesforce Lightning Flows. This is where basic to complex business rules will often reside. For example, if a donation has a value greater than $500, mark the Contact as high value donor.
+
+TODO: Finish Mapping Flow config
+
+TODO: Finish Mapping Flow parameters
+
+### Post Upsert Flow
+
+TODO: Finish Post Upsert Flow text
+
+Once MoveData has created or updated the record (known as an `upsert`), a flow can run to perform actions that can only take place once the record has been created. Often this is the setting of relationships such as creating a campaign member for a contact or linking an opportunity to a custom record.
+
+TODO: Finish Post Upsert Flow config
+
+TODO: Finish Post Upsert Flow parameters
