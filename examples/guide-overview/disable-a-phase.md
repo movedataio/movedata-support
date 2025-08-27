@@ -15,7 +15,7 @@ The guide demonstrates how to disable a phase in a pipeline from executing.  Thi
 
 To disable a phase, you will need to create an entry in the Pipeline Metadata object.  This can be done by navigating within Salesforce to Setup -> Custom Code -> Custom Metadata Types and managing the records for the MoveData Pipeline Settings (`movedata__MoveData_Pipeline__mdt`).
 
-For our example, we will disabling the recurring phase so we will need to get the correct key for the Recurring Disable Phase for the Donation pipeline.  This can be found in the [donation-pipeline.md](../../pipelines/donation-pipeline.md "mention") under Pipeline Metadata.  The correct key for this example is `PIPELINE_DONATION_RECURRING_DISABLE`.
+For our example, we will disabling the recurring phase so we will need to get the correct key for the Recurring Disable Phase for the Donation pipeline.  This can be found in the [donation-pipeline](../../pipelines/donation-pipeline/ "mention") under Pipeline Metadata.  The correct key for this example is `PIPELINE_DONATION_RECURRING_DISABLE`.
 
 <figure><img src="../../.gitbook/assets/Extensions Pipeline Disabling Example.png" alt=""><figcaption></figcaption></figure>
 

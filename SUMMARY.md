@@ -23,8 +23,12 @@
 
 ## Pipelines
 
-* [Commerce Pipeline](pipelines/commerce-pipeline.md)
-* [Donation Pipeline](pipelines/donation-pipeline.md)
+* [Commerce Pipeline](pipelines/commerce-pipeline/README.md)
+  * [Commerce Extension](https://www.google.com)
+  * [Non-Profit Cloud Extension](https://www.google.com)
+* [Donation Pipeline](pipelines/donation-pipeline/README.md)
+  * [NPSP Fundraising & Donations Extension](https://www.google.com)
+  * [Non-Profit Cloud Extension](https://www.google.com)
 
 ## Reference
 
