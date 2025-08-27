@@ -35,4 +35,4 @@
 
 * [Flow Command Reference](reference/flow-command-reference.md)
 * [Flow Variable Reference](reference/flow-variable-reference.md)
-* [MoveData Pipeline Stage Reference](reference/movedata-pipeline-stage-reference.md)
+* [Pipeline Stage Reference](reference/pipeline-stage-reference.md)
