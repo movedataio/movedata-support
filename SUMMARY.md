@@ -21,8 +21,8 @@
 
 ## Development Guides <a href="#guides" id="guides"></a>
 
-* [Guide Overview](guides/guide-overview/README.md)
-  * [Disable a Phase](guides/guide-overview/disable-a-phase.md)
+* [Table of Contents](guides/table-of-contents/README.md)
+  * [Disable a Phase](guides/table-of-contents/disable-a-phase.md)
 
 ## Pipelines
 
