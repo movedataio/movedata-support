@@ -29,6 +29,7 @@
 * [Donation Pipeline](pipelines/donation-pipeline/README.md)
   * [NPSP Fundraising & Donations Extension](https://www.google.com)
   * [Non-Profit Cloud Extension](https://www.google.com)
+* [Pipeline Overview](pipelines/pipeline-overview.md)
 
 ## Reference
 
