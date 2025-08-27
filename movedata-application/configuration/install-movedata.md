@@ -45,7 +45,7 @@ MoveData is also available through the official Salesforce AppExchange:
 
 Once authenticated, you'll see the Salesforce Package Installation screen:
 
-<figure><img src="../.gitbook/assets/install-movedata.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/install-movedata.png" alt=""><figcaption></figcaption></figure>
 
 #### Installation Audience
 
@@ -59,7 +59,7 @@ This ensures:
 
 #### Security Settings
 
-<figure><img src="../.gitbook/assets/approve-third-party-access.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/approve-third-party-access.png" alt=""><figcaption></figcaption></figure>
 
 You will need to grant access to the MoveData endpoints to continue.
 
@@ -82,7 +82,7 @@ This connection is essential for MoveData functionality, so click **"Continue"**
 
 #### Check Installed Packages
 
-<figure><img src="../.gitbook/assets/installed-packages.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/installed-packages.png" alt=""><figcaption></figcaption></figure>
 
 1. **Navigate to Setup**: Go to Setup → Installed Packages
 2. **Locate MoveData**: You should see "MoveData" listed under installed packages

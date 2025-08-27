@@ -24,7 +24,7 @@ After installing MoveData, the setup wizard guides you through essential configu
 
 #### Initial Configuration Screen
 
-<figure><img src="../.gitbook/assets/wizard-begin.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/wizard-begin.png" alt=""><figcaption></figcaption></figure>
 
 The wizard welcome screen provides an overview of the setup process:
 
@@ -36,7 +36,7 @@ Click **"Next"** to begin the configuration process.
 
 ### Step 2: Automatic Configuration
 
-<figure><img src="../.gitbook/assets/wizard-configure.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/wizard-configure.png" alt=""><figcaption></figcaption></figure>
 
 #### System Configuration
 
@@ -59,7 +59,7 @@ MoveData automatically configures core system components:
 
 #### OAuth Authorisation Process
 
-<figure><img src="../.gitbook/assets/wizard-authorise.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/wizard-authorise.png" alt=""><figcaption></figcaption></figure>
 
 
 
@@ -72,7 +72,7 @@ MoveData requires explicit permission to access your Salesforce data for:
 
 #### Grant Authorisation
 
-<figure><img src="../.gitbook/assets/wizard-oauth.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/wizard-oauth.png" alt=""><figcaption></figcaption></figure>
 
 1. **Click "Authorise MoveData"**: This opens the OAuth permission screen
 2. **Review Permissions**: The popup displays requested access levels:
@@ -84,7 +84,7 @@ MoveData requires explicit permission to access your Salesforce data for:
 
 #### Successful Authorisation
 
-<figure><img src="../.gitbook/assets/wizard-oauth-success.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/wizard-oauth-success.png" alt=""><figcaption></figcaption></figure>
 
 Once authorisation is complete, you'll see:
 
@@ -95,7 +95,7 @@ Click **"Next"** to continue to extension installation.
 
 ### Step 4: Install Extensions
 
-<figure><img src="../.gitbook/assets/wizard-extensions.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/wizard-extensions.png" alt=""><figcaption></figcaption></figure>
 
 #### Understanding MoveData Extensions
 
@@ -130,7 +130,7 @@ The wizard automatically detects your Salesforce configuration:
 
 ### Step 5: Complete Setup
 
-<figure><img src="../.gitbook/assets/wizard-final.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/wizard-final.png" alt=""><figcaption></figcaption></figure>
 
 #### Finish Configuration
 

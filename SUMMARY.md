@@ -1,9 +1,12 @@
 # Table of contents
 
 * [Welcome to the MoveData Developer Centre](README.md)
-* [Configuration](configuration/README.md)
-  * [Install MoveData](configuration/install-movedata.md)
-  * [Setup Wizard](configuration/setup-wizard.md)
+
+## MoveData Application
+
+* [Configuration](movedata-application/configuration/README.md)
+  * [Install MoveData](movedata-application/configuration/install-movedata.md)
+  * [Setup Wizard](movedata-application/configuration/setup-wizard.md)
   * [Settings](https://jgilray.gitbook.io/movedata-v2/salesforce-application/settings)
   * [Duplicate Rules](https://jgilray.gitbook.io/movedata-v2/configuration/duplicate-rules)
   * [Permission Sets](https://jgilray.gitbook.io/movedata-v2/configuration/permission-sets)
@@ -16,10 +19,10 @@
 * [Salesforce Architecture](architecture/salesforce-architecture/README.md)
   * [Processing Pipelines](architecture/salesforce-architecture/processing-pipelines.md)
 
-## How To's / Examples / Guides <a href="#examples" id="examples"></a>
+## Development Guides <a href="#guides" id="guides"></a>
 
-* [Guide Overview](examples/guide-overview/README.md)
-  * [Disable a Phase](examples/guide-overview/disable-a-phase.md)
+* [Guide Overview](guides/guide-overview/README.md)
+  * [Disable a Phase](guides/guide-overview/disable-a-phase.md)
 
 ## Pipelines
 
