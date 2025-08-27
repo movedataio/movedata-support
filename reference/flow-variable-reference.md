@@ -16,10 +16,9 @@ A common example is when performing a Salesforce Duplicate Detection on a Contac
 
 ## IsActor <a href="#h_bb7fdff627" id="h_bb7fdff627"></a>
 
-| Diagram                                           | Flow                                         | Flow Detail                                                                                                                                  |
-| ------------------------------------------------- | -------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![](../.gitbook/assets/flow_duplicate.drawio.png) | ![](../.gitbook/assets/flow_recordcheck.png) | <p><img src="../.gitbook/assets/flow_recordcheck_var.png" alt=""><br><br><img src="../.gitbook/assets/flow_recordcheck_eval.png" alt=""></p> |
-| ![](../.gitbook/assets/flow_isactor.drawio.png)   | ![](../.gitbook/assets/flow_isactor.png)     | <p><img src="../.gitbook/assets/flow_isactor_var.png" alt=""><br><br><img src="../.gitbook/assets/flow_isactor_eval.png" alt=""></p>         |
+| Diagram                                         | Flow                                     | Flow Detail                                                                                                                          |
+| ----------------------------------------------- | ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| ![](../.gitbook/assets/flow_isactor.drawio.png) | ![](../.gitbook/assets/flow_isactor.png) | <p><img src="../.gitbook/assets/flow_isactor_var.png" alt=""><br><br><img src="../.gitbook/assets/flow_isactor_eval.png" alt=""></p> |
 
 There are a number of notification variables that are contextual. For example, when a donation is made, `newsletter` is only relevant to the donor and no other individual in the notification. However, when a fundraiser registration is being processed, the `newsletter` is relevant to the fundraiser campaign's contact.  In summary, when processing a notification, the `IsActor` variable is set to `true` when processing the primary contact / the contact the notification centres around.
 
