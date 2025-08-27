@@ -16,7 +16,18 @@
 * [Salesforce Architecture](architecture/salesforce-architecture/README.md)
   * [Processing Pipelines](architecture/salesforce-architecture/processing-pipelines.md)
 
+## How To's / Examples / Guides <a href="#examples" id="examples"></a>
+
+* [Guide Overview](examples/guide-overview/README.md)
+  * [Disable a Phase](examples/guide-overview/disable-a-phase.md)
+
+## Pipelines
+
+* [Commerce Pipeline](pipelines/commerce-pipeline.md)
+* [Donation Pipeline](pipelines/donation-pipeline.md)
+
 ## Reference
 
 * [Flow Command Reference](reference/flow-command-reference.md)
 * [Flow Variable Reference](reference/flow-variable-reference.md)
+* [MoveData Pipeline Stage Reference](reference/movedata-pipeline-stage-reference.md)

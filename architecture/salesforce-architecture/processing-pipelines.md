@@ -17,12 +17,12 @@ These keys for these entries can be found in the Reference for each extension.
 
 ### Schema Mapping
 
+<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+
 Each MoveData extension registers its processing capabilities by creating entries in the `movedata__Movedata_Schema_Map__mdt` custom metadata type. These entries define:
 
 * **Schema Type**: The standardised notification schema (e.g., 'donation', 'commerce')
-* **Pipeline Class**: The Apex class responsible for processing notifications of this schema type
-* **Extension Name**: The MoveData extension that provides this processing capability
-* **Active Status**: Whether this pipeline is currently enabled for processing
+* **Pipeline Class**: The pipeline (Apex class) responsible for processing notifications of this schema type
 
 **Pipeline Discovery:** When a notification arrives, MoveData uses the schema type to lookup the appropriate pipeline:
 
