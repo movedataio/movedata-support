@@ -17,7 +17,7 @@ These keys for these entries can be found in the Reference for each extension.
 
 ### Schema Mapping
 
-<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 
 Each MoveData extension registers its processing capabilities by creating entries in the `movedata__Movedata_Schema_Map__mdt` custom metadata type. These entries define:
 
@@ -70,7 +70,7 @@ Whilst rare, organisations can develop custom handlers for schemas using Apex.
 
 The diagram below illustrates the processing of a MoveData notification, using a donation notification processed by the NPSP Fundraising and Donations extension as an example.
 
-<figure><img src="../../.gitbook/assets/development_flow.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/development_flow.png" alt=""><figcaption></figcaption></figure>
 
 ### Processing Flow
 

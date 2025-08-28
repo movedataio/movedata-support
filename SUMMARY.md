@@ -4,10 +4,10 @@
 
 ## MoveData <a href="#application" id="application"></a>
 
-* [Architectural Overview](application/architectural-overview/README.md)
-  * [Infrastructure](application/architectural-overview/infrastructure.md)
-* [Salesforce Architecture](application/salesforce-architecture/README.md)
-  * [Processing Pipelines](application/salesforce-architecture/processing-pipelines.md)
+* [Architectural Overview](application/architectural-overview.md)
+  * [Platform Architecture](application/architectural-overview/platform-architecture.md)
+  * [Salesforce Architecture](application/architectural-overview/salesforce-architecture/README.md)
+    * [Processing Pipelines](application/architectural-overview/salesforce-architecture/processing-pipelines.md)
 * [Configuration](application/configuration/README.md)
   * [Install MoveData](application/configuration/install-movedata.md)
   * [Setup Wizard](application/configuration/setup-wizard.md)
