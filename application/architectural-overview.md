@@ -30,6 +30,10 @@ The first stage captures every meaningful interaction from your fundraising ecos
 
 ### Stage 2: Transformation Engine
 
+{% hint style="info" %}
+For detailed information, see [platform-architecture.md](architectural-overview/platform-architecture.md "mention")
+{% endhint %}
+
 The transformation stage represents the sophisticated intelligence layer of MoveData's architecture, where raw fundraising platform data is converted into standardised formats, ready to be dispatched to MoveData's Salesforce handlers. This stage handles the complex business logic required to map diverse fundraising platform structures into consistent, actionable data.
 
 * **Data Assembly**: Consolidation of primary event data, supporting information, supporter context, and campaign attribution into comprehensive notification packages. The system intelligently assembles related information from multiple API endpoints or data sources to create complete, contextual notifications that require no external dependencies for processing.
@@ -38,6 +42,10 @@ The transformation stage represents the sophisticated intelligence layer of Move
 * **Standardisation**: Creation of uniform notification format for consistent processing across all fundraising platforms and Salesforce configurations. This standardisation layer ensures that regardless of the source platform, data arrives in Salesforce in a predictable, high-quality format.
 
 ### Stage 3: Salesforce Execution
+
+{% hint style="info" %}
+For detailed information, see [salesforce-architecture](architectural-overview/salesforce-architecture/ "mention")
+{% endhint %}
 
 The final stage represents where standardised notifications are transformed into actual Salesforce records through sophisticated business rule processing and native Salesforce integration capabilities. This stage ensures that data not only arrives in Salesforce but aligns to your organisation's specific processes and requirements.
 
