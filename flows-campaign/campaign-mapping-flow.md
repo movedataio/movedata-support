@@ -25,6 +25,30 @@ The flow processes incoming campaign data and maps it to appropriate Salesforce 
 * Platform-specific field mappings
 * NPSP integration fields
 
+## Salesforce Fields
+
+This flow interacts with the Salesforce Campaign object and its related fields. Below is a comprehensive mapping of all fields utilized:
+
+| Field API Name                                           | Field Type                     | Purpose in Flow                                    |
+|---------------------------------------------------------|-------------------------------|---------------------------------------------------|
+| Id                                                      | ID                            | Unique record identifier                           |
+| Name                                                    | Text (80)                     | Campaign name identifier                           |
+| IsActive                                                | Checkbox                      | Indicates if campaign is currently active          |
+| Status                                                  | Picklist                      | Current status of the campaign                     |
+| Type                                                    | Picklist                      | Categorizes the type of campaign                   |
+| ParentId                                                | Lookup to Campaign            | Links to parent campaign                           |
+| ExpectedRevenue                                         | Currency                      | Target fundraising amount                          |
+| StartDate                                               | Date                          | Campaign start date                                |
+| EndDate                                                 | Date                          | Campaign end date                                  |
+| Description                                             | Long Text Area                | Detailed campaign description                      |
+| movedata__Platform__c                                   | Text                          | External platform identifier                       |
+| movedata__Platform_Key__c                               | Text                          | Stores unique external platform identifier         |
+| movedata__Protect_Name__c                               | Checkbox                      | Prevents automatic updates to campaign name        |
+| movedata__Protect_Campaign_Parent__c                    | Checkbox                      | Prevents automatic updates to parent relationship  |
+| md_npsp_pack__Campaign_URL__c                           | URL                           | Stores web address for online campaign pages       |
+| md_npsp_pack__Fundraising_Account__c                    | Lookup to Account             | Associates campaigns with organizational fundraisers |
+| md_npsp_pack__Fundraising_Contact__c                    | Lookup to Contact             | Identifies individual fundraising champions         |
+
 ## Input Variables
 
 ### Core Campaign Data

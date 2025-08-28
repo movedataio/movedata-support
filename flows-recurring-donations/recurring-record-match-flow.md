@@ -18,6 +18,14 @@ The flow provides duplicate detection capabilities that:
 * Checks the `Platform_Key__c` field on `npe03__Recurring_Donation__c` records for matches
 * Returns Salesforce Record IDs when duplicates are found
 
+## Salesforce Fields
+
+This flow interacts with the NPSP Recurring Donation object and its related fields. Below is a mapping of all fields utilized:
+
+| Field API Name                    | Field Type     | Purpose in Flow                                    |
+|----------------------------------|---------------|----------------------------------------------------|
+| md_npsp_pack__Platform_Key__c     | Text (100)    | Stores external platform identifier for matching   |
+
 ## Input Variables
 
 | Variable      | Type   | Required | Description                                |

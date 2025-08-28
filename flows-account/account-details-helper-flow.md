@@ -21,6 +21,27 @@ The flow provides account data processing that:
 * Sets basic account information (phone, website, type)
 * Processes address data with dual field routing (billing vs shipping)
 
+## Salesforce Fields
+
+This flow interacts with the Salesforce Account object and its related fields. Below is a mapping of all fields utilized:
+
+| Field API Name         | Field Type     | Purpose in Flow                  |
+|-----------------------|---------------|----------------------------------|
+| Name                  | Text          | Account name identifier          |
+| Phone                 | Phone         | Primary phone number             |
+| Website               | URL           | Account's primary website URL    |
+| Type                  | Picklist      | Categorizes the type of account  |
+| BillingStreet         | Textarea      | Street address for billing       |
+| BillingCity           | Text          | City for billing address         |
+| BillingState          | Text          | State/Province for billing       |
+| BillingCountry        | Text          | Country for billing address      |
+| BillingPostalCode     | Text          | Postal/ZIP code for billing      |
+| ShippingStreet        | Textarea      | Street address for shipping      |
+| ShippingCity          | Text          | City for shipping address        |
+| ShippingState         | Text          | State/Province for shipping      |
+| ShippingCountry       | Text          | Country for shipping address     |
+| ShippingPostalCode    | Text          | Postal/ZIP code for shipping     |
+
 ## Input Variables
 
 ### Core Account Data

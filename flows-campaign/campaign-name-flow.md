@@ -24,6 +24,16 @@ The flow creates structured campaign names that:
 * Use campaign codes or names from parent campaigns for consistency
 * Provide different naming formats based on campaign hierarchy depth
 
+## Salesforce Fields
+
+This flow interacts with the Salesforce Campaign object and its related fields. Below is a mapping of all fields utilized:
+
+| Field API Name                          | Field Type     | Purpose in Flow                                    |
+|----------------------------------------|---------------|---------------------------------------------------|
+| Name                                   | Text (80)     | Campaign name identifier                           |
+| movedata__Campaign_Code__c             | Text          | Short code identifier for campaign naming          |
+| movedata__Protect_Name__c              | Checkbox      | Prevents automatic updates to campaign name        |
+
 ## Input Variables
 
 | Variable                                | Type             | Required | Description                                       |

@@ -20,6 +20,14 @@ The flow performs post-upsert operations that:
 
 * Creates platform key associations linking accounts to external platform identifiers
 
+## Salesforce Fields
+
+This flow interacts with the Salesforce Account object and its related fields. Below is a mapping of all fields utilized:
+
+| Field API Name         | Field Type     | Purpose in Flow                  |
+|-----------------------|---------------|----------------------------------|
+| Id                    | ID            | Unique record identifier         |
+
 ## Input Variables
 
 ### Core Account Data

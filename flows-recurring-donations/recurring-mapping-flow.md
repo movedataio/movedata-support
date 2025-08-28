@@ -28,6 +28,29 @@ The flow processes incoming recurring donation data and maps it to appropriate S
 * Fee calculation and amount adjustments
 * Platform key tracking
 
+## Salesforce Fields
+
+This flow interacts with the NPSP Recurring Donation object and its related fields. Below is a comprehensive mapping of all fields utilized:
+
+| Object                                    | Field API Name                               | Field Type                              | Purpose in Flow                              |
+|------------------------------------------|---------------------------------------------|-----------------------------------------|----------------------------------------------|
+| **npe03__Recurring_Donation__c**         | Id                                          | ID                                      | Unique record identifier                     |
+|                                          | CurrencyIsoCode                             | Picklist (if multi-currency enabled)   | Currency code for the recurring donation     |
+|                                          | npe03__Amount__c                            | Currency                                | Recurring donation amount per installment    |
+|                                          | npe03__Contact__c                           | Lookup to Contact                       | Primary contact for individual donors        |
+|                                          | npe03__Organization__c                      | Lookup to Account                       | Organization for institutional donors        |
+|                                          | npe03__Date_Established__c                  | Date                                    | Date the recurring donation was established  |
+|                                          | npe03__Installment_Period__c                | Picklist                                | Frequency of recurring payments              |
+|                                          | npe03__Next_Payment_Date__c                 | Date                                    | Date of the next expected payment            |
+|                                          | npe03__Open_Ended_Status__c                 | Picklist                                | Whether the recurring donation has an end date |
+|                                          | npe03__Recurring_Donation_Campaign__c       | Lookup to Campaign                      | Associated campaign for the recurring donation |
+|                                          | npsp__Status__c                             | Picklist                                | Current status of the recurring donation     |
+|                                          | npsp__StartDate__c                          | Date                                    | Enhanced Recurring Donations start date     |
+|                                          | npsp__InstallmentFrequency__c               | Number                                  | Frequency multiplier for Enhanced RD         |
+|                                          | npsp__Day_of_Month__c                       | Text                                    | Preferred day of month for payments          |
+|                                          | md_npsp_pack__Platform_Key__c               | Text (100)                              | Platform identifier for matching            |
+| **npe03__Recurring_Donations_Settings__c** | npsp__IsRecurringDonations2Enabled__c    | Checkbox                                | Indicates if Enhanced Recurring Donations enabled |
+
 ## Input Variables
 
 ### Core Recurring Donation Data

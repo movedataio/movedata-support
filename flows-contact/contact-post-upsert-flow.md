@@ -23,6 +23,15 @@ The flow performs post-upsert operations that:
 * Provides configurable platform key processing with disable options
 * Supports nonprofit relationship management through NPSP integration
 
+## Salesforce Fields
+
+This flow interacts with the Salesforce Contact object and its related fields. Below is a mapping of all fields utilized:
+
+| Field API Name | Field Type          | Purpose in Flow                          |
+|---------------|---------------------|------------------------------------------|
+| Id            | ID                  | Unique record identifier                 |
+| AccountId     | Lookup to Account   | Links contact to associated account      |
+
 ## Input Variables
 
 ### Core Contact Data

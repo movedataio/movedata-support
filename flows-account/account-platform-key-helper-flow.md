@@ -22,6 +22,14 @@ The flow provides platform key management that:
 * Validates platform key data integrity and prevents conflicts
 * Provides error handling for platform key creation failures
 
+## Salesforce Fields
+
+This flow interacts with the Account Platform Key custom object and its related fields. Below is a mapping of all fields utilized:
+
+| Field API Name                  | Field Type     | Purpose in Flow                                  |
+|---------------------------------|---------------|--------------------------------------------------|
+| movedata__Platform_Key__c       | Text          | Stores external platform identifier              |
+
 ## Input Variables
 
 | Variable      | Type            | Required | Description                                           |

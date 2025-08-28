@@ -16,11 +16,22 @@ This flow performs sophisticated duplicate detection for donation records by usi
 
 ## Purpose
 
-The flow provides comprehensive duplicate detection capabilities that:
+The flow attempts to find an existing Opportunity record for a donation to support update operations. It performs a prioritized matching strategy including:
 
-* Uses platform keys to identify existing donation records
-* Finds pending opportunities associated with recurring donations within date ranges
-* Prevents duplicate creation through intelligent record matching
+* Match against a platform key through the related Campaign's `md_Platform_Key__r.md_Platform_Key__c` if the external donation has the `Campaign.external_id` value set
+* Match against a platform key through the Primary Contact's `md_Platform_Key__r.md_Platform_Key__c` if the external donation has `Primary_Contact.external_id` value set
+* Check if this is a parent recurring Opportunity that already has a campaign relationship
+
+## Salesforce Fields
+
+This flow interacts with Salesforce objects to match existing records. Below is a mapping of all fields utilized:
+
+| Field API Name              | Field Type         | Purpose in Flow                                    |
+|-----------------------------|--------------------|---------------------------------------------------|
+| Campaign.md_Platform_Key__c | Lookup             | Platform key relationship for campaign matching   |
+| Contact.md_Platform_Key__c  | Lookup             | Platform key relationship for contact matching    |
+| Opportunity.CampaignId      | Lookup to Campaign | Links opportunity to campaign for parent matching |
+| npsp__Recurring_Donation__c | Lookup             | Recurring donation parent relationship             |
 
 ## Input Variables
 

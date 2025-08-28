@@ -23,6 +23,15 @@ The flow performs post-upsert operations that:
 * Create campaign member records for primary contacts
 * Establish hierarchical campaign member value structures
 
+## Salesforce Fields
+
+This flow interacts with the Salesforce Campaign object and its related fields. Below is a mapping of all fields utilized:
+
+| Field API Name | Field Type     | Purpose in Flow                  |
+|---------------|---------------|----------------------------------|
+| Id            | ID            | Unique record identifier         |
+| Name          | Text (80)     | Campaign name identifier         |
+
 ## Input Variables
 
 ### Core Campaign Data

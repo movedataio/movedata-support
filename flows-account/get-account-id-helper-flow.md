@@ -22,6 +22,16 @@ The flow provides account ID resolution that:
 * Retrieves account IDs from multiple data sources with priority hierarchy
 * Handles missing account data gracefully with fallback mechanisms
 
+## Salesforce Fields
+
+This flow interacts with the Salesforce Account and Contact objects and their related fields. Below is a mapping of all fields utilized:
+
+| Object              | Field API Name | Field Type          | Purpose in Flow                          |
+|--------------------|---------------|--------------------|-----------------------------------------|
+| **Account**        | Id            | ID                 | Primary account identifier               |
+| **Contact**        | Id            | ID                 | Contact record identifier                |
+| **Contact**        | AccountId     | Lookup to Account  | Links contact to associated account      |
+
 ## Input Variables
 
 | Variable       | Type            | Required | Description                                        |

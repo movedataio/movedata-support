@@ -25,6 +25,34 @@ The flow provides complete contact data processing that:
 * Supports both Mailing and Other address field sets
 * Includes protection mechanisms to preserve existing data
 
+## Salesforce Fields
+
+This flow interacts with the Salesforce Contact object and its related fields. Below is a mapping of all fields utilized:
+
+| Field API Name                  | Field Type                       | Purpose in Flow                                  |
+|--------------------------------|----------------------------------|--------------------------------------------------|
+| Id                             | ID                               | Unique record identifier                         |
+| FirstName                      | Text (40)                        | Contact's first name                             |
+| LastName                       | Text (80)                        | Contact's last name (required field)            |
+| Salutation                     | Picklist                         | Contact's title/salutation                       |
+| Birthdate                      | Date                             | Contact's birth date                             |
+| Email                          | Email (80)                       | Primary email address                            |
+| Phone                          | Phone (40)                       | Primary phone number                             |
+| HomePhone                      | Phone (40)                       | Home phone number                                |
+| MobilePhone                    | Phone (40)                       | Mobile phone number                              |
+| MailingStreet                  | Textarea (255)                   | Street address for mailing                       |
+| MailingCity                    | Text (40)                        | City for mailing address                         |
+| MailingState                   | Text (80)                        | State/Province for mailing address              |
+| MailingCountry                 | Text (80)                        | Country for mailing address                      |
+| MailingPostalCode              | Text (20)                        | Postal/ZIP code for mailing address             |
+| OtherStreet                    | Textarea (255)                   | Alternative street address                       |
+| OtherCity                      | Text (40)                        | Alternative city address                         |
+| OtherState                     | Text (80)                        | Alternative state/province address               |
+| OtherCountry                   | Text (80)                        | Alternative country address                      |
+| OtherPostalCode                | Text (20)                        | Alternative postal/ZIP code                      |
+| npe01__HomeEmail__c            | Email (80)                       | Home email address (NPSP field)                 |
+| npe01__WorkEmail__c            | Email (80)                       | Work email address (NPSP field)                 |
+
 ## Input Variables
 
 ### Core Contact Data

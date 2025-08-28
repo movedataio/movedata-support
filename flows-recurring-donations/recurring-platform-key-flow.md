@@ -21,6 +21,14 @@ The flow creates unique platform keys that:
 * Provide consistent identification for recurring donations across different donation platforms
 * Enable reliable recurring donation matching and deduplication
 
+## Salesforce Fields
+
+This flow interacts with the NPSP Recurring Donation object and its related fields. Below is a mapping of all fields utilized:
+
+| Field API Name                    | Field Type     | Purpose in Flow                                  |
+|----------------------------------|---------------|--------------------------------------------------|
+| md_npsp_pack__Platform_Key__c     | Text (100)    | Stores unique external platform identifier       |
+
 ## Input Variables
 
 | Variable   | Type   | Required | Description                                                      |

@@ -16,10 +16,16 @@ This flow generates standardised platform keys for donation records by combining
 
 ## Purpose
 
-The flow creates unique platform keys that:
-
 * Provide consistent keys for donations across different external platforms
 * Enable reliable donation matching and deduplication during processing
+
+## Salesforce Fields
+
+This flow interacts with Salesforce objects and their platform key fields. Below is a mapping of all fields utilized:
+
+| Field API Name                | Field Type     | Purpose in Flow                          |
+|------------------------------|---------------|------------------------------------------|
+| movedata__Platform_Key__c     | Text          | Stores generated platform key           |
 
 ## Input Variables
 

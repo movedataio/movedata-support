@@ -25,6 +25,19 @@ The flow performs post-upsert operations that:
 * Process opportunity contact roles for soft credit attribution across campaign hierarchies
 * Support complex fundraising attribution scenarios with fundraiser and team-based campaigns
 
+## Salesforce Fields
+
+This flow interacts with the Salesforce Opportunity object and its related fields. Below is a mapping of all fields utilized:
+
+| Field API Name                          | Field Type                  | Purpose in Flow                           |
+|-----------------------------------------|-----------------------------|-------------------------------------------|
+| Id                                      | ID                          | Primary record identifier                 |
+| Name                                    | Text (120)                  | Opportunity name cleanup for NPSP         |
+| npsp__Matching_Gift__c                  | Lookup to Opportunity       | Bidirectional matching gift relationships |
+| npsp__Matching_Gift_Account__c          | Lookup to Account           | Matching gift employer account            |
+| npsp__Matching_Gift_Employer__c         | Text                        | Matching gift employer name               |
+| npsp__Matching_Gift_Status__c           | Picklist                    | Matching gift processing status           |
+
 ## Input Variables
 
 ### Core Donation Data

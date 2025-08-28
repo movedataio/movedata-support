@@ -25,6 +25,14 @@ The flow provides duplicate detection capabilities that:
 * Returns Salesforce Record IDs when existing records are found
 * Supports both Salesforce Key and Platform Key lookup strategies
 
+## Salesforce Fields
+
+This flow interacts with the Account Platform Key custom object and its related fields. Below is a mapping of all fields utilized:
+
+| Field API Name                  | Field Type     | Purpose in Flow                                  |
+|---------------------------------|---------------|--------------------------------------------------|
+| movedata__Platform_Key__c       | Text          | Stores external platform identifier for matching |
+
 ## Input Variables
 
 | Variable        | Type   | Required | Description                                |

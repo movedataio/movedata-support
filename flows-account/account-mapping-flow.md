@@ -24,6 +24,15 @@ The flow provides complete account mapping orchestration that:
 * Provides case transformation for account names
 * Supports billing address processing
 
+## Salesforce Fields
+
+This flow interacts with the Salesforce Account object and its related fields. Below is a mapping of all fields utilized:
+
+| Field API Name                  | Field Type     | Purpose in Flow                                  |
+|---------------------------------|---------------|--------------------------------------------------|
+| Name                            | Text          | Account name identifier                          |
+| movedata__Protect_Name__c       | Checkbox      | Prevents automatic updates to account name       |
+
 ## Input Variables
 
 ### Core Account Data

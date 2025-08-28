@@ -21,6 +21,14 @@ The flow performs post-upsert operations that:
 * Create campaign member records for recurring donors
 * Creates campaign member entries
 
+## Salesforce Fields
+
+This flow interacts with the NPSP Recurring Donation object and its related fields. Below is a mapping of all fields utilized:
+
+| Field API Name | Field Type     | Purpose in Flow                  |
+|---------------|---------------|----------------------------------|
+| Id            | ID            | Unique record identifier         |
+
 ## Input Variables
 
 ### Core Recurring Donation Data

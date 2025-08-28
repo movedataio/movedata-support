@@ -21,6 +21,14 @@ The flow creates unique platform keys that:
 * Provide consistent identification for campaigns across different donation platforms
 * Enable reliable campaign matching and deduplication
 
+## Salesforce Fields
+
+This flow interacts with the Salesforce Campaign object and its related fields. Below is a mapping of all fields utilized:
+
+| Field API Name                | Field Type     | Purpose in Flow                          |
+|------------------------------|---------------|------------------------------------------|
+| movedata__Platform_Key__c     | Text          | Stores unique external platform identifier |
+
 ## Input Variables
 
 | Variable        | Type   | Required | Description                                                 |
