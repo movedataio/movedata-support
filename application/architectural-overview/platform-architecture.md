@@ -1,3 +1,10 @@
+---
+description: >-
+  MoveData's cloud-native AWS-hosted integration engine provides secure,
+  scalable data processing for nonprofits with multi-region availability and
+  compliance.
+---
+
 # Platform Architecture
 
 ## Overview
