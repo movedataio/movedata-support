@@ -4,7 +4,8 @@
 
 ## MoveData <a href="#application" id="application"></a>
 
-* [Architectural Overview](application/architectural-overview.md)
+* [Architectural Overview](application/architectural-overview/README.md)
+  * [Infrastructure](application/architectural-overview/infrastructure.md)
 * [Salesforce Architecture](application/salesforce-architecture/README.md)
   * [Processing Pipelines](application/salesforce-architecture/processing-pipelines.md)
 * [Configuration](application/configuration/README.md)
