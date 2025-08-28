@@ -1,3 +1,9 @@
+---
+description: >-
+  MoveData runs as a Salesforce managed package with schema-driven processing,
+  extensions, and Lightning Flow customisation for nonprofit integrations.
+---
+
 # Salesforce Architecture
 
 <figure><img src="../../../.gitbook/assets/MD_Process.salesforce.drawio.png" alt=""><figcaption></figcaption></figure>
