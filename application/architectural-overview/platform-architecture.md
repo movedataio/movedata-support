@@ -7,6 +7,8 @@ description: >-
 
 # Platform Architecture
 
+<figure><img src="../../.gitbook/assets/MD_Process.aws.drawio.png" alt=""><figcaption></figcaption></figure>
+
 ## Overview
 
 MoveData operates as a modern, cloud-native integration platform specifically designed for nonprofit organisations using Salesforce. Our architecture leverages industry-leading cloud infrastructure to provide secure, scalable, and reliable data processing capabilities that bridge fundraising platforms with Salesforce environments.

@@ -1,5 +1,7 @@
 # Salesforce Architecture
 
+<figure><img src="../../../.gitbook/assets/MD_Process.salesforce.drawio.png" alt=""><figcaption></figcaption></figure>
+
 ## Overview
 
 MoveData is built to run within Salesforce as a managed package, providing a comprehensive integration platform designed exclusively for nonprofits. The architecture supports extensive configuration and customisation pathways including Apex and Lightning Flow extensibility, enabling organisations to implement business rules tailored to their specific needs.
