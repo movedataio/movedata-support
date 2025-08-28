@@ -24,24 +24,24 @@ The MoveData platform processes fundraising data through a sophisticated three-s
 
 The first stage captures every meaningful interaction from your fundraising ecosystem, creating a comprehensive foundation for data processing. This stage operates with intelligent redundancy and error handling to ensure no important fundraising activity is missed.
 
-* **Real-time API Events**: Instant notification processing as transactions occur in fundraising platforms
-* **Scheduled Polling**: Regular data retrieval for platforms with API limitations (configurable from 10 minutes to 24 hours)
-* **CSV Processing**: Batch upload capabilities for historical or bulk data import
+* **Real-time API Events**: Instant notification processing as transactions occur in fundraising platforms. These push-based integrations provide immediate notification when supporters take action, whether making a donation, registering for an event, or updating their profile information.
+* **Scheduled Polling**: Regular data retrieval for platforms with API limitations, configurable from 10 minutes to 24 hours based on your organisation's needs and platform capabilities. This method includes intelligence to minimise unnecessary data transfer whilst ensuring complete coverage of all fundraising activities.
+* **File Processing**: Batch upload capabilities for historical or bulk data import, supporting both one-time data migration and regular file-based integrations. The system includes sophisticated parsing capabilities that can handle various file formats, custom field mappings, and data validation to ensure quality imports.
 
 ### Stage 2: Transformation Engine
 
-TODO: Add descriptive text
+The transformation stage represents the sophisticated intelligence layer of MoveData's architecture, where raw fundraising platform data is converted into standardised formats, ready to be dispatched to MoveData's Salesforce handlers. This stage handles the complex business logic required to map diverse fundraising platform structures into consistent, actionable data.
 
-* **Data Assembly**: Consolidation of primary event data, supporting information, supporter context, and campaign attribution
-* **Field Mapping**: Automated conversion of platform-specific data fields to MoveData standards
-* **Data Validation**: Comprehensive quality checks to ensure data integrity
-* **Standardisation**: Creation of uniform notification format for consistent processing
+* **Data Assembly**: Consolidation of primary event data, supporting information, supporter context, and campaign attribution into comprehensive notification packages. The system intelligently assembles related information from multiple API endpoints or data sources to create complete, contextual notifications that require no external dependencies for processing.
+* **Field Mapping**: Automated conversion of platform-specific data fields to MoveData standards using sophisticated mapping logic that understands fundraising platform conventions and Salesforce data requirements. This includes handling of complex field types, currency conversion, date format standardisation, and custom field mappings.
+* **Data Validation**: Comprehensive quality checks that ensure data integrity throughout the transformation process. This completeness verification helps ensure every notification is ready for successful processing.
+* **Standardisation**: Creation of uniform notification format for consistent processing across all fundraising platforms and Salesforce configurations. This standardisation layer ensures that regardless of the source platform, data arrives in Salesforce in a predictable, high-quality format.
 
 ### Stage 3: Salesforce Execution
 
-TODO: Add descriptive text
+The final stage represents where standardised notifications are transformed into actual Salesforce records through sophisticated business rule processing and native Salesforce integration capabilities. This stage ensures that data not only arrives in Salesforce but aligns to your organisation's specific processes and requirements.
 
-* **MoveData Extensions**: Purpose-built components for donation processing, commerce support, and data model compatibility (Standard Salesforce, NPSP and Nonprofit Cloud)
-* **Custom Business Rules**: Configurable Lightning Flows for organisation-specific requirements
-* **Native Lightning Application**: Real-time visibility, execution management, and comprehensive audit trails
+* **Native Lightning Application**: A purpose-built Salesforce Lightning app that provides complete visibility into notifications processed by MoveData and the resulting Salesforce records created. Users can view detailed notification histories, track the transformation from fundraising platform events to Salesforce data, and monitor the status of record creation processes. The application enables teams to verify that donations, contacts, campaigns, and other records have been created correctly, whilst providing comprehensive audit trails showing exactly how fundraising platform data became Salesforce records.
+* **MoveData Extensions**: Purpose-built components for donation processing, commerce support, and data model compatibility that work seamlessly with Standard Salesforce, NPSP (Nonprofit Success Pack), and Nonprofit Cloud architectures. These extensions handle the complex logic required to create appropriate record types, establish proper relationships, and apply nonprofit-specific business rules without requiring custom development.
+* **Custom Business Rules**: Configurable Lightning Flows for organisation-specific requirements that can be easily modified with limited technical expertise. These flows enable complex data transformation, conditional processing, integration with external systems, and custom notification workflows tailored to your organisation's unique processes.
 
