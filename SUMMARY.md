@@ -29,7 +29,10 @@
 ## Development Guides <a href="#guides" id="guides"></a>
 
 * [Table of Contents](guides/table-of-contents/README.md)
+  * [Adding a Configuration Flow](guides/table-of-contents/adding-a-configuration-flow.md)
   * [Disable a Phase](guides/table-of-contents/disable-a-phase.md)
+  * [Implementing a Pre-Processor](guides/table-of-contents/implementing-a-pre-processor.md)
+  * [Understanding Fieldsets](guides/table-of-contents/understanding-fieldsets.md)
 
 ## Reference
 
