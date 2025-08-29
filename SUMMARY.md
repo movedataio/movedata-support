@@ -6,8 +6,7 @@
 
 * [Architectural Overview](application/architectural-overview.md)
   * [Platform Architecture](application/architectural-overview/platform-architecture.md)
-  * [Salesforce Architecture](application/architectural-overview/salesforce-architecture/README.md)
-    * [Processing Pipelines](application/architectural-overview/salesforce-architecture/processing-pipelines.md)
+  * [Salesforce Architecture](application/architectural-overview/salesforce-architecture.md)
 * [Configuration](application/configuration/README.md)
   * [Install MoveData](application/configuration/install-movedata.md)
   * [Setup Wizard](application/configuration/setup-wizard.md)
@@ -19,7 +18,7 @@
 
 ## Pipelines
 
-* [Pipeline Overview](pipelines/pipeline-overview.md)
+* [Pipeline Overview](pipelines/processing-pipelines.md)
 * [Commerce Pipeline](pipelines/commerce-pipeline/README.md)
   * [Commerce Extension](https://www.google.com)
   * [Non-Profit Cloud Extension](https://www.google.com)

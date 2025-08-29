@@ -44,7 +44,7 @@ The transformation stage represents the sophisticated intelligence layer of Move
 ### Stage 3: Salesforce Execution
 
 {% hint style="info" %}
-For detailed information, see [salesforce-architecture](architectural-overview/salesforce-architecture/ "mention")
+For detailed information, see [salesforce-architecture.md](architectural-overview/salesforce-architecture.md "mention")
 {% endhint %}
 
 The final stage represents where standardised notifications are transformed into actual Salesforce records through sophisticated business rule processing and native Salesforce integration capabilities. This stage ensures that data not only arrives in Salesforce but aligns to your organisation's specific processes and requirements.

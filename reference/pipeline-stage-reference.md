@@ -9,7 +9,7 @@ Each phase is made up of "stages".  Each stage has a specific set of characteris
 ## Multi-Stage Pipelines
 
 {% hint style="info" %}
-More about how pipelines can be found at [processing-pipelines.md](../application/architectural-overview/salesforce-architecture/processing-pipelines.md "mention").
+More about how pipelines can be found at [processing-pipelines.md](../pipelines/processing-pipelines.md "mention").
 {% endhint %}
 
 A pipeline implements a schema.  The Donation pipeline implements the `donation` schema, while the Commerce pipeline implements the `commerce` schema.  These are registered with MoveData in the Schema Mapping metadata.  Once registered, a pipeline will will execute when a notification with the registered schema type arrives.  This will direct the pipeline to execute it's phases; within each phase, it will contain a number of stages that are linked to metadata values or Salesforce Lightning flows.

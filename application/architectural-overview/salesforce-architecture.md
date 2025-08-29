@@ -6,7 +6,7 @@ description: >-
 
 # Salesforce Architecture
 
-<figure><img src="../../../.gitbook/assets/MD_Process.salesforce.drawio.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/MD_Process.salesforce.drawio.png" alt=""><figcaption></figcaption></figure>
 
 ## Overview
 
@@ -80,7 +80,7 @@ If the above extensions are not suitable, custom handlers using Apex and Lightni
 
 ## Notification Processing Pipeline
 
-Please refer to [Processing Pipelines](processing-pipelines.md) for more information how MoveData processes a notification.
+Please refer to [Processing Pipelines](../../pipelines/processing-pipelines.md) for more information how MoveData processes a notification.
 
 ## Customisation Framework
 
