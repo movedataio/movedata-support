@@ -42,7 +42,7 @@ Processes notifications through discrete, sequential stages with full relationsh
 
 ### Single-Step Processing (Alternative)
 
-Provides a streamlined processing approach where all business logic is handled within a single flow or Apex handler.  There are few cases were this makes sense; one example is where an organisation has invested heavily in importing from a Salesforce staging object and would like MoveData to write to this object.
+Provides a streamlined processing approach where all business logic is handled within a single flow or Apex handler.  There are few cases where this makes sense; one example is where an organisation has invested heavily in importing from a Salesforce staging object and would like MoveData to write to this object.
 
 If using a single-step, you need to direct the pipeline by create the following metadata entry:
 
