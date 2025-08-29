@@ -1,3 +1,9 @@
+---
+description: >-
+  A managed processing engine transforming donation notifications into
+  Salesforce records.
+---
+
 # Donation Pipeline
 
 ## Overview
