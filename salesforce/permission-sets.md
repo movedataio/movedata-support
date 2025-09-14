@@ -167,26 +167,3 @@ This permission set provides the necessary field-level and object-level permissi
 | Field             | Read | Edit | Purpose                            |
 | ----------------- | ---- | ---- | ---------------------------------- |
 | `Platform_Key__c` | ✓    | ✓    | External platform key for matching |
-
-## Key Differences from NPSP Extensions
-
-The MoveData Nonprofit Cloud Extensions permission set differs from the NPSP Extensions in several important ways:
-
-### Enhanced Object Permissions
-
-* **Create/Edit Access:** Provides create and edit permissions for Account, Contact, Campaign, and Opportunity objects (NPSP Extensions only grants read access)
-* **Opportunity Management:** Full permissions including delete access for Opportunity records
-* **Product Management:** Includes Product2 and OpportunityLineItem objects for commerce functionality
-
-### Nonprofit Cloud Specific Objects
-
-* **GiftCommitment:** Access to Nonprofit Cloud's gift commitment functionality
-* **GiftTransaction:** Access to Nonprofit Cloud's transaction tracking
-
-### Additional Standard Fields
-
-* **Communication Preferences:** Email opt-out fields for both Account and Contact objects
-* **Contact Details:** Extended contact information including phone and title fields
-* **Opportunity Details:** Standard opportunity fields like Amount, Description, and Type
-
-This permission set is specifically designed for organizations using Salesforce Nonprofit Cloud data models and requires more comprehensive object access to support the enhanced functionality of the Nonprofit Cloud platform.
