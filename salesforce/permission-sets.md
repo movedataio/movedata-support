@@ -141,38 +141,3 @@ This permission set grants access to the following Apex classes required for com
 | `Protect_Name__c`       | ✓    | ✓    | Product name protection            |
 | `QuantityUnitOfMeasure` | ✓    | ✓    | Unit of measure for quantities     |
 | `StockKeepingUnit`      | ✓    | ✓    | SKU identifier                     |
-
-## Commerce-Specific Features
-
-The MoveData Commerce Extensions permission set is specifically designed for organizations processing:
-
-### E-commerce Transactions
-
-* **Product Management:** Full access to Product2 objects for managing event tickets, merchandise, and services
-* **Order Processing:** Complete OpportunityLineItem management for detailed transaction tracking
-* **Revenue Tracking:** Comprehensive opportunity management with full CRUD permissions
-
-### Event Management
-
-* **Ticketing:** Product and opportunity line item integration for ticket sales
-* **Campaign Integration:** Links commerce activities to marketing campaigns
-* **Attendee Management:** Integration with contact and account data
-
-### Key Differences from Other Extensions
-
-**Limited Contact/Account Access:**
-
-* Read-only access to Account and Contact objects (unlike Nonprofit Cloud Extensions)
-* Focuses on transaction processing rather than constituent management
-
-**Enhanced Product Functionality:**
-
-* Full product management capabilities for commerce items
-* Support for complex product hierarchies and variants
-
-**Apex Class Integration:**
-
-* Includes specialized Apex classes for NPSP integration
-* Campaign member management for event attendee tracking
-
-This permission set is ideal for organizations using MoveData primarily for e-commerce, ticketing, or event management where the focus is on transaction processing and product sales rather than comprehensive donor management.
