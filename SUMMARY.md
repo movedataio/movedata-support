@@ -11,4 +11,4 @@
 
 ## Flows: Accounts
 
-* [Page 1](flows-accounts/page-1.md)
+* [Account Platform Key Flow](flows-accounts/account-platform-key-flow.md)
