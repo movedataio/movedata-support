@@ -8,3 +8,7 @@
 * [Settings](salesforce/settings.md)
 * [Fields and Objects](salesforce/fields-and-objects.md)
 * [Permission Sets](salesforce/permission-sets.md)
+
+## Flows: Accounts
+
+* [Account Platform Key Flow](flows-accounts/account-platform-key-flow.md)
