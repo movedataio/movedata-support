@@ -12,3 +12,4 @@
 ## Flows: Accounts
 
 * [Account Platform Key Flow](flows-accounts/account-platform-key-flow.md)
+* [Account Record Match Flow](flows-accounts/account-record-match-flow.md)
