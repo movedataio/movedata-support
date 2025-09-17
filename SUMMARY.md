@@ -26,3 +26,8 @@
 * [Contact Post-Upsert Flow](flows-contacts/contact-post-upsert-flow.md)
 * [Contact Details Helper Flow](flows-contacts/contact-details-helper-flow.md)
 * [Contact Platform Key Helper Flow](flows-contacts/contact-platform-key-helper-flow.md)
+
+## Group 1
+
+* [Campaign Platform Key Flow](group-1/campaign-platform-key-flow.md)
+* [Campaign Record Match Flow](group-1/campaign-record-match-flow.md)
