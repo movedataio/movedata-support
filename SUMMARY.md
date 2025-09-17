@@ -37,3 +37,10 @@
 * [Recurring Record Match Flow](flows-recurring-donations/recurring-record-match-flow.md)
 * [Recurring Mapping Flow](flows-recurring-donations/recurring-mapping-flow.md)
 * [Recurring Post-Upsert Flow](flows-recurring-donations/recurring-post-upsert-flow.md)
+
+## Flows: Donations
+
+* [Donation Platform Key Flow](flows-donations/donation-platform-key-flow.md)
+* [Donation Record Match Flow](flows-donations/donation-record-match-flow.md)
+* [Donation Mapping Flow](flows-donations/donation-mapping-flow.md)
+* [Donation Post-Upsert Flow](flows-donations/donation-post-upsert-flow.md)
