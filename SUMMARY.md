@@ -27,3 +27,6 @@
 
 * [Campaign Platform Key Flow](flows-campaigns/campaign-platform-key-flow.md)
 * [Campaign Record Match Flow](flows-campaigns/campaign-record-match-flow.md)
+* [Campaign Name Flow](flows-campaigns/campaign-name-flow.md)
+* [Campaign Mapping Flow](flows-campaigns/campaign-mapping-flow.md)
+* [Campaign Post-Upsert Flow](flows-campaigns/campaign-post-upsert-flow.md)
