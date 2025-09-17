@@ -15,3 +15,8 @@
 * [Account Record Match Flow](flows-accounts/account-record-match-flow.md)
 * [Account Mapping Flow](flows-accounts/account-mapping-flow.md)
 * [Account Post-Upsert Flow](flows-accounts/account-post-upsert-flow.md)
+
+## Flows: Contacts
+
+* [Contact Platform Key Flow](flows-contacts/contact-platform-key-flow.md)
+* [Contact Record Match Flow](flows-contacts/contact-record-match-flow.md)
