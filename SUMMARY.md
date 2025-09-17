@@ -34,3 +34,7 @@
 * [Campaign Name Flow](flows-campaigns/campaign-name-flow.md)
 * [Campaign Mapping Flow](flows-campaigns/campaign-mapping-flow.md)
 * [Campaign Post-Upsert Flow](flows-campaigns/campaign-post-upsert-flow.md)
+
+## Flows: Catalog
+
+* [Catalog Platform Key Flow](flows-catalog/catalog-platform-key-flow.md)
