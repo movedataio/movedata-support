@@ -22,3 +22,8 @@
 * [Contact Record Match Flow](flows-contacts/contact-record-match-flow.md)
 * [Contact Mapping Flow](flows-contacts/contact-mapping-flow.md)
 * [Contact Post-Upsert Flow](flows-contacts/contact-post-upsert-flow.md)
+
+## Flows: Campaigns
+
+* [Campaign Platform Key Flow](flows-campaigns/campaign-platform-key-flow.md)
+* [Campaign Record Match Flow](flows-campaigns/campaign-record-match-flow.md)
