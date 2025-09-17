@@ -22,3 +22,4 @@
 
 * [Contact Platform Key Flow](flows-contacts/contact-platform-key-flow.md)
 * [Contact Record Match Flow](flows-contacts/contact-record-match-flow.md)
+* [Contact Mapping Flow](flows-contacts/contact-mapping-flow.md)
