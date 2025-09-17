@@ -30,3 +30,10 @@
 * [Campaign Name Flow](flows-campaigns/campaign-name-flow.md)
 * [Campaign Mapping Flow](flows-campaigns/campaign-mapping-flow.md)
 * [Campaign Post-Upsert Flow](flows-campaigns/campaign-post-upsert-flow.md)
+
+## Flows: Recurring Donations
+
+* [Recurring Platform Key Flow](flows-recurring-donations/recurring-platform-key-flow.md)
+* [Recurring Record Match Flow](flows-recurring-donations/recurring-record-match-flow.md)
+* [Recurring Mapping Flow](flows-recurring-donations/recurring-mapping-flow.md)
+* [Recurring Post-Upsert Flow](flows-recurring-donations/recurring-post-upsert-flow.md)
