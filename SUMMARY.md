@@ -44,3 +44,21 @@
 * [Donation Record Match Flow](flows-donations/donation-record-match-flow.md)
 * [Donation Mapping Flow](flows-donations/donation-mapping-flow.md)
 * [Donation Post-Upsert Flow](flows-donations/donation-post-upsert-flow.md)
+
+## Flows: Catalog
+
+* [Catalog Platform Key Flow](flows-catalog/catalog-platform-key-flow.md)
+* [Catalog Record Match Flow](flows-catalog/catalog-record-match-flow.md)
+* [Catalog Name Flow](flows-catalog/catalog-name-flow.md)
+* [Catalog Mapping Flow](flows-catalog/catalog-mapping-flow.md)
+* [Catalog Post-Upsert Flow](flows-catalog/catalog-post-upsert-flow.md)
+
+## Flows: Orders
+
+* [Order Platform Key Flow](flows-orders/order-platform-key-flow.md)
+* [Order Record Match Flow](flows-orders/order-record-match-flow.md)
+* [Order Mapping Flow](flows-orders/order-mapping-flow.md)
+* [Order Item Platform Key Flow](flows-orders/order-item-platform-key-flow.md)
+* [Order Item Record Match Flow](flows-orders/order-item-record-match-flow.md)
+* [Order Item Mapping Flow](flows-orders/order-item-mapping-flow.md)
+* [Order Finaliser Flow](flows-orders/order-finaliser-flow.md)
