@@ -54,7 +54,7 @@
 | Phone      | Phone field (40 characters max) | Primary phone number                 | [Contact Details Helper Flow](../flows-contact/contact-details-helper-flow.md) |
 | HomePhone  | Phone field (40 characters max) | Home phone number                    | [Contact Details Helper Flow](../flows-contact/contact-details-helper-flow.md) |
 | MobilePhone | Phone field (40 characters max) | Mobile phone number                 | [Contact Details Helper Flow](../flows-contact/contact-details-helper-flow.md) |
-| AccountId  | Lookup to Account | Links contact to associated account  | Contact Platform Key Helper Flow |
+| AccountId  | Lookup to Account | Links contact to associated account  | [Contact Platform Key Helper Flow](../flows-contacts/contact-platform-key-helper-flow.md) |
 
 ### Mailing Address Fields
 
@@ -80,7 +80,7 @@
 
 | Field Name                                 | Type                            | Purpose                                    | Source Flows                |
 | ------------------------------------------ | ------------------------------- | ------------------------------------------ | --------------------------- |
-| Do Not Contact (`npsp__Do_Not_Contact__c`) | Checkbox field                  | Flags contacts who should not be contacted | Contact Mapping Flow |
+| Do Not Contact (`npsp__Do_Not_Contact__c`) | Checkbox field                  | Flags contacts who should not be contacted | [Contact Mapping Flow](../flows-contact/contact-mapping-flow.md) |
 | Home Email (`npe01__HomeEmail__c`)         | Email field (80 characters max) | Home email address (NPSP field)            | [Contact Details Helper Flow](../flows-contact/contact-details-helper-flow.md) |
 | Work Email (`npe01__WorkEmail__c`)         | Email field (80 characters max) | Work email address (NPSP field)            | [Contact Details Helper Flow](../flows-contact/contact-details-helper-flow.md) |
 
