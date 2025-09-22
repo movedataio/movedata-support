@@ -10,7 +10,7 @@ This flow is self-documenting and should be viewed within Salesforce (Setup -> P
 **Label:** \[MoveData] Commerce: Campaign - Post Upsert\
 **Type:** Auto-Launched Flow Template\
 **API Version:** 57.0\
-**Status:** Draft
+**Status:** Active
 
 This flow handles post-processing operations after campaign records are created or updated, including campaign member structure initialisation, GAU (General Accounting Unit) copying from parent campaigns, and campaign member creation with commerce-specific status handling.
 
