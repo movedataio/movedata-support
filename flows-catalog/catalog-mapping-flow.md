@@ -23,7 +23,7 @@ The flow processes incoming catalog data and maps it to appropriate Salesforce P
 * SKU (Stock Keeping Unit) mapping with flexible source options
 * Product description handling
 * Status mapping for active/inactive products
-* Currency code processing and assignment
+* Multi-currency processing and assignment
 * Platform key assignment for external system tracking
 * Configurable field replacement policies
 
