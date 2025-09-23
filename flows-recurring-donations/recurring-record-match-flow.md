@@ -23,8 +23,8 @@ The flow provides duplicate detection capabilities that:
 This flow interacts with the NPSP Recurring Donation object and its related fields. Below is a mapping of all fields utilized:
 
 | Field API Name                    | Field Type     | Purpose in Flow                                    |
-|----------------------------------|---------------|----------------------------------------------------|
-| md_npsp_pack__Platform_Key__c     | Text (100)    | Stores external platform identifier for matching   |
+|----------------------------------|---------------|----------------------------------------------------||
+| Platform_Key__c                  | Text (100)    | Stores external platform identifier for matching   |
 
 ## Input Variables
 
