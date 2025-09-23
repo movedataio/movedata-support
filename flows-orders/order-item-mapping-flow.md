@@ -29,20 +29,20 @@ The flow processes incoming order item data and maps it to appropriate Salesforc
 
 The flow interacts with multiple Salesforce objects and their fields. Below is a comprehensive mapping of all fields utilized:
 
-| Object                  | Field API Name     | Field Type                   | Purpose in Flow                 |
-| ----------------------- | ------------------ | ---------------------------- | ------------------------------- |
-| **OpportunityLineItem** | Id                 | ID                           | Primary record identifier       |
-|                         | OpportunityId      | Master-Detail to Opportunity | Links line item to parent order |
-|                         | PricebookEntryId   | Lookup to PricebookEntry     | Product pricing relationship    |
-|                         | Quantity           | Number                       | Item quantity                   |
-|                         | UnitPrice          | Currency                     | Price per unit                  |
-|                         | TotalPrice         | Currency                     | Total line item price           |
-|                         | Platform\_Key\_\_c | Text                         | External platform identifier    |
-| **Product2**            | Id                 | ID                           | Product record identifier       |
-| **Opportunity**         | Id                 | ID                           | Order record identifier         |
-| **PricebookEntry**      | Id                 | ID                           | Price book entry identifier     |
-|                         | Product2Id         | Lookup to Product2           | Product relationship            |
-|                         | Pricebook2Id       | Lookup to Pricebook2         | Price book relationship         |
+| Object                  | Field API Name                      | Field Type                   | Purpose in Flow                 |
+| ----------------------- | ----------------------------------- | ---------------------------- | ------------------------------- |
+| **OpportunityLineItem** | Id                                  | ID                           | Primary record identifier       |
+|                         | OpportunityId                       | Master-Detail to Opportunity | Links line item to parent order |
+|                         | PricebookEntryId                    | Lookup to PricebookEntry     | Product pricing relationship    |
+|                         | Quantity                            | Number                       | Item quantity                   |
+|                         | UnitPrice                           | Currency                     | Price per unit                  |
+|                         | TotalPrice                          | Currency                     | Total line item price           |
+|                         | md_comm_pack__Platform_Key__c       | Text                         | External platform identifier    |
+| **Product2**            | Id                                  | ID                           | Product record identifier       |
+| **Opportunity**         | Id                                  | ID                           | Order record identifier         |
+| **PricebookEntry**      | Id                                  | ID                           | Price book entry identifier     |
+|                         | Product2Id                          | Lookup to Product2           | Product relationship            |
+|                         | Pricebook2Id                        | Lookup to Pricebook2         | Price book relationship         |
 
 ## Input Variables
 
@@ -146,7 +146,7 @@ The flow handles two distinct pricing models:
 
 **Platform Key Processing:**
 
-* Sets Platform\_Key\_\_c field with provided platform key
+* Sets md_comm_pack__Platform_Key__c field with provided platform key
 * Enables future matching and duplicate detection
 * Supports external system integration
 
