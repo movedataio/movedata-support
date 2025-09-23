@@ -19,7 +19,8 @@ This flow handles the comprehensive mapping and transformation of commerce order
 The flow processes incoming order item data and maps it to appropriate Salesforce fields while handling:
 
 * Fee type filtering with configurable exclusion of platform fees
-* Price book entry lookup and assignment for product relationships
+* Currency determination for multi-currency environments
+* Price book entry lookup and assignment for product relationships with enhanced error handling
 * Opportunity relationship management for order items
 * Pricing logic with support for both unit price and total price models
 * Platform key assignment for external system tracking
@@ -29,34 +30,35 @@ The flow processes incoming order item data and maps it to appropriate Salesforc
 
 The flow interacts with multiple Salesforce objects and their fields. Below is a comprehensive mapping of all fields utilized:
 
-| Object                  | Field API Name     | Field Type                   | Purpose in Flow                 |
-| ----------------------- | ------------------ | ---------------------------- | ------------------------------- |
-| **OpportunityLineItem** | Id                 | ID                           | Primary record identifier       |
-|                         | OpportunityId      | Master-Detail to Opportunity | Links line item to parent order |
-|                         | PricebookEntryId   | Lookup to PricebookEntry     | Product pricing relationship    |
-|                         | Quantity           | Number                       | Item quantity                   |
-|                         | UnitPrice          | Currency                     | Price per unit                  |
-|                         | TotalPrice         | Currency                     | Total line item price           |
-|                         | Platform\_Key\_\_c | Text                         | External platform identifier    |
-| **Product2**            | Id                 | ID                           | Product record identifier       |
-| **Opportunity**         | Id                 | ID                           | Order record identifier         |
-| **PricebookEntry**      | Id                 | ID                           | Price book entry identifier     |
-|                         | Product2Id         | Lookup to Product2           | Product relationship            |
-|                         | Pricebook2Id       | Lookup to Pricebook2         | Price book relationship         |
+| Object                  | Field API Name                        | Field Type                   | Purpose in Flow                 |
+| ----------------------- | ------------------------------------- | ---------------------------- | ------------------------------- |
+| **OpportunityLineItem** | Id                                    | ID                           | Primary record identifier       |
+|                         | OpportunityId                         | Master-Detail to Opportunity | Links line item to parent order |
+|                         | PricebookEntryId                      | Lookup to PricebookEntry     | Product pricing relationship    |
+|                         | Quantity                              | Number                       | Item quantity                   |
+|                         | UnitPrice                             | Currency                     | Price per unit                  |
+|                         | TotalPrice                            | Currency                     | Total line item price           |
+|                         | md_comm_pack__Platform_Key__c         | Text                         | External platform identifier    |
+| **Product2**            | Id                                    | ID                           | Product record identifier       |
+| **Opportunity**         | Id                                    | ID                           | Order record identifier         |
+| **PricebookEntry**      | Id                                    | ID                           | Price book entry identifier     |
+|                         | Product2Id                            | Lookup to Product2           | Product relationship            |
+|                         | Pricebook2Id                          | Lookup to Pricebook2         | Price book relationship         |
 
 ## Input Variables
 
 ### Core Order Item Data
 
-| Variable       | Type                        | Required | Description                                    |
-| -------------- | --------------------------- | -------- | ---------------------------------------------- |
-| `Record`       | OpportunityLineItem SObject | Yes      | The OpportunityLineItem record being processed |
-| `Catalog_Type` | String                      | No       | Item type for fee filtering                    |
-| `Quantity`     | Number                      | No       | Order item quantity                            |
-| `UnitPrice`    | Currency                    | No       | Price per unit                                 |
-| `Total`        | Currency                    | No       | Total line item price                          |
-| `OrderTotal`   | Currency                    | No       | Total order amount                             |
-| `PlatformKey`  | String                      | No       | Unique platform key for record matching        |
+| Variable            | Type                        | Required | Description                                    |
+| ------------------- | --------------------------- | -------- | ---------------------------------------------- |
+| `Record`            | OpportunityLineItem SObject | Yes      | The OpportunityLineItem record being processed |
+| `Catalog_Type`      | String                      | No       | Item type for fee filtering                    |
+| `Quantity`          | Number                      | No       | Order item quantity                            |
+| `UnitPrice`         | Currency                    | No       | Price per unit                                 |
+| `Total`             | Currency                    | No       | Total line item price                          |
+| `OrderTotal`        | Currency                    | No       | Total order amount                             |
+| `PlatformKey`       | String                      | No       | Unique platform key for record matching        |
+| `OrderCurrencyType` | String                      | No       | Currency code for order                        |
 
 ### Related Records
 
@@ -84,6 +86,7 @@ The flow interacts with multiple Salesforce objects and their fields. Below is a
 | ---------- | --------------------------- | --------------------------------------- |
 | `Record`   | OpportunityLineItem SObject | Updated line item record                |
 | `Continue` | Boolean                     | Flag indicating processing continuation |
+| `Errors`   | String Collection           | Error messages from processing          |
 
 ## Flow Logic
 
@@ -102,12 +105,19 @@ The flow interacts with multiple Salesforce objects and their fields. Below is a
 * Proceeds only if CatalogRecord (Product2) is provided
 * Ensures proper product relationship for line item creation
 
+**Currency Determination:**
+
+* Uses CurrencyCodeComponent to determine appropriate currency
+* Processes OrderCurrencyType input to standardize currency handling
+* Supports multi-currency organizations
+
 **Price Book Entry Lookup:**
 
-* Queries PricebookEntry where Product2Id matches CatalogRecord.Id
-* Filters by StandardPriceBookId for price book consistency
-* Uses `getFirstRecordOnly=true` for single entry retrieval
-* Sets PricebookEntryId on the line item record
+* Uses GetPriceBookEntryFlowComponent with currency support
+* Passes CurrencyCode, Pricebook2Id, and Product2Id parameters
+* Enhanced error handling for missing price book entries
+* Sets PricebookEntryId on the line item record when found
+* Adds error to Errors collection if price book entry not found
 
 ### 3. Opportunity Relationship Processing
 
@@ -146,7 +156,7 @@ The flow handles two distinct pricing models:
 
 **Platform Key Processing:**
 
-* Sets Platform\_Key\_\_c field with provided platform key
+* Sets md_comm_pack__Platform_Key__c field with provided platform key
 * Enables future matching and duplicate detection
 * Supports external system integration
 
@@ -160,6 +170,13 @@ The flow handles two distinct pricing models:
 * Price book entry lookup failures
 * Invalid pricing data
 * Configuration conflicts
+* Currency determination issues
+
+**Enhanced Error Collection:**
+
+* Missing Pricebook Entry errors added to Errors collection
+* Detailed error messages for troubleshooting
+* Error collection supports multiple error scenarios
 
 **Detailed Logging:**
 
@@ -170,4 +187,5 @@ The flow handles two distinct pricing models:
 
 ## Dependencies
 
-None
+* CurrencyCodeComponent (movedata__CurrencyCodeComponent)
+* GetPriceBookEntryFlowComponent
