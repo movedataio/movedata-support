@@ -30,7 +30,7 @@ The flow provides duplicate detection capabilities that:
 This flow interacts with the Contact Platform Key custom object and its related fields. Below is a mapping of all fields utilized:
 
 | Field API Name                  | Field Type     | Purpose in Flow                                    |
-|---------------------------------|---------------|----------------------------------------------------|
+|---------------------------------|---------------|----------------------------------------------------|----------------------------------------------------|
 | movedata__Platform_Key__c       | Text          | Stores external platform identifier for matching   |
 
 ## Input Variables
