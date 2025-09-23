@@ -164,7 +164,8 @@ The flow interacts with multiple Salesforce objects and their fields. Below is a
 **Currency Setting:**
 
 * Determines currency using `CurrencyCodeComponent`
-* Sets CurrencyIsoCode using `SetValueComponent`
+* Validates currency code length before setting CurrencyIsoCode
+* Sets CurrencyIsoCode using `SetValueComponent` only when valid currency provided
 * Ensures consistent currency handling across multi-currency orgs
 
 ### 5. Stage Assignment
