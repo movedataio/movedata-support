@@ -168,6 +168,7 @@ The flow interacts with multiple Salesforce objects and their fields. Below is a
 **Currency Setting:**
 
 * Determines currency using `CurrencyCodeComponent`
+* Only sets CurrencyIsoCode when a valid currency code is present (length > 0)
 * Sets CurrencyIsoCode using `SetValueComponent`
 * Ensures consistent currency handling across multi-currency orgs
 
@@ -235,7 +236,13 @@ Each fee type follows conditional assignment:
 * Sets RecordTypeId when OrderRecordTypeId provided
 * Enables proper record type categorization
 
-### 10. Final Platform Key Assignment
+### 10. Currency Validation and Platform Key Assignment
+
+**Currency Validation:**
+
+* Uses `CurrencyTypeLen` formula to check for non-empty currency codes
+* Formula: `LEN(CurrencyType)`
+* Only sets CurrencyIsoCode when length > 0
 
 **Platform Key Processing:**
 
