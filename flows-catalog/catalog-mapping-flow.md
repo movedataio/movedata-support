@@ -222,4 +222,3 @@ The flow includes protection fields to prevent overwriting existing data:
 
 * `movedata__CurrencyCodeComponent`: Apex component for currency code validation
 * `movedata__SetValueComponent`: Apex component for dynamic field assignment
-
