@@ -87,11 +87,6 @@ The flow determines the appropriate currency code using a calculated formula:
 CalculatedCurrencyType = IF(ISBLANK(CurrencyType), Order_CurrencyType, CurrencyType)
 ```
 
-**Logging:** Currency codes are logged for debugging purposes, including:
-* CurrencyType (primary)
-* Order_CurrencyType (fallback)
-* CalculatedCurrencyType (final calculated value)
-
 ### 3. Price Book Entry Lookup
 
 The flow uses an Apex action call (`GetPriceBookEntryFlowComponent`) to search for existing price book entries:
