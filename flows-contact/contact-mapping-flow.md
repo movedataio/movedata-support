@@ -44,6 +44,8 @@ This flow interacts with the Salesforce Contact object and its related fields. B
 | MailingCity                        | Text (40)           | City for mailing address                         |
 | MailingState                       | Text (80)           | State/Province for mailing address              |
 | MailingCountry                     | Text (80)           | Country for mailing address                      |
+| MailingStateCode                   | Picklist            | State/Province code for mailing address         |
+| MailingCountryCode                 | Picklist            | Country code for mailing address                |
 | MailingPostalCode                  | Text (20)           | Postal/ZIP code for mailing address             |
 | OtherStreet                        | Textarea (255)      | Alternative street address                       |
 | OtherCity                          | Text (40)           | Alternative city address                         |
@@ -73,26 +75,30 @@ This flow interacts with the Salesforce Contact object and its related fields. B
 
 ### Address Data
 
-| Variable                      | Type   | Description                   |
-| ----------------------------- | ------ | ----------------------------- |
-| `MailingAddress_Street`       | String | Contact's street address      |
-| `MailingAddress_City`         | String | Contact's city                |
-| `MailingAddress_State`        | String | Contact's state/province      |
-| `MailingAddress_Country`      | String | Contact's country             |
-| `MailingAddress_Postcode`     | String | Contact's postal code         |
-| `MailingAddress_QualityIndex` | Number | Contact address quality score |
+| Variable                        | Type   | Description                   |
+| ------------------------------- | ------ | ----------------------------- |
+| `MailingAddress_Street`         | String | Contact's street address      |
+| `MailingAddress_City`           | String | Contact's city                |
+| `MailingAddress_State`          | String | Contact's state/province      |
+| `MailingAddress_StateCode`      | String | Contact's state/province code |
+| `MailingAddress_Country`        | String | Contact's country             |
+| `MailingAddress_CountryCode`    | String | Contact's country code        |
+| `MailingAddress_Postcode`       | String | Contact's postal code         |
+| `MailingAddress_QualityIndex`   | Number | Contact address quality score |
 
 ### Parent Account Address Data
 
-| Variable                                    | Type            | Description                   |
-| ------------------------------------------- | --------------- | ----------------------------- |
-| `ParentAccount`                             | Account SObject | Associated parent account     |
-| `ParentAccount_MailingAddress_Street`       | String          | Account's street address      |
-| `ParentAccount_MailingAddress_City`         | String          | Account's city                |
-| `ParentAccount_MailingAddress_State`        | String          | Account's state               |
-| `ParentAccount_MailingAddress_Country`      | String          | Account's country             |
-| `ParentAccount_MailingAddress_Postcode`     | String          | Account's postal code         |
-| `ParentAccount_MailingAddress_QualityIndex` | Number          | Account address quality score |
+| Variable                                      | Type            | Description                         |
+| --------------------------------------------- | --------------- | ----------------------------------- |
+| `ParentAccount`                               | Account SObject | Associated parent account           |
+| `ParentAccount_MailingAddress_Street`         | String          | Account's street address            |
+| `ParentAccount_MailingAddress_City`           | String          | Account's city                      |
+| `ParentAccount_MailingAddress_State`          | String          | Account's state                     |
+| `ParentAccount_MailingAddress_StateCode`      | String          | Account's state code                |
+| `ParentAccount_MailingAddress_Country`        | String          | Account's country                   |
+| `ParentAccount_MailingAddress_CountryCode`    | String          | Account's country code              |
+| `ParentAccount_MailingAddress_Postcode`       | String          | Account's postal code               |
+| `ParentAccount_MailingAddress_QualityIndex`   | Number          | Account address quality score       |
 
 ### Control and Classification Variables
 
@@ -120,6 +126,8 @@ This flow interacts with the Salesforce Contact object and its related fields. B
 | `Config_ContactAddressInheritAccount` | Boolean | false   | Enable address inheritance from parent account |
 | `Config_ContactUseMailingAddress`     | Boolean | true    | Use mailing vs. other address fields           |
 | `Config_ContactIgnoreDoNotContact`    | Boolean | false   | Skip Do Not Contact processing                 |
+| `Config_ContactUseStateCode`          | Boolean | -       | Enable state/province code field usage        |
+| `Config_ContactUseCountryCode`        | Boolean | false   | Enable country code field usage               |
 
 #### All Contact Detail Helper Configurations
 
@@ -178,10 +186,12 @@ When `Config_ContactAddressInheritAccount = true`:
 
 1. **Account Address**: When inheritance conditions are met
    * Copies all address fields from parent account
+   * Includes state/province and country codes
    * Inherits account's address quality score
    * Logs: "Inherit Address from Account = true"
 2. **Contact Address**: Default behavior
    * Uses provided contact address fields
+   * Includes state/province and country codes
    * Uses contact's quality score
 
 ### 4. Contact Details Processing
@@ -192,6 +202,7 @@ Calls the Contact Details Helper subflow with:
 * Determined address values (either from contact or account)
 * Protection flags set based on protection level
 * All contact data fields
+* State and country code configurations
 
 ## Processing Flow
 
