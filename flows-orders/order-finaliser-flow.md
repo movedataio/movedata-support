@@ -52,12 +52,10 @@ This flow interacts with the Salesforce Opportunity object and its related field
 
 ### Related Records
 
-| Variable            | Type             | Description                      |
-| ------------------- | ---------------- | -------------------------------- |
-| `PrimaryContact`    | Contact SObject  | Primary contact for the order    |
-| `PrimaryAccount`    | Account SObject  | Associated account for the order |
-| `PrimaryContactAlt` | Account SObject  | Person Account alternative       |
-| `OrderCampaign`     | Campaign SObject | Associated campaign              |
+| Variable         | Type             | Description                      |
+| ---------------- | ---------------- | -------------------------------- |
+| `PrimaryContact` | Contact SObject  | Primary contact for the order    |
+| `PrimaryAccount` | Account SObject  | Associated account for the order |
 
 ### Fee Structure
 
@@ -81,12 +79,12 @@ This flow interacts with the Salesforce Opportunity object and its related field
 
 ### Naming Configuration
 
-| Variable                         | Type    | Default       | Description                             |
-| -------------------------------- | ------- | ------------- | --------------------------------------- |
-| `Config_OrderStageNameDefault`   | String  | "Prospecting" | Default stage name for orders           |
-| `Config_OrderExcludeFeePlatform` | Boolean | false         | Subtract platform fees from order total |
-| `Config_OrderNameContact`        | String  | (ASCII)       | Naming pattern for contact-based orders |
-| `Config_OrderNameAccount`        | String  | (ASCII)       | Naming pattern for account-based orders |
+| Variable                               | Type    | Default       | Description                             |
+| -------------------------------------- | ------- | ------------- | --------------------------------------- |
+| `Config_OrderStageNameDefault`         | String  | "Prospecting" | Default stage name for orders           |
+| `Config_OrderTotalSubtractFeePlatform` | Boolean | false         | Subtract platform fees from order total |
+| `Config_OrderNameContact`              | String  | (ASCII)       | Naming pattern for contact-based orders |
+| `Config_OrderNameAccount`              | String  | (ASCII)       | Naming pattern for account-based orders |
 
 ### Campaign Member Sort Orders
 
@@ -123,8 +121,8 @@ This flow interacts with the Salesforce Opportunity object and its related field
 
 **Customer Type Resolution:**
 
-* **Contact-Based Naming**: When PrimaryContact or PrimaryContactAlt exists
-* **Account-Based Naming**: When neither contact option exists, defaults to account
+* **Contact-Based Naming**: When PrimaryAccount is null
+* **Account-Based Naming**: When PrimaryAccount exists
 
 **Naming Pattern Selection:**
 
@@ -153,7 +151,7 @@ When Amount is not set on the record:
 ```
 DefaultedTotal = IF(ISBLANK(Total), 0, Total)
 DefaultedFeePlatform = IF(ISBLANK(FeePlatform), 0, FeePlatform)
-CalculatedTotal = IF(Config_OrderExcludeFeePlatform==TRUE, DefaultedTotal - DefaultedFeePlatform, DefaultedTotal)
+CalculatedTotal = IF(Config_OrderTotalSubtractFeePlatform==TRUE, DefaultedTotal - DefaultedFeePlatform, DefaultedTotal)
 ```
 
 **Field Cleanup:**
@@ -166,17 +164,10 @@ CalculatedTotal = IF(Config_OrderExcludeFeePlatform==TRUE, DefaultedTotal - Defa
 
 **Pattern Parsing:**
 
-Uses `NamePatternParserComponent` with different approaches:
-
-**Standard Contact/Account Processing:**
+Uses `NamePatternParserComponent` for dynamic name generation:
 
 * Supports Contact and Account reference merging
 * Uses PrimaryContact and PrimaryAccount for standard relationships
-
-**Person Account Processing:**
-
-* Uses PrimaryContactAlt for Person Account scenarios
-* Maps Person Account as both Contact and Account references
 
 **Error Handling:**
 
@@ -234,7 +225,7 @@ Provides zero default for null platform fee values.
 **CalculatedTotal Formula:**
 
 ```
-IF(Config_OrderExcludeFeePlatform==TRUE, DefaultedTotal - DefaultedFeePlatform, DefaultedTotal)
+IF(Config_OrderTotalSubtractFeePlatform==TRUE, DefaultedTotal - DefaultedFeePlatform, DefaultedTotal)
 ```
 
 Conditionally subtracts platform fees from order total based on configuration.
@@ -256,7 +247,6 @@ Conditionally subtracts platform fees from order total based on configuration.
 * Uses fault connectors for name parsing failures
 * Falls back to "Temp Value" when name generation fails
 * Maintains processing continuity despite naming errors
-* Handles both standard and Person Account naming scenarios
 
 ### Amount Field Management
 
