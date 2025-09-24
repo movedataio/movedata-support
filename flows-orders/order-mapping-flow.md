@@ -44,13 +44,13 @@ The flow interacts with multiple Salesforce objects and their fields. Below is a
 |                 | CurrencyIsoCode                           | Picklist             | Order currency                    |
 |                 | npsp\_\_Primary\_Contact\_\_c             | Lookup to Contact    | NPSP primary contact relationship |
 |                 | movedata\_\_Platform\_Key\_\_c            | Text                 | External platform identifier      |
-|                 | md\_npsp\_pack\_\_Fee\_\_c                | Currency             | Aggregate processing fees         |
-|                 | md\_npsp\_pack\_\_Gateway\_Fee\_\_c       | Currency             | Payment processor charges         |
-|                 | md\_npsp\_pack\_\_Platform\_Fee\_\_c      | Currency             | Commerce platform charges         |
-|                 | md\_npsp\_pack\_\_Tax\_\_c                | Currency             | Overall tax amounts               |
-|                 | md\_npsp\_pack\_\_Gateway\_Fee\_Tax\_\_c  | Currency             | Tax on gateway charges            |
-|                 | md\_npsp\_pack\_\_Platform\_Fee\_Tax\_\_c | Currency             | Tax on platform charges           |
-|                 | md\_npsp\_pack\_\_Receipt\_Number\_\_c    | Text (50)            | Order receipt number              |
+|                 | md\_npc\_pack\_\_Fee\_\_c                | Currency             | Aggregate processing fees         |
+|                 | md\_npc\_pack\_\_Gateway\_Fee\_\_c       | Currency             | Payment processor charges         |
+|                 | md\_npc\_pack\_\_Platform\_Fee\_\_c      | Currency             | Commerce platform charges         |
+|                 | md\_npc\_pack\_\_Tax\_\_c                | Currency             | Overall tax amounts               |
+|                 | md\_npc\_pack\_\_Gateway\_Fee\_Tax\_\_c  | Currency             | Tax on gateway charges            |
+|                 | md\_npc\_pack\_\_Platform\_Fee\_Tax\_\_c | Currency             | Tax on platform charges           |
+|                 | md\_npc\_pack\_\_Receipt\_Number\_\_c    | Text (50)            | Order receipt number              |
 | **Contact**     | Id                                        | ID                   | Contact record identifier         |
 |                 | AccountId                                 | Lookup to Account    | Account relationship resolution   |
 | **Account**     | Id                                        | ID                   | Account record identifier         |
@@ -74,12 +74,11 @@ The flow interacts with multiple Salesforce objects and their fields. Below is a
 
 ### Related Records
 
-| Variable            | Type             | Description                      |
-| ------------------- | ---------------- | -------------------------------- |
-| `PrimaryContact`    | Contact SObject  | Primary contact for the order    |
-| `PrimaryAccount`    | Account SObject  | Associated account for the order |
-| `PrimaryContactAlt` | Account SObject  | Person Account alternative       |
-| `OrderCampaign`     | Campaign SObject | Associated campaign              |
+| Variable         | Type            | Description                      |
+| ---------------- | --------------- | -------------------------------- |
+| `PrimaryContact` | Contact SObject | Primary contact for the order    |
+| `PrimaryAccount` | Account SObject | Associated account for the order |
+| `OrderCampaign`  | Campaign SObject| Associated campaign              |
 
 ### Platform Integration
 
@@ -133,13 +132,11 @@ The flow interacts with multiple Salesforce objects and their fields. Below is a
 **Customer Priority Resolution:**
 
 1. **Direct Assignment**: Uses provided PrimaryContact or PrimaryAccount
-2. **Person Account Support**: Handles PrimaryContactAlt for Person Account scenarios
-3. **Account Resolution**: Determines AccountId from contact relationship
-4. **Account Lookup**: Queries contact record if AccountId not directly available
+2. **Account Resolution**: Determines AccountId from contact relationship
+3. **Account Lookup**: Queries contact record if AccountId not directly available
 
 **Account ID Resolution Logic:**
 
-* If PrimaryContactAlt exists (Person Account): Uses PrimaryContactAlt.Id
 * If PrimaryAccount exists: Uses PrimaryAccount.Id
 * If PrimaryContact has AccountId: Uses PrimaryContact.AccountId
 * If neither: Looks up Contact record to get AccountId
@@ -148,8 +145,7 @@ The flow interacts with multiple Salesforce objects and their fields. Below is a
 
 **New Record Processing:**
 
-* Sets order name using `OrderNameCalculated` formula for new records only
-* Formula: `IF(ISBLANK(OrderName), 'Temp Value', OrderName)`
+* Sets order name directly from OrderName for new records only
 * Prevents overwriting names on existing records
 
 **Price Book Assignment:**
@@ -168,7 +164,8 @@ The flow interacts with multiple Salesforce objects and their fields. Below is a
 **Currency Setting:**
 
 * Determines currency using `CurrencyCodeComponent`
-* Sets CurrencyIsoCode using `SetValueComponent`
+* Only sets CurrencyIsoCode if currency has length greater than 0
+* Uses `CurrencyTypeLen` formula to validate currency before setting
 * Ensures consistent currency handling across multi-currency orgs
 
 ### 5. Stage Assignment
@@ -197,12 +194,12 @@ The flow processes comprehensive fee structure using `SetValueComponent`:
 
 **Fee Categories:**
 
-* **General Fee**: `md_npsp_pack__Fee__c`
-* **Platform Fee**: `md_npsp_pack__Platform_Fee__c`
-* **Gateway Fee**: `md_npsp_pack__Gateway_Fee__c`
-* **General Tax**: `md_npsp_pack__Tax__c`
-* **Platform Tax**: `md_npsp_pack__Platform_Fee_Tax__c`
-* **Gateway Tax**: `md_npsp_pack__Gateway_Fee_Tax__c`
+* **General Fee**: `md_npc_pack__Fee__c`
+* **Platform Fee**: `md_npc_pack__Platform_Fee__c`
+* **Gateway Fee**: `md_npc_pack__Gateway_Fee__c`
+* **General Tax**: `md_npc_pack__Tax__c`
+* **Platform Tax**: `md_npc_pack__Platform_Fee_Tax__c`
+* **Gateway Tax**: `md_npc_pack__Gateway_Fee_Tax__c`
 
 **Fee Assignment Logic:**
 
@@ -227,7 +224,7 @@ Each fee type follows conditional assignment:
 
 **Receipt Number:**
 
-* Sets `md_npsp_pack__Receipt_Number__c` when provided
+* Sets `md_npc_pack__Receipt_Number__c` when provided
 * Maintains external receipt tracking
 
 **Record Type Assignment:**
