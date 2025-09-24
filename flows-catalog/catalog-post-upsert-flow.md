@@ -58,7 +58,7 @@ This flow interacts with the Salesforce Product2 and PricebookEntry objects. Bel
 | Variable    | Type                               | Description                                      |
 | ----------- | ---------------------------------- | ------------------------------------------------ |
 | `Errors`    | String[]                           | Collection of error messages if processing fails |
-| `Logs`      | movedata__MoveDataLogEntry[]       | Detailed log entries for debugging               |
+| `Logs`      | md_npc_pack__MoveDataLogEntry[]    | Detailed log entries for debugging               |
 | `LogsJson`  | String                             | JSON representation of log entries               |
 | `RecordList`| String[]                           | Collection of processed record IDs               |
 
@@ -136,9 +136,9 @@ ELSE
 For new price book entries, the flow handles currency codes:
 
 **Currency Determination:**
-* Uses `movedata__CurrencyCodeComponent` to validate currency code
+* Uses `md_npc_pack__CurrencyCodeComponent` to validate currency code
 * Only sets CurrencyIsoCode if valid currency is determined
-* Uses `movedata__SetValueComponent` to dynamically set currency field
+* Uses `md_npc_pack__SetValueComponent` to dynamically set currency field
 
 **Decision Logic:**
 ```
@@ -155,7 +155,7 @@ The flow includes comprehensive logging:
 **Log Operations:**
 * Currency code determination logging
 * Price book entry record logging
-* Uses `movedata__WriteToLogFlowComponent` and `movedata__WriteObjectToLogComponent`
+* Uses `md_npc_pack__WriteToLogFlowComponent` and `md_npc_pack__WriteObjectToLogComponent`
 
 **Record Tracking:**
 * Adds processed price book entry IDs to RecordList
@@ -265,10 +265,10 @@ The flow includes comprehensive logging:
 
 **Apex Components:**
 * `GetPriceBookEntryFlowComponent` - Custom price book entry lookup
-* `movedata__CurrencyCodeComponent` - Currency validation
-* `movedata__SetValueComponent` - Dynamic field assignment
-* `movedata__WriteToLogFlowComponent` - Logging operations
-* `movedata__WriteObjectToLogComponent` - Object logging
+* `md_npc_pack__CurrencyCodeComponent` - Currency validation
+* `md_npc_pack__SetValueComponent` - Dynamic field assignment
+* `md_npc_pack__WriteToLogFlowComponent` - Logging operations
+* `md_npc_pack__WriteObjectToLogComponent` - Object logging
 
 **System Requirements:**
 
