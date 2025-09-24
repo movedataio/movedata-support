@@ -48,13 +48,15 @@ This flow interacts with the Salesforce Account object and its related fields. B
 
 ### Address Data
 
-| Variable                  | Type   | Description              |
-| ------------------------- | ------ | ------------------------ |
-| `MailingAddress_Street`   | String | Account's street address |
-| `MailingAddress_City`     | String | Account's city           |
-| `MailingAddress_State`    | String | Account's state/province |
-| `MailingAddress_Country`  | String | Account's country        |
-| `MailingAddress_Postcode` | String | Account's postal code    |
+| Variable                      | Type   | Description                  |
+| ----------------------------- | ------ | ---------------------------- |
+| `MailingAddress_Street`       | String | Account's street address     |
+| `MailingAddress_City`         | String | Account's city               |
+| `MailingAddress_State`        | String | Account's state/province     |
+| `MailingAddress_StateCode`    | String | Account's state/province code|
+| `MailingAddress_Country`      | String | Account's country            |
+| `MailingAddress_CountryCode`  | String | Account's country code       |
+| `MailingAddress_Postcode`     | String | Account's postal code        |
 
 ### Configuration Variables
 
@@ -67,13 +69,15 @@ This flow interacts with the Salesforce Account object and its related fields. B
 
 #### Field Processing Controls
 
-| Variable                      | Type    | Default | Description             |
-| ----------------------------- | ------- | ------- | ----------------------- |
-| `Config_AccountIgnorePhone`   | Boolean | false   | Skip phone processing   |
-| `Config_AccountIgnoreWebsite` | Boolean | false   | Skip website processing |
-| `Config_AccountIgnoreAddress` | Boolean | false   | Skip address processing |
-| `Config_AccountIgnoreType`    | Boolean | false   | Skip type processing    |
-| `Config_AccountDefaultType`   | String  | "Other" | Default account type    |
+| Variable                        | Type    | Default | Description               |
+| ------------------------------- | ------- | ------- | ------------------------- |
+| `Config_AccountIgnorePhone`     | Boolean | false   | Skip phone processing     |
+| `Config_AccountIgnoreWebsite`   | Boolean | false   | Skip website processing   |
+| `Config_AccountIgnoreAddress`   | Boolean | false   | Skip address processing   |
+| `Config_AccountIgnoreType`      | Boolean | false   | Skip type processing      |
+| `Config_AccountDefaultType`     | String  | "Other" | Default account type      |
+| `Config_AccountUseCountryCode`  | Boolean | false   | Use country code for address |
+| `Config_AccountUseStateCode`    | Boolean | false   | Use state code for address   |
 
 ## Output Variables
 
@@ -119,10 +123,12 @@ Calls the Account Details Helper subflow with:
 * `Config_AccountIgnoreWebsite`: Controls website field processing
 * `Config_AccountIgnoreAddress`: Controls address field processing
 * `Config_AccountIgnoreType`: Controls type field processing
+* `Config_AccountUseCountryCode`: Controls use of country code for address processing
+* `Config_AccountUseStateCode`: Controls use of state code for address processing
 
 **Data Variables:**
 
-* All address components (street, city, state, country, postcode)
+* All address components (street, city, state, state code, country, country code, postcode)
 * Phone and website information
 * Account type defaulting to `Config_AccountDefaultType`
 
