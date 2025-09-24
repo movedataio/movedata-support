@@ -20,9 +20,10 @@ The flow performs post-upsert operations that:
 
 * Validate the presence of an active Standard Price Book
 * Create or update price book entries for catalog products
-* Manage pricing information for commerce transactions
+* Manage pricing information for commerce transactions with multi-currency support
 * Ensure products are properly configured for sales operations
 * Handle price synchronization between external platforms and Salesforce
+* Log operations for debugging and audit purposes
 
 ## Salesforce Fields
 
@@ -38,9 +39,7 @@ This flow interacts with the Salesforce Product2 and PricebookEntry objects. Bel
 | Product2Id         | Lookup to Product2   | Links to product record                 |
 | UnitPrice          | Currency             | Product unit price                      |
 | IsActive           | Checkbox             | Indicates if price book entry is active |
-| UseStandardPrice   | Checkbox             | Uses standard pricing                   |
-| ProductCode        | Text                 | Product code (inherited from Product2)  |
-| Name               | Text                 | Product name (inherited from Product2)  |
+| CurrencyIsoCode    | Text                 | Currency code for price book entry      |
 
 ## Input Variables
 
@@ -51,12 +50,17 @@ This flow interacts with the Salesforce Product2 and PricebookEntry objects. Bel
 | `Record`              | Product2 SObject | Yes      | The Product2 record that was processed |
 | `Price`               | Currency         | Yes      | Product price from external platform   |
 | `StandardPriceBookId` | String           | Yes      | ID of the Standard Price Book          |
+| `CurrencyType`        | String           | No       | Primary currency code for the product   |
+| `Order_CurrencyType`  | String           | No       | Fallback currency code from order      |
 
 ## Output Variables
 
-| Variable | Type      | Description                                      |
-| -------- | --------- | ------------------------------------------------ |
-| `Errors` | String\[] | Collection of error messages if processing fails |
+| Variable    | Type                               | Description                                      |
+| ----------- | ---------------------------------- | ------------------------------------------------ |
+| `Errors`    | String[]                           | Collection of error messages if processing fails |
+| `Logs`      | movedata__MoveDataLogEntry[]       | Detailed log entries for debugging               |
+| `LogsJson`  | String                             | JSON representation of log entries               |
+| `RecordList`| String[]                           | Collection of processed record IDs               |
 
 ## Flow Logic
 
@@ -74,20 +78,27 @@ IF StandardPriceBookId IS NULL THEN
 
 **Purpose:** Ensures that products can be properly priced and sold through Salesforce sales processes.
 
-### 2. Price Book Entry Lookup
+### 2. Currency Code Processing
 
-The flow searches for existing price book entries for the product:
+The flow determines the appropriate currency code using a calculated formula:
 
-**Query Parameters:**
+**Currency Logic:**
+```
+CalculatedCurrencyType = IF(ISBLANK(CurrencyType), Order_CurrencyType, CurrencyType)
+```
 
-* **Pricebook2Id**: Matches the Standard Price Book ID
-* **Product2Id**: Matches the current product record ID
+### 3. Price Book Entry Lookup
 
-**Query Fields Retrieved:**
+The flow uses an Apex action call (`GetPriceBookEntryFlowComponent`) to search for existing price book entries:
 
-* Id, IsActive, UnitPrice, UseStandardPrice, ProductCode, Name
+**Input Parameters:**
+* **CurrencyCode**: CalculatedCurrencyType
+* **Pricebook2Id**: Standard Price Book ID
+* **Product2Id**: Current product record ID
 
-### 3. Price Book Entry Processing Decision
+**Output:** Returns complete PricebookEntry record if found
+
+### 4. Price Book Entry Processing Decision
 
 The flow determines the appropriate action based on existing price book entry status:
 
@@ -117,34 +128,49 @@ ELSE
    * `Product2Id = Record.Id`
    * `Pricebook2Id = StandardPriceBookId`
    * `UnitPrice = Price`
-3. **Create Record**: Insert new PricebookEntry
+3. **Currency Processing**: Determine and set currency code if available
+4. **Create Record**: Insert new PricebookEntry
 
-### 4. Price Synchronization Logic
+### 5. Currency Code Management
 
-**Update Operation (Existing Entry):**
+For new price book entries, the flow handles currency codes:
 
-* Only updates when price differs from current UnitPrice
-* Preserves other price book entry settings
-* Maintains existing IsActive and UseStandardPrice values
+**Currency Determination:**
+* Uses `movedata__CurrencyCodeComponent` to validate currency code
+* Only sets CurrencyIsoCode if valid currency is determined
+* Uses `movedata__SetValueComponent` to dynamically set currency field
 
-**Create Operation (New Entry):**
+**Decision Logic:**
+```
+IF CurrencyTypeLen > 0 THEN
+  Set CurrencyIsoCode field
+ELSE
+  Skip currency assignment
+```
 
-* Sets IsActive to true by default
-* Links to Standard Price Book
-* Associates with current product
-* Sets price from external platform
+### 6. Logging and Tracking
 
-### 5. Error Handling and Validation
+The flow includes comprehensive logging:
+
+**Log Operations:**
+* Currency code determination logging
+* Price book entry record logging
+* Uses `movedata__WriteToLogFlowComponent` and `movedata__WriteObjectToLogComponent`
+
+**Record Tracking:**
+* Adds processed price book entry IDs to RecordList
+* Enables downstream processing to track created/updated records
+
+### 7. Error Handling and Validation
 
 **Standard Price Book Validation:**
-
 * Critical validation that prevents processing without proper price book setup
 * Returns descriptive error message for troubleshooting
 
 **Price Book Entry Operations:**
-
-* Uses `assignNullValuesIfNoRecordsFound=true` for graceful handling of missing entries
+* Uses Apex components for robust price book entry handling
 * Separates create and update operations to handle different scenarios appropriately
+* Handles currency validation and assignment gracefully
 
 ## Configuration Requirements
 
@@ -161,6 +187,17 @@ ELSE
 * Missing Standard Price Book will cause flow to terminate with error
 * Inactive price books cannot be used for new entries
 * Price book access permissions may affect processing
+
+### Currency Configuration
+
+**Multi-Currency Support:**
+* Flow handles currency codes dynamically
+* Supports fallback currency logic (Order_CurrencyType)
+* Validates currency codes before assignment
+
+**Currency Requirements:**
+* Valid currency codes must be configured in Salesforce
+* CurrencyIsoCode field availability depends on multi-currency enablement
 
 ### Price Management Strategy
 
@@ -190,6 +227,18 @@ ELSE
 * Ensure Standard Price Book is marked as Standard and Active
 * Check that StandardPriceBookId parameter is correctly provided
 
+### Currency Code Issues
+
+**Potential Causes:**
+* Invalid currency codes provided
+* Multi-currency not enabled when currency codes provided
+* Currency code validation failures
+
+**Troubleshooting:**
+* Review currency code logging output
+* Verify multi-currency settings in Salesforce
+* Check that provided currency codes are active
+
 ### Price Book Entry Creation Failures
 
 **Potential Causes:**
@@ -204,6 +253,7 @@ ELSE
 * Verify product IsActive status
 * Check user permissions for price book management
 * Validate price value format and currency settings
+* Review detailed logs output for specific error information
 
 ## Dependencies
 
@@ -213,8 +263,16 @@ ELSE
 * Pricebook2 (Standard Price Book)
 * PricebookEntry (managed by flow)
 
+**Apex Components:**
+* `GetPriceBookEntryFlowComponent` - Custom price book entry lookup
+* `movedata__CurrencyCodeComponent` - Currency validation
+* `movedata__SetValueComponent` - Dynamic field assignment
+* `movedata__WriteToLogFlowComponent` - Logging operations
+* `movedata__WriteObjectToLogComponent` - Object logging
+
 **System Requirements:**
 
 * Active Standard Price Book in organization
 * Appropriate permissions for price book entry management
 * Valid currency settings for price operations
+* MoveData package components for logging and currency handling
