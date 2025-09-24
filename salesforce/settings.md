@@ -146,6 +146,16 @@ The Non-Profit Cloud Extension provides comprehensive configuration options to c
   * **Default**: false
   * **Options**: Don't set Person Account's Record Type | Set Person Account Record Type
   * **Help**: Instructs the extension to not set the Person Account's Record Type.
+* **Use State Code for Address State** (`Config_ContactUseStateCode`)
+  * **Type**: Boolean
+  * **Default**: false
+  * **Options**: Use State Code | Use State Name
+  * **Help**: Instructs the extension to use the State Code for the Address State field.
+* **Use Country Code for Address Country** (`Config_ContactUseCountryCode`)
+  * **Type**: Boolean
+  * **Default**: false
+  * **Options**: Use Country Code | Use Country Name
+  * **Help**: Instructs the extension to use the Country Code for the Address Country field.
 * **Default Person Account Record Type** (`Config_ContactPersonAccountRT`)
   * **Type**: String
   * **Default**: "PersonAccount"
@@ -441,4 +451,3 @@ The Non-Profit Cloud Extension provides comprehensive configuration options to c
   * **Type**: Boolean
   * **Default**: false
   * **Options**: Exclude Platform Fee | Include Platform Fee
-
