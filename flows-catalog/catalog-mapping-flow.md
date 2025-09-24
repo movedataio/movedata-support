@@ -23,6 +23,7 @@ The flow processes incoming catalog data and maps it to appropriate Salesforce P
 * SKU (Stock Keeping Unit) mapping with flexible source options
 * Product description handling
 * Status mapping for active/inactive products
+* Currency code determination and assignment
 * Platform key assignment for external system tracking
 * Configurable field replacement policies
 
@@ -30,29 +31,31 @@ The flow processes incoming catalog data and maps it to appropriate Salesforce P
 
 This flow interacts with the Salesforce Product2 object and its related fields. Below is a comprehensive mapping of all fields utilized:
 
-| Field API Name     | Field Type     | Purpose in Flow                            |
-| ------------------ | -------------- | ------------------------------------------ |
-| Id                 | ID             | Unique record identifier                   |
-| Name               | Text (255)     | Product name identifier                    |
-| ProductCode        | Text (255)     | Product code/identifier                    |
-| StockKeepingUnit   | Text (255)     | SKU for inventory tracking                 |
-| Description        | Long Text Area | Detailed product description               |
-| IsActive           | Checkbox       | Indicates if product is currently active   |
-| Platform\_Key\_\_c | Text           | Stores unique external platform identifier |
-| Protect\_Name\_\_c | Checkbox       | Prevents automatic updates to product name |
+| Field API Name                    | Field Type     | Purpose in Flow                            |
+| --------------------------------- | -------------- | ------------------------------------------ |
+| Id                                | ID             | Unique record identifier                   |
+| Name                              | Text (255)     | Product name identifier                    |
+| ProductCode                       | Text (255)     | Product code/identifier                    |
+| StockKeepingUnit                  | Text (255)     | SKU for inventory tracking                 |
+| Description                       | Long Text Area | Detailed product description               |
+| IsActive                          | Checkbox       | Indicates if product is currently active   |
+| CurrencyIsoCode                   | Text           | ISO currency code for multi-currency orgs |
+| md_npc_pack__Platform_Key__c      | Text           | Stores unique external platform identifier |
+| md_npc_pack__Protect_Name__c      | Checkbox       | Prevents automatic updates to product name |
 
 ## Input Variables
 
 ### Core Product Data
 
-| Variable      | Type             | Required | Description                                |
-| ------------- | ---------------- | -------- | ------------------------------------------ |
-| `Record`      | Product2 SObject | Yes      | The Product2 record being processed        |
-| `ProductName` | String           | No       | Product name from external platform        |
-| `Code`        | String           | No       | Product code/identifier                    |
-| `Description` | String           | No       | Product description                        |
-| `Status`      | String           | No       | External platform status (active/inactive) |
-| `PlatformKey` | String           | No       | Unique platform key                        |
+| Variable       | Type             | Required | Description                                |
+| -------------- | ---------------- | -------- | ------------------------------------------ |
+| `Record`       | Product2 SObject | Yes      | The Product2 record being processed        |
+| `ProductName`  | String           | No       | Product name from external platform        |
+| `Code`         | String           | No       | Product code/identifier                    |
+| `Description`  | String           | No       | Product description                        |
+| `Status`       | String           | No       | External platform status (active/inactive) |
+| `CurrencyType` | String           | No       | Currency code from external platform       |
+| `PlatformKey`  | String           | No       | Unique platform key                        |
 
 ### Configuration Variables
 
@@ -78,7 +81,7 @@ This flow interacts with the Salesforce Product2 object and its related fields. 
 
 The flow first determines if the product name should be updated:
 
-* **Protection Check**: If `Protect_Name__c` is true, skips name processing
+* **Protection Check**: If `md_npc_pack__Protect_Name__c` is true, skips name processing
 * **Name Assignment**: Sets `Name` field from `ProductName` input if provided and not protected
 
 ### 2. Product Code Mapping
@@ -150,9 +153,17 @@ External platform statuses are mapped to Salesforce IsActive field:
 
 **Default Behavior**: Any status other than "active" sets IsActive to false
 
-### 6. Platform Key Assignment
+### 6. Currency Processing
 
-* Sets `Platform_Key__c` field with the provided platform key
+The flow handles currency code assignment through action calls:
+
+* **Determine Currency**: Calls `movedata__CurrencyCodeComponent` to validate and process currency code
+* **Currency Assignment**: Uses `movedata__SetValueComponent` to set CurrencyIsoCode if valid currency provided
+* **Length Check**: Uses `CurrencyTypeLen` formula to verify currency code exists before assignment
+
+### 7. Platform Key Assignment
+
+* Sets `md_npc_pack__Platform_Key__c` field with the provided platform key
 * Always executed regardless of configuration settings
 * Used for external system tracking and duplicate detection
 
@@ -197,7 +208,7 @@ IF (
 
 The flow includes protection fields to prevent overwriting existing data:
 
-* `Protect_Name__c`: Prevents name updates when enabled
+* `md_npc_pack__Protect_Name__c`: Prevents name updates when enabled
 * Configuration-based protection for other fields through replace flags
 
 ## Error Handling
@@ -205,7 +216,10 @@ The flow includes protection fields to prevent overwriting existing data:
 * Uses conditional logic to handle null values gracefully
 * Skips field assignment when conditions are not met
 * Validates configuration settings before processing each field
+* Currency code validation through dedicated components
 
 ## Dependencies
 
-None
+* `movedata__CurrencyCodeComponent`: Apex component for currency code validation
+* `movedata__SetValueComponent`: Apex component for dynamic field assignment
+
