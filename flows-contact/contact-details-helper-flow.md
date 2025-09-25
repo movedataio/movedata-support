@@ -30,7 +30,7 @@ The flow provides complete contact data processing that:
 This flow interacts with the Salesforce Contact object and its related fields. Below is a mapping of all fields utilized:
 
 | Field API Name                  | Field Type                       | Purpose in Flow                                  |
-|--------------------------------|----------------------------------|--------------------------------------------------|
+|--------------------------------|----------------------------------|-------------------------------------------------|
 | Id                             | ID                               | Unique record identifier                         |
 | FirstName                      | Text (40)                        | Contact's first name                             |
 | LastName                       | Text (80)                        | Contact's last name (required field)            |
@@ -76,7 +76,9 @@ This flow interacts with the Salesforce Contact object and its related fields. B
 | `MailingAddress_Street`       | String  | Street address                                       |
 | `MailingAddress_City`         | String  | City                                                 |
 | `MailingAddress_State`        | String  | State/Province                                       |
+| `MailingAddress_StateCode`    | String  | State/Province code                                  |
 | `MailingAddress_Country`      | String  | Country                                              |
+| `MailingAddress_CountryCode`  | String  | Country code                                         |
 | `MailingAddress_Postcode`     | String  | Postal/ZIP code                                      |
 | `MailingAddress_QualityIndex` | Number  | Data quality score (0-100)                           |
 | `Use_Mailing_Address`         | Boolean | Use mailing vs. other address fields (Default: true) |
@@ -113,6 +115,8 @@ This flow interacts with the Salesforce Contact object and its related fields. B
 | `Config_ContactAddressQualityIndex`       | Number  | -       | Minimum quality threshold (0-100)  |
 | `Config_ContactAddressQualityWriteNew`    | Boolean | false   | Write when no existing address     |
 | `Config_ContactPostcodeTransform`         | Boolean | false   | Enable postcode formatting         |
+| `Config_ContactUseCountryCode`            | Boolean | false   | Use country code instead of name   |
+| `Config_ContactUseStateCode`              | Boolean | false   | Use state code instead of name     |
 
 #### Case Transformation
 
@@ -161,7 +165,15 @@ Email handling with type-specific routing:
 * **Default**: Uses standard Email field
 * **NPSP Integration**: Populates `npe01__WorkEmail__c` and `npe01__HomeEmail__c`
 
-### 4. Address Quality Assessment
+### 4. Country and State Code Processing
+
+The flow includes configurable country and state code handling:
+
+* **Country Code Option**: When `Config_ContactUseCountryCode` is enabled and `MailingAddress_CountryCode` is provided, uses the country code instead of the country name
+* **State Code Option**: When `Config_ContactUseStateCode` is enabled and `MailingAddress_StateCode` is provided, uses the state code instead of the state name
+* **Fallback Logic**: When codes are not available or configuration is disabled, uses the full country/state names
+
+### 5. Address Quality Assessment
 
 Sophisticated address quality system:
 
@@ -170,7 +182,7 @@ Sophisticated address quality system:
 * **Force Overwrite Logic**: Configurable forced overwriting of existing addresses
 * **Quality-Based Decisions**: Skips updates for low-quality data
 
-### 5. Address Field Processing
+### 6. Address Field Processing
 
 Dual address support with smart field routing:
 
