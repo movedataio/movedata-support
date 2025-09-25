@@ -89,7 +89,7 @@
 | Field Name                                 | Type           | Purpose                                                      | Source Flows         |
 | ------------------------------------------ | -------------- | ------------------------------------------------------------ | -------------------- |
 | Protect Name (`movedata__Protect_Name__c`) | Checkbox field | Prevents automatic updates to contact names when set to true | [Contact Mapping Flow](../flows-contact/contact-mapping-flow.md) |
-| Platform Key (`md_npsp_pack__Platform_Key__c`) | Text field | Stores unique identifiers from external donation platforms | [Contact Mapping Flow](../flows-contact/contact-mapping-flow.md) |
+| Platform Key (`movedata__Platform_Key__c`) | Text field | Stores unique identifiers from external donation platforms | [Contact Mapping Flow](../flows-contact/contact-mapping-flow.md) |
 
 ## Platform Key Objects
 
