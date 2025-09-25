@@ -55,13 +55,15 @@ This flow interacts with the Salesforce Account object and its related fields. B
 
 ### Address Data
 
-| Variable                  | Type   | Description     |
-| ------------------------- | ------ | --------------- |
-| `MailingAddress_Street`   | String | Street address  |
-| `MailingAddress_City`     | String | City            |
-| `MailingAddress_State`    | String | State/Province  |
-| `MailingAddress_Country`  | String | Country         |
-| `MailingAddress_Postcode` | String | Postal/ZIP code |
+| Variable                      | Type   | Description     |
+| ----------------------------- | ------ | --------------- |
+| `MailingAddress_Street`       | String | Street address  |
+| `MailingAddress_City`         | String | City            |
+| `MailingAddress_State`        | String | State/Province  |
+| `MailingAddress_StateCode`    | String | State/Province code |
+| `MailingAddress_Country`      | String | Country         |
+| `MailingAddress_CountryCode`  | String | Country code    |
+| `MailingAddress_Postcode`     | String | Postal/ZIP code |
 
 ### Configuration Variables
 
@@ -70,6 +72,8 @@ This flow interacts with the Salesforce Account object and its related fields. B
 | `Config_AccountIgnorePhone`   | Boolean | false   | Skip phone processing                   |
 | `Config_AccountIgnoreWebsite` | Boolean | false   | Skip website processing                 |
 | `Config_AccountIgnoreAddress` | Boolean | false   | Skip all address processing             |
+| `Config_AccountUseCountryCode` | Boolean | false   | Use country code instead of country name |
+| `Config_AccountUseStateCode`   | Boolean | false   | Use state code instead of state name    |
 | `IgnoreType`                  | Boolean | false   | Skip type processing                    |
 | `Use_Billing_Address`         | Boolean | true    | Use billing vs. shipping address fields |
 
@@ -106,7 +110,14 @@ Manages account type classification:
 * **Conditional Logic**: Uses complex condition to check if Record.Type needs updating
 * **Field Assignment**: Sets `Record.Type` with provided type value
 
-### 4. Address Field Processing
+### 4. Country and State Code Processing
+
+Handles the transformation between full names and codes for countries and states:
+
+* **Country Code Evaluation**: If `Config_AccountUseCountryCode = true` and country code is provided, replaces country name with country code
+* **State Code Evaluation**: If `Config_AccountUseStateCode = true` and state code is provided, replaces state name with state code
+
+### 5. Address Field Processing
 
 Comprehensive address handling with dual field support:
 
@@ -122,7 +133,9 @@ The flow routes address data to either billing or shipping fields based on `Use_
 1. **Phone Processing**: Set phone number if present and not ignored
 2. **Website Processing**: Set website URL if present and not ignored
 3. **Type Processing**: Set account type if present, not ignored, and record type is empty
-4. **Address Processing**: Route to billing/shipping fields
+4. **Country Code Processing**: Replace country name with country code if configured
+5. **State Code Processing**: Replace state name with state code if configured
+6. **Address Processing**: Route to billing/shipping fields
 
 ## Configuration Options
 
@@ -131,6 +144,8 @@ The flow routes address data to either billing or shipping fields based on `Use_
 * **Phone Control**: `Config_AccountIgnorePhone` disables phone processing
 * **Website Control**: `Config_AccountIgnoreWebsite` disables website processing
 * **Address Control**: `Config_AccountIgnoreAddress` disables all address processing
+* **Country Code Control**: `Config_AccountUseCountryCode` uses country codes instead of full country names
+* **State Code Control**: `Config_AccountUseStateCode` uses state codes instead of full state names
 
 ## Error Handling
 
