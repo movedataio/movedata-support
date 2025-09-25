@@ -42,6 +42,16 @@ The NPSP Fundraising & Donations Extension provides comprehensive configuration 
   * **Default**: false
   * **Options**: Skip Type | Set Type
   * **Help**: Set this to true if you don't want MoveData to set the Type field when processing Accounts.
+* **Use State Code for Address State** (`Config_AccountUseStateCode`)
+  * **Type**: Boolean
+  * **Default**: false
+  * **Options**: Use State Code | Use State Name
+  * **Help**: Instructs the extension to use the State Code for the Address State field when available.
+* **Use Country Code for Address Country** (`Config_AccountUseCountryCode`)
+  * **Type**: Boolean
+  * **Default**: false
+  * **Options**: Use Country Code | Use Country Name
+  * **Help**: Instructs the extension to use the Country Code for the Address Country field when available.
 * **Default Type Value** (`Config_AccountDefaultType`)
   * **Type**: String
   * **Default**: "Other"
@@ -100,6 +110,16 @@ The NPSP Fundraising & Donations Extension provides comprehensive configuration 
   * **Default**: false
   * **Options**: Skip Email | Set Email
   * **Help**: Set this to true if you don't want MoveData to set the Email field when processing Contacts. Only set when `email` is not null.
+* **Use State Code for Address State** (`Config_ContactUseStateCode`)
+  * **Type**: Boolean
+  * **Default**: false
+  * **Options**: Use State Code | Use State Name
+  * **Help**: Instructs the extension to use the State Code for the Address State field when available.
+* **Use Country Code for Address Country** (`Config_ContactUseCountryCode`)
+  * **Type**: Boolean
+  * **Default**: false
+  * **Options**: Use Country Code | Use Country Name
+  * **Help**: Instructs the extension to use the Country Code for the Address Country field when available.
 * **Record Protection** (`Config_ContactProtectLevel`)
   * **Type**: Select
   * **Default**: 1
