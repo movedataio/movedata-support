@@ -44,14 +44,14 @@
 
 | Field Name  | Type                            | Purpose                                          | Source Flows                                                                |
 | ----------- | ------------------------------- | ------------------------------------------------ | --------------------------------------------------------------------------- |
-| Id          | ID field                        | Unique record identifier                         | [Donation Mapping Flow](../flows-donations/donation-mapping-flow.md), [Donation Post-Upsert Flow](../flows-donations/donation-post-upsert-flow.md)                            |
-| FirstName   | Text field (40 characters max)  | Contact's first name                             | [Contact Details Helper Flow](../flows-contact/contact-details-helper-flow.md), [Donation Mapping Flow](../flows-donations/donation-mapping-flow.md)                          |
-| LastName    | Text field (80 characters max)  | Contact's last name (required field)             | [Contact Details Helper Flow](../flows-contact/contact-details-helper-flow.md), [Donation Mapping Flow](../flows-donations/donation-mapping-flow.md)                          |
+| Id          | ID field                        | Unique record identifier                         | [Donation Mapping Flow](../flows-donations/donation-mapping-flow.md), [Donation Post-Upsert Flow](../flows-donations/donation-post-upsert-flow.md), [Donation Contact Mapping Flow](../flows-donations/donation-contact-mapping-flow.md)                            |
+| FirstName   | Text field (40 characters max)  | Contact's first name                             | [Contact Details Helper Flow](../flows-contact/contact-details-helper-flow.md), [Donation Mapping Flow](../flows-donations/donation-mapping-flow.md), [Donation Contact Mapping Flow](../flows-donations/donation-contact-mapping-flow.md)                          |
+| LastName    | Text field (80 characters max)  | Contact's last name (required field)             | [Contact Details Helper Flow](../flows-contact/contact-details-helper-flow.md), [Donation Mapping Flow](../flows-donations/donation-mapping-flow.md), [Donation Contact Mapping Flow](../flows-donations/donation-contact-mapping-flow.md)                          |
 | Name        | Formula field                   | Full name combining FirstName and LastName       | [Donation Mapping Flow](../flows-donations/donation-mapping-flow.md)                                                       |
-| Salutation  | Picklist field                  | Contact's title/salutation (Mr., Ms., Dr., etc.) | [Contact Details Helper Flow](../flows-contact/contact-details-helper-flow.md)                                                 |
-| Birthdate   | Date field                      | Contact's birth date                             | [Contact Details Helper Flow](../flows-contact/contact-details-helper-flow.md)                                                 |
-| Email       | Email field (80 characters max) | Primary email address                            | [Contact Details Helper Flow](../flows-contact/contact-details-helper-flow.md)                                                 |
-| Phone       | Phone field (40 characters max) | Primary phone number                             | [Contact Details Helper Flow](../flows-contact/contact-details-helper-flow.md)                                                 |
+| Salutation  | Picklist field                  | Contact's title/salutation (Mr., Ms., Dr., etc.) | [Contact Details Helper Flow](../flows-contact/contact-details-helper-flow.md), [Donation Contact Mapping Flow](../flows-donations/donation-contact-mapping-flow.md)                                                 |
+| Birthdate   | Date field                      | Contact's birth date                             | [Contact Details Helper Flow](../flows-contact/contact-details-helper-flow.md), [Donation Contact Mapping Flow](../flows-donations/donation-contact-mapping-flow.md)                                                 |
+| Email       | Email field (80 characters max) | Primary email address                            | [Contact Details Helper Flow](../flows-contact/contact-details-helper-flow.md), [Donation Contact Mapping Flow](../flows-donations/donation-contact-mapping-flow.md)                                                 |
+| Phone       | Phone field (40 characters max) | Primary phone number                             | [Contact Details Helper Flow](../flows-contact/contact-details-helper-flow.md), [Donation Contact Mapping Flow](../flows-donations/donation-contact-mapping-flow.md)                                                 |
 | HomePhone   | Phone field (40 characters max) | Home phone number                                | [Contact Details Helper Flow](../flows-contact/contact-details-helper-flow.md)                                                 |
 | MobilePhone | Phone field (40 characters max) | Mobile phone number                              | [Contact Details Helper Flow](../flows-contact/contact-details-helper-flow.md)                                                 |
 | AccountId   | Lookup to Account               | Links contact to associated account              | [Get Account ID Helper Flow](../flows-account/get-account-id-helper-flow.md), [Contact Post-Upsert Flow](../flows-contact/contact-post-upsert-flow.md), [Donation Mapping Flow](../flows-donations/donation-mapping-flow.md) |
@@ -60,11 +60,18 @@
 
 | Field Name        | Type                                | Purpose                             | Source Flows                |
 | ----------------- | ----------------------------------- | ----------------------------------- | --------------------------- |
-| MailingStreet     | Textarea field (255 characters max) | Street address for mailing          | [Contact Details Helper Flow](../flows-contact/contact-details-helper-flow.md) |
-| MailingCity       | Text field (40 characters max)      | City for mailing address            | [Contact Details Helper Flow](../flows-contact/contact-details-helper-flow.md) |
-| MailingState      | Text field (80 characters max)      | State/Province for mailing address  | [Contact Details Helper Flow](../flows-contact/contact-details-helper-flow.md) |
-| MailingCountry    | Text field (80 characters max)      | Country for mailing address         | [Contact Details Helper Flow](../flows-contact/contact-details-helper-flow.md) |
-| MailingPostalCode | Text field (20 characters max)      | Postal/ZIP code for mailing address | [Contact Details Helper Flow](../flows-contact/contact-details-helper-flow.md) |
+| MailingStreet     | Textarea field (255 characters max) | Street address for mailing          | [Contact Details Helper Flow](../flows-contact/contact-details-helper-flow.md), [Donation Contact Mapping Flow](../flows-donations/donation-contact-mapping-flow.md) |
+| MailingCity       | Text field (40 characters max)      | City for mailing address            | [Contact Details Helper Flow](../flows-contact/contact-details-helper-flow.md), [Donation Contact Mapping Flow](../flows-donations/donation-contact-mapping-flow.md) |
+| MailingState      | Text field (80 characters max)      | State/Province for mailing address  | [Contact Details Helper Flow](../flows-contact/contact-details-helper-flow.md), [Donation Contact Mapping Flow](../flows-donations/donation-contact-mapping-flow.md) |
+| MailingCountry    | Text field (80 characters max)      | Country for mailing address         | [Contact Details Helper Flow](../flows-contact/contact-details-helper-flow.md), [Donation Contact Mapping Flow](../flows-donations/donation-contact-mapping-flow.md) |
+| MailingPostalCode | Text field (20 characters max)      | Postal/ZIP code for mailing address | [Contact Details Helper Flow](../flows-contact/contact-details-helper-flow.md), [Donation Contact Mapping Flow](../flows-donations/donation-contact-mapping-flow.md) |
+
+### Address Quality Fields
+
+| Field Name              | Type       | Purpose                                      | Source Flows                |
+| ----------------------- | ---------- | -------------------------------------------- | --------------------------- |
+| MailingCountryCode      | Text field | ISO country code for mailing address        | [Donation Contact Mapping Flow](../flows-donations/donation-contact-mapping-flow.md) |
+| MailingStateCode        | Text field | ISO state/province code for mailing address | [Donation Contact Mapping Flow](../flows-donations/donation-contact-mapping-flow.md) |
 
 ### Other Address Fields
 
@@ -80,7 +87,7 @@
 
 | Field Name                                 | Type                            | Purpose                                    | Source Flows                |
 | ------------------------------------------ | ------------------------------- | ------------------------------------------ | --------------------------- |
-| Do Not Contact (`npsp__Do_Not_Contact__c`) | Checkbox field                  | Flags contacts who should not be contacted | [Contact Mapping Flow](../flows-contact/contact-mapping-flow.md)        |
+| Do Not Contact (`npsp__Do_Not_Contact__c`) | Checkbox field                  | Flags contacts who should not be contacted | [Contact Mapping Flow](../flows-contact/contact-mapping-flow.md), [Donation Contact Mapping Flow](../flows-donations/donation-contact-mapping-flow.md)        |
 | Home Email (`npe01__HomeEmail__c`)         | Email field (80 characters max) | Home email address (NPSP field)            | [Contact Details Helper Flow](../flows-contact/contact-details-helper-flow.md) |
 | Work Email (`npe01__WorkEmail__c`)         | Email field (80 characters max) | Work email address (NPSP field)            | [Contact Details Helper Flow](../flows-contact/contact-details-helper-flow.md) |
 
@@ -88,7 +95,13 @@
 
 | Field Name                                 | Type           | Purpose                                                      | Source Flows         |
 | ------------------------------------------ | -------------- | ------------------------------------------------------------ | -------------------- |
-| Protect Name (`movedata__Protect_Name__c`) | Checkbox field | Prevents automatic updates to contact names when set to true | [Contact Mapping Flow](../flows-contact/contact-mapping-flow.md) |
+| Protect Name (`movedata__Protect_Name__c`) | Checkbox field | Prevents automatic updates to contact names when set to true | [Contact Mapping Flow](../flows-contact/contact-mapping-flow.md), [Donation Contact Mapping Flow](../flows-donations/donation-contact-mapping-flow.md) |
+
+### Extension Custom Fields
+
+| Field Name                                      | Type       | Purpose                                                    | Source Flows                |
+| ----------------------------------------------- | ---------- | ---------------------------------------------------------- | --------------------------- |
+| Platform Key (`md_npsp_pack__Platform_Key__c`)  | Text field | Stores unique identifiers from external donation platforms | [Donation Contact Mapping Flow](../flows-donations/donation-contact-mapping-flow.md) |
 
 ## Platform Key Objects
 
@@ -183,7 +196,7 @@
 
 | Field Name                                      | Type                        | Purpose                                                    | Source Flows                                                                                           |
 | ----------------------------------------------- | --------------------------- | ---------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
-| Platform Key (`md_npsp__pack__Platform_Key__c`) | Text field (100 characters) | Stores unique identifiers from external donation platforms | [Recurring Record Match Flow](../flows-recurring-donations/recurring-record-match-flow.md), [Recurring Mapping Flow](../flows-recurring-donations/recurring-mapping-flow.md), [Donation Record Match Flow](../flows-donations/donation-record-match-flow.md), [Donation Mapping Flow](../flows-donations/donation-mapping-flow.md) |
+| Platform Key (`md_npsp_pack__Platform_Key__c`) | Text field (100 characters) | Stores unique identifiers from external donation platforms | [Recurring Record Match Flow](../flows-recurring-donations/recurring-record-match-flow.md), [Recurring Mapping Flow](../flows-recurring-donations/recurring-mapping-flow.md), [Donation Record Match Flow](../flows-donations/donation-record-match-flow.md), [Donation Mapping Flow](../flows-donations/donation-mapping-flow.md) |
 
 ## NPSP Settings Object
 
