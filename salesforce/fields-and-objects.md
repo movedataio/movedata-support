@@ -94,18 +94,18 @@
 
 ### Account Platform Key (`movedata__Account_Platform_Key__c`)
 
-| Field Name                                 | Type       | Purpose                             | Source Flows              |
-| ------------------------------------------ | ---------- | ----------------------------------- | ------------------------- |
-| Platform Key (`movedata__Platform_Key__c`) | Text field | Stores external platform identifier | [Account Platform Key Flow](../flows-account/account-platform-key-flow.md) |
+| Field Name                                         | Type       | Purpose                             | Source Flows              |
+| -------------------------------------------------- | ---------- | ----------------------------------- | ------------------------- |
+| Platform Key (`md_npsp_pack__Platform_Key__c`) | Text field | Stores external platform identifier | [Account Platform Key Flow](../flows-account/account-platform-key-flow.md) |
 
 **Object Purpose:** Custom Object - Links Account records to external platform identifiers\
 **Source Flows:** Account Platform Key Helper Flow
 
 ### Contact Platform Key (`movedata__Contact_Platform_Key__c`)
 
-| Field Name                                 | Type       | Purpose                             | Source Flows              |
-| ------------------------------------------ | ---------- | ----------------------------------- | ------------------------- |
-| Platform Key (`movedata__Platform_Key__c`) | Text field | Stores external platform identifier | [Contact Platform Key Flow](../flows-contact/contact-platform-key-flow.md) |
+| Field Name                                         | Type       | Purpose                             | Source Flows              |
+| -------------------------------------------------- | ---------- | ----------------------------------- | ------------------------- |
+| Platform Key (`md_npsp_pack__Platform_Key__c`) | Text field | Stores external platform identifier | [Contact Platform Key Flow](../flows-contact/contact-platform-key-flow.md) |
 
 **Object Purpose:** Custom Object - Links Contact records to external platform identifiers\
 **Source Flows:** Contact Platform Key Helper Flow
@@ -183,7 +183,7 @@
 
 | Field Name                                      | Type                        | Purpose                                                    | Source Flows                                                                                           |
 | ----------------------------------------------- | --------------------------- | ---------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
-| Platform Key (`md_npsp__pack__Platform_Key__c`) | Text field (100 characters) | Stores unique identifiers from external donation platforms | [Recurring Record Match Flow](../flows-recurring-donations/recurring-record-match-flow.md), [Recurring Mapping Flow](../flows-recurring-donations/recurring-mapping-flow.md), [Donation Record Match Flow](../flows-donations/donation-record-match-flow.md), [Donation Mapping Flow](../flows-donations/donation-mapping-flow.md) |
+| Platform Key (`md_npsp_pack__Platform_Key__c`) | Text field (100 characters) | Stores unique identifiers from external donation platforms | [Recurring Record Match Flow](../flows-recurring-donations/recurring-record-match-flow.md), [Recurring Mapping Flow](../flows-recurring-donations/recurring-mapping-flow.md), [Donation Record Match Flow](../flows-donations/donation-record-match-flow.md), [Donation Mapping Flow](../flows-donations/donation-mapping-flow.md) |
 
 ## NPSP Settings Object
 
