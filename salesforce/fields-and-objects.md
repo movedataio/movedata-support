@@ -44,7 +44,7 @@
 
 | Field Name  | Type                            | Purpose                                          | Source Flows                                                                |
 | ----------- | ------------------------------- | ------------------------------------------------ | --------------------------------------------------------------------------- |
-| Id          | ID field                        | Unique record identifier                         | [Donation Mapping Flow](../flows-donations/donation-mapping-flow.md), [Donation Post-Upsert Flow](../flows-donations/donation-post-upsert-flow.md)                            |
+| Id          | ID field                        | Unique record identifier                         | [Donation Mapping Flow](../flows-donations/donation-mapping-flow.md), [Donation Post-Upsert Flow](../flows-donations/donation-post-upsert-flow.md), [Contact Mapping Flow](../flows-contact/contact-mapping-flow.md)                            |
 | FirstName   | Text field (40 characters max)  | Contact's first name                             | [Contact Details Helper Flow](../flows-contact/contact-details-helper-flow.md), [Donation Mapping Flow](../flows-donations/donation-mapping-flow.md)                          |
 | LastName    | Text field (80 characters max)  | Contact's last name (required field)             | [Contact Details Helper Flow](../flows-contact/contact-details-helper-flow.md), [Donation Mapping Flow](../flows-donations/donation-mapping-flow.md)                          |
 | Name        | Formula field                   | Full name combining FirstName and LastName       | [Donation Mapping Flow](../flows-donations/donation-mapping-flow.md)                                                       |
@@ -183,7 +183,7 @@
 
 | Field Name                                      | Type                        | Purpose                                                    | Source Flows                                                                                           |
 | ----------------------------------------------- | --------------------------- | ---------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
-| Platform Key (`md_npsp__pack__Platform_Key__c`) | Text field (100 characters) | Stores unique identifiers from external donation platforms | [Recurring Record Match Flow](../flows-recurring-donations/recurring-record-match-flow.md), [Recurring Mapping Flow](../flows-recurring-donations/recurring-mapping-flow.md), [Donation Record Match Flow](../flows-donations/donation-record-match-flow.md), [Donation Mapping Flow](../flows-donations/donation-mapping-flow.md) |
+| Platform Key (`md_npsp_pack__Platform_Key__c`) | Text field (100 characters) | Stores unique identifiers from external donation platforms | [Recurring Record Match Flow](../flows-recurring-donations/recurring-record-match-flow.md), [Recurring Mapping Flow](../flows-recurring-donations/recurring-mapping-flow.md), [Donation Record Match Flow](../flows-donations/donation-record-match-flow.md), [Donation Mapping Flow](../flows-donations/donation-mapping-flow.md) |
 
 ## NPSP Settings Object
 
