@@ -5,7 +5,7 @@
 **Permission Set Name:** MoveData\_NPSP\_Extensions\
 **Label:** MoveData NPSP Extensions\
 **Activation Required:** No\
-**Purpose:** Grants users the minimum permissions to objects accessed as part of the MoveData NPSP Extension Flows
+**Purpose:** Grants users the minimum permissions to objects required by the MoveData NPSP Extension Flows
 
 ## Description
 
@@ -41,9 +41,9 @@ This permission set provides the necessary field-level and object-level permissi
 | -------------------------------------------- | ---- | ---- | --------------------------------------- |
 | **MoveData Custom Fields**                   |      |      |                                         |
 | `movedata__Campaign_Code__c`                 | ✓    | ✓    | Campaign identification code            |
-| `Campaign_URL__c`                            | ✓    | ✓    | Campaign webpage URL                    |
-| `Fundraising_Account__c`                     | ✓    | ✓    | Associated fundraising account          |
-| `Fundraising_Contact__c`                     | ✓    | ✓    | Associated fundraising contact          |
+| `md_npsp_pack__Campaign_URL__c`                            | ✓    | ✓    | Campaign webpage URL                    |
+| `md_npsp_pack__Fundraising_Account__c`                     | ✓    | ✓    | Associated fundraising account          |
+| `md_npsp_pack__Fundraising_Contact__c`                     | ✓    | ✓    | Associated fundraising contact          |
 | `movedata__Platform_Key__c`                  | ✓    | ✓    | External platform key for matching      |
 | `movedata__Platform__c`                      | ✓    | ✓    | Platform identifier                     |
 | `movedata__Protect_Campaign_Parent__c`       | ✓    | ✓    | Campaign parent relationship protection |
@@ -75,15 +75,15 @@ This permission set provides the necessary field-level and object-level permissi
 | Field                       | Read | Edit | Purpose                                |
 | --------------------------- | ---- | ---- | -------------------------------------- |
 | **Fee Tracking Fields**     |      |      |                                        |
-| `Fee__c`                    | ✓    | ✓    | General transaction fees               |
-| `Gateway_Fee__c`            | ✓    | ✓    | Payment gateway processing fees        |
-| `Gateway_Fee_Tax__c`        | ✓    | ✓    | Tax on gateway fees                    |
-| `Platform_Fee__c`           | ✓    | ✓    | Platform service fees                  |
-| `Platform_Fee_Tax__c`       | ✓    | ✓    | Tax on platform fees                   |
-| `Tax__c`                    | ✓    | ✓    | General tax amounts                    |
+| `md_npsp_pack__Fee__c`                    | ✓    | ✓    | General transaction fees               |
+| `md_npsp_pack__Gateway_Fee__c`            | ✓    | ✓    | Payment gateway processing fees        |
+| `md_npsp_pack__Gateway_Fee_Tax__c`        | ✓    | ✓    | Tax on gateway fees                    |
+| `md_npsp_pack__Platform_Fee__c`           | ✓    | ✓    | Platform service fees                  |
+| `md_npsp_pack__Platform_Fee_Tax__c`       | ✓    | ✓    | Tax on platform fees                   |
+| `md_npsp_pack__Tax__c`                    | ✓    | ✓    | General tax amounts                    |
 | **Integration Fields**      |      |      |                                        |
 | `movedata__Platform_Key__c` | ✓    | ✓    | External platform key for matching     |
-| `Receipt_Number__c`         | ✓    | ✓    | External receipt or transaction number |
+| `md_npsp_pack__Receipt_Number__c`         | ✓    | ✓    | External receipt or transaction number |
 
 ### Recurring Donation Fields (npe03\_\_Recurring\_Donation\_\_c)
 
@@ -107,4 +107,4 @@ This permission set provides the necessary field-level and object-level permissi
 | `npsp__RecurringType__c`                | ✓    | ✓    | Type of recurring donation                |
 | `npsp__ClosedReason__c`                 | ✓    | ✓    | Reason for closure                        |
 | **Integration Fields**                  |      |      |                                           |
-| `Platform_Key__c`                       | ✓    | ✓    | External platform key for matching        |
+| `md_npsp_pack__Platform_Key__c`                       | ✓    | ✓    | External platform key for matching        |
