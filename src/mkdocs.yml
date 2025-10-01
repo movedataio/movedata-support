@@ -1,0 +1,20 @@
+site_name: MoveData
+theme:
+  name: material
+  palette:
+    scheme: custom
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.path
+    - navigation.sections
+  logo: assets/logo.svg
+extra_css:
+  - assets/stylesheets/extra.css
+  - https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+nav:
+  - Home: index.md
