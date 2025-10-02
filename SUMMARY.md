@@ -4,6 +4,9 @@
 
 ## MoveData <a href="#application" id="application"></a>
 
+* [Architectural Overview](application/architectural-overview.md)
+  * [Platform Architecture](application/architectural-overview/platform-architecture.md)
+  * [Salesforce Architecture](application/architectural-overview/salesforce-architecture.md)
 * [Configuration](application/configuration/README.md)
   * [Install MoveData](application/configuration/install-movedata.md)
   * [Setup Wizard](application/configuration/setup-wizard.md)
@@ -12,9 +15,6 @@
   * [Permission Sets](https://jgilray.gitbook.io/movedata-v2/configuration/permission-sets)
   * [Integrations](https://jgilray.gitbook.io/movedata-v2/salesforce-application/integrations)
   * [Notifications](https://jgilray.gitbook.io/movedata-v2/salesforce-application/notifications)
-* [Architectural Overview](application/architectural-overview.md)
-  * [Platform Architecture](application/architectural-overview/platform-architecture.md)
-  * [Salesforce Architecture](application/architectural-overview/salesforce-architecture.md)
 
 ## Pipelines
 
