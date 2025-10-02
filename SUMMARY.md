@@ -7,7 +7,7 @@
 * [Architectural Overview](application/architectural-overview.md)
   * [Platform Architecture](application/architectural-overview/platform-architecture.md)
   * [Salesforce Architecture](application/architectural-overview/salesforce-architecture.md)
-* [Configuration](application/configuration/README.md)
+* Configuration
   * [Install MoveData](application/configuration/install-movedata.md)
   * [Setup Wizard](application/configuration/setup-wizard.md)
   * [Settings](https://jgilray.gitbook.io/movedata-v2/salesforce-application/settings)
