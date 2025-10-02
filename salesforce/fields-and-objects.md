@@ -186,41 +186,41 @@
 
 | Field Name       | Type                              | Purpose                              | Source Flows                                |
 | ---------------- | --------------------------------- | ------------------------------------ | ------------------------------------------- |
-| Id               | ID field                          | Unique record identifier             | [Commerce Order Record Match Flow](../flows-orders/commerce-order-record-match-flow.md), [Commerce Order Finaliser Flow](../flows-orders/commerce-order-finaliser-flow.md) |
-| Name             | Text field (120 characters max)  | Opportunity name identifier          | [Commerce Order Finaliser Flow](../flows-orders/commerce-order-finaliser-flow.md), [Commerce Order Name Flow](../flows-orders/commerce-order-name-flow.md) |
-| StageName        | Picklist field                    | Current stage of the opportunity     | [Commerce Order Mapping Flow](../flows-orders/commerce-order-mapping-flow.md), [Commerce Order Finaliser Flow](../flows-orders/commerce-order-finaliser-flow.md) |
-| CloseDate        | Date field                        | Expected or actual close date        | [Commerce Order Mapping Flow](../flows-orders/commerce-order-mapping-flow.md) |
-| Amount           | Currency field                    | Opportunity amount/value             | [Commerce Order Finaliser Flow](../flows-orders/commerce-order-finaliser-flow.md) |
-| AccountId        | Lookup to Account                 | Associated account record            | [Commerce Order Mapping Flow](../flows-orders/commerce-order-mapping-flow.md) |
-| CampaignId       | Lookup to Campaign                | Associated campaign record           | [Commerce Order Mapping Flow](../flows-orders/commerce-order-mapping-flow.md) |
-| Description      | Long Text Area field              | Opportunity description              | [Commerce Order Mapping Flow](../flows-orders/commerce-order-mapping-flow.md) |
-| Pricebook2Id     | Lookup to Pricebook2              | Associated pricebook record          | [Commerce Order Mapping Flow](../flows-orders/commerce-order-mapping-flow.md) |
-| RecordTypeId     | Lookup to RecordType              | Record type identifier               | [Commerce Order Mapping Flow](../flows-orders/commerce-order-mapping-flow.md) |
-| CurrencyIsoCode  | Picklist field                    | Currency code for the opportunity    | [Commerce Order Mapping Flow](../flows-orders/commerce-order-mapping-flow.md) |
+| Id               | ID field                          | Unique record identifier             | [Commerce Order Record Match Flow](../flows-orders/order-record-match-flow.md), [Commerce Order Finaliser Flow](../flows-orders/order-finaliser-flow.md) |
+| Name             | Text field (120 characters max)  | Opportunity name identifier          | [Commerce Order Finaliser Flow](../flows-orders/order-finaliser-flow.md), [Commerce Order Name Flow](../flows-orders/order-name-flow.md) |
+| StageName        | Picklist field                    | Current stage of the opportunity     | [Commerce Order Mapping Flow](../flows-orders/order-mapping-flow.md), [Commerce Order Finaliser Flow](../flows-orders/order-finaliser-flow.md) |
+| CloseDate        | Date field                        | Expected or actual close date        | [Commerce Order Mapping Flow](../flows-orders/order-mapping-flow.md) |
+| Amount           | Currency field                    | Opportunity amount/value             | [Commerce Order Finaliser Flow](../flows-orders/order-finaliser-flow.md) |
+| AccountId        | Lookup to Account                 | Associated account record            | [Commerce Order Mapping Flow](../flows-orders/order-mapping-flow.md) |
+| CampaignId       | Lookup to Campaign                | Associated campaign record           | [Commerce Order Mapping Flow](../flows-orders/order-mapping-flow.md) |
+| Description      | Long Text Area field              | Opportunity description              | [Commerce Order Mapping Flow](../flows-orders/order-mapping-flow.md) |
+| Pricebook2Id     | Lookup to Pricebook2              | Associated pricebook record          | [Commerce Order Mapping Flow](../flows-orders/order-mapping-flow.md) |
+| RecordTypeId     | Lookup to RecordType              | Record type identifier               | [Commerce Order Mapping Flow](../flows-orders/order-mapping-flow.md) |
+| CurrencyIsoCode  | Picklist field                    | Currency code for the opportunity    | [Commerce Order Mapping Flow](../flows-orders/order-mapping-flow.md) |
 
 ### NPSP Custom Fields
 
 | Field Name                                       | Type           | Purpose                                    | Source Flows                |
 | ------------------------------------------------ | -------------- | ------------------------------------------ | --------------------------- |
-| Primary Contact (`npsp__Primary_Contact__c`)    | Lookup to Contact | Links to primary contact for the opportunity | [Commerce Order Mapping Flow](../flows-orders/commerce-order-mapping-flow.md) |
+| Primary Contact (`npsp__Primary_Contact__c`)    | Lookup to Contact | Links to primary contact for the opportunity | [Commerce Order Mapping Flow](../flows-orders/order-mapping-flow.md) |
 
 ### Custom Fields
 
 | Field Name                                       | Type           | Purpose                                                | Source Flows         |
 | ------------------------------------------------ | -------------- | ------------------------------------------------------ | -------------------- |
-| Platform Key (`movedata__Platform_Key__c`)      | Text field     | Stores external platform identifier                   | [Commerce Order Record Match Flow](../flows-orders/commerce-order-record-match-flow.md), [Commerce Order Mapping Flow](../flows-orders/commerce-order-mapping-flow.md) |
+| Platform Key (`movedata__Platform_Key__c`)      | Text field     | Stores external platform identifier                   | [Commerce Order Record Match Flow](../flows-orders/order-record-match-flow.md), [Commerce Order Mapping Flow](../flows-orders/order-mapping-flow.md) |
 
 ### Extension Custom Fields
 
 | Field Name                                       | Type           | Purpose                                    | Source Flows                |
 | ------------------------------------------------ | -------------- | ------------------------------------------ | --------------------------- |
-| Fee (`md_npsp_pack__Fee__c`)                     | Currency field | Total fees associated with the opportunity | [Commerce Order Mapping Flow](../flows-orders/commerce-order-mapping-flow.md) |
-| Gateway Fee (`md_npsp_pack__Gateway_Fee__c`)     | Currency field | Payment gateway processing fees            | [Commerce Order Mapping Flow](../flows-orders/commerce-order-mapping-flow.md) |
-| Platform Fee (`md_npsp_pack__Platform_Fee__c`)  | Currency field | Platform-specific processing fees         | [Commerce Order Mapping Flow](../flows-orders/commerce-order-mapping-flow.md) |
-| Tax (`md_npsp_pack__Tax__c`)                     | Currency field | Tax amount for the opportunity             | [Commerce Order Mapping Flow](../flows-orders/commerce-order-mapping-flow.md) |
-| Platform Fee Tax (`md_npsp_pack__Platform_Fee_Tax__c`) | Currency field | Tax on platform fees                | [Commerce Order Mapping Flow](../flows-orders/commerce-order-mapping-flow.md) |
-| Gateway Fee Tax (`md_npsp_pack__Gateway_Fee_Tax__c`) | Currency field | Tax on gateway fees                  | [Commerce Order Mapping Flow](../flows-orders/commerce-order-mapping-flow.md) |
-| Receipt Number (`md_npsp_pack__Receipt_Number__c`) | Text field   | Receipt or transaction reference number    | [Commerce Order Mapping Flow](../flows-orders/commerce-order-mapping-flow.md) |
+| Fee (`md_npsp_pack__Fee__c`)                     | Currency field | Total fees associated with the opportunity | [Commerce Order Mapping Flow](../flows-orders/order-mapping-flow.md) |
+| Gateway Fee (`md_npsp_pack__Gateway_Fee__c`)     | Currency field | Payment gateway processing fees            | [Commerce Order Mapping Flow](../flows-orders/order-mapping-flow.md) |
+| Platform Fee (`md_npsp_pack__Platform_Fee__c`)  | Currency field | Platform-specific processing fees         | [Commerce Order Mapping Flow](../flows-orders/order-mapping-flow.md) |
+| Tax (`md_npsp_pack__Tax__c`)                     | Currency field | Tax amount for the opportunity             | [Commerce Order Mapping Flow](../flows-orders/order-mapping-flow.md) |
+| Platform Fee Tax (`md_npsp_pack__Platform_Fee_Tax__c`) | Currency field | Tax on platform fees                | [Commerce Order Mapping Flow](../flows-orders/order-mapping-flow.md) |
+| Gateway Fee Tax (`md_npsp_pack__Gateway_Fee_Tax__c`) | Currency field | Tax on gateway fees                  | [Commerce Order Mapping Flow](../flows-orders/order-mapping-flow.md) |
+| Receipt Number (`md_npsp_pack__Receipt_Number__c`) | Text field   | Receipt or transaction reference number    | [Commerce Order Mapping Flow](../flows-orders/order-mapping-flow.md) |
 
 ## OpportunityLineItem Object
 
@@ -228,15 +228,15 @@
 
 | Field Name       | Type                              | Purpose                              | Source Flows                                |
 | ---------------- | --------------------------------- | ------------------------------------ | ------------------------------------------- |
-| Id               | ID field                          | Unique record identifier             | [Commerce Order Item Record Match Flow](../flows-orders/commerce-order-item-record-match-flow.md) |
-| OpportunityId    | Lookup to Opportunity             | Associated opportunity record        | [Commerce Order Item Mapping Flow](../flows-orders/commerce-order-item-mapping-flow.md) |
-| PricebookEntryId | Lookup to PricebookEntry          | Associated pricebook entry record    | [Commerce Order Item Mapping Flow](../flows-orders/commerce-order-item-mapping-flow.md) |
-| Quantity         | Number field                      | Quantity of the product/service      | [Commerce Order Item Mapping Flow](../flows-orders/commerce-order-item-mapping-flow.md) |
-| UnitPrice        | Currency field                    | Price per unit                       | [Commerce Order Item Mapping Flow](../flows-orders/commerce-order-item-mapping-flow.md) |
-| TotalPrice       | Currency field                    | Total price for the line item        | [Commerce Order Item Mapping Flow](../flows-orders/commerce-order-item-mapping-flow.md) |
+| Id               | ID field                          | Unique record identifier             | [Commerce Order Item Record Match Flow](../flows-orders/order-item-record-match-flow.md) |
+| OpportunityId    | Lookup to Opportunity             | Associated opportunity record        | [Commerce Order Item Mapping Flow](../flows-orders/order-item-mapping-flow.md) |
+| PricebookEntryId | Lookup to PricebookEntry          | Associated pricebook entry record    | [Commerce Order Item Mapping Flow](../flows-orders/order-item-mapping-flow.md) |
+| Quantity         | Number field                      | Quantity of the product/service      | [Commerce Order Item Mapping Flow](../flows-orders/order-item-mapping-flow.md) |
+| UnitPrice        | Currency field                    | Price per unit                       | [Commerce Order Item Mapping Flow](../flows-orders/order-item-mapping-flow.md) |
+| TotalPrice       | Currency field                    | Total price for the line item        | [Commerce Order Item Mapping Flow](../flows-orders/order-item-mapping-flow.md) |
 
 ### Custom Fields
 
 | Field Name                           | Type       | Purpose                              | Source Flows         |
 | ------------------------------------ | ---------- | ------------------------------------ | -------------------- |
-| Platform Key (`Platform_Key__c`)    | Text field | Stores external platform identifier | [Commerce Order Item Record Match Flow](../flows-orders/commerce-order-item-record-match-flow.md), [Commerce Order Item Mapping Flow](../flows-orders/commerce-order-item-mapping-flow.md) |
+| Platform Key (`Platform_Key__c`)    | Text field | Stores external platform identifier | [Commerce Order Item Record Match Flow](../flows-orders/order-item-record-match-flow.md), [Commerce Order Item Mapping Flow](../flows-orders/order-item-mapping-flow.md) |
