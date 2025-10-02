@@ -4,10 +4,13 @@ on:
   push:
     branches:
       - main
-      - development
+      - documentation
       - developer
-      - extension/*
-      - schema/*
+      - extension/commerce
+      - extension/npsp-fundraising
+      - extension/non-profit-cloud
+      - schema/commerce
+      - schema/donation
 
 jobs:
   build:

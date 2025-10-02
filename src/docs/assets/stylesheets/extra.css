@@ -2,7 +2,7 @@
   --md-primary-fg-color: #009ED2;
   --md-primary-fg-color--light: #33B2E8;
   --md-primary-fg-color--dark: #007BB8;
-  --md-accent-fg-color: #FF4081;
+  --md-accent-fg-color: #798089;
   --md-typeset-a-color: #1E88E5;
 
   /*--md-text-font-family: system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";*/
@@ -34,6 +34,11 @@
 .md-tabs {
   border-top: solid 1px #ececed !important;
   border-bottom: solid 1px #ececed !important;
+}
+
+.md-nav__item .md-nav__link--active {
+  color: #009ed2;
+  font-weight: 600;
 }
 
 .md-tabs__item.md-tabs__item--active {
