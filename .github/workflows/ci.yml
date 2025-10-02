@@ -1,0 +1,86 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+      - documentation
+      - developer
+      - extension/commerce
+      - extension/npsp-fundraising
+      - extension/non-profit-cloud
+      - schema/commerce
+      - schema/donation
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+        with:
+          ref: main
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v5
+
+      - name: Set up Python 3.x
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Install mkdocs-material
+        run: pip3 install mkdocs-material
+
+      - name: Build Static Site
+        run: npm run build
+
+      - name: List all contents in ./lib/site
+        run: ls -al ./lib/site
+
+      - name: Zip ./lib/site directory
+        run: zip -r site.zip ./lib/site
+
+      - name: List contents of site.zip with full paths
+        run: unzip -l site.zip
+
+      - name: Upload site.zip as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-zip
+          path: site.zip
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - name: Download site.zip artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: site-zip
+
+    - name: List contents of site.zip with full paths
+      run: unzip -l site.zip
+
+    - name: Unzip site.zip
+      run: unzip site.zip
+
+    - name: List all files recursively after unzip
+      run: find . -type f
+
+    - name: Deploy to S3
+      run: |
+        aws s3 sync ./lib/site s3://$S3_BUCKET --delete --region $AWS_REGION
+      env:
+        AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
+        AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+        AWS_REGION: ${{secrets.AWS_REGION}}
+        S3_BUCKET: movedata-support-html
