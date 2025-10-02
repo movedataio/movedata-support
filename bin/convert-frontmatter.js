@@ -8,7 +8,7 @@ import { fileURLToPath } from 'url';
  * Converts YAML frontmatter to plain markdown description
  * 
  * Usage: node convert-frontmatter.js <contentPath>
- * Example: node convert-frontmatter.js ./docs/documentation
+ * Example: node convert-frontmatter.js ./lib/docs/documentation
  */
 
 function extractFrontmatter(content) {
@@ -184,8 +184,8 @@ if (runningAsScript) {
   
   if (args.length < 1) {
     console.error('Usage: node convert-frontmatter.js <contentPath> [--dry-run]');
-    console.error('Example: node convert-frontmatter.js ./docs/documentation');
-    console.error('         node convert-frontmatter.js ./docs/documentation --dry-run');
+    console.error('Example: node convert-frontmatter.js ./lib/docs/documentation');
+    console.error('         node convert-frontmatter.js ./lib/docs/documentation --dry-run');
     process.exit(1);
   }
 

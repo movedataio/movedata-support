@@ -77,3 +77,13 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
   font-weight: 700 !important;
 }
+
+.grid.cards > ul > li {
+  border: solid 1px #d8e8f1;
+  background-color: #f3f7fc;
+}
+
+.grid.cards hr {
+  background-color: #d8e8f1;
+  border: solid 1px #d8e8f1;
+}

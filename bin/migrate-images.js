@@ -7,7 +7,7 @@ import path from 'path';
  * Migrates GitBook images to MkDocs Material structure
  * 
  * Usage: node migrate-images.js <key> <contentPath>
- * Example: node migrate-images.js documentation ./docs/documentation
+ * Example: node migrate-images.js documentation ./lib/docs/documentation
  */
 
 function ensureDirectoryExists(dirPath) {
@@ -76,15 +76,33 @@ function deleteGitbookAssets(gitbookAssetsDir) {
 }
 
 function updateImageReferences(content, key) {
-  // Match GitBook image references
-  // Pattern: <figure><img src="../.gitbook/assets/filename.ext" ...></figure>
-  const gitbookPattern = /<figure><img\s+src="\.\.\/\.gitbook\/assets\/([^"]+)"([^>]*)><figcaption>(.*?)<\/figcaption><\/figure>/g;
-  
   let updated = 0;
-  const updatedContent = content.replace(gitbookPattern, (match, filename, imgAttributes, caption) => {
+  let updatedContent = content;
+  
+  // Pattern 1: <img src="../.gitbook/assets/filename.ext" ...> or <img src="../../.gitbook/assets/filename.ext" ...>
+  // This handles both standalone img tags and those inside figure tags
+  // Matches any number of ../ prefixes before .gitbook
+  const imgPattern = /<img\s+src="(?:\.\.\/)+\.gitbook\/assets\/([^"]+)"([^>]*)>/g;
+  updatedContent = updatedContent.replace(imgPattern, (match, filename, imgAttributes) => {
     updated++;
     const newPath = `/assets/images/${key}/${filename}`;
-    return `<figure><img src="${newPath}"${imgAttributes}><figcaption>${caption}</figcaption></figure>`;
+    return `<img src="${newPath}"${imgAttributes}>`;
+  });
+  
+  // Pattern 2: Markdown images with parentheses: ![alt](../.gitbook/assets/filename.ext) or ![alt](../../.gitbook/assets/filename.ext)
+  const mdPattern = /!\[([^\]]*)\]\((?:\.\.\/)+\.gitbook\/assets\/([^)]+)\)/g;
+  updatedContent = updatedContent.replace(mdPattern, (match, alt, filename) => {
+    updated++;
+    const newPath = `/assets/images/${key}/${filename}`;
+    return `![${alt}](${newPath})`;
+  });
+  
+  // Pattern 3: Markdown images with angle brackets: ![alt](<../.gitbook/assets/filename.ext>) or ![alt](<../../.gitbook/assets/filename.ext>)
+  const mdAngleBracketPattern = /!\[([^\]]*)\]\(<(?:\.\.\/)+\.gitbook\/assets\/([^>]+)>\)/g;
+  updatedContent = updatedContent.replace(mdAngleBracketPattern, (match, alt, filename) => {
+    updated++;
+    const newPath = `/assets/images/${key}/${filename}`;
+    return `![${alt}](<${newPath}>)`;
   });
 
   return { content: updatedContent, updated };
@@ -169,7 +187,7 @@ function migrateImages(key, contentPath, dryRun = false) {
 
   // Define paths
   const gitbookAssetsDir = path.join(contentPath, '.gitbook', 'assets');
-  const targetDir = path.join('docs', 'assets', 'images', key);
+  const targetDir = path.join('lib', 'docs', 'assets', 'images', key);
 
   // Step 1: Create target directory
   console.error(`\n1. Creating target directory: ${targetDir}`);
@@ -227,8 +245,8 @@ if (runningAsScript) {
   
   if (args.length < 2) {
     console.error('Usage: node migrate-images.js <key> <contentPath> [--dry-run]');
-    console.error('Example: node migrate-images.js documentation ./docs/documentation');
-    console.error('         node migrate-images.js documentation ./docs/documentation --dry-run');
+    console.error('Example: node migrate-images.js documentation ./lib/docs/documentation');
+    console.error('         node migrate-images.js documentation ./lib/docs/documentation --dry-run');
     process.exit(1);
   }
 

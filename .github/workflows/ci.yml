@@ -1,0 +1,63 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+      - development
+      - developer
+      - extension/*
+      - schema/*
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+        with:
+          ref: main
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v5
+
+      - name: Set up Python 3.x
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install Mkdocs Material dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y python3-pip
+          pip3 install mkdocs-material
+
+      - name: Build Static Site
+        run: npm run build
+
+      - name: List all contents in ./lib/site
+        run: ls -al ./lib/site
+
+      - name: Zip ./lib/site directory
+        run: zip -r site.zip ./lib/site
+
+      - name: List contents of site.zip with full paths
+        run: unzip -l site.zip
+
+      - name: Upload site.zip as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: site-zip
+          path: site.zip
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - name: Download site.zip artifact
+      uses: actions/download-artifact@v3
+      with:
+        name: site-zip
+
+    - name: List contents of downloaded artifact
+      run: ls -al

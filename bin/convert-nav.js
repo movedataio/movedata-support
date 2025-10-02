@@ -6,14 +6,13 @@ import path from 'path';
 /**
  * Converts a Markdown table of contents to MkDocs YAML navigation format
  * 
- * Usage: node convert-nav.js <input.md> <sectionName> <contentPath>
- * Example: node convert-nav.js SUMMARY.md "User Guide" documentation
+ * Usage: node convert-nav.js <input.md> <sectionName> <contentPath> [indent]
+ * Example: node convert-nav.js SUMMARY.md "User Guide" documentation 1
  */
 
 function parseMdToYaml(mdContent, sectionName, contentPath) {
   const lines = mdContent.split('\n');
   const result = [];
-  const stack = [{ level: -1, children: result }];
   let currentSection = null;
   
   for (const line of lines) {
@@ -59,6 +58,22 @@ function parseMdToYaml(mdContent, sectionName, contentPath) {
   return result;
 }
 
+function escapeYamlString(str) {
+  // Check if the string contains special YAML characters that require quoting
+  const specialChars = /[:\[\]{}#&*!|>'"%@`]/;
+  const startsWithSpecial = /^[-?]/;
+  const hasLeadingOrTrailingSpace = /^\s|\s$/;
+  
+  // Check if quoting is needed
+  if (specialChars.test(str) || startsWithSpecial.test(str) || hasLeadingOrTrailingSpace.test(str)) {
+    // Escape any double quotes in the string
+    const escaped = str.replace(/"/g, '\\"');
+    return `"${escaped}"`;
+  }
+  
+  return str;
+}
+
 function formatYaml(items, indent = 0) {
   const spaces = '  '.repeat(indent);
   let output = '';
@@ -66,23 +81,27 @@ function formatYaml(items, indent = 0) {
   for (const item of items) {
     if (item.children) {
       // This is a section
-      output += `${spaces}- ${item.title}:\n`;
+      const escapedTitle = escapeYamlString(item.title);
+      output += `${spaces}- ${escapedTitle}:\n`;
       output += formatYaml(item.children, indent + 1);
     } else {
       // This is a page
-      output += `${spaces}- ${item.title}: ${item.path}\n`;
+      const escapedTitle = escapeYamlString(item.title);
+      output += `${spaces}- ${escapedTitle}: ${item.path}\n`;
     }
   }
   
   return output;
 }
 
-function convertMdToYaml(mdContent, sectionName, contentPath) {
+function convertMdToYaml(mdContent, sectionName, contentPath, baseIndent = 1) {
   const parsed = parseMdToYaml(mdContent, sectionName, contentPath);
   
-  // Wrap in the section name
-  let yaml = `  - ${sectionName}:\n`;
-  yaml += formatYaml(parsed, 2);
+  // Wrap in the section name with specified base indent
+  const spaces = '  '.repeat(baseIndent);
+  const escapedSectionName = escapeYamlString(sectionName);
+  let yaml = `${spaces}- ${escapedSectionName}:\n`;
+  yaml += formatYaml(parsed, baseIndent + 1);
   
   return yaml;
 }
@@ -90,19 +109,30 @@ function convertMdToYaml(mdContent, sectionName, contentPath) {
 // Export for use as a module
 export { convertMdToYaml, parseMdToYaml, formatYaml };
 
-// Check if running as CLI
-const isMainModule = process.argv[1] === new URL(import.meta.url).pathname;
+// CLI handling - check if this file is being run directly
+const runningAsScript = process.argv[1] && 
+  (process.argv[1].endsWith('convert-nav.js') || 
+   process.argv[1].endsWith('/convert-nav.js'));
 
-if (isMainModule) {
+if (runningAsScript) {
   if (process.argv.length < 5) {
-    console.error('Usage: node convert-nav.js <input.md> <sectionName> <contentPath>');
+    console.error('Usage: node convert-nav.js <input.md> <sectionName> <contentPath> [indent]');
     console.error('Example: node convert-nav.js SUMMARY.md "User Guide" documentation');
+    console.error('         node convert-nav.js SUMMARY.md "User Guide" documentation 2');
+    console.error('\nParameters:');
+    console.error('  indent: Base indentation level (default: 1)');
     process.exit(1);
   }
 
   const inputFile = process.argv[2];
   const sectionName = process.argv[3];
   const contentPath = process.argv[4];
+  const baseIndent = process.argv[5] ? parseInt(process.argv[5], 10) : 1;
+
+  if (isNaN(baseIndent) || baseIndent < 0) {
+    console.error('Error: indent must be a non-negative number');
+    process.exit(1);
+  }
 
   try {
     const mdContent = fs.readFileSync(inputFile, 'utf8');
@@ -110,9 +140,10 @@ if (isMainModule) {
     console.error(`Reading: ${inputFile}`);
     console.error(`Section: ${sectionName}`);
     console.error(`Content Path: ${contentPath}`);
+    console.error(`Base Indent: ${baseIndent}`);
     console.error(`File size: ${mdContent.length} bytes\n`);
     
-    const yamlOutput = convertMdToYaml(mdContent, sectionName, contentPath);
+    const yamlOutput = convertMdToYaml(mdContent, sectionName, contentPath, baseIndent);
     
     if (!yamlOutput || yamlOutput.trim().length === 0) {
       console.error('Warning: No output generated. Check your markdown format.');

@@ -7,7 +7,7 @@ import path from 'path';
  * Converts GitBook hints to MkDocs Material admonitions
  * 
  * Usage: node convert-hints.js <contentPath> [--dry-run]
- * Example: node convert-hints.js ./docs/documentation
+ * Example: node convert-hints.js ./lib/docs/documentation
  */
 
 // Map GitBook hint styles to MkDocs admonition types
@@ -184,8 +184,8 @@ if (runningAsScript) {
   
   if (args.length < 1) {
     console.error('Usage: node convert-hints.js <contentPath> [--dry-run]');
-    console.error('Example: node convert-hints.js ./docs/documentation');
-    console.error('         node convert-hints.js ./docs/documentation --dry-run');
+    console.error('Example: node convert-hints.js ./lib/docs/documentation');
+    console.error('         node convert-hints.js ./lib/docs/documentation --dry-run');
     process.exit(1);
   }
 

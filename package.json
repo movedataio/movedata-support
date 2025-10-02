@@ -1,0 +1,26 @@
+{
+  "name": "movedata-support",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/movedataio/movedata-support#readme",
+  "bugs": {
+    "url": "https://github.com/movedataio/movedata-support/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/movedataio/movedata-support.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "transform": "./build.sh",
+    "build": "npm run transform && cd ./lib && mkdocs build",
+    "local": "cd ./lib && mkdocs serve",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}

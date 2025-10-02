@@ -7,7 +7,7 @@ import path from 'path';
  * Converts GitBook embed tags to HTML iframes
  * 
  * Usage: node convert-embeds.js <contentPath> [--dry-run]
- * Example: node convert-embeds.js ./docs/documentation
+ * Example: node convert-embeds.js ./lib/docs/documentation
  */
 
 function extractYouTubeId(url) {
@@ -171,8 +171,8 @@ if (runningAsScript) {
   
   if (args.length < 1) {
     console.error('Usage: node convert-embeds.js <contentPath> [--dry-run]');
-    console.error('Example: node convert-embeds.js ./docs/documentation');
-    console.error('         node convert-embeds.js ./docs/documentation --dry-run');
+    console.error('Example: node convert-embeds.js ./lib/docs/documentation');
+    console.error('         node convert-embeds.js ./lib/docs/documentation --dry-run');
     process.exit(1);
   }
 
