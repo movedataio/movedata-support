@@ -92,3 +92,4 @@ node ./bin/convert-embeds.js ./lib/docs/reference/schema/donation
 node ./bin/convert-hints.js ./lib/docs/reference/schema/donation
 node ./bin/convert-lists.js ./lib/docs/reference/schema/donation
 cat ./lib/docs/reference/schema/donation/SUMMARY-nav.yaml >> ./lib/mkdocs.yml
+
