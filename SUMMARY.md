@@ -5,6 +5,8 @@
 * [About the MoveData Authorised User](README.md)
 * [Grant Salesforce Access to MoveData](h-general/grant-salesforce-access-to-movedata.md)
 * [Too many SOQL queries: 101](h-general/too-many-soql-queries-101.md)
+* [Too many SOQL queries: 101 (dlrs)](h-general/too-many-soql-queries-101-dlrs.md)
+* [Unable to Lock Row Error (UNABLE\_TO\_LOCK\_ROW)](h-general/unable-to-lock-row-error-unable_to_lock_row.md)
 
 ## \[H] NPSP
 
