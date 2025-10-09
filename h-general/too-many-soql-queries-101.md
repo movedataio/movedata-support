@@ -10,11 +10,11 @@ This is not a MoveData support issue; but rather a system configuration issue th
 This is a technical article. You will need an intermediate technical knowledge of Salesforce. If you require assistance, we recommend forwarding this article to your Salesforce partner.
 {% endhint %}
 
-## Overview <a href="#h_329137881b" id="h_329137881b"></a>
+## Overview
 
 When working with Salesforce, you must work within a set of limits for each transaction called [Governor Limits](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_gov_limits.htm). One limit that is breached more often than others relates to the number of SOQL executions; a limit where an execution cannot perform more than 100 SOQL database queries. These queries are typically consumed by triggers which process the creation or updating of records like contacts, campaigns, and opportunities.
 
-## Process <a href="#h_1f7bdf1d98" id="h_1f7bdf1d98"></a>
+## Process
 
 When a notification is processed by MoveData, it will execute in a number of phases. For donations, this will be to create/update all accounts, followed by contacts, campaigns, recurring donations and then opportunities / donation records. Each of these phases will execute a small number of SOQL and DML statements to gather information and complete the "upsert" of a record.
 
@@ -34,7 +34,7 @@ Typically, each of these actions has to:
 
 It's easy to see how this can compound and quickly become an issue completing all required tasks within the Salesforce governor limits.
 
-### MoveData Extensions <a href="#h_1c2a1b48cf" id="h_1c2a1b48cf"></a>
+### MoveData Extensions
 
 MoveData authors a number of extension packages that integrate with specific data models, such as the Non-Profit Success Pack (NPSP) and Non-Profit Cloud (NPC). These are optimised out-of-the-box to ensure they produce a low number of SOQL and DML executions.
 
@@ -48,11 +48,11 @@ Using the out-of-the-box NPSP extensions, the above transaction results in three
 
 This complex transaction requires 32 SOQL queries and 12 DML statements.
 
-## Components <a href="#h_cba7230941" id="h_cba7230941"></a>
+## Components
 
 Due to the diverse system-wide contributors to this issue, there is no universal method to address the problem. This section will talk through the contributors to this issue.
 
-### Salesforce Workflows <a href="#h_c4614d0da7" id="h_c4614d0da7"></a>
+### Salesforce Workflows
 
 {% hint style="warning" %}
 Legacy - [Retired by Salesforce](https://help.salesforce.com/s/articleView?id=001096524\&type=1)
@@ -62,7 +62,7 @@ Salesforce Workflows are a legacy approach to implement business rules. These we
 
 We would note that if you use the Workflow to Flows migration tool, you will still need to optimise the resulting flows.
 
-### Process Builder <a href="#h_ad8883cfbf" id="h_ad8883cfbf"></a>
+### Process Builder
 
 {% hint style="warning" %}
 Legacy - [Retired by Salesforce](https://help.salesforce.com/s/articleView?id=001096524\&type=1)
@@ -70,11 +70,11 @@ Legacy - [Retired by Salesforce](https://help.salesforce.com/s/articleView?id=00
 
 Process Builder was the precursor to Lightning Flows. It is straightforward to use; however, this ease of use results in a large number of unnecessary requests. These should be migrated to Lightning Flows or, if required, Apex code.
 
-### Apex Triggers <a href="#h_3122372f72" id="h_3122372f72"></a>
+### Apex Triggers
 
 When well written, Apex triggers (along with Apex code in general) are the most efficient business logic solution you can implement. When done badly, they suffer from similar inefficiency as the discussed workflow options. Often, this code will belong to a managed package and will not be visible. The best way to gauge the efficiency of a trigger is to monitor is via the debug log, which is discussed later on.
 
-### Record-Triggered Lightning Flows <a href="#h_b90813529b" id="h_b90813529b"></a>
+### Record-Triggered Lightning Flows
 
 There are many permutations to Lightning Flows but the contributor to this SQL 101 issue are record-triggered flows. When configured to run when a record is created and/or updated, these will use up limits within the transaction.
 
@@ -84,13 +84,13 @@ Even better is flagging the flow to `Run Asynchronously`. This will ensure the f
 
 Where possible, applying `Entry Conditions` is highly recommended. This will prevent flows executing in every scenario, conserving limit resources.
 
-## Managed Packages <a href="#h_8854dfbdcc" id="h_8854dfbdcc"></a>
+## Managed Packages
 
-### Declarative Lookup Rollup Summaries <a href="#h_024ff58856" id="h_024ff58856"></a>
+### Declarative Lookup Rollup Summaries
 
 One package that can considerably impact the SQL 101 issue is Declarative Lookup Rollup Summaries (dlrs). More on this can be found in this [knowledge base article](https://intercom.help/movedata/en/articles/9297652-too-many-soql-queries-101-dlrs).
 
-## Diagnosis <a href="#h_6899b43ea5" id="h_6899b43ea5"></a>
+## Diagnosis
 
 The primary way to diagnose SQL 101 issues is to use the Debug Logs. If you have a notification in MoveData that consistently triggers a SQL 101 error, we would recommend you setup a Debug Log via Setup (Environments -> Logs -> Debug Logs). More on how to work with Event Logs can be found [here](https://help.salesforce.com/s/articleView?id=sf.code_monitoring_debug_logs.htm\&type=5) and on Salesforce Trailhead.
 
@@ -106,11 +106,11 @@ Other useful entries are `FLOW_CREATE_INTERVIEW`; these detail when a Lightning 
 
 Stepping through these entries and monitoring the limits will enable you to figure out where the jumps in limits are occurring.
 
-## Advanced Options <a href="#h_c45585f5a7" id="h_c45585f5a7"></a>
+## Advanced Options
 
 Below details how to configure some MoveData flows to run asynchronously. This can be useful in reducing limits within the transaction.
 
-### Solution: Run some MoveData Post-Upsert Jobs Asynchronously <a href="#h_b696bd5203" id="h_b696bd5203"></a>
+### Solution: Run some MoveData Post-Upsert Jobs Asynchronously
 
 {% hint style="info" %}
 **Related Article**: [Run Campaign Post and Donation Post Asynchronously](https://docs.movedata.io/en/articles/9563222)
@@ -122,5 +122,3 @@ It is possible to configure the MoveData Campaign Post and Donation Post Flows t
 * Non-MoveData triggers which run against records created or updated by these flows are not subject to the SOQL limits of the core transaction
 
 In a practical sense, this can provide SOQL relief where your processes are creating or updating records on the basis of Campaign, Campaign Member, or Opportunity records being created or updated.
-
-\
