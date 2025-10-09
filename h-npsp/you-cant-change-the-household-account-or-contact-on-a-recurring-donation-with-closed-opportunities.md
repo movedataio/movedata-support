@@ -4,7 +4,7 @@ Over time, and typically due to manually modifying records in Salesforce, a scen
 
 In this scenario, MoveData will act on the data being issued by the source platform, which can result in a contact or account being matched or created which is different to the one assigned to your recurring donation. If your recurring donation has closed opportunities, this can trigger the `You can't change the Household Account or Contact on a Recurring Donation that has Closed Opportunities` error and the notification will fail to process into Salesforce.
 
-### Worked Example <a href="#h_4b00ace5a5" id="h_4b00ace5a5"></a>
+### Worked Example
 
 You have a recurring donation in your source platform owned by a contact with the following information:
 
@@ -38,9 +38,9 @@ Depending on how your duplicate rules are configured, this may result in an inab
 
 If your recurring donation has closed opportunities, this can trigger the `You can't change the Household Account or Contact on a Recurring Donation that has Closed Opportunities` error and the notification will fail to process into Salesforce.
 
-### Other Possible Causes <a href="#h_7f47f2b3ff" id="h_7f47f2b3ff"></a>
+### Other Possible Causes
 
-#### Multiple “Same” Contacts detected by Duplicate Rules <a href="#h_a23ba48c9d" id="h_a23ba48c9d"></a>
+#### Multiple “Same” Contacts detected by Duplicate Rules
 
 The same error can also occur when the duplicate rules detect multiple contacts due to two or more of the same records being present. MoveData will use the first duplicate with the highest confidence rating as determined by Salesforce.
 
@@ -48,7 +48,7 @@ In the below example, two identical records have been detected with the same con
 
 <figure><img src="../.gitbook/assets/recurring-donation-duplicate-rule-match-2.png" alt=""><figcaption></figcaption></figure>
 
-#### Different Contact or Organisation Account <a href="#h_374d772fae" id="h_374d772fae"></a>
+#### Different Contact or Organisation Account
 
 The same error can also occur when the Account changes. For example:
 
@@ -59,7 +59,7 @@ In both scenarios, the `You can't change the Household Account or Contact on a R
 
 <figure><img src="../.gitbook/assets/recurring-donation-different-contact-or-account.png" alt=""><figcaption></figcaption></figure>
 
-### Remediation <a href="#h_3a594443e4" id="h_3a594443e4"></a>
+### Remediation
 
 To remediate this error:
 
@@ -68,7 +68,7 @@ To remediate this error:
 * Ensure the existing contact and/or account have the same key as present in the notification (see below)
 * Update data on the desired record (either Salesforce or source platform) to ensure the duplicate detection returns a valid match
 
-#### Matching to Existing Contacts and Accounts via Keys <a href="#h_7ec139e73c" id="h_7ec139e73c"></a>
+#### Matching to Existing Contacts and Accounts via Keys
 
 You can also add mapping to match to existing Contact and Account records via `Platform Key`. To do this:
 
