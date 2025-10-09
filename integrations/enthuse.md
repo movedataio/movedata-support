@@ -71,12 +71,13 @@ The integration will automatically begin synchronising data based on your config
 
 ### Configurable Options
 
-| Option                            | Description                                                                                                                          |
-| --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| **Production Environment**        | Toggle between Enthuse production and sandbox environments. When disabled, uses Enthuse's sandbox environment for testing.           |
-| **Use Display Name**              | Controls campaign naming for fundraising pages. When enabled, uses the supporter's display name; when disabled, uses the page title. |
-| **Data Synchronisation Interval** | Frequency of data polling (configurable from 10 minutes to 24 hours)                                                                 |
-| **Data Delay Buffer**             | Time offset for data retrieval to ensure complete records (default: 24 hours)                                                        |
+| Option                                  | Description                                                                                                                                   |
+| --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Production Environment**              | Toggle between Enthuse production and sandbox environments. When disabled, uses Enthuse's sandbox environment for testing.                    |
+| **Use Display Name**                    | Controls campaign naming for fundraising pages. When enabled, uses the supporter's display name; when disabled, uses the page title.          |
+| **Ignore Address2 when United Kingdom** | Enthuse pushes a duplicate of the city name in the Address2 field when the address is for the UK.  Toggling this to true, ignores this value. |
+| **Data Synchronisation Interval**       | Frequency of data polling (configurable from 10 minutes to 24 hours)                                                                          |
+| **Data Delay Buffer**                   | Time offset for data retrieval to ensure complete records (default: 24 hours)                                                                 |
 
 ### Data Migration
 
