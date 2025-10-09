@@ -1,8 +1,0 @@
-.DS_Store
-
-# Ignore CLI configuration files
-.terraform
-terraform.rc
-
-docs/*
-lib/*
