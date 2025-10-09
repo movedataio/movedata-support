@@ -9,6 +9,7 @@
 * [Unable to Lock Row Error (UNABLE\_TO\_LOCK\_ROW)](h-general/unable-to-lock-row-error-unable_to_lock_row.md)
 * [Apex CPU time limit exceeded](h-general/apex-cpu-time-limit-exceeded.md)
 * [MAXIMUM\_HIERARCHY\_LEVELS\_REACHED](h-general/maximum_hierarchy_levels_reached.md)
+* [Salesforce Connected App Usage Restrictions](h-general/salesforce-connected-app-usage-restrictions.md)
 
 ## \[H] NPSP
 
