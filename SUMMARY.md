@@ -12,6 +12,7 @@
 
 * [Protect Contact Fields](h-npsp/protect-contact-fields.md)
 * [End Date must be later than the last Closed Won Opportunity's Close Date](h-npsp/end-date-must-be-later-than-the-last-closed-won-opportunitys-close-date.md)
+* [You can't change the Household Account or Contact on a Recurring Donation with Closed Opportunities](h-npsp/you-cant-change-the-household-account-or-contact-on-a-recurring-donation-with-closed-opportunities.md)
 
 ## \[H] NPC
 
