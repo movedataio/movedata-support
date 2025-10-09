@@ -3,3 +3,14 @@
 ## \[H] General
 
 * [About the MoveData Authorised User](README.md)
+* [Grant Salesforce Access to MoveData](h-general/grant-salesforce-access-to-movedata.md)
+* [Too many SOQL queries: 101](h-general/too-many-soql-queries-101.md)
+
+## \[H] NPSP
+
+* [Protect Contact Fields](h-npsp/protect-contact-fields.md)
+* [End Date must be later than the last Closed Won Opportunity's Close Date](h-npsp/end-date-must-be-later-than-the-last-closed-won-opportunitys-close-date.md)
+
+## \[H] NPC
+
+* [Non-Profit Cloud Licensing Requirements for MoveData](h-npc/non-profit-cloud-licensing-requirements-for-movedata.md)
