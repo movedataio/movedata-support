@@ -187,24 +187,26 @@ The following custom fields are automatically included in MoveData notifications
 
 **Fundraiser Campaigns:**
 
-| Attribute Name          | Description                       | Example                      |
-| ----------------------- | --------------------------------- | ---------------------------- |
-| `category`              | Fundraising Page Category         | `Running`                    |
-| `eventName`             | Associated Event Name             | `London Marathon 2024`       |
-| `eventDate`             | Event Date                        | `2024-04-21T09:00:00.000Z`   |
-| `eventExpiryDate`       | Event Expiry Date                 | `2024-05-21T23:59:59.000Z`   |
-| `eventIsUserCreated`    | Is User Created Event             | `false`                      |
-| `eventCompletionDate`   | Event Completion Date             | `2024-04-21T15:30:00.000Z`   |
-| `eventCategory`         | Event Category                    | `Running`                    |
-| `totalEstimatedGiftAid` | Estimated Gift Aid Amount         | `250.00`                     |
-| `totalRaisedOnline`     | Total Raised Online               | `1420.00`                    |
-| `totalRaisedOffline`    | Total Raised Offline              | `580.00`                     |
-| `weddingNames`          | Wedding Names (for wedding pages) | `Sarah & James`              |
-| `teamId`                | Associated Team ID                | `team-alpha-2024`            |
-| `pageGuid`              | Page GUID                         | `1f0d209a-b3db-4fc4-82cd...` |
-| `activityType`          | Activity Type                     | `OtherPersonalChallenge`     |
-| `apiSource`             | API Source                        | `payment`                    |
-| `pageSummary`           | Page Summary                      | `Running for a great cause`  |
+| Attribute Name          | Description                       | Example                                |
+| ----------------------- | --------------------------------- | -------------------------------------- |
+| `category`              | Fundraising Page Category         | `Running`                              |
+| `eventName`             | Associated Event Name             | `London Marathon 2024`                 |
+| `eventDate`             | Event Date                        | `2024-04-21T09:00:00.000Z`             |
+| `eventExpiryDate`       | Event Expiry Date                 | `2024-05-21T23:59:59.000Z`             |
+| `eventIsUserCreated`    | Is User Created Event             | `false`                                |
+| `eventCompletionDate`   | Event Completion Date             | `2024-04-21T15:30:00.000Z`             |
+| `eventCategory`         | Event Category                    | `Running`                              |
+| `totalEstimatedGiftAid` | Estimated Gift Aid Amount         | `250.00`                               |
+| `totalRaisedOnline`     | Total Raised Online               | `1420.00`                              |
+| `totalRaisedOffline`    | Total Raised Offline              | `580.00`                               |
+| `weddingNames`          | Wedding Names (for wedding pages) | `Sarah & James`                        |
+| `teamId`                | Associated Team ID                | `team-alpha-2024`                      |
+| `pageGuid`              | Page GUID                         | `1f0d209a-b3db-4fc4-82cd...`           |
+| `activityType`          | Activity Type                     | `OtherPersonalChallenge`               |
+| `apiSource`             | API Source                        | `payment`                              |
+| `pageSummary`           | Page Summary                      | `Running for a great cause`            |
+| `owner`                 | Owner Name                        | `Bart's Place`                         |
+| `ownerGuid`             | Owner GUID                        | `b2e0b348-795e-469d-ac42-e2de91a3256a` |
 
 **Donation Custom Fields**
 
