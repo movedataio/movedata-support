@@ -17,7 +17,7 @@ A notification represents a single event or transaction that has been captured f
 * **Primary event data** from the original transaction
 * **Supporting context** such as donor information and campaign details
 * **Execution logs** showing how the data was processed
-* **Salesforce objects** listings the records that were involved in the transaction
+* **Salesforce objects** listing the records that were involved in the transaction
 
 ### Accessing Notifications
 
@@ -35,7 +35,7 @@ The Notifications interface displays a comprehensive list of all notifications p
 
 #### **List View Header**
 
-* **Total Count**: Shows the number of notifications (e.g., "116 items")
+* **Total Count**: Shows the number of notifications (e.g. "116 items")
 * **Search Bar**: Located in the top right for finding specific notifications
 * **Filter Controls**: Advanced filtering options to narrow down results
 
@@ -43,7 +43,7 @@ The Notifications interface displays a comprehensive list of all notifications p
 
 * **Key**: Unique notification identifier (clickable link to notification details)
 * **Name**: Descriptive name showing the platform and event type
-* **Platform**: Source platform (Raisely, GiveEasy, etc.)
+* **Platform**: Source platform (Raisely, GiveEasy, etc)
 * **Created**: Date and time when the notification was first received
 * **Updated**: Date and time of the last modification to the notification
 * **Status**: Current processing status of the notification
@@ -56,9 +56,9 @@ MoveData notifications can have several status values that indicate their curren
 
 **Skipped**: The notification was intentionally skipped based on your business rules or configuration settings. This is normal behaviour for certain types of events.
 
-**Failed**: An error occurred during processing or execution. The notification requires attention before it can be successfully applied to Salesforce.
+**Failed**: An error occurred during processing or execution. The notification requires attention before it can be successfully processed into Salesforce.
 
-**Processing / Queued**: The notification is currently being transformed and prepared for execution in Salesforce.
+**Processing / Queued**: The notification is currently being prepared for processing into Salesforce.
 
 #### Filtering and Searching Notifications
 
@@ -70,6 +70,7 @@ MoveData provides several pre-built filter views accessible from the dropdown me
 
 * **All Notifications**: Complete list of all notifications
 * **Successful Notifications**: Only notifications with "Success" status
+* **Failed Notifications**: Only notifications with "Failed" status
 * **{Platform} Notifications**: A view for each platform you are integrated with
 * **Successful Batch Jobs**: Successfully completed batch processing jobs
 * **Failed Batch Jobs**: Batch jobs that encountered errors
@@ -111,7 +112,7 @@ Each notification row includes an action menu (accessed via the dropdown arrow) 
 
 ### Notification Detail View
 
-Clicking on a notification's key from the list view opens the comprehensive Notification Detail View. This interface provides complete visibility into notification processing, data transformation, and resulting Salesforce records.
+Clicking on a notification from the list view opens the comprehensive Notification Detail View. This interface provides complete visibility into notification processing, data transformation, and resulting Salesforce records.
 
 <figure><img src="../.gitbook/assets/notification-detail-summary.png" alt=""><figcaption></figcaption></figure>
 
@@ -119,16 +120,16 @@ Clicking on a notification's key from the list view opens the comprehensive Noti
 
 The notification detail page opens with key information displayed prominently at the top:
 
-* **Notification Key**: The unique notification key (e.g., "20250804020604208082333CBF4A794N")&#x20;
+* **Notification Key**: The unique notification key (e.g. "20250804020604208082333CBF4A794N")&#x20;
 * **Event Description**: Full descriptive name of the notification event
 * **Action Buttons**:
   * **Reprocess**: Retry processing this notification if it failed or needs to be run again
-  * **Mark for Review**: Flag this notification for manual investigation
+  * **Mark for Review**: Flag this notification for further investigation
 
 **Status Summary**:
 
-* **Status**: Current processing state (Success, Failed, Processing, etc.)
-* **Platform**: Source fundraising platform (Raisely, GiveEasy, etc.)
+* **Status**: Current processing state (Success, Failed, Processing, etc)
+* **Platform**: Source fundraising platform (Raisely, GiveEasy, etc)
 * **Created Date**: When the notification was first received
 * **Update Date**: When the notification was last modified
 
@@ -140,10 +141,10 @@ The Summary tab provides an overview of notification processing and results, org
 
 The Details section shows core processing information:
 
-* **Notification Key**: The unique notification key (e.g., "20250804020604208082333CBF4A794N")&#x20;
+* **Notification Key**: The unique notification key (e.g. "20250804020604208082333CBF4A794N")&#x20;
 * **Name**: Full descriptive name of the notification event
 * **Status**: Current processing status with any relevant status messages
-* **Message**: Processing outcome description (e.g., "Successfully executed")
+* **Message**: Processing outcome description (e.g. "Successfully executed")
 * **Created Date**: Initial notification timestamp
 * **Update Date**: Most recent processing timestamp
 
@@ -179,7 +180,7 @@ The Notification Execution Log, accessible via the Execution tab(s), provide det
 
 The Execution Log is organised into:
 
-* **Time**: Exact time when each processing step occurred (e.g., "12:06:08")
+* **Time**: Exact time when each processing step occurred (e.g. "12:06:08")
 * **Group**: The name of the processing stage being executed
 * **Message**: High level message or subject for the detail
 * **Detail**: Detailed information supporting the subject in the message
