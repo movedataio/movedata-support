@@ -1,4 +1,5 @@
 site_name: MoveData
+site_url: https://support.movedata.io
 theme:
   name: material
   palette:
