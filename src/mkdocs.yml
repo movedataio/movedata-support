@@ -26,3 +26,4 @@ markdown_extensions:
           - overrides/.icons
 nav:
   - Home: index.md
+  - Ask AI: ask-ai.md
