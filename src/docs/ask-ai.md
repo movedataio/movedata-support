@@ -1,13 +1,17 @@
-# Ask AI Assistant
+---
+hide:
+  - navigation
+  - toc
+---
 
-Welcome to the MoveData AI Assistant! Ask questions about MoveData, integrations, troubleshooting, or anything else related to our platform.
+# Ask AI Assistant
 
 <script src="https://cdn.jsdelivr.net/npm/marked@11.1.1/marked.min.js"></script>
 
 <div id="chat-container">
     <div id="chat-messages"></div>
     <div id="chat-input-container">
-        <textarea id="chat-input" placeholder="Ask a question about MoveData..." rows="3"></textarea>
+        <textarea id="chat-input" placeholder="Ask a question about MoveData..." rows="2"></textarea>
         <button id="chat-send" onclick="sendMessage()">Send</button>
     </div>
 </div>
@@ -16,9 +20,8 @@ Welcome to the MoveData AI Assistant! Ask questions about MoveData, integrations
 #chat-container {
     display: flex;
     flex-direction: column;
-    height: 600px;
-    max-width: 900px;
-    margin: 2rem auto;
+    height: calc(100vh - 400px);
+    min-height: 500px;
     border: 1px solid var(--md-default-fg-color--lightest);
     border-radius: 8px;
     overflow: hidden;
@@ -37,7 +40,7 @@ Welcome to the MoveData AI Assistant! Ask questions about MoveData, integrations
 .message {
     display: flex;
     flex-direction: column;
-    max-width: 85%;
+    max-width: 80%;
     animation: slideIn 0.3s ease-out;
 }
 
@@ -61,9 +64,11 @@ Welcome to the MoveData AI Assistant! Ask questions about MoveData, integrations
 }
 
 .message-content {
-    padding: 0.75rem 1rem;
+    padding: 0.5rem 1rem;
     border-radius: 8px;
     word-wrap: break-word;
+    font-size: 0.9rem;
+    line-height: 1.5;
 }
 
 .message.user .message-content {
@@ -81,25 +86,25 @@ Welcome to the MoveData AI Assistant! Ask questions about MoveData, integrations
 .message.assistant .message-content h1,
 .message.assistant .message-content h2,
 .message.assistant .message-content h3 {
-    margin: 0.75rem 0 0.5rem 0;
-    line-height: 1.3;
+    margin: 0.875rem 0 0.5rem 0;
+    line-height: 1.25;
 }
 
 .message.assistant .message-content h1 {
-    font-size: 1.5rem;
-}
-
-.message.assistant .message-content h2 {
     font-size: 1.3rem;
 }
 
+.message.assistant .message-content h2 {
+    font-size: 1.15rem;
+}
+
 .message.assistant .message-content h3 {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
 }
 
 .message.assistant .message-content p {
     margin: 0.5rem 0;
-    line-height: 1.6;
+    line-height: 1.55;
 }
 
 .message.assistant .message-content code {
@@ -112,10 +117,11 @@ Welcome to the MoveData AI Assistant! Ask questions about MoveData, integrations
 
 .message.assistant .message-content pre {
     background: var(--md-code-bg-color);
-    padding: 1rem;
+    padding: 0.875rem;
     border-radius: 4px;
     overflow-x: auto;
     margin: 0.75rem 0;
+    font-size: 0.85rem;
 }
 
 .message.assistant .message-content pre code {
@@ -137,8 +143,8 @@ Welcome to the MoveData AI Assistant! Ask questions about MoveData, integrations
 }
 
 .message.assistant .message-content li {
-    margin: 0.25rem 0;
-    line-height: 1.6;
+    margin: 0.3rem 0;
+    line-height: 1.55;
 }
 
 .message.assistant .message-content a {
@@ -159,10 +165,13 @@ Welcome to the MoveData AI Assistant! Ask questions about MoveData, integrations
 }
 
 .message-label {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     color: var(--md-default-fg-color--light);
     margin-bottom: 0.25rem;
     padding: 0 0.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 500;
 }
 
 .message.user .message-label {
@@ -171,7 +180,7 @@ Welcome to the MoveData AI Assistant! Ask questions about MoveData, integrations
 
 #chat-input-container {
     display: flex;
-    gap: 0.5rem;
+    gap: 0.75rem;
     padding: 1rem;
     background: var(--md-default-bg-color);
     border-top: 1px solid var(--md-default-fg-color--lightest);
@@ -187,7 +196,9 @@ Welcome to the MoveData AI Assistant! Ask questions about MoveData, integrations
     font-family: inherit;
     font-size: 0.9rem;
     resize: vertical;
-    min-height: 60px;
+    min-height: 50px;
+    max-height: 150px;
+    line-height: 1.5;
 }
 
 #chat-input:focus {
@@ -196,14 +207,16 @@ Welcome to the MoveData AI Assistant! Ask questions about MoveData, integrations
 }
 
 #chat-send {
-    padding: 0.75rem 1.5rem;
+    padding: 0.75rem 1.75rem;
     background: var(--md-primary-fg-color);
     color: var(--md-primary-bg-color);
     border: none;
     border-radius: 4px;
     cursor: pointer;
     font-weight: 500;
+    font-size: 0.9rem;
     transition: opacity 0.2s;
+    align-self: flex-end;
 }
 
 #chat-send:hover {
@@ -253,6 +266,24 @@ Welcome to the MoveData AI Assistant! Ask questions about MoveData, integrations
     padding: 0.75rem 1rem;
     border-radius: 8px;
     margin: 0.5rem 0;
+    font-size: 0.9rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #chat-container {
+        height: calc(100vh - 150px);
+        margin: 0.5rem;
+        border-radius: 0;
+    }
+    
+    .message {
+        max-width: 90%;
+    }
+    
+    #chat-input-container {
+        padding: 0.75rem;
+    }
 }
 </style>
 
