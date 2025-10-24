@@ -311,6 +311,42 @@
   padding: 0;
 }
 
+.ask-ai-message--assistant .ask-ai-message__content {
+  background: var(--md-default-bg-color);
+  border: 1px solid var(--md-default-fg-color--lightest);
+  color: var(--md-default-fg-color);
+}
+
+/* Links in assistant messages - use theme styling */
+.ask-ai-message--assistant .ask-ai-message__content a {
+  color: var(--md-typeset-a-color, var(--md-primary-fg-color));
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 125ms, border-color 125ms;
+}
+
+.ask-ai-message--assistant .ask-ai-message__content a:hover {
+  color: var(--md-accent-fg-color, var(--md-primary-fg-color));
+  border-bottom-color: var(--md-accent-fg-color, var(--md-primary-fg-color));
+}
+
+.ask-ai-message--assistant .ask-ai-message__content a:focus {
+  outline: 2px solid var(--md-accent-fg-color);
+  outline-offset: 2px;
+  border-bottom-color: transparent;
+}
+
+/* Ensure links in code blocks don't get styled */
+.ask-ai-message--assistant .ask-ai-message__content code a {
+  color: inherit;
+  border-bottom: none;
+}
+
+.ask-ai-message--assistant .ask-ai-message__content pre a {
+  color: inherit;
+  border-bottom: none;
+}
+
 /* Loading animation */
 .ask-ai-loading {
   display: flex;

@@ -8,6 +8,20 @@ if (document.readyState === 'loading') {
 function init() {
   console.log('Ask AI: Initializing...');
   
+  // Configure marked.js if available
+  if (typeof marked !== 'undefined') {
+    marked.setOptions({
+      breaks: true,
+      gfm: true,
+      headerIds: false,
+      mangle: false,
+      sanitize: false
+    });
+    console.log('Ask AI: marked.js configured');
+  } else {
+    console.warn('Ask AI: marked.js not found, will use basic formatting');
+  }
+  
   // Hide the default search
   const searchButton = document.querySelector('[data-md-component="search"]');
   if (searchButton) {
@@ -316,8 +330,23 @@ async function sendMessage() {
   }
 }
 
-// Basic markdown formatter
+// Use marked.js for proper markdown rendering
 function formatMarkdown(text) {
+  // Check if marked is available
+  if (typeof marked !== 'undefined') {
+    // Configure marked for better rendering
+    marked.setOptions({
+      breaks: true,        // Convert \n to <br>
+      gfm: true,          // GitHub Flavored Markdown
+      headerIds: false,    // Don't add IDs to headers
+      mangle: false        // Don't escape email addresses
+    });
+    
+    return marked.parse(text);
+  }
+  
+  // Fallback to basic formatting if marked isn't loaded
+  console.warn('marked.js not available, using basic formatting');
   return text
     .replace(/```([\s\S]*?)```/g, '<pre><code>$1</code></pre>')
     .replace(/`([^`]+)`/g, '<code>$1</code>')
