@@ -49,6 +49,10 @@ MoveData can integrate data into both standard and custom objects, automatically
 
 ### Lightning Flows
 
+Salesforce Lightning Flows are visual automation tools that allow you to build sophisticated business logic without writing code. Think of them as flowcharts that automate processes, make decisions based on your data, and perform actions within Salesforce. For nonprofits, Lightning Flows can automate everything from donation acknowledgment processes to donor segmentation.
+
+MoveData leverages Lightning Flows as its primary customisation framework, allowing you to tailor how fundraising platform data becomes Salesforce records. Through configurable flows, you can implement organisation-specific business rules—such as marking high-value donors, routing notifications based on donation amounts, or creating custom relationships between records. MoveData provides turnkey flows for common nonprofit scenarios while giving you full flexibility to build custom logic using Salesforce's standard declarative tools, ensuring your integrations align perfectly with your unique processes.
+
 ### Next Steps
 
 We recommend working through the [MoveData Learning Path](your-movedata-learning-path.md).
