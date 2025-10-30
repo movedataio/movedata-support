@@ -6,9 +6,15 @@ description: >-
 
 # Getting Started with MoveData
 
+
+
 So you've installed MoveData or are working with MoveData for the first time...exciting!
 
 We've compiled the most common initial tasks when first starting with MoveData to help you set up everything you need and ensure it works perfectly for your nonprofit's fundraising data integration. The checklist below provides an excellent foundation for success.
+
+{% hint style="info" %}
+Work through our [Quickstart guide](quickstart.md) to get up and running.
+{% endhint %}
 
 ### Installation and Initial Setup
 
@@ -38,7 +44,7 @@ We've compiled the most common initial tasks when first starting with MoveData t
 
 **Platform Connection**: Start with your primary fundraising platform. Whether it's Raisely, JustGiving, or another supported platform, follow the platform-specific documentation to establish the connection.
 
-**Data Mapping Review**: MoveData provides out-of-the-box field mapping that works for most organizations. Review the default mappings to ensure they align with your data structure and reporting needs.
+**Data Mapping Review**: MoveData provides out-of-the-box field mapping that works for most organisations. Review the default mappings to ensure they align with your data structure and reporting needs.
 
 **Test with Sample Data**: Before going live, test your integration with a small sample of data to verify that records are being created correctly and duplicate detection is working as expected.
 
@@ -62,7 +68,7 @@ We've compiled the most common initial tasks when first starting with MoveData t
 
 **Team Training**: Ensure your fundraising, marketing, and reporting teams understand how MoveData enhances their Salesforce data. The automated data flow will unlock new capabilities for reporting, marketing automation, and donor stewardship.
 
-**Documentation Access**: Familiarize yourself with MoveData's comprehensive documentation at docs.movedata.io, which includes detailed guides for each supported platform and troubleshooting resources.
+**Documentation Access**: Familiarise yourself with MoveData's comprehensive documentation at docs.movedata.io, which includes detailed guides for each supported platform and troubleshooting resources.
 
 **Ongoing Support**: Submit support requests through the MoveData ticketing system at docs.movedata.io, with monitoring available Monday to Friday 8am-11pm AEST.
 

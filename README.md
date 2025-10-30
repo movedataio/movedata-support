@@ -4,7 +4,7 @@
 
 We are MoveData, a specialist integration platform designed exclusively for nonprofits using Salesforce. We help charitable organisations streamline their fundraising operations, eliminate manual data entry, and maximise their impact through intelligent, real-time data synchronisation.
 
-MoveData intelligently connects information from your fundraising platforms directly into Salesforce to save time, ensure accuracy, and maximise impact. Whether you're using Raisely, JustGiving, Enthuse, Funraisin', or other popular fundraising platforms, we automate the flow of donor data, campaign information, and donation records directly into your Salesforce org.
+MoveData intelligently connects information from your fundraising platforms directly into Salesforce to save time, ensure accuracy, and maximise impact. Whether you're using Raisely, JustGiving, Enthuse, Funraisin', Facebook, or other popular fundraising platforms, we automate the flow of donor data, campaign information, and donation records directly into your Salesforce org.
 
 MoveData was created after seeing so many nonprofits struggle to get their fundraising data into Salesforce. We understand the unique challenges that nonprofits face – limited resources, the need for accurate reporting, and the importance of maintaining strong donor relationships.&#x20;
 
