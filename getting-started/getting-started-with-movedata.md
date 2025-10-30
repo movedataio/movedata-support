@@ -6,8 +6,6 @@ description: >-
 
 # Getting Started with MoveData
 
-
-
 So you've installed MoveData or are working with MoveData for the first time...exciting!
 
 We've compiled the most common initial tasks when first starting with MoveData to help you set up everything you need and ensure it works perfectly for your nonprofit's fundraising data integration. The checklist below provides an excellent foundation for success.
@@ -26,7 +24,7 @@ Work through our [Quickstart guide](quickstart.md) to get up and running.
 
 ### Salesforce Environment Preparation
 
-**Data Model Compatibility**: MoveData works with both Salesforce Nonprofit Success Pack (NPSP) and the newer Nonprofit Cloud. The platform now supports Salesforce Nonprofit Cloud and automatically maps to the appropriate data model in your org.
+**Data Model Compatibility**: MoveData works with both Salesforce Nonprofit Success Pack (NPSP) and the newer Nonprofit Cloud, providing out-of-the-box flows to route notifications to the appropriate objects in your org.
 
 **Duplicate Rules Configuration**: Review and configure your Salesforce duplicate rules for Contacts, Accounts, and Campaigns. MoveData uses your existing Salesforce duplicate rules to determine if a record already exists and appends data to existing records rather than creating duplicates.
 
@@ -48,7 +46,7 @@ Work through our [Quickstart guide](quickstart.md) to get up and running.
 
 **Test with Sample Data**: Before going live, test your integration with a small sample of data to verify that records are being created correctly and duplicate detection is working as expected.
 
-### Customization and Business Rules
+### Customisation and Business Rules
 
 **Lightning Flow Extensions**: MoveData supplies visual workflows (Salesforce Lightning Flows) that can be easily extended to accommodate new business logic in your integration. This allows you to handle custom fields, special data transformation rules, or unique business requirements.
 
@@ -76,10 +74,10 @@ Work through our [Quickstart guide](quickstart.md) to get up and running.
 
 **Production Deployment**: Once you've tested thoroughly in your sandbox environment, deploy your integration configuration to production. MoveData is completely free to use in Sandbox orgs and only begins subscription billing when installed in Production.
 
-**Data Backfill Considerations**: Discuss with your technical account manager whether you need to import historical data from your fundraising platforms to establish baseline reporting in Salesforce.
+**Data Import Considerations**: Discuss with your technical account manager whether you need to import historical data from your fundraising platforms to establish baseline reporting in Salesforce.
 
 **Success Metrics**: Establish metrics to measure the success of your integration, such as time saved on data entry, improved data accuracy, and enhanced reporting capabilities.
 
 ***
 
-Following this getting started guide will ensure you maximize the value of MoveData from day one. Remember, supporting your success is a cornerstone of MoveData, so don't hesitate to reach out to your technical account manager with questions or requests for assistance.
+Following this getting started guide will ensure you maximise the value of MoveData from day one. Remember, supporting your success is a cornerstone of MoveData, so don't hesitate to reach out to your technical account manager with questions or requests for assistance.
