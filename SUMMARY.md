@@ -2,14 +2,15 @@
 
 ## General
 
-* [About the MoveData Authorised User](README.md)
-* [Grant Salesforce Access to MoveData](general/grant-salesforce-access-to-movedata.md)
+* [Grant Salesforce Access to MoveData](README.md)
 * [Too many SOQL queries: 101](general/too-many-soql-queries-101.md)
 * [Too many SOQL queries: 101 (dlrs)](general/too-many-soql-queries-101-dlrs.md)
 * [Unable to Lock Row Error (UNABLE\_TO\_LOCK\_ROW)](general/unable-to-lock-row-error-unable_to_lock_row.md)
 * [Apex CPU time limit exceeded](general/apex-cpu-time-limit-exceeded.md)
 * [MAXIMUM\_HIERARCHY\_LEVELS\_REACHED](general/maximum_hierarchy_levels_reached.md)
 * [Salesforce Connected App Usage Restrictions](general/salesforce-connected-app-usage-restrictions.md)
+* [Change the MoveData Authorised User](general/change-the-movedata-authorised-user.md)
+* [About the MoveData Authorised User](general/about-the-movedata-authorised-user.md)
 
 ## NPSP
 
@@ -22,3 +23,19 @@
 ## NPC
 
 * [Non-Profit Cloud Licensing Requirements for MoveData](npc/non-profit-cloud-licensing-requirements-for-movedata.md)
+
+## Commerce
+
+* [A Product with this SKU already exists](commerce/a-product-with-this-sku-already-exists.md)
+
+## Grassrootz
+
+* [Grassrootz: Fee Information](grassrootz/grassrootz-fee-information.md)
+
+## Extension: General
+
+* [Campaign Name Overridden](extension-general/campaign-name-overridden.md)
+
+## Technical
+
+* [Change the SObject Type within a Phase](technical/change-the-sobject-type-within-a-phase.md)
