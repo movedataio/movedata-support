@@ -64,3 +64,19 @@
 ## Integration: Grassrootz
 
 * [Grassrootz: Fee Information](integration-grassrootz/grassrootz-fee-information.md)
+
+## Integration: JustGiving
+
+* [Duplicate Campaigns created for Events](integration-justgiving/duplicate-campaigns-created-for-events.md)
+* [Unable to connect to Data API](integration-justgiving/unable-to-connect-to-data-api.md)
+* [Skipping due to Different Currencies](integration-justgiving/skipping-due-to-different-currencies.md)
+* [JustGiving Campaign Logic](integration-justgiving/justgiving-campaign-logic.md)
+
+## Integration: Raisely
+
+* [Sync Raisely Campaign to Salesforce prior to First Notification](integration-raisely/sync-raisely-campaign-to-salesforce-prior-to-first-notification.md)
+* [Statuses for Recurring Donations](integration-raisely/statuses-for-recurring-donations.md)
+* [Migrate Recurring Donations from External System](integration-raisely/migrate-recurring-donations-from-external-system.md)
+* [Map Raisely Campaign to Existing Salesforce Campaign](integration-raisely/map-raisely-campaign-to-existing-salesforce-campaign.md)
+* [Different Address on Donation vs Person Record](integration-raisely/different-address-on-donation-vs-person-record.md)
+* [Required fields are missing: \[LastName\]](integration-raisely/required-fields-are-missing-lastname.md)
