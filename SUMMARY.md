@@ -41,3 +41,14 @@
 * [PayPal Giving Fund](integrations/paypal-giving-fund.md)
 * [Raisely](integrations/raisely.md)
 * [TapRaise](integrations/tapraise.md)
+
+## General
+
+* [Billing](general/billing/README.md)
+  * [Payment Options for your Subscription](general/billing/payment-options-for-your-subscription.md)
+  * [Sales Tax](general/billing/sales-tax.md)
+* [Legal](general/legal.md)
+* [Security](general/security/README.md)
+  * [Cyber Security FAQ](general/security/cyber-security-faq.md)
+  * [Cloud Security Alliance Assessment](general/security/cloud-security-alliance-assessment.md)
+  * [Security Questionnaire](general/security/security-questionnaire.md)
