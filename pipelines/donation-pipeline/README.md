@@ -74,7 +74,7 @@ The multi-step pipeline processes notifications through six distinct stages:
 ### Stage 0: Configuration
 
 {% hint style="info" %}
-**Detailed Example**: [adding-a-configuration-flow.md](../../guides/table-of-contents/adding-a-configuration-flow.md "mention")
+**Detailed Example**: [adding-a-configuration-flow.md](../../development-guides/table-of-contents/adding-a-configuration-flow.md "mention")
 {% endhint %}
 
 **Purpose**: Enables the setting `Config_` values that are either conditional (ie. if `Platform` is `x`, then) or are more advanced configuration settings that aren't exposed via the Settings interface.
@@ -84,7 +84,7 @@ The multi-step pipeline processes notifications through six distinct stages:
 ### Stage 1: Pre-processing (Optional)
 
 {% hint style="info" %}
-**Detailed Example**: [implementing-a-pre-processor.md](../../guides/table-of-contents/implementing-a-pre-processor.md "mention")
+**Detailed Example**: [implementing-a-pre-processor.md](../../development-guides/table-of-contents/implementing-a-pre-processor.md "mention")
 {% endhint %}
 
 **Purpose**: Allows transformation or enhancement of the notification before main processing begins.

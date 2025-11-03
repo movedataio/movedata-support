@@ -46,7 +46,7 @@ The following section details each of the possible phases for a stage.  This inc
 ### Disable Phase
 
 {% hint style="info" %}
-**Working Example**: [disable-a-phase.md](../guides/table-of-contents/disable-a-phase.md "mention")
+**Working Example**: [disable-a-phase.md](../development-guides/table-of-contents/disable-a-phase.md "mention")
 {% endhint %}
 
 If you wish to disable a phase completely, you can do that through a metadata entry in the pipeline configuration metadata object (`movedata__MoveData_Pipeline__mdt)`.  Using a metadata pipeline key ending in `_DISABLE` (eg. `PIPELINE_DONATION_RECURRING_DISABLE`), if you create an entry using:

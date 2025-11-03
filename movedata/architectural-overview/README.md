@@ -16,7 +16,7 @@ The platform's event-driven architecture ensures that each transaction is proces
 
 ### Data Processing Architecture
 
-<figure><img src="../.gitbook/assets/MD_Process.drawio.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/MD_Process.drawio.png" alt=""><figcaption></figcaption></figure>
 
 The MoveData platform processes fundraising data through a sophisticated three-stage lifecycle:
 
@@ -31,7 +31,7 @@ The first stage captures every meaningful interaction from your fundraising ecos
 ### Stage 2: Transformation Engine
 
 {% hint style="info" %}
-For detailed information, see [platform-architecture.md](architectural-overview/platform-architecture.md "mention")
+For detailed information, see [platform-architecture.md](platform-architecture.md "mention")
 {% endhint %}
 
 The transformation stage represents the sophisticated intelligence layer of MoveData's architecture, where raw fundraising platform data is converted into standardised formats, ready to be dispatched to MoveData's Salesforce handlers. This stage handles the complex business logic required to map diverse fundraising platform structures into consistent, actionable data.
@@ -44,7 +44,7 @@ The transformation stage represents the sophisticated intelligence layer of Move
 ### Stage 3: Salesforce Execution
 
 {% hint style="info" %}
-For detailed information, see [salesforce-architecture.md](architectural-overview/salesforce-architecture.md "mention")
+For detailed information, see [salesforce-architecture.md](salesforce-architecture.md "mention")
 {% endhint %}
 
 The final stage represents where standardised notifications are transformed into actual Salesforce records through sophisticated business rule processing and native Salesforce integration capabilities. This stage ensures that data not only arrives in Salesforce but aligns to your organisation's specific processes and requirements.

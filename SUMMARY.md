@@ -2,19 +2,19 @@
 
 * [Welcome to the MoveData Developer Centre](README.md)
 
-## MoveData <a href="#application" id="application"></a>
+## MoveData
 
-* [Architectural Overview](application/architectural-overview.md)
-  * [Platform Architecture](application/architectural-overview/platform-architecture.md)
-  * [Salesforce Architecture](application/architectural-overview/salesforce-architecture.md)
-* [Configuration](application/configuration/README.md)
-  * [Install MoveData](application/configuration/install-movedata.md)
-  * [Setup Wizard](application/configuration/setup-wizard.md)
-  * [Settings](https://jgilray.gitbook.io/movedata-v2/salesforce-application/settings)
-  * [Duplicate Rules](https://jgilray.gitbook.io/movedata-v2/configuration/duplicate-rules)
-  * [Permission Sets](https://jgilray.gitbook.io/movedata-v2/configuration/permission-sets)
-  * [Integrations](https://jgilray.gitbook.io/movedata-v2/salesforce-application/integrations)
-  * [Notifications](https://jgilray.gitbook.io/movedata-v2/salesforce-application/notifications)
+* [Architectural Overview](movedata/architectural-overview/README.md)
+  * [Platform Architecture](movedata/architectural-overview/platform-architecture.md)
+  * [Salesforce Architecture](movedata/architectural-overview/salesforce-architecture.md)
+* [Configuration](movedata/configuration/README.md)
+  * [Install MoveData](movedata/configuration/install-movedata.md)
+  * [Setup Wizard](movedata/configuration/setup-wizard.md)
+  * [Settings](https://support.movedata.io/user_guide/salesforce-application/settings/)
+  * [Duplicate Rules](https://support.movedata.io/user_guide/configuration/duplicate-rules/)
+  * [Permission Sets](https://support.movedata.io/user_guide/configuration/permission-sets/)
+  * [Integrations](https://support.movedata.io/user_guide/salesforce-application/integrations/)
+  * [Notifications](https://support.movedata.io/user_guide/salesforce-application/notifications/)
 
 ## Pipelines
 
@@ -26,13 +26,13 @@
   * [NPSP Fundraising & Donations Extension](https://www.google.com)
   * [Non-Profit Cloud Extension](https://www.google.com)
 
-## Development Guides <a href="#guides" id="guides"></a>
+## Development Guides
 
-* [Table of Contents](guides/table-of-contents/README.md)
-  * [Adding a Configuration Flow](guides/table-of-contents/adding-a-configuration-flow.md)
-  * [Disable a Phase](guides/table-of-contents/disable-a-phase.md)
-  * [Implementing a Pre-Processor](guides/table-of-contents/implementing-a-pre-processor.md)
-  * [Understanding Fieldsets](guides/table-of-contents/understanding-fieldsets.md)
+* [Table of Contents](development-guides/table-of-contents/README.md)
+  * [Adding a Configuration Flow](development-guides/table-of-contents/adding-a-configuration-flow.md)
+  * [Disable a Phase](development-guides/table-of-contents/disable-a-phase.md)
+  * [Implementing a Pre-Processor](development-guides/table-of-contents/implementing-a-pre-processor.md)
+  * [Understanding Fieldsets](development-guides/table-of-contents/understanding-fieldsets.md)
 
 ## Reference
 
