@@ -1,5 +1,13 @@
 # Campaign
 
+{% hint style="info" %}
+Metadata
+
+* title=Commerce Schema Reference - Campaign
+* entity=Campaign
+* schema=Commerce
+{% endhint %}
+
 * `salesforceKey`: Salesforce platform key for the campaign - used for CRM integration
 * `key`: Unique identifier for the campaign in the dispatching platform
 * `type`: Type of fundraising campaign (campaign, organisation, team, or fundraiser)
@@ -11,7 +19,7 @@
 * `targetAmount`: Target fundraising amount for the campaign
 * `amount`: Current amount raised for the campaign
 * `currency`: Currency code for the campaign amounts (e.g., USD, EUR, AUD)
-* `primaryContact`: [[📖 Person](person.md) and [📖 Organisation](organisation.md)] Primary contact person or organization for the campaign
+* `primaryContact`: \[[📖 Person](person.md) and [📖 Organisation](organisation.md)] Primary contact person or organization for the campaign
 * `mailingAddress`: Mailing address for the campaign organization
 * `otherAddress`: Secondary or alternative address for the campaign
 * `eventDate`: Date when the campaign event will take place (if applicable)

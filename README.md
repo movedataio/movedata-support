@@ -1,5 +1,13 @@
 # Overview
 
+{% hint style="info" %}
+Metadata
+
+* title=Commerce Schema Overview
+* type=table\_of\_contents
+* schema=Commerce
+{% endhint %}
+
 ## Commerce Schema
 
 The Commerce Schema is produced by integrations that deal with sales.  The can be product sales, raffle sales, merchandise, etc.

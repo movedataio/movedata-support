@@ -1,5 +1,13 @@
 # Catalog
 
+{% hint style="info" %}
+Metadata
+
+* title=Commerce Schema Reference - Catalog
+* entity=Catalog
+* schema=Commerce
+{% endhint %}
+
 * `key`: Unique key for the catalog item.
 * `code`: Catalog code identifier.
 * `name`: Name of the catalog item.
@@ -11,7 +19,7 @@
 * `quantity`: Quantity available in the catalog.
 * `price`: Price of the catalog item.
 * `cost`: Cost of the catalog item.
-* `brand`: [[📖 Brand](brand.md)] Associated brand entity.
+* `brand`: \[[📖 Brand](brand.md)] Associated brand entity.
 * `weight`: Weight of the catalog item.
 * `custom`: Custom metadata for the catalog.
 * `createdAt`: Date when the catalog was created.

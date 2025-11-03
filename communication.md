@@ -1,5 +1,13 @@
 # Communication
 
+{% hint style="info" %}
+Metadata
+
+* title=Commerce Schema Reference - Communication
+* entity=Communication
+* schema=Commerce
+{% endhint %}
+
 * `any`: General permission to contact through any method
 * `email`: Permission to contact via email
 * `phone`: Permission to contact via phone calls

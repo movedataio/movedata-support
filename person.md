@@ -1,5 +1,13 @@
 # Person
 
+{% hint style="info" %}
+Metadata
+
+* title=Commerce Schema Reference - Person
+* entity=Person
+* schema=Commerce
+{% endhint %}
+
 * `salesforceKey`: Salesforce ID for Contact - used for specific anonymous user scenarios
 * `key`: Dispatching Platform Key for Contacts
 * `partyType`: Always set to "person" when dealing with a contact

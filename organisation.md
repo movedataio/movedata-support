@@ -1,10 +1,18 @@
 # Organisation
 
+{% hint style="info" %}
+Metadata
+
+* title=Commerce Schema Reference - Organisation
+* entity=Organisation
+* schema=Commerce
+{% endhint %}
+
 * `salesforceKey`: Salesforce ID for Organisation - included for consistency with other Salesforce records
 * `key`: Dispatching Platform Key for Organisation
 * `partyType`: Always set to "account" when dealing with organisations
 * `name`: Organisation name - almost always required downstream
-* `primaryContact`: [[📖 Person](person.md)] Primary contact person for the organisation
+* `primaryContact`: \[[📖 Person](person.md)] Primary contact person for the organisation
 * `phoneType`: Organisation phone type - typically "work" for business contexts
 * `phone`: Organisation phone number - no validation or parsing applied
 * `emailType`: Organisation email type - typically "work" for business contexts
