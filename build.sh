@@ -7,6 +7,16 @@ mkdir -p ./lib
 
 cp -r ./src/. ./lib/
 
+git clone --depth=1 --branch=knowledgebase https://github.com/movedataio/movedata-support.git ./lib/docs/knowledgebase
+rm -rf ./lib/docs/knowledgebase/.git
+
+node ./bin/convert-nav.js ./lib/docs/knowledgebase/SUMMARY.md "Knowledge Base" knowledgebase
+node ./bin/convert-frontmatter.js ./lib/docs/knowledgebase
+node ./bin/migrate-images.js knowledgebase ./lib/docs/knowledgebase
+node ./bin/convert-embeds.js ./lib/docs/knowledgebase
+node ./bin/convert-hints.js ./lib/docs/knowledgebase
+node ./bin/convert-lists.js ./lib/docs/knowledgebase
+
 git clone --depth=1 --branch=documentation https://github.com/movedataio/movedata-support.git ./lib/docs/user_guide
 rm -rf ./lib/docs/user_guide/.git
 

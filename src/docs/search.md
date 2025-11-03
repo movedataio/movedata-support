@@ -1,5 +1,8 @@
 ---
 title: Knowledge Base Search
+hide:
+  - navigation
+  - toc
 ---
 
 # Knowledge Base Search
@@ -213,6 +216,89 @@ title: Knowledge Base Search
         padding: 40px;
         color: var(--md-default-fg-color--light, #666);
     }
+
+    .panels-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 20px;
+        margin-bottom: 30px;
+    }
+
+    .panels-container.hidden {
+        display: none;
+    }
+
+    .panel {
+        padding: 20px;
+        background-color: var(--md-default-bg-color, white);
+        border: 1px solid var(--md-default-fg-color--lightest, #e0e0e0);
+        border-radius: 8px;
+        height: fit-content;
+    }
+
+    .panel-title {
+        font-size: 1.5em;
+        color: var(--md-default-fg-color, #333);
+        margin: 0 0 .64em !important;
+        font-weight: 600;
+        border-bottom: 2px solid var(--md-primary-fg-color, #4CAF50);
+        padding-bottom: 8px;
+    }
+
+    .panel-items {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .panel-item {
+        padding: 12px 16px;
+        background-color: var(--md-code-bg-color, #f9f9f9);
+        border-radius: 6px;
+        border-left: 4px solid var(--md-primary-fg-color, #4CAF50);
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .panel-item:hover {
+        transform: translateX(4px);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .panel-item-title {
+        font-weight: 500;
+        color: var(--md-typeset-a-color, #1976d2);
+        text-decoration: none;
+        font-size: 1.05em;
+        display: block;
+        line-height: 1.4;
+    }
+
+    .panel-item-title:hover {
+        text-decoration: underline;
+    }
+
+    .close-button {
+        float: right;
+        background: none;
+        border: none;
+        font-size: 18px;
+        cursor: pointer;
+        color: var(--md-default-fg-color--light, #666);
+        padding: 4px 8px;
+        border-radius: 4px;
+        transition: background-color 0.2s;
+    }
+
+    .close-button:hover {
+        background-color: var(--md-default-fg-color--lightest, #e0e0e0);
+        color: var(--md-default-fg-color, #333);
+    }
+
+    .results-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
 </style>
 
 <div class="search-container">
@@ -227,14 +313,24 @@ title: Knowledge Base Search
         <button id="searchButton" class="search-btn">Search</button>
     </div>
 
+    <div id="panels" class="panels-container">
+        <!-- Panels will be loaded here -->
+    </div>
+
     <div id="results"></div>
 </div>
 
 <script>
     (function() {
+        const SEARCH_ENDPOINT = 'https://api.uat.movedata.io/admin/support/search';
+
         const searchInput = document.getElementById('searchInput');
         const searchButton = document.getElementById('searchButton');
         const resultsDiv = document.getElementById('results');
+        const panelsDiv = document.getElementById('panels');
+
+        // Load panels on page load
+        loadPanels();
 
         // Handle Enter key press
         searchInput.addEventListener('keypress', function(e) {
@@ -246,15 +342,68 @@ title: Knowledge Base Search
         // Handle button click
         searchButton.addEventListener('click', performSearch);
 
+        async function loadPanels() {
+            try {
+                const response = await fetch('/kb.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const kbData = await response.json();
+                displayPanels(kbData);
+            } catch (error) {
+                console.error('Error loading knowledge base data:', error);
+                panelsDiv.innerHTML = `
+                    <div class="error-msg">
+                        <strong>Error loading content:</strong> ${escapeHtml(error.message)}
+                    </div>
+                `;
+            }
+        }
+
+        function displayPanels(kbData) {
+            let html = '';
+            
+            Object.keys(kbData).forEach(sectionKey => {
+                const section = kbData[sectionKey];
+                html += `
+                    <div class="panel">
+                        <h2 class="panel-title">${escapeHtml(section.title)}</h2>
+                        <div class="panel-items">
+                            ${section.items.map(item => `
+                                <div class="panel-item">
+                                    <a href="${escapeHtml(item.url)}" class="panel-item-title">${escapeHtml(item.title)}</a>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            });
+            
+            panelsDiv.innerHTML = html;
+        }
+
+        function hidePanels() {
+            panelsDiv.classList.add('hidden');
+        }
+
+        // Make showPanels globally accessible for the close button
+        window.showPanels = function() {
+            panelsDiv.classList.remove('hidden');
+            resultsDiv.innerHTML = '';
+            searchInput.value = '';
+        };
+
         async function performSearch() {
             const question = searchInput.value.trim();
             
             if (!question) {
+                showPanels();
                 resultsDiv.innerHTML = '<div class="error-msg">Please enter a search query.</div>';
                 return;
             }
 
-            // Show loading state
+            // Hide panels and show loading state
+            hidePanels();
             searchButton.disabled = true;
             resultsDiv.innerHTML = `
                 <div class="loading">
@@ -264,7 +413,7 @@ title: Knowledge Base Search
             `;
 
             try {
-                const response = await fetch('https://api.uat.movedata.io/admin/support/search', {
+                const response = await fetch(SEARCH_ENDPOINT, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -277,6 +426,8 @@ title: Knowledge Base Search
                 }
 
                 const data = await response.json();
+                console.log(data);
+
                 displayResults(data);
             } catch (error) {
                 resultsDiv.innerHTML = `
@@ -316,8 +467,11 @@ title: Knowledge Base Search
 
             if (resultsFound === 0) {
                 resultsDiv.innerHTML = `
-                    <div class="no-results">
-                        No results found for "${escapeHtml(searchInput.value)}". Try a different search term.
+                    <div class="results-summary">
+                        <div class="results-header">
+                            <span>No results found for "${escapeHtml(searchInput.value)}". Try a different search term.</span>
+                            <button class="close-button" onclick="showPanels()" title="Close search results">✕</button>
+                        </div>
                     </div>
                 `;
                 return;
@@ -326,7 +480,10 @@ title: Knowledge Base Search
             // Build results HTML
             let html = `
                 <div class="results-summary">
-                    Found ${resultsFound} result${resultsFound !== 1 ? 's' : ''} for "${escapeHtml(searchInput.value)}"
+                    <div class="results-header">
+                        <span>Found ${resultsFound} result${resultsFound !== 1 ? 's' : ''} for "${escapeHtml(searchInput.value)}"</span>
+                        <button class="close-button" onclick="showPanels()" title="Close search results">✕</button>
+                    </div>
                 </div>
             `;
 
