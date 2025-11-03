@@ -20,29 +20,32 @@
 * [Data Imports](general/data-imports.md)
 * [Upgrading MoveData](general/upgrading-movedata.md)
 * [MoveData App (pre-1.167)](general/movedata-app-pre-1.167.md)
-
-## NPSP
-
-* [Protect Contact Fields](npsp/protect-contact-fields.md)
-* [End Date must be later than the last Closed Won Opportunity's Close Date](npsp/end-date-must-be-later-than-the-last-closed-won-opportunitys-close-date.md)
-* [You can't change the Household Account or Contact on a Recurring Donation with Closed Opportunities](npsp/you-cant-change-the-household-account-or-contact-on-a-recurring-donation-with-closed-opportunities.md)
-* [Campaign Member Status Errors](npsp/campaign-member-status-errors.md)
-* [You must select a Contact associated with this Household Account (Anonymous Account)](npsp/you-must-select-a-contact-associated-with-this-household-account-anonymous-account.md)
-* [Organisation Accounts created as Anonymous Households](npsp/organisation-accounts-created-as-anonymous-households.md)
-* [Fundraising & Donations Extension (pre-1.81)](npsp/fundraising-and-donations-extension-pre-1.81.md)
+* [Protect Contact Fields](general/protect-contact-fields.md)
 
 ## Technical
 
 * [Change the SObject Type within a Phase](technical/change-the-sobject-type-within-a-phase.md)
 * [Custom Errors](technical/custom-errors.md)
+* [Platform Key Syntax](technical/platform-key-syntax.md)
 
 ## System
 
 * [Whitelisting MoveData APIs](system/whitelisting-movedata-apis.md)
 
+## Extension: NPSP
+
+* [End Date must be later than the last Closed Won Opportunity's Close Date](extension-npsp/end-date-must-be-later-than-the-last-closed-won-opportunitys-close-date.md)
+* [You can't change the Household Account or Contact on a Recurring Donation with Closed Opportunities](extension-npsp/you-cant-change-the-household-account-or-contact-on-a-recurring-donation-with-closed-opportunities.md)
+* [Campaign Member Status Errors](extension-npsp/campaign-member-status-errors.md)
+* [You must select a Contact associated with this Household Account (Anonymous Account)](extension-npsp/you-must-select-a-contact-associated-with-this-household-account-anonymous-account.md)
+* [Organisation Accounts created as Anonymous Households](extension-npsp/organisation-accounts-created-as-anonymous-households.md)
+* [Fundraising & Donations Extension (pre-1.81)](extension-npsp/fundraising-and-donations-extension-pre-1.81.md)
+* [Map to Existing Records: NPSP](extension-npsp/map-to-existing-records-npsp.md)
+
 ## Extension: NPC
 
 * [Non-Profit Cloud Licensing Requirements for MoveData](extension-npc/non-profit-cloud-licensing-requirements-for-movedata.md)
+* [Map to Existing Records: NPC](extension-npc/map-to-existing-records-npc.md)
 
 ## Extension: Commerce
 
@@ -51,6 +54,10 @@
 ## Extension: General
 
 * [Campaign Name Overridden](extension-general/campaign-name-overridden.md)
+
+## Integration: Enthuse
+
+* [Missing Enthuse Data](integration-enthuse/missing-enthuse-data.md)
 
 ## Integration: Funraisin
 
@@ -61,9 +68,15 @@
 * [Ticket Refunds](integration-funraisin/ticket-refunds.md)
 * [Web Forms](integration-funraisin/web-forms.md)
 
+## Integration: GoFundraise
+
+* [GoFundraise Custom Fields](integration-gofundraise/gofundraise-custom-fields.md)
+
 ## Integration: Grassrootz
 
 * [Grassrootz: Fee Information](integration-grassrootz/grassrootz-fee-information.md)
+* [Connect Grassrootz to MoveData](integration-grassrootz/connect-grassrootz-to-movedata.md)
+* [Foreign Currency Donations](integration-grassrootz/foreign-currency-donations.md)
 
 ## Integration: JustGiving
 
