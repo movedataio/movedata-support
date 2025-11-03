@@ -59,14 +59,59 @@ Each value used in the Remap must also be configured as an output-enabled Text c
 
 The below table details the settings for each one of these metadata entries. Please note that you will have to create the fieldset and flows that contain the new logic and the values below are for reference only.
 
-| Configuration Screenshot                                                                                                               | 	 Metadata Entry                                                                                                                                                                                                                                                                                                                                          |
-| -------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <p><img src="../.gitbook/assets/Set Fieldset Metadata Flow Action.png" alt=""><br><br><sub>Set Fieldset Metadata Flow Action</sub></p> | <p><strong>Campaign Fieldset Metadata Replacement</strong></p><p></p><ul><li><p>Variable: <code>PIPELINE_DONATION_CAMPAIGN_FIELDSET</code></p><ul><li>Output-Enabled Text Collection</li></ul></li><li>Action: Add the API name of the Fieldset from the Opportunity object</li><li>Behaviour: Contains the fields required by the new flows</li></ul>    |
-| <p><img src="../.gitbook/assets/Set Platform Key Flow Action.png" alt=""><br><br><sub>Set Platform Key Flow Action</sub></p>           | <p><strong>Campaign Platform Key Metadata Replacement</strong></p><p></p><ul><li><p>Variable: <code>PIPELINE_DONATION_CAMPAIGN_PLATFORM_KEY</code></p><ul><li>Output-Enabled Text Collection</li></ul></li><li>Action: Add the API name of the opportunity Platform Key flow</li><li>Behaviour: Return the unique identifier for the record</li></ul>     |
-| <p><img src="../.gitbook/assets/Set Record Match Flow Action.png" alt=""><br><br><sub>Set Record Match Flow Action</sub></p>           | <p><strong>Campaign Record Match Metadata Replacement</strong></p><p></p><ul><li><p>Variable: <code>PIPELINE_DONATION_CAMPAIGN_PLATFORM_KEY</code></p><ul><li>Output-Enabled Text Collection</li></ul></li><li>Action: Add the API name of the opportunity Record Match flow</li><li>Behaviour: Return the Salesforce ID for any matched record</li></ul> |
-| <p><img src="../.gitbook/assets/Set Name Flow Action.png" alt=""><br><br><sub>Set Name Flow Action</sub><br><br></p>                   | <p><strong>Campaign Name Metadata Replacement</strong></p><p></p><ul><li><p>Variable: <code>PIPELINE_DONATION_CAMPAIGN_NAME</code></p><ul><li>Output-Enabled Text Collection</li></ul></li><li>Action: Add the API name of the opportunity Name flow</li><li>Behaviour: Return the name to be used by mapping &#x26; post flow</li></ul>                  |
-| <p><img src="../.gitbook/assets/Set Mapping Flow Action.png" alt=""><br><br><sub>Set Mapping Flow Action</sub></p>                     | <p><strong>Campaign Mapping Metadata Replacement</strong><br></p><ul><li><p>Variable: <code>PIPELINE_DONATION_CAMPAIGN_MAPPING</code></p><ul><li>Output-Enabled Text Collection</li></ul></li><li>Action: Add the API name of the opportunity Mapping flow</li><li>Behaviour: Return the record to be created / updated with data mapped</li></ul>        |
-| <p><img src="../.gitbook/assets/Set Post Upsert Flow Action.png" alt=""><br><br><sub>Set Post Upsert Flow Action</sub></p>             | <p><strong>Campaign Post Upsert Metadata Replacement</strong><br></p><ul><li><p>Variable: <code>PIPELINE_DONATION_CAMPAIGN_POST</code></p><ul><li>Output-Enabled Text Collection</li></ul></li><li>Action: Add the API name of the opportunity post-upsert flow</li><li>Behaviour: Perform any post-upsert actions</li></ul>                              |
+**Campaign Fieldset Metadata Replacement**
+
+<figure><img src="../.gitbook/assets/Set Fieldset Metadata Flow Action.png" alt=""><figcaption></figcaption></figure>
+
+* Variable: `PIPELINE_DONATION_CAMPAIGN_FIELDSET`
+  * Output-Enabled Text Collection
+* Action: Add the API name of the Fieldset from the Opportunity object
+* Behaviour: Contains the fields required by the new flows
+
+**Campaign Platform Key Metadata Replacement**
+
+<figure><img src="../.gitbook/assets/Set Platform Key Flow Action.png" alt=""><figcaption></figcaption></figure>
+
+* Variable: `PIPELINE_DONATION_CAMPAIGN_PLATFORM_KEY`
+  * Output-Enabled Text Collection
+* Action: Add the API name of the opportunity Platform Key flow
+* Behaviour: Return the unique identifier for the record
+
+**Campaign Record Match Metadata Replacement**
+
+<figure><img src="../.gitbook/assets/Set Record Match Flow Action.png" alt=""><figcaption></figcaption></figure>
+
+* Variable: `PIPELINE_DONATION_CAMPAIGN_PLATFORM_KEY`
+  * Output-Enabled Text Collection
+* Action: Add the API name of the opportunity Record Match flow
+* Behaviour: Return the Salesforce ID for any matched record
+
+**Campaign Name Metadata Replacement**
+
+<figure><img src="../.gitbook/assets/Set Name Flow Action.png" alt=""><figcaption></figcaption></figure>
+
+* Variable: `PIPELINE_DONATION_CAMPAIGN_NAME`
+  * Output-Enabled Text Collection
+* Action: Add the API name of the opportunity Name flow
+* Behaviour: Return the name to be used by mapping & post flow
+
+**Campaign Mapping Metadata Replacement**
+
+<figure><img src="../.gitbook/assets/Set Mapping Flow Action.png" alt=""><figcaption></figcaption></figure>
+
+* Variable: `PIPELINE_DONATION_CAMPAIGN_MAPPING`
+  * Output-Enabled Text Collection
+* Action: Add the API name of the opportunity Mapping flow
+* Behaviour: Return the record to be created / updated with data mapped
+
+**Campaign Post Upsert Metadata Replacement**
+
+<figure><img src="../.gitbook/assets/Set Post Upsert Flow Action.png" alt=""><figcaption></figcaption></figure>
+
+* Variable: `PIPELINE_DONATION_CAMPAIGN_POST`
+  * Output-Enabled Text Collection
+* Action: Add the API name of the opportunity post-upsert flow
+* Behaviour: Perform any post-upsert actions
 
 If a metadata entry needs to be removed but not replaced with another flow, this can be done by leaving the value field empty when adding a value to the appropriate text collection.
 
@@ -94,18 +139,20 @@ We need to register our new SObject flow for the Campaign phase. This is done by
 
 ### Outcome <a href="#h_58b15930a1" id="h_58b15930a1"></a>
 
-Below is an example of a before and after for the created Flow:
+Below is an example of a before and after for the created Flow.
 
-| Before                                                     | After                                                     |
-| ---------------------------------------------------------- | --------------------------------------------------------- |
-| ![](<../.gitbook/assets/Before Campaign SObject Flow.png>) | ![](<../.gitbook/assets/After Campaign SObject Flow.png>) |
+**Before SObject Type Change**
+
+<figure><img src="../.gitbook/assets/Before Campaign SObject Flow.png" alt=""><figcaption></figcaption></figure>
+
+**After SObject Type Change**
+
+<figure><img src="../.gitbook/assets/After Campaign SObject Flow.png" alt=""><figcaption></figcaption></figure>
 
 From the execution log, we can see the SObject types for each of the campaign entries:
 
 * Campaign
 
 <figure><img src="../.gitbook/assets/Campaign SObject Execution Log.png" alt=""><figcaption></figcaption></figure>
-
-* Fundraiser
 
 <figure><img src="../.gitbook/assets/Campaign New Execution Map.png" alt=""><figcaption></figcaption></figure>
