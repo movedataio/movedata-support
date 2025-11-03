@@ -20,11 +20,11 @@
 
 * [Pipeline Overview](pipelines/processing-pipelines.md)
 * [Commerce Pipeline](pipelines/commerce-pipeline/README.md)
-  * [Commerce Extension](https://www.google.com)
-  * [Non-Profit Cloud Extension](https://www.google.com)
+  * [Commerce Extension](https://support.movedata.io/reference/extension/commerce/)
+  * [Non-Profit Cloud Extension](https://support.movedata.io/reference/extension/non-profit-cloud/)
 * [Donation Pipeline](pipelines/donation-pipeline/README.md)
-  * [NPSP Fundraising & Donations Extension](https://www.google.com)
-  * [Non-Profit Cloud Extension](https://www.google.com)
+  * [NPSP Fundraising & Donations Extension](https://support.movedata.io/reference/extension/npsp-fundraising/)
+  * [Non-Profit Cloud Extension](https://support.movedata.io/reference/extension/non-profit-cloud/)
 
 ## Development Guides
 
