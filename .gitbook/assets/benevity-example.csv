@@ -1,0 +1,17 @@
+Donations Report,
+"#-------------------------------------------",
+Charity Name,MOVEDATA
+Charity ID,123-123456
+Period Ending,Sun 16 Feb 2025 0:00:00
+Currency,GBP
+Payment Method,EFT
+Disbursement ID,##########
+Note,Rounding may be applied to some values in this report. Learn more at https://causes.benevity.org/feedback-support
+"#-------------------------------------------",
+
+Company,Project,Donation Date,Donor First Name,Donor Last Name,Email,Address,City,State/Province,Postal Code,Activity,Comment,Transaction ID,Donation Frequency,Currency,Project Remote ID,Source,Reason,Total Donation to be Acknowledged,Match Amount,Cause Support Fee,Merchant Fee,Fee Comment
+MoveData,XXX,2024-12-03T12:25:03Z,Tiffany,Donovan,email@example.com,Not shared by donor,Not shared by donor,Not shared by donor,CR2 6LJ,,,##########,One Time,GBP,XXX,Donation,User Donation,100.00,100.00,8.28,2.50,
+Totals,,,,,,,,,,,,,,,,,,100.00,100.00,8.28,2.50
+Total Donations (Gross),200.00
+Check Fee,0.00
+Net Total Payment,189.22
