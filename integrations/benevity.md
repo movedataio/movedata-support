@@ -113,35 +113,33 @@ The Benevity integration automatically creates a flexible campaign hierarchy in 
 **Top-Level Campaign:**
 
 * **Name**: "Benevity"
-* **Type**: Campaign
-* **Purpose**: Top-level container for all Benevity workplace giving activity
+* **Purpose**: Top-level container for all Benevity activity
 
 **Activity-Level Campaigns (When Activity Field Present):**
 
 * **Name**: Based on `Activity` field value
-* **Type**: Fundraiser
-* **Purpose**: Represents specific fundraising activities or campaigns within Benevity
+* **Purpose**: Represents specific activities within Benevity
 
 #### Employer Matching
 
-The Benevity integration provides sophisticated handling of employer-matched donations. Employee and employer donations are processed as separate but linked donation records.
+Employee and employer donations are processed as separate but linked donation records.
 
 **Donation Processing:**
 
 * **Employee Donations**: When `Total Donation to be Acknowledged` > 0
-* **Employer Matches**: When `Match Amount` > 0
+* **Employer Matched Donations**: When `Match Amount` > 0
 * **Combined Transactions**: Both employee and employer donations can occur in a single CSV row
 
 **Matching Logic:**
 
 * Employee donations are marked as `type: "donor"` in the donation structure
-* Employer matches are marked as `type: "match"` in the donation structure
-* MoveData automatically links employee donations with their corresponding employer matches
+* Employer matched donations are marked as `type: "match"` in the donation structure
+* MoveData links employee donations with their corresponding employer matched donations
 * Soft credits are created to recognise both the employee donor and employer matcher
 
 **Transaction Key Format**
 
-Our integration can split a single line into two notifications.
+The integration can split a single line into two notifications.
 
 * Employee donations use the original `Transaction ID`
 * Employer matches use `{Transaction ID}_matched` format
@@ -163,8 +161,6 @@ The following custom fields are automatically included in MoveData notifications
 | `postalCode`        | Donor postal code         | `"10010"`            |
 
 #### Fee Processing
-
-The Benevity integration handles comprehensive fee tracking:
 
 **Fee Types:**
 
@@ -208,5 +204,4 @@ When donor information is marked as "Not shared by donor" or is empty, the donat
 
 ## Other Resources
 
-**Benevity Platform:**\
-[https://benevity.com/](https://benevity.com/)
+* **Benevity Platform:** [https://benevity.com/](https://benevity.com/)
