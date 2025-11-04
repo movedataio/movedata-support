@@ -9,11 +9,11 @@ description: >-
 
 ## Overview
 
-The MoveData Benevity integration provides seamless, automated synchronisation between your Benevity workplace giving platform and Salesforce. This comprehensive integration processes Benevity donation reports, ensuring that all employee donations, employer matching contributions, and supporter information are automatically transferred to your Salesforce environment, eliminating manual data entry whilst maintaining complete data accuracy.
+The MoveData Benevity integration synchronizes your Benevity platform with Salesforce. It processes Benevity disbursement reports and transfers employee donations, employer matching contributions, and supporter information to Salesforce automatically.
 
 **Key Benefits:**
 
-* **Automated CSV processing** of Benevity workplace giving reports
+* **Automated CSV processing** of Benevity disbursement reports
 * **Intelligent employer matching** with comprehensive soft credit support
 * **Advanced fee tracking** including platform and merchant fees
 * **Complete donation lifecycle** from employee contributions to employer matches
@@ -26,9 +26,9 @@ The MoveData Benevity integration provides seamless, automated synchronisation b
 | Method    | CSV File Processing                            |
 | Frequency | Manual Upload                                  |
 
-## Supported Modes
+## Supported Extensions
 
-Logic is required to map Benevity notifications to your Salesforce data. To quickly and easily do so, we recommend using one of the supported MoveData Extensions.
+Logic is required to map data from Benevity into Salesforce. To do this, we recommend using one of the supported MoveData Extensions.
 
 | Extension                 | Supported |
 | ------------------------- | --------- |
@@ -36,20 +36,24 @@ Logic is required to map Benevity notifications to your Salesforce data. To quic
 | Commerce                  | ❌         |
 
 {% hint style="info" %}
-The Fundraising and Donations Extension is required to process workplace giving and employer matching donation information in Salesforce.
+The Fundraising and Donations Extension is required to process Benevity information into Salesforce.
 {% endhint %}
 
 ## Setup
 
-**Benevity CSV Report Export**
+**Benevity CSV Export**
 
-To set up the Benevity integration, you will need to export donation reports from your Benevity platform. Please contact your Benevity administrator or refer to Benevity's documentation for specific instructions on how to:
+To set up the Benevity integration, you will need to export disbursement reports from your Benevity platform. Please contact your Benevity administrator or refer to Benevity's documentation for specific instructions on how to:
 
-1. Access your organisation's donation reporting functionality
-2. Generate donation reports in CSV format
-3. Download the complete donation report with all required fields
+1. Access your organisation's reporting functionality
+2. Generate reports in CSV format
+3. Download the complete report with all required fields
 
-The exported CSV file should contain donation transaction data in Benevity's standard donation report format.
+The exported CSV file should contain donation data in Benevity's standard disbursement report format.
+
+{% hint style="info" %}
+[https://causeshelp.benevity.org/hc/en-us/articles/115003003423-Where-do-I-find-my-reports](https://causeshelp.benevity.org/hc/en-us/articles/115003003423-Where-do-I-find-my-reports)
+{% endhint %}
 
 **MoveData Benevity Configuration**
 
@@ -62,7 +66,7 @@ To create your Benevity Integration:
 
 **CSV File Processing**
 
-The Benevity integration processes CSV donation files through manual upload. Upload your exported Benevity donation report using the **Upload File** button in your integration configuration.
+The Benevity integration processes CSV disbursement files through manual upload. Upload your exported Benevity disbursement report using the **Upload File** button via **MoveData** → **Integrations** → **Benevity** → **Upload File**.
 
 ## Configurable Options
 
@@ -98,7 +102,7 @@ Benevity CSV files follow a specific format with header information and donation
 
 ## Data Migration
 
-Data migration can be completed via the file upload functionality. You will need to download and export the relevant Benevity donation reports covering your desired historical period.
+Data migration can be completed via the file upload functionality. You will need to download and export the relevant Benevity disbursement reports covering your desired historical period.
 
 ## Additional Field Mappings
 
