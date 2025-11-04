@@ -63,13 +63,9 @@ To create your Benevity Integration:
 3. Add a name for your integration and click **Save**
 4. To upload a CSV, click the **Upload File** button
 
-<figure><img src="../.gitbook/assets/benevity-create-integration.webp" alt=""><figcaption></figcaption></figure>
-
 **Upload Benevity File**
 
 The Benevity integration processes CSV disbursement files through manual upload. Upload your Benevity file using the **Upload File** button via **MoveData** → **Integrations** → **Benevity** → **Upload File**.
-
-<figure><img src="../.gitbook/assets/benevity-upload-file.webp" alt=""><figcaption></figcaption></figure>
 
 ## Configurable Options
 
