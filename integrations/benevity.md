@@ -55,10 +55,6 @@ The exported CSV file should contain donation data in Benevity's standard disbur
 [https://causeshelp.benevity.org/hc/en-us/articles/115003003423-Where-do-I-find-my-reports](https://causeshelp.benevity.org/hc/en-us/articles/115003003423-Where-do-I-find-my-reports)
 {% endhint %}
 
-**Benevity Reference File**
-
-{% file src="../.gitbook/assets/benevity-example.csv" %}
-
 **MoveData Benevity Configuration**
 
 To create your Benevity Integration:
@@ -103,6 +99,10 @@ Benevity CSV files follow a specific format with header information and donation
 * `Donation Frequency` - Frequency of donation
 * `Source` - Payment source/method
 * `Reason` - Donation reason
+
+**Reference File**
+
+{% file src="../.gitbook/assets/benevity-example.csv" %}
 
 ## Data Migration
 
