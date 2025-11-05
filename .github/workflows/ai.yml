@@ -48,7 +48,8 @@ jobs:
           cd ..
           node ./bin/convert-hints.js ./movedata-support
           node ./bin/convert-metadata.js ./movedata-support
-          rsync -av --include='*/' --include='*.md' --exclude='*' movedata-support/ ./documentation/
+          node ./bin/generate-metadata-aws.js ./movedata-support
+          rsync -av --include='*/' --include='*.md' --include='*.metadata.json' --exclude='*' movedata-support/ ./documentation/
           cd movedata-support
           git restore .
 
@@ -57,9 +58,13 @@ jobs:
           cd ./.tmp/movedata-support
           git checkout knowledgebase
           cd ..
+          echo "Converting GitBook hints to MkDocs admonitions..."
           node ./bin/convert-hints.js ./movedata-support
+          echo "Converting metadata from note blocks to frontmatter..."
           node ./bin/convert-metadata.js ./movedata-support
-          rsync -av --include='*/' --include='*.md' --exclude='*' movedata-support/ ./knowledgebase/
+          echo "Generating AWS Bedrock metadata sidecar files..."
+          node ./bin/generate-metadata-aws.js ./movedata-support
+          rsync -av --include='*/' --include='*.md' --include='*.metadata.json' --exclude='*' movedata-support/ ./knowledgebase/
           cd movedata-support
           git restore .
 
@@ -70,7 +75,8 @@ jobs:
           cd ..
           node ./bin/convert-hints.js ./movedata-support
           node ./bin/convert-metadata.js ./movedata-support
-          rsync -av --include='*/' --include='*.md' --exclude='*' movedata-support/ ./developer/
+          node ./bin/generate-metadata-aws.js ./movedata-support
+          rsync -av --include='*/' --include='*.md' --include='*.metadata.json' --exclude='*' movedata-support/ ./developer/
           cd movedata-support
           git restore .
 
@@ -81,7 +87,8 @@ jobs:
           cd ..
           node ./bin/convert-hints.js ./movedata-support
           node ./bin/convert-metadata.js ./movedata-support
-          rsync -av --include='*/' --include='*.md' --exclude='*' movedata-support/ ./extension/npsp-fundraising/
+          node ./bin/generate-metadata-aws.js ./movedata-support
+          rsync -av --include='*/' --include='*.md' --include='*.metadata.json' --exclude='*' movedata-support/ ./extension/npsp-fundraising/
           cd movedata-support
           git restore .
 
@@ -92,7 +99,8 @@ jobs:
           cd ..
           node ./bin/convert-hints.js ./movedata-support
           node ./bin/convert-metadata.js ./movedata-support
-          rsync -av --include='*/' --include='*.md' --exclude='*' movedata-support/ ./extension/commerce/
+          node ./bin/generate-metadata-aws.js ./movedata-support
+          rsync -av --include='*/' --include='*.md' --include='*.metadata.json' --exclude='*' movedata-support/ ./extension/commerce/
           cd movedata-support
           git restore .
 
@@ -103,7 +111,8 @@ jobs:
           cd ..
           node ./bin/convert-hints.js ./movedata-support
           node ./bin/convert-metadata.js ./movedata-support
-          rsync -av --include='*/' --include='*.md' --exclude='*' movedata-support/ ./extension/non-profit-cloud/
+          node ./bin/generate-metadata-aws.js ./movedata-support
+          rsync -av --include='*/' --include='*.md' --include='*.metadata.json' --exclude='*' movedata-support/ ./extension/non-profit-cloud/
           cd movedata-support
           git restore .
 
@@ -114,7 +123,8 @@ jobs:
           cd ..
           node ./bin/convert-hints.js ./movedata-support
           node ./bin/convert-metadata.js ./movedata-support
-          rsync -av --include='*/' --include='*.md' --exclude='*' movedata-support/ ./schema/commerce/
+          node ./bin/generate-metadata-aws.js ./movedata-support
+          rsync -av --include='*/' --include='*.md' --include='*.metadata.json' --exclude='*' movedata-support/ ./schema/commerce/
           cd movedata-support
           git restore .
 
@@ -125,7 +135,8 @@ jobs:
           cd ..
           node ./bin/convert-hints.js ./movedata-support
           node ./bin/convert-metadata.js ./movedata-support
-          rsync -av --include='*/' --include='*.md' --exclude='*' movedata-support/ ./schema/donation/
+          node ./bin/generate-metadata-aws.js ./movedata-support
+          rsync -av --include='*/' --include='*.md' --include='*.metadata.json' --exclude='*' movedata-support/ ./schema/donation/
           cd movedata-support
           git restore .
 
@@ -134,13 +145,13 @@ jobs:
           rm -rf ./.tmp/movedata-support
           rm -rf ./.tmp/bin
 
-      - name: Clear existing S3 content
-        run: |
-          aws s3 rm s3://${{ env.ENVIRONMENT }}-movedata-ai/support/ --recursive
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: ap-southeast-2
+      #- name: Clear existing S3 content
+      #  run: |
+      #    aws s3 rm s3://${{ env.ENVIRONMENT }}-movedata-ai/support/ --recursive
+      #  env:
+      #    AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      #    AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      #    AWS_REGION: ap-southeast-2
 
       - name: Sync to S3
         run: |
@@ -152,9 +163,41 @@ jobs:
 
       - name: Execute Bedrock Knowledge Base Data Source Sync
         run: |
-          aws bedrock-agent start-ingestion-job \
+          echo "Starting Bedrock Knowledge Base ingestion job..."
+          INGESTION_JOB_ID=$(aws bedrock-agent start-ingestion-job \
             --knowledge-base-id ${{ env.KNOWLEDGE_BASE_ID }} \
-            --data-source-id ${{ env.KNOWLEDGE_BASE_DATA_SOURCE_ID }}
+            --data-source-id ${{ env.KNOWLEDGE_BASE_DATA_SOURCE_ID }} \
+            --query 'ingestionJob.ingestionJobId' \
+            --output text)
+          
+          echo "Ingestion job started with ID: $INGESTION_JOB_ID"
+          echo "Waiting for ingestion job to complete..."
+          
+          # Poll the job status until completion
+          while true; do
+            STATUS=$(aws bedrock-agent get-ingestion-job \
+              --knowledge-base-id ${{ env.KNOWLEDGE_BASE_ID }} \
+              --data-source-id ${{ env.KNOWLEDGE_BASE_DATA_SOURCE_ID }} \
+              --ingestion-job-id $INGESTION_JOB_ID \
+              --query 'ingestionJob.status' \
+              --output text)
+            
+            echo "Current status: $STATUS"
+            
+            if [ "$STATUS" = "COMPLETE" ]; then
+              echo "✅ Ingestion job completed successfully!"
+              break
+            elif [ "$STATUS" = "FAILED" ]; then
+              echo "❌ Ingestion job failed!"
+              exit 1
+            elif [ "$STATUS" = "STOPPING" ] || [ "$STATUS" = "STOPPED" ]; then
+              echo "⚠️ Ingestion job was stopped!"
+              exit 1
+            fi
+            
+            echo "Job still in progress, waiting 30 seconds..."
+            sleep 30
+          done
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
