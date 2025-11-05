@@ -140,10 +140,50 @@ function extractPathMetadata(filePath, rootPath) {
 }
 
 function createMetadataJson(frontmatter, pathMetadata) {
-  // Combine frontmatter with path-based metadata
+  // Define GitBook layout keys that don't provide useful search context
+  const gitbookLayoutKeys = [
+    'layout',
+    'width', 
+    'title',
+    'description',
+    'tableOfContents',
+    'outline',
+    'pagination',
+    'metadata',
+    'visible'
+  ];
+  
+  // Filter out GitBook layout metadata and empty objects
+  const filteredFrontmatter = {};
+  for (const [key, value] of Object.entries(frontmatter)) {
+    // Skip GitBook layout keys
+    if (gitbookLayoutKeys.includes(key)) {
+      continue;
+    }
+    
+    // Skip empty objects (common in GitBook frontmatter)
+    if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
+      const hasContent = Object.values(value).some(v => 
+        v !== null && v !== undefined && v !== '' && 
+        !(typeof v === 'boolean') // Skip boolean values like visible: true
+      );
+      if (!hasContent) {
+        continue;
+      }
+    }
+    
+    filteredFrontmatter[key] = value;
+  }
+  
+  // If no meaningful metadata remains after filtering, return null
+  if (Object.keys(filteredFrontmatter).length === 0) {
+    return null;
+  }
+  
+  // Combine filtered frontmatter with path-based metadata
   const combinedMetadata = {
     ...pathMetadata,
-    ...frontmatter
+    ...filteredFrontmatter
   };
   
   // Add processing metadata
@@ -216,6 +256,18 @@ function processMarkdownFile(filePath, rootPath, dryRun = false, debug = false) 
       console.error(`  DEBUG: Found frontmatter in: ${filePath}`);
       console.error(`  DEBUG: Frontmatter keys:`, Object.keys(frontmatter));
       console.error(`  DEBUG: Frontmatter:`, JSON.stringify(frontmatter, null, 2));
+      
+      // Check if this looks like GitBook layout metadata
+      const gitbookLayoutKeys = ['layout', 'width', 'title', 'description', 'tableOfContents', 'outline', 'pagination', 'metadata', 'visible'];
+      const hasGitbookKeys = Object.keys(frontmatter).some(key => gitbookLayoutKeys.includes(key));
+      const hasOnlyGitbookKeys = Object.keys(frontmatter).every(key => 
+        gitbookLayoutKeys.includes(key) || 
+        (typeof frontmatter[key] === 'object' && frontmatter[key] !== null && !Array.isArray(frontmatter[key]))
+      );
+      
+      if (hasGitbookKeys) {
+        console.error(`  DEBUG: Detected GitBook layout metadata (hasOnly: ${hasOnlyGitbookKeys})`);
+      }
     }
     
     // Extract path-based metadata
@@ -227,6 +279,14 @@ function processMarkdownFile(filePath, rootPath, dryRun = false, debug = false) 
     
     // Create metadata JSON content
     const metadataJsonContent = createMetadataJson(frontmatter, pathMetadata);
+    
+    // Check if meaningful metadata was generated
+    if (!metadataJsonContent) {
+      if (debug) {
+        console.error(`  DEBUG: Only GitBook layout metadata found, skipping file: ${filePath}`);
+      }
+      return { success: true, changed: false, path: filePath, reason: 'gitbook_layout_only' };
+    }
     
     if (debug) {
       console.error(`  DEBUG: Generated metadata:`, metadataJsonContent);
