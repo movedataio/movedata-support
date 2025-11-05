@@ -1,5 +1,12 @@
 # Too many SOQL queries: 101
 
+{% hint style="info" %}
+Metadata
+
+* category=general
+* tags=apex,soql,101,limit,governor
+{% endhint %}
+
 {% hint style="danger" %}
 Please Note: Regardless of where a "Too many SOQL queries: 101" error is thrown, it is system-wide execution error. An error message noting this error in any MoveData component is almost exclusively occurring due to other flows, workflows rules, managed packages and Apex triggers consuming too many Salesforce resources earlier in the execution.
 
@@ -96,7 +103,7 @@ The primary way to diagnose SQL 101 issues is to use the Debug Logs. If you have
 
 <figure><img src="../.gitbook/assets/Debug_Log_List.png" alt=""><figcaption></figcaption></figure>
 
-Once debugging is setup, open the failing MoveData notification and click `Reprocess`. Once the notification has failed, return to the debug log and view a log entry with the operation named `/movedata/movedataHandler`&#x20;
+Once debugging is setup, open the failing MoveData notification and click `Reprocess`. Once the notification has failed, return to the debug log and view a log entry with the operation named `/movedata/movedataHandler`
 
 <figure><img src="../.gitbook/assets/Debug_Log_Limits.png" alt=""><figcaption></figcaption></figure>
 

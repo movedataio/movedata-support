@@ -1,5 +1,13 @@
 # You must select a Contact associated with this Household Account (Anonymous Account)
 
+{% hint style="info" %}
+Metadata
+
+* category=NPSP
+* extension=npsp
+* tags=recurring,contact,merge
+{% endhint %}
+
 Sometimes Salesforce will error with the message `You must select a Contact associated with this Household Account`.
 
 ### Context <a href="#h_0516f44f14" id="h_0516f44f14"></a>

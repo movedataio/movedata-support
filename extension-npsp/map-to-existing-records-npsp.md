@@ -1,5 +1,13 @@
 # Map to Existing Records: NPSP
 
+{% hint style="info" %}
+Metadata
+
+* category=NPSP
+* extension=npsp
+* tags=data,data import,data migration,keys,platform keys
+{% endhint %}
+
 There may be times when you want the integration to attach to existing records inside Salesforce. This is most common in "Go Live" scenarios where records from your source platforms might already exist in Salesforce, and you need the integration to attach to those existing records instead of creating new ones. This article details how to do this.
 
 {% hint style="info" %}

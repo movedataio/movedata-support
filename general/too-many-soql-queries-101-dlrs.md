@@ -1,5 +1,12 @@
 # Too many SOQL queries: 101 (dlrs)
 
+{% hint style="info" %}
+Metadata
+
+* category=general
+* tags=apex,soql,101,dlrs,limit,governor
+{% endhint %}
+
 When MoveData creates or updates records in Salesforce this may cause other processes to initiate.
 
 Your Salesforce Org is governed by [Apex Governor Limits](https://developer.salesforce.com/docs/atlas.en-us.salesforce_app_limits_cheatsheet.meta/salesforce_app_limits_cheatsheet/salesforce_app_limits_platform_apexgov.htm) and in this scenario, your the available governor limits are being exceeded which causes Salesforce to terminate the processing of your notification.

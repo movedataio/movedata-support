@@ -1,5 +1,13 @@
 # You can't change the Household Account or Contact on a Recurring Donation with Closed Opportunities
 
+{% hint style="info" %}
+Metadata
+
+* category=NPSP
+* extension=npsp
+* tags=recurring
+{% endhint %}
+
 Over time, and typically due to manually modifying records in Salesforce, a scenario can occur where the source platform issues information which is different to the contact or account assigned to your recurring donation.
 
 In this scenario, MoveData will act on the data being issued by the source platform, which can result in a contact or account being matched or created which is different to the one assigned to your recurring donation. If your recurring donation has closed opportunities, this can trigger the `You can't change the Household Account or Contact on a Recurring Donation that has Closed Opportunities` error and the notification will fail to process into Salesforce.

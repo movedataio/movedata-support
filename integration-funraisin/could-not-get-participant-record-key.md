@@ -1,5 +1,13 @@
 # Could not get participant record (Key: ####)
 
+{% hint style="info" %}
+Metadata
+
+* category=funraisin
+* integration=funraisin
+* tags=data
+{% endhint %}
+
 Whilst uncommon, you may from time to time encounter an error like: `Could not get participant record (Key: ####)`.
 
 In this scenario, Funraisin’s API has issued information which references a specific ID. However, when MoveData attempts to load information relating to that ID, Funraisin’s API issues an invalid response. In the majority of cases, this is because the ID referenced no longer exists inside Funraisin.

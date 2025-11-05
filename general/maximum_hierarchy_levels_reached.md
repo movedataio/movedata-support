@@ -1,5 +1,12 @@
 # MAXIMUM\_HIERARCHY\_LEVELS\_REACHED
 
+{% hint style="info" %}
+Metadata
+
+* category=general
+* tags=campaigns,hierarchy,limit
+{% endhint %}
+
 Salesforce only allows you to have a maximum of five levels in you campaign hierarchy. Typically, MoveData will reserve up to three levels to represent the equivalent information from your fundraising platform:
 
 | Level | Represents                  | Example                    |

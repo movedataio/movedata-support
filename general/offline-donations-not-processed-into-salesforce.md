@@ -1,5 +1,12 @@
 # Offline donations not processed into Salesforce
 
+{% hint style="info" %}
+Metadata
+
+* category=general
+* tags=offline,offline donations
+{% endhint %}
+
 Many organisations do not wish for offline donations to be processed into Salesforce. This is because that income may already be recognised in Salesforce, and processing the offline donation could result in a double counting issue.
 
 To allow offline donations to process into Salesforce:

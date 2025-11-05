@@ -1,5 +1,13 @@
 # Campaign Name Overridden
 
+{% hint style="info" %}
+Metadata
+
+* category=extension
+* extension=all
+* tags=campaign,name,protect
+{% endhint %}
+
 MoveData uses the information issued by your connected platform to create and update records in Salesforce.
 
 * A fundraiser creates a page and names it `Judy's Running Event`

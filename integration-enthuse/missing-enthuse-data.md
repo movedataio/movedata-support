@@ -1,5 +1,13 @@
 # Missing Enthuse Data
 
+{% hint style="info" %}
+Metadata
+
+* category=enthuse
+* integration=enthuse
+* tags=data
+{% endhint %}
+
 MoveData has supported integration of [Enthuse](https://enthuse.com/) data into Salesforce for a number of years. Over this time, we have encountered various issues in the Enthuse APIs which have not been fully addressed. Enthuse has plans to release a new set of APIs in the second half of 2025, and have noted that these will address the issues we have raised with them. However, until Enthuse releases their new APIs, MoveData has limited to no options to address the below issues.
 
 ### Missing Data <a href="#h_817ee6c8e8" id="h_817ee6c8e8"></a>

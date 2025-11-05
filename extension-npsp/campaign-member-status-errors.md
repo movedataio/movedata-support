@@ -4,6 +4,14 @@ description: How to address issues with Campaign Member status sort order.
 
 # Campaign Member Status Errors
 
+{% hint style="info" %}
+Metadata
+
+* category=NPSP
+* extension=npsp
+* tags=campaign members,campaign members status
+{% endhint %}
+
 The MoveData' Non-Profit Success Pack (NPSP) extensions enable customers to create campaign members relating to a relationship such as Donor, Team Member, Team Leader, etc. If a campaign has many existing campaign member statuses, it is possible that the following error is encountered: `A Campaign Member status already a specified sort order. Please specify a different sort order to create this Campaign Member status.`.
 
 ## What is the Campaign Member Status sort order? <a href="#h_d0c3e2bb0f" id="h_d0c3e2bb0f"></a>

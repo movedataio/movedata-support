@@ -4,6 +4,13 @@ description: How to raise your own errors within a flow.
 
 # Custom Errors
 
+{% hint style="info" %}
+Metadata
+
+* category=technical
+* tags=errors,custom,log,flow
+{% endhint %}
+
 MoveData supports a user raising a custom error within a Lightning Flow. To achieve this you will need to create an output-enabled, text collection variable named `Errors`.
 
 <figure><img src="../.gitbook/assets/Errors Variable.png" alt=""><figcaption></figcaption></figure>

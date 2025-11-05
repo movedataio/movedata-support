@@ -1,5 +1,12 @@
 # Unable to Lock Row Error (UNABLE\_TO\_LOCK\_ROW)
 
+{% hint style="info" %}
+Metadata
+
+* category=general
+* tags=row lock,locking
+{% endhint %}
+
 When a record is being created or updated, Salesforce places a lock on that record to prevent other operations from updating the record at the same time (which might otherwise cause inconsistencies in data).
 
 In a MoveData context, this occurs more often when multiple "similar" notifications are dispatched by your connected source platform either simultaneously or in quick succession. For example, if you receive a donation on a regular gift, your source platform may dispatch separate notifications for the donation being made and the regular gift being updated at the same time - both which reference the same contact, campaign, recurring donation and other records).

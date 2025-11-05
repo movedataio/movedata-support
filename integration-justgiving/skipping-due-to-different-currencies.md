@@ -1,5 +1,13 @@
 # Skipping due to Different Currencies
 
+{% hint style="info" %}
+Metadata
+
+* category=JustGiving
+* integration=justgiving
+* tags=currency,foreign
+{% endhint %}
+
 When a foreign currency transaction is made on JustGiving, the equivalent settled currency amount is not provided. For example:
 
 * AU$100.00

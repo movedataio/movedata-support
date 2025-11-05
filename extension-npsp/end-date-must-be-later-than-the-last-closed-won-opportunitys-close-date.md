@@ -1,5 +1,13 @@
 # End Date must be later than the last Closed Won Opportunity's Close Date
 
+{% hint style="info" %}
+Metadata
+
+* category=NPSP
+* extension=npsp
+* tags=recurring
+{% endhint %}
+
 This error can occur when recurring donation has been processed and cancelled on the same day.
 
 * When the donation is processed into Salesforce MoveData will set a Stage (`Opportunity.StageName`) of `Closed Won` and Close Date (`Opportunity.CloseDate`) of `TODAY`

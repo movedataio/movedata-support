@@ -1,5 +1,13 @@
 # Unable to connect to Data API
 
+{% hint style="info" %}
+Metadata
+
+* category=JustGiving
+* integration=justgiving
+* tags=config
+{% endhint %}
+
 To connect your JustGiving account you must provide the following information:
 
 | Resource        | Comment                                                                                   |

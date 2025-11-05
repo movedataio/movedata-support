@@ -1,5 +1,12 @@
 # About the MoveData Authorised User
 
+{% hint style="info" %}
+Metadata
+
+* category=general
+* tags=authorised user,user,authentication,settings
+{% endhint %}
+
 ## Overview
 
 MoveData requires permission to access your Salesforce instance. This is to facilitate the pushing of notifications from connected platforms into Salesforce. This article details the options available to an organisation regarding the authorised user and associated permissions.

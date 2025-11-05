@@ -1,5 +1,13 @@
 # Different Address on Donation vs Person Record
 
+{% hint style="info" %}
+Metadata
+
+* category=Raisely
+* integration=raisely
+* tags=data,contact
+{% endhint %}
+
 Sometimes in Raisely you will encounter a scenario where address information on the donation record is different to address information on the person record.
 
 In this scenario, there is no ability to tell which address is the "more correct" one to use, and MoveData will use the address on the person record ahead of the address on the donation record.

@@ -1,5 +1,12 @@
 # Uninstalling MoveData
 
+{% hint style="info" %}
+Metadata
+
+* category=general
+* tags=config,uninstall
+{% endhint %}
+
 ## Summary <a href="#h_3da33ab1aa" id="h_3da33ab1aa"></a>
 
 1. Uninstall Customisations such as Flows

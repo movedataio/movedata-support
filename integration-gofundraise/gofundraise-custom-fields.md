@@ -1,5 +1,13 @@
 # GoFundraise Custom Fields
 
+{% hint style="info" %}
+Metadata
+
+* category=GoFundraise
+* integration=gofundraise
+* tags=custom,questions
+{% endhint %}
+
 GoFundraise allows you to configure questions on your donation and fundraising page registration forms.
 
 These will not be available in GoFundraise's API (and therefore unavailable to MoveData to process into Salesforce) unless they are mapped to Custom Fields. Please contact [GoFundraise Support](https://support.gofundraise.com/hc/en-us) if you have questions about using their Custom Fields.

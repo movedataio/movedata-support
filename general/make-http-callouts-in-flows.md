@@ -1,5 +1,12 @@
 # Make HTTP Callouts in Flows
 
+{% hint style="info" %}
+Metadata
+
+* category=general
+* tags=flows,callout,limit
+{% endhint %}
+
 When MoveData processes a notification, it creates a transaction. A transaction is used to commit all changes to Salesforce, or if unsuccessful, rollback all changes so that no data is changed.
 
 When a transaction is live and pending, Salesforce enforce a number of processing restrictions. In particular, it does not allow any callouts to external systems until the transaction is completed. If you attempt to perform an HTTP callout from Apex or Flows, you will get the following error:

@@ -1,5 +1,13 @@
 # Organisation Accounts created as Anonymous Households
 
+{% hint style="info" %}
+Metadata
+
+* category=NPSP
+* extension=npsp
+* tags=record type
+{% endhint %}
+
 When MoveData processes company information into Salesforce it will ordinarily match or create an Organisation Account record to represent that company.
 
 Depending upon how your Salesforce has been configured, occasionally this can create an Anonymous Household record instead. To fix this:

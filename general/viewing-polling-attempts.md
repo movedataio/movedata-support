@@ -1,5 +1,12 @@
 # Viewing Polling Attempts
 
+{% hint style="info" %}
+Metadata
+
+* category=general
+* tags=batch,navigation
+{% endhint %}
+
 If you are using a platform that polls for notifications such as JustGiving or Funraisin, you may wish to see the polling attempts to verify the integration is active and pulling data.
 
 <figure><img src="../.gitbook/assets/Polling Notification List View.png" alt=""><figcaption></figcaption></figure>

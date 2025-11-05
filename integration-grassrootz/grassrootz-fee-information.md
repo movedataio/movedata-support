@@ -1,5 +1,13 @@
 # Grassrootz: Fee Information
 
+{% hint style="info" %}
+Metadata
+
+* category=Grassrootz
+* integration=grassrootz
+* tags=fee
+{% endhint %}
+
 There are a number of fees which can potentially be charged by Grassrootz. These are surfaced as the following parameters in the Donation phase:
 
 | Variable             | Example                     | Comment                                                                                 |

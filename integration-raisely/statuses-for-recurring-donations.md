@@ -1,5 +1,13 @@
 # Statuses for Recurring Donations
 
+{% hint style="info" %}
+Metadata
+
+* category=Raisely
+* integration=raisely
+* tags=recurring
+{% endhint %}
+
 When a donor makes a recurring donation in Raisely, the status of that recurring donation can change over time.
 
 MoveData maps the Raisely status to the Status field (`npsp__Status__c`) which will update according to the following conditions:

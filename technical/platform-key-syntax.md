@@ -1,5 +1,12 @@
 # Platform Key Syntax
 
+{% hint style="info" %}
+Metadata
+
+* category=technical
+* tags=data,data import,data migration,keys,platform keys
+{% endhint %}
+
 Identifiers are not always unique within source platforms, and can also repeat between different source platforms. Because of this, the integration will prefix identifiers with additional information as a safety mechanism. To find your identifiers, download the equivalent report from your source platform.
 
 {% hint style="info" %}

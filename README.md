@@ -1,5 +1,11 @@
 # Grant Salesforce Access to MoveData
 
+{% hint style="info" %}
+Metadata
+
+* category=general
+{% endhint %}
+
 From time to time when you submit a support ticket to MoveData we may require access to your Salesforce Org. This is to review your request comprehensively and respond or resolve. In order to provide access you must do the following:
 
 * Open Salesforce and click your avatar from the top right hand corner

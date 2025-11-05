@@ -1,5 +1,12 @@
 # Upgrading MoveData
 
+{% hint style="info" %}
+Metadata
+
+* category=general
+* tags=config,upgrade
+{% endhint %}
+
 Occasionally you may need to upgrade your version of MoveData to gain access to new features or functionality.
 
 ### Upgrade the MoveData App <a href="#h_f2954470ad" id="h_f2954470ad"></a>

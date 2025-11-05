@@ -1,6 +1,13 @@
 # MoveData App (pre-1.167)
 
 {% hint style="info" %}
+Metadata
+
+* category=general
+* tags=config,upgrade,legacy
+{% endhint %}
+
+{% hint style="info" %}
 If you use NPSP Fundraising & Donations Extension (pre-1.81) please complete the following upgrade and then return to this page:
 
 * [Fundraising & Donations Extension (pre-1.81)](../extension-npsp/fundraising-and-donations-extension-pre-1.81.md)

@@ -1,5 +1,12 @@
 # Run Campaign Post and Donation Post Asynchronously
 
+{% hint style="info" %}
+Metadata
+
+* category=technical
+* tags=sync,limits
+{% endhint %}
+
 ### Context <a href="#h_39f1225bd7" id="h_39f1225bd7"></a>
 
 In certain scenarios you may want to run Campaign and/or Donation Post Flows asynchronously. Doing so moves these Flows (and associated Extension Flows) out of the MoveData execution and into their own separate thread, which can provide SOQL relief in the form of:
@@ -10,7 +17,7 @@ In certain scenarios you may want to run Campaign and/or Donation Post Flows asy
 In a practical sense, this can provide SOQL relief where your processes are creating or updating records on the basis of Campaign, Campaign Member, or Opportunity records being created or updated.
 
 {% hint style="info" %}
-Related Article: [Too many SOQL queries: 101](too-many-soql-queries-101.md)
+Related Article: [Too many SOQL queries: 101](../general/too-many-soql-queries-101.md)
 {% endhint %}
 
 ### Disadvantages <a href="#h_f4c373e8d9" id="h_f4c373e8d9"></a>

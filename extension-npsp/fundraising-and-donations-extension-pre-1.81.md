@@ -1,5 +1,13 @@
 # Fundraising & Donations Extension (pre-1.81)
 
+{% hint style="info" %}
+Metadata
+
+* category=NPSP
+* extension=npsp
+* tags=upgrade,legacy
+{% endhint %}
+
 Fundraising & Donations Extension v1.81 introduces a new and improved concept for Platform Keys. If you are utilising a prior version, you will need to migrate your Platform Key records to this new structure. Failure to do so could result in duplicate records created due to this new structure.
 
 We recommend backing up your data (`Setup` → `Data Export`) before completing this upgrade, and performing in a sandbox before performing in Production.

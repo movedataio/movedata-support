@@ -6,6 +6,14 @@ description: >-
 
 # Campaign Structure
 
+{% hint style="info" %}
+Metadata
+
+* category=funraisin
+* integration=funraisin
+* tags=campaign
+{% endhint %}
+
 The Funraisin campaign configuration and resulting Salesforce structure desired by a customer can vary between implementation. Therefore, it is important to understand how specific configuration items can alter this structure.
 
 There are three types of campaigns within Funraisin: an offline event, offline event and a DIY (do-it-yourself) event.

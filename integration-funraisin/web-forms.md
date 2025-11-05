@@ -1,5 +1,13 @@
 # Web Forms
 
+{% hint style="info" %}
+Metadata
+
+* category=funraisin
+* integration=funraisin
+* tags=forms
+{% endhint %}
+
 MoveData does not support Web Forms by Funraisin.
 
 This is because Funraisin's API does not always provide a capability to return web form responses on the basis of fundraising page, donation or other such context.

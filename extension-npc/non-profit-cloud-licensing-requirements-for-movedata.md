@@ -1,5 +1,13 @@
 # Non-Profit Cloud Licensing Requirements for MoveData
 
+{% hint style="info" %}
+Metadata
+
+* category=NPC
+* extension=npc
+* tags=install,config
+{% endhint %}
+
 ### Overview
 
 When using MoveData with Salesforce Nonprofit Cloud (NPC), specific licensing requirements must be met to ensure proper functionality with NPC objects such as GiftTransactions. This article outlines the essential licensing and permission requirements for successful MoveData integration with Nonprofit Cloud.

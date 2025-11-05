@@ -1,5 +1,13 @@
 # Foreign Currency Donations
 
+{% hint style="info" %}
+Metadata
+
+* category=Grassrootz
+* integration=Grassrootz
+* tags=currency,foreign
+{% endhint %}
+
 It is possible to take foreign currency donations using Grassrootz.
 
 In this scenario, Grassrootz will send through the foreign currency and foreign currency amount, but will not issue the amount in local currency it settles into. This causes an issue in Salesforce organisations without [multiple currencies](https://help.salesforce.com/s/articleView?id=sales.admin_currency.htm\&type=5) enabled due to no currency concept inside Salesforce.

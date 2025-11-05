@@ -1,5 +1,12 @@
 # Change the SObject Type within a Phase
 
+{% hint style="info" %}
+Metadata
+
+* category=technical
+* tags=sobject,advanced
+{% endhint %}
+
 This article details how to configure MoveData to use a different SObject type instead of the MoveData Extension defaults. In this example we will focus on the `Campaign` phase but note that the below logic is compatible in all phases of the execution. This article will also describe how to use a combination of SObjects for different types of Campaign records.
 
 ### Overview <a href="#h_4b1b9836b3" id="h_4b1b9836b3"></a>

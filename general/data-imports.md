@@ -1,5 +1,12 @@
 # Data Imports
 
+{% hint style="info" %}
+Metadata
+
+* category=general
+* tags=data,data import,data migration
+{% endhint %}
+
 MoveData will only import information when instructed to do so by the source platform.
 
 In practice, the source platform will not issue updates against historical information for MoveData to automatically receive and process into Salesforce. Thus, technical effort from MoveData is required to process historical information into Salesforce at a point-in-time basis.

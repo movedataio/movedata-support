@@ -1,5 +1,13 @@
 # Migrate Recurring Donations from External System
 
+{% hint style="info" %}
+Metadata
+
+* category=Raisely
+* integration=raisely
+* tags=recurring,data,data migration,data import
+{% endhint %}
+
 ## Context <a href="#h_1a3c6c22eb" id="h_1a3c6c22eb"></a>
 
 Organisations may migrate recurring donations from an external system into Raisely. In this scenario MoveData will receive information from Raisely and create recurring donation records inside Salesforce. Importantly, MoveData has no context of your existing recurring donations inside Salesforce, and thus there is a process to follow if you require your Raisely recurring donations to match your existing recurring donations inside Salesforce.

@@ -6,6 +6,13 @@ description: >-
 
 # Convert Leads to Contacts
 
+{% hint style="info" %}
+Metadata
+
+* category=general
+* tags=duplicate,convert,leads
+{% endhint %}
+
 {% hint style="warning" %}
 ### Warning: Salesforce Converts Lead into Contact and Organisation Account <a href="#h_5d8c66850f" id="h_5d8c66850f"></a>
 {% endhint %}

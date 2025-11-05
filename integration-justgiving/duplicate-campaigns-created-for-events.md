@@ -1,5 +1,13 @@
 # Duplicate Campaigns created for Events
 
+{% hint style="info" %}
+Metadata
+
+* category=JustGiving
+* integration=justgiving
+* tags=data,campaign
+{% endhint %}
+
 Occasionally you can receive two copies of the same JustGiving event created as Campaign records in Salesforce. This occurs when JustGiving attaches one Fundraiser to an Event and another fundraiser to a Campaign.
 
 JustGiving Payload with Campaign Information Absent

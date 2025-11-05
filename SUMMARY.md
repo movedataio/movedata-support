@@ -14,7 +14,6 @@
 * [Convert Leads to Contacts](general/convert-leads-to-contacts.md)
 * [Make HTTP Callouts in Flows](general/make-http-callouts-in-flows.md)
 * [Offline donations not processed into Salesforce](general/offline-donations-not-processed-into-salesforce.md)
-* [Run Campaign Post and Donation Post Asynchronously](general/run-campaign-post-and-donation-post-asynchronously.md)
 * [Viewing Polling Attempts](general/viewing-polling-attempts.md)
 * [Uninstalling MoveData](general/uninstalling-movedata.md)
 * [Data Imports](general/data-imports.md)
@@ -27,6 +26,7 @@
 * [Change the SObject Type within a Phase](technical/change-the-sobject-type-within-a-phase.md)
 * [Custom Errors](technical/custom-errors.md)
 * [Platform Key Syntax](technical/platform-key-syntax.md)
+* [Run Campaign Post and Donation Post Asynchronously](technical/run-campaign-post-and-donation-post-asynchronously.md)
 
 ## System
 

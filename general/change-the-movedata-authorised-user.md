@@ -1,6 +1,13 @@
 # Change the MoveData Authorised User
 
 {% hint style="info" %}
+Metadata
+
+* category=general
+* tags=authorised user,user,authentication,settings
+{% endhint %}
+
+{% hint style="info" %}
 **Related Articles**
 
 We recommend reviewing this article alongside:

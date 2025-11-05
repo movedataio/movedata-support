@@ -1,5 +1,13 @@
 # Required fields are missing: \[LastName]
 
+{% hint style="info" %}
+Metadata
+
+* category=Raisely
+* integration=raisely
+* tags=data
+{% endhint %}
+
 Across your various Raisely forms, you can specify `First Name` and `Last Name` as optional or mandatory.
 
 In the case where these are set to optional, it is possible for the user to enter an email but not enter name information. Given `Last Name` is mandatory in Salesforce, processing this information through to Salesforce will cause the error `REQUIRED_FIELD_MISSING, Required fields are missing: [LastName]`.
