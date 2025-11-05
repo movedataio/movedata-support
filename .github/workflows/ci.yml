@@ -6,6 +6,7 @@ on:
       - main
       - documentation
       - developer
+      - knowledgebase
       - extension/commerce
       - extension/npsp-fundraising
       - extension/non-profit-cloud
