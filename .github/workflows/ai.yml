@@ -3,6 +3,11 @@ name: Sync MoveData Support Documentation
 on:
   workflow_dispatch: # Allow manual trigger
   workflow_call: # Allow this workflow to be called by other workflows
+    secrets:
+      AWS_ACCESS_KEY_ID:
+        required: true
+      AWS_SECRET_ACCESS_KEY:
+        required: true
 
 env:
   ENVIRONMENT: uat  # Change this variable as needed
