@@ -38,7 +38,9 @@ function parseYamlFrontmatter(content) {
         const arrayItem = trimmed.substring(2).trim();
         // Remove quotes if present
         const cleanItem = arrayItem.replace(/^["']|["']$/g, '');
-        currentArray.push(cleanItem);
+        if (cleanItem) { // Only add non-empty items
+          currentArray.push(cleanItem);
+        }
       }
       continue;
     }
@@ -72,7 +74,21 @@ function parseYamlFrontmatter(content) {
     }
   }
   
-  return { frontmatter: parsed, contentWithoutFrontmatter };
+  // Clean up empty arrays and invalid values
+  const cleanedParsed = {};
+  for (const [key, value] of Object.entries(parsed)) {
+    if (Array.isArray(value)) {
+      // Only include arrays that have items
+      if (value.length > 0) {
+        cleanedParsed[key] = value;
+      }
+    } else if (value !== null && value !== undefined && value !== '') {
+      // Only include non-empty values
+      cleanedParsed[key] = value;
+    }
+  }
+  
+  return { frontmatter: Object.keys(cleanedParsed).length > 0 ? cleanedParsed : null, contentWithoutFrontmatter };
 }
 
 function extractPathMetadata(filePath, rootPath) {
@@ -135,9 +151,43 @@ function createMetadataJson(frontmatter, pathMetadata) {
   combinedMetadata.content_type = 'documentation';
   combinedMetadata.source_system = 'movedata-support';
   
+  // Clean and validate metadata for AWS Bedrock
+  const cleanedMetadata = {};
+  for (const [key, value] of Object.entries(combinedMetadata)) {
+    // Skip null, undefined, or empty string values
+    if (value === null || value === undefined || value === '') {
+      continue;
+    }
+    
+    // Handle arrays - only include non-empty arrays
+    if (Array.isArray(value)) {
+      if (value.length > 0) {
+        // Ensure all array items are strings and not too long
+        const cleanArray = value
+          .filter(item => item !== null && item !== undefined && item !== '')
+          .map(item => String(item).substring(0, 1000)); // Limit individual items
+        if (cleanArray.length > 0) {
+          cleanedMetadata[key] = cleanArray;
+        }
+      }
+      continue;
+    }
+    
+    // Handle other types
+    if (typeof value === 'string') {
+      // Limit string length for AWS Bedrock
+      const trimmedValue = value.trim();
+      if (trimmedValue && trimmedValue.length <= 1000) {
+        cleanedMetadata[key] = trimmedValue;
+      }
+    } else if (typeof value === 'number' || typeof value === 'boolean') {
+      cleanedMetadata[key] = value;
+    }
+  }
+  
   // Structure for AWS Bedrock Knowledge Base
   const bedrockMetadata = {
-    metadataAttributes: combinedMetadata
+    metadataAttributes: cleanedMetadata
   };
   
   return JSON.stringify(bedrockMetadata, null, 2);
@@ -146,18 +196,26 @@ function createMetadataJson(frontmatter, pathMetadata) {
 function processMarkdownFile(filePath, rootPath, dryRun = false, debug = false) {
   try {
     const content = fs.readFileSync(filePath, 'utf8');
+    
+    if (debug) {
+      console.error(`  DEBUG: Processing file: ${filePath}`);
+      const first100Chars = content.substring(0, 100).replace(/\n/g, '\\n');
+      console.error(`  DEBUG: File starts with: ${first100Chars}`);
+    }
+    
     const { frontmatter, contentWithoutFrontmatter } = parseYamlFrontmatter(content);
     
     if (!frontmatter || Object.keys(frontmatter).length === 0) {
       if (debug) {
-        console.error(`  DEBUG: No frontmatter found in: ${filePath}`);
+        console.error(`  DEBUG: No valid frontmatter found in: ${filePath}`);
       }
       return { success: true, changed: false, path: filePath, reason: 'no_frontmatter' };
     }
     
     if (debug) {
       console.error(`  DEBUG: Found frontmatter in: ${filePath}`);
-      console.error(`  DEBUG: Frontmatter:`, frontmatter);
+      console.error(`  DEBUG: Frontmatter keys:`, Object.keys(frontmatter));
+      console.error(`  DEBUG: Frontmatter:`, JSON.stringify(frontmatter, null, 2));
     }
     
     // Extract path-based metadata
@@ -169,6 +227,10 @@ function processMarkdownFile(filePath, rootPath, dryRun = false, debug = false) 
     
     // Create metadata JSON content
     const metadataJsonContent = createMetadataJson(frontmatter, pathMetadata);
+    
+    if (debug) {
+      console.error(`  DEBUG: Generated metadata:`, metadataJsonContent);
+    }
     
     if (!dryRun) {
       // Write the metadata JSON file
