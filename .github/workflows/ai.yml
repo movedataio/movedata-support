@@ -132,6 +132,7 @@ jobs:
       - name: Clean up cloned repository
         run: |
           rm -rf ./.tmp/movedata-support
+          rm -rf ./.tmp/bin
 
       - name: Clear existing S3 content
         run: |
