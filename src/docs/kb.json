@@ -1,4 +1,34 @@
 {
+  "knowledge_base": {
+    "title": "Knowledge Base Articles",
+    "items": [
+      {
+        "id": "kb_category",
+        "title": "All By Category",
+        "url": "/knowledgebase/index_category/"
+      },
+      {
+        "id": "kb_name",
+        "title": "All By Name",
+        "url": "/knowledgebase/index_name/"
+      }
+    ]
+  },
+  "video": {
+    "title": "Video Articles",
+    "items": [
+      {
+        "id": "kb_name",
+        "title": "All Videos",
+        "url": "/knowledgebase/index_video/"
+      },
+      {
+        "id": "quickstart",
+        "title": "Quickstart Guide",
+        "url": "/user_guide/getting-started/quickstart/"
+      }
+    ]
+  },
   "popular": {
     "title": "Popular Articles",
     "items":[

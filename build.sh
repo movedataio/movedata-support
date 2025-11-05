@@ -16,6 +16,11 @@ node ./bin/migrate-images.js knowledgebase ./lib/docs/knowledgebase
 node ./bin/convert-embeds.js ./lib/docs/knowledgebase
 node ./bin/convert-hints.js ./lib/docs/knowledgebase
 node ./bin/convert-lists.js ./lib/docs/knowledgebase
+node ./bin/convert-metadata.js ./lib/docs/knowledgebase
+node ./bin/update-fullwidth.js ./lib/docs/knowledgebase
+
+node ./bin/generate-index.js --includeFolderFilter knowledgebase --title "All Knowledge Base Articles by Category" --outputName ./lib/docs/knowledgebase/index_category.md --metadataGroup category
+node ./bin/generate-index.js --includeFolderFilter knowledgebase --title "All Knowledge Base Articles by Alphabetical Order" --outputName ./lib/docs/knowledgebase/index_name.md
 
 git clone --depth=1 --branch=documentation https://github.com/movedataio/movedata-support.git ./lib/docs/user_guide
 rm -rf ./lib/docs/user_guide/.git
@@ -26,6 +31,7 @@ node ./bin/migrate-images.js user_guide ./lib/docs/user_guide
 node ./bin/convert-embeds.js ./lib/docs/user_guide
 node ./bin/convert-hints.js ./lib/docs/user_guide
 node ./bin/convert-lists.js ./lib/docs/user_guide
+node ./bin/convert-metadata.js ./lib/docs/user_guide
 cat ./lib/docs/user_guide/SUMMARY-nav.yaml >> ./lib/mkdocs.yml
 
 rm -rf ./lib/docs/developer
@@ -38,6 +44,7 @@ node ./bin/migrate-images.js developer ./lib/docs/developer
 node ./bin/convert-embeds.js ./lib/docs/developer
 node ./bin/convert-hints.js ./lib/docs/developer
 node ./bin/convert-lists.js ./lib/docs/developer
+node ./bin/convert-metadata.js ./lib/docs/developer
 cat ./lib/docs/developer/SUMMARY-nav.yaml >> ./lib/mkdocs.yml
 
 echo "  - Reference:" >> ./lib/mkdocs.yml
@@ -53,6 +60,7 @@ node ./bin/migrate-images.js reference ./lib/docs/reference/extension/commerce
 node ./bin/convert-embeds.js ./lib/docs/reference/extension/commerce
 node ./bin/convert-hints.js ./lib/docs/reference/extension/commerce
 node ./bin/convert-lists.js ./lib/docs/reference/extension/commerce
+node ./bin/convert-metadata.js ./lib/docs/reference/extension/commerce
 cat ./lib/docs/reference/extension/commerce/SUMMARY-nav.yaml >> ./lib/mkdocs.yml
 
 rm -rf ./lib/docs/reference/extension/npsp-fundraising
@@ -65,6 +73,7 @@ node ./bin/migrate-images.js reference ./lib/docs/reference/extension/npsp-fundr
 node ./bin/convert-embeds.js ./lib/docs/reference/extension/npsp-fundraising
 node ./bin/convert-hints.js ./lib/docs/reference/extension/npsp-fundraising
 node ./bin/convert-lists.js ./lib/docs/reference/extension/npsp-fundraising
+node ./bin/convert-metadata.js ./lib/docs/reference/extension/npsp-fundraising
 cat ./lib/docs/reference/extension/npsp-fundraising/SUMMARY-nav.yaml >> ./lib/mkdocs.yml
 
 rm -rf ./lib/docs/reference/extension/non-profit-cloud
@@ -77,6 +86,7 @@ node ./bin/migrate-images.js reference ./lib/docs/reference/extension/non-profit
 node ./bin/convert-embeds.js ./lib/docs/reference/extension/non-profit-cloud
 node ./bin/convert-hints.js ./lib/docs/reference/extension/non-profit-cloud
 node ./bin/convert-lists.js ./lib/docs/reference/extension/non-profit-cloud
+node ./bin/convert-metadata.js ./lib/docs/reference/extension/non-profit-cloud
 cat ./lib/docs/reference/extension/non-profit-cloud/SUMMARY-nav.yaml >> ./lib/mkdocs.yml
 
 rm -rf ./lib/docs/reference/schema/commerce
@@ -89,6 +99,7 @@ node ./bin/migrate-images.js reference ./lib/docs/reference/schema/commerce
 node ./bin/convert-embeds.js ./lib/docs/reference/schema/commerce
 node ./bin/convert-hints.js ./lib/docs/reference/schema/commerce
 node ./bin/convert-lists.js ./lib/docs/reference/schema/commerce
+node ./bin/convert-metadata.js ./lib/docs/reference/schema/commerce
 cat ./lib/docs/reference/schema/commerce/SUMMARY-nav.yaml >> ./lib/mkdocs.yml
 
 rm -rf ./lib/docs/reference/schema/donation
@@ -101,5 +112,6 @@ node ./bin/migrate-images.js reference ./lib/docs/reference/schema/donation
 node ./bin/convert-embeds.js ./lib/docs/reference/schema/donation
 node ./bin/convert-hints.js ./lib/docs/reference/schema/donation
 node ./bin/convert-lists.js ./lib/docs/reference/schema/donation
+node ./bin/convert-metadata.js ./lib/docs/reference/schema/donation
 cat ./lib/docs/reference/schema/donation/SUMMARY-nav.yaml >> ./lib/mkdocs.yml
 

@@ -5,10 +5,72 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 /**
- * Converts YAML frontmatter to plain markdown description
+ * YAML Frontmatter to Markdown Description Converter
+ * ===================================================
  * 
- * Usage: node convert-frontmatter.js <contentPath>
- * Example: node convert-frontmatter.js ./lib/docs/documentation
+ * This script processes markdown files and converts YAML frontmatter descriptions 
+ * into plain markdown content. It extracts the 'description' field from YAML 
+ * frontmatter and places it as regular markdown text after the first H1 heading.
+ * 
+ * WHAT IT DOES:
+ * - Scans all .md files in a directory recursively
+ * - Extracts YAML frontmatter (content between --- delimiters)
+ * - Finds the 'description' field in the frontmatter
+ * - Removes the entire frontmatter section
+ * - Inserts the description content after the first H1 heading
+ * - If no H1 heading exists, prepends the description to the content
+ * 
+ * EXAMPLE TRANSFORMATION:
+ * 
+ * INPUT FILE:
+ * -----------
+ * ---
+ * title: My Page
+ * description: >-
+ *   This is a detailed description
+ *   of what this page contains.
+ *   It can span multiple lines.
+ * author: John Doe
+ * ---
+ * 
+ * # Welcome to My Page
+ * 
+ * This is the main content.
+ * 
+ * OUTPUT FILE:
+ * ------------
+ * # Welcome to My Page
+ * 
+ * This is a detailed description
+ * of what this page contains.
+ * It can span multiple lines.
+ * 
+ * This is the main content.
+ * 
+ * SUPPORTED FRONTMATTER FORMATS:
+ * - Single line: description: "Simple description text"
+ * - Multi-line with >-: 
+ *   description: >-
+ *     Line 1 of description
+ *     Line 2 of description
+ * 
+ * USAGE:
+ * ------
+ * node convert-frontmatter.js <contentPath> [--dry-run]
+ * 
+ * EXAMPLES:
+ * - node convert-frontmatter.js ./docs
+ * - node convert-frontmatter.js ./lib/docs/documentation --dry-run
+ * - node convert-frontmatter.js ./content
+ * 
+ * OPTIONS:
+ * - --dry-run: Show what would be changed without modifying files
+ * 
+ * The script will:
+ * 1. Recursively find all .md files in the specified directory
+ * 2. Process each file that contains YAML frontmatter
+ * 3. Extract and convert description fields to markdown content
+ * 4. Provide a summary of changes made
  */
 
 function extractFrontmatter(content) {
