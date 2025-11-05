@@ -20,101 +20,113 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - name: Clean and setup temporary directory
-      run: |
-        rm -rf ./.tmp
-        mkdir ./.tmp
-        cd ./.tmp
-        mkdir ./extension
-        mkdir ./schema
+      - name: Set up Node.js
+        uses: actions/setup-node@v5
+        
+      - name: Clean and setup temporary directory
+        run: |
+          rm -rf ./.tmp
+          mkdir ./.tmp
+          cd ./.tmp
+          mkdir ./extension
+          mkdir ./schema
 
-    - name: Clone MoveData support repository
-      run: |
-        cd ./.tmp
-        git clone https://github.com/movedataio/movedata-support.git movedata-support
+      - name: Clone MoveData support repository
+        run: |
+          cd ./.tmp
+          git clone https://github.com/movedataio/movedata-support.git movedata-support
 
-    - name: Sync documentation branch
-      run: |
-        cd ./.tmp/movedata-support
-        git checkout documentation
-        cd ..
-        rsync -av --include='*/' --include='*.md' --exclude='*' movedata-support/ ./documentation/
+      - name: Copy BIN folder
+        run: |
+          cd ./.tmp
+          cp -R movedata-support/bin ./bin
 
-    - name: Sync knowledge base branch
-      run: |
-        cd ./.tmp/movedata-support
-        git checkout knowledgebase
-        cd ..
-        rsync -av --include='*/' --include='*.md' --exclude='*' movedata-support/ ./knowledgebase/
+      - name: Sync documentation branch
+        run: |
+          cd ./.tmp/movedata-support
+          git checkout documentation
+          cd ..
+          rsync -av --include='*/' --include='*.md' --exclude='*' movedata-support/ ./documentation/
 
-    - name: Sync developer branch
-      run: |
-        cd ./.tmp/movedata-support
-        git checkout developer
-        cd ..
-        rsync -av --include='*/' --include='*.md' --exclude='*' movedata-support/ ./developer/
+      - name: Sync knowledge base branch
+        run: |
+          cd ./.tmp/movedata-support
+          git checkout knowledgebase
+          cd ..
+          node ./bin/convert-metadata.js ./movedata-support
+          rsync -av --include='*/' --include='*.md' --exclude='*' movedata-support/ ./knowledgebase/
+          cat ./movedata-support/general/data-imports.md
+          cd movedata-support
+          git restore .
 
-    - name: Sync NPSP fundraising extension
-      run: |
-        cd ./.tmp/movedata-support
-        git checkout extension/npsp-fundraising
-        cd ..
-        rsync -av --include='*/' --include='*.md' --exclude='*' movedata-support/ ./extension/npsp-fundraising/
+      - name: Sync developer branch
+        run: |
+          cd ./.tmp/movedata-support
+          git checkout developer
+          cd ..
+          rsync -av --include='*/' --include='*.md' --exclude='*' movedata-support/ ./developer/
 
-    - name: Sync commerce extension
-      run: |
-        cd ./.tmp/movedata-support
-        git checkout extension/commerce
-        cd ..
-        rsync -av --include='*/' --include='*.md' --exclude='*' movedata-support/ ./extension/commerce/
+      - name: Sync NPSP fundraising extension
+        run: |
+          cd ./.tmp/movedata-support
+          git checkout extension/npsp-fundraising
+          cd ..
+          rsync -av --include='*/' --include='*.md' --exclude='*' movedata-support/ ./extension/npsp-fundraising/
 
-    - name: Sync Non-Profit Cloud extension
-      run: |
-        cd ./.tmp/movedata-support
-        git checkout extension/non-profit-cloud
-        cd ..
-        rsync -av --include='*/' --include='*.md' --exclude='*' movedata-support/ ./extension/non-profit-cloud/
+      - name: Sync commerce extension
+        run: |
+          cd ./.tmp/movedata-support
+          git checkout extension/commerce
+          cd ..
+          rsync -av --include='*/' --include='*.md' --exclude='*' movedata-support/ ./extension/commerce/
 
-    - name: Sync commerce schema
-      run: |
-        cd ./.tmp/movedata-support
-        git checkout schema/commerce
-        cd ..
-        rsync -av --include='*/' --include='*.md' --exclude='*' movedata-support/ ./schema/commerce/
+      - name: Sync Non-Profit Cloud extension
+        run: |
+          cd ./.tmp/movedata-support
+          git checkout extension/non-profit-cloud
+          cd ..
+          rsync -av --include='*/' --include='*.md' --exclude='*' movedata-support/ ./extension/non-profit-cloud/
 
-    - name: Sync donation schema
-      run: |
-        cd ./.tmp/movedata-support
-        git checkout schema/donation
-        cd ..
-        rsync -av --include='*/' --include='*.md' --exclude='*' movedata-support/ ./schema/donation/
+      - name: Sync commerce schema
+        run: |
+          cd ./.tmp/movedata-support
+          git checkout schema/commerce
+          cd ..
+          rsync -av --include='*/' --include='*.md' --exclude='*' movedata-support/ ./schema/commerce/
 
-    - name: Clean up cloned repository
-      run: |
-        rm -rf ./.tmp/movedata-support
+      - name: Sync donation schema
+        run: |
+          cd ./.tmp/movedata-support
+          git checkout schema/donation
+          cd ..
+          rsync -av --include='*/' --include='*.md' --exclude='*' movedata-support/ ./schema/donation/
 
-    - name: Clear existing S3 content
-      run: |
-        aws s3 rm s3://${{ env.ENVIRONMENT }}-movedata-ai/support/ --recursive
-      env:
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        AWS_REGION: ap-southeast-2
+      - name: Clean up cloned repository
+        run: |
+          rm -rf ./.tmp/movedata-support
 
-    - name: Sync to S3
-      run: |
-        aws s3 sync ./.tmp s3://${{ env.ENVIRONMENT }}-movedata-ai/support/
-      env:
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        AWS_REGION: ap-southeast-2
+      - name: Clear existing S3 content
+        run: |
+          aws s3 rm s3://${{ env.ENVIRONMENT }}-movedata-ai/support/ --recursive
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: ap-southeast-2
 
-    - name: Execute Bedrock Knowledge Base Data Source Sync
-      run: |
-        aws bedrock-agent start-ingestion-job \
-          --knowledge-base-id ${{ env.KNOWLEDGE_BASE_ID }} \
-          --data-source-id ${{ env.KNOWLEDGE_BASE_DATA_SOURCE_ID }}
-      env:
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        AWS_REGION: ap-southeast-2
+      - name: Sync to S3
+        run: |
+          aws s3 sync ./.tmp s3://${{ env.ENVIRONMENT }}-movedata-ai/support/
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: ap-southeast-2
+
+      - name: Execute Bedrock Knowledge Base Data Source Sync
+        run: |
+          aws bedrock-agent start-ingestion-job \
+            --knowledge-base-id ${{ env.KNOWLEDGE_BASE_ID }} \
+            --data-source-id ${{ env.KNOWLEDGE_BASE_DATA_SOURCE_ID }}
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: ap-southeast-2
