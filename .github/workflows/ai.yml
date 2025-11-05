@@ -46,16 +46,20 @@ jobs:
           cd ./.tmp/movedata-support
           git checkout documentation
           cd ..
+          node ./bin/convert-hints.js ./movedata-support
+          node ./bin/convert-metadata.js ./movedata-support
           rsync -av --include='*/' --include='*.md' --exclude='*' movedata-support/ ./documentation/
+          cd movedata-support
+          git restore .
 
       - name: Sync knowledge base branch
         run: |
           cd ./.tmp/movedata-support
           git checkout knowledgebase
           cd ..
+          node ./bin/convert-hints.js ./movedata-support
           node ./bin/convert-metadata.js ./movedata-support
           rsync -av --include='*/' --include='*.md' --exclude='*' movedata-support/ ./knowledgebase/
-          cat ./movedata-support/general/data-imports.md
           cd movedata-support
           git restore .
 
@@ -64,42 +68,66 @@ jobs:
           cd ./.tmp/movedata-support
           git checkout developer
           cd ..
+          node ./bin/convert-hints.js ./movedata-support
+          node ./bin/convert-metadata.js ./movedata-support
           rsync -av --include='*/' --include='*.md' --exclude='*' movedata-support/ ./developer/
+          cd movedata-support
+          git restore .
 
       - name: Sync NPSP fundraising extension
         run: |
           cd ./.tmp/movedata-support
           git checkout extension/npsp-fundraising
           cd ..
+          node ./bin/convert-hints.js ./movedata-support
+          node ./bin/convert-metadata.js ./movedata-support
           rsync -av --include='*/' --include='*.md' --exclude='*' movedata-support/ ./extension/npsp-fundraising/
+          cd movedata-support
+          git restore .
 
       - name: Sync commerce extension
         run: |
           cd ./.tmp/movedata-support
           git checkout extension/commerce
           cd ..
+          node ./bin/convert-hints.js ./movedata-support
+          node ./bin/convert-metadata.js ./movedata-support
           rsync -av --include='*/' --include='*.md' --exclude='*' movedata-support/ ./extension/commerce/
+          cd movedata-support
+          git restore .
 
       - name: Sync Non-Profit Cloud extension
         run: |
           cd ./.tmp/movedata-support
           git checkout extension/non-profit-cloud
           cd ..
+          node ./bin/convert-hints.js ./movedata-support
+          node ./bin/convert-metadata.js ./movedata-support
           rsync -av --include='*/' --include='*.md' --exclude='*' movedata-support/ ./extension/non-profit-cloud/
+          cd movedata-support
+          git restore .
 
       - name: Sync commerce schema
         run: |
           cd ./.tmp/movedata-support
           git checkout schema/commerce
           cd ..
+          node ./bin/convert-hints.js ./movedata-support
+          node ./bin/convert-metadata.js ./movedata-support
           rsync -av --include='*/' --include='*.md' --exclude='*' movedata-support/ ./schema/commerce/
+          cd movedata-support
+          git restore .
 
       - name: Sync donation schema
         run: |
           cd ./.tmp/movedata-support
           git checkout schema/donation
           cd ..
+          node ./bin/convert-hints.js ./movedata-support
+          node ./bin/convert-metadata.js ./movedata-support
           rsync -av --include='*/' --include='*.md' --exclude='*' movedata-support/ ./schema/donation/
+          cd movedata-support
+          git restore .
 
       - name: Clean up cloned repository
         run: |
