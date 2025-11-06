@@ -13,6 +13,10 @@
   --md-text-font: system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; 
 }
 
+.md-typeset {
+  font-size: 0.7rem;
+}
+
 .md-header__inner {
   padding-top: 6px;
   padding-bottom: 6px;

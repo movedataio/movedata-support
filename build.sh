@@ -12,6 +12,7 @@ rm -rf ./lib/docs/knowledgebase/.git
 
 node ./bin/convert-nav.js ./lib/docs/knowledgebase/SUMMARY.md "Knowledge Base" knowledgebase
 node ./bin/convert-frontmatter.js ./lib/docs/knowledgebase
+node ./bin/convert-file-embed.js knowledgebase ./lib/docs/knowledgebase
 node ./bin/migrate-images.js knowledgebase ./lib/docs/knowledgebase
 node ./bin/convert-embeds.js ./lib/docs/knowledgebase
 node ./bin/convert-hints.js ./lib/docs/knowledgebase
@@ -27,6 +28,7 @@ rm -rf ./lib/docs/user_guide/.git
 
 node ./bin/convert-nav.js ./lib/docs/user_guide/SUMMARY.md "User Guide" user_guide
 node ./bin/convert-frontmatter.js ./lib/docs/user_guide
+node ./bin/convert-file-embed.js user_guide ./lib/docs/user_guide
 node ./bin/migrate-images.js user_guide ./lib/docs/user_guide
 node ./bin/convert-embeds.js ./lib/docs/user_guide
 node ./bin/convert-hints.js ./lib/docs/user_guide
@@ -40,6 +42,7 @@ rm -rf ./lib/docs/developer/.git
 
 node ./bin/convert-nav.js ./lib/docs/developer/SUMMARY.md "Developer" developer
 node ./bin/convert-frontmatter.js ./lib/docs/developer
+node ./bin/convert-file-embed.js developer ./lib/docs/developer
 node ./bin/migrate-images.js developer ./lib/docs/developer
 node ./bin/convert-embeds.js ./lib/docs/developer
 node ./bin/convert-hints.js ./lib/docs/developer
@@ -56,6 +59,7 @@ rm -rf ./lib/docs/reference/extension/commerce/.git
 
 node ./bin/convert-nav.js ./lib/docs/reference/extension/commerce/SUMMARY.md "Extension: Commerce" "reference/extension/commerce" 2
 node ./bin/convert-frontmatter.js ./lib/docs/reference/extension/commerce
+node ./bin/convert-file-embed.js reference ./lib/docs/reference/extension/commerce
 node ./bin/migrate-images.js reference ./lib/docs/reference/extension/commerce
 node ./bin/convert-embeds.js ./lib/docs/reference/extension/commerce
 node ./bin/convert-hints.js ./lib/docs/reference/extension/commerce
@@ -69,6 +73,7 @@ rm -rf ./lib/docs/reference/extension/npsp-fundraising/.git
 
 node ./bin/convert-nav.js ./lib/docs/reference/extension/npsp-fundraising/SUMMARY.md "Extension: NPSP Fundraising" "reference/extension/npsp-fundraising" 2
 node ./bin/convert-frontmatter.js ./lib/docs/reference/extension/npsp-fundraising
+node ./bin/convert-file-embed.js reference ./lib/docs/reference/extension/npsp-fundraising
 node ./bin/migrate-images.js reference ./lib/docs/reference/extension/npsp-fundraising
 node ./bin/convert-embeds.js ./lib/docs/reference/extension/npsp-fundraising
 node ./bin/convert-hints.js ./lib/docs/reference/extension/npsp-fundraising
@@ -82,6 +87,7 @@ rm -rf ./lib/docs/reference/extension/non-profit-cloud/.git
 
 node ./bin/convert-nav.js ./lib/docs/reference/extension/non-profit-cloud/SUMMARY.md "Extension: Non-Profit Cloud" "reference/extension/non-profit-cloud" 2
 node ./bin/convert-frontmatter.js ./lib/docs/reference/extension/non-profit-cloud
+node ./bin/convert-file-embed.js reference ./lib/docs/reference/extension/non-profit-cloud
 node ./bin/migrate-images.js reference ./lib/docs/reference/extension/non-profit-cloud
 node ./bin/convert-embeds.js ./lib/docs/reference/extension/non-profit-cloud
 node ./bin/convert-hints.js ./lib/docs/reference/extension/non-profit-cloud
@@ -95,6 +101,7 @@ rm -rf ./lib/docs/reference/schema/commerce/.git
 
 node ./bin/convert-nav.js ./lib/docs/reference/schema/commerce/SUMMARY.md "Schema: Commerce" "reference/schema/commerce" 2
 node ./bin/convert-frontmatter.js ./lib/docs/reference/schema/commerce
+node ./bin/convert-file-embed.js reference ./lib/docs/reference/schema/commerce
 node ./bin/migrate-images.js reference ./lib/docs/reference/schema/commerce
 node ./bin/convert-embeds.js ./lib/docs/reference/schema/commerce
 node ./bin/convert-hints.js ./lib/docs/reference/schema/commerce
@@ -108,6 +115,7 @@ rm -rf ./lib/docs/reference/schema/donation/.git
 
 node ./bin/convert-nav.js ./lib/docs/reference/schema/donation/SUMMARY.md "Schema: Donation" "reference/schema/donation" 2
 node ./bin/convert-frontmatter.js ./lib/docs/reference/schema/donation
+node ./bin/convert-file-embed.js reference ./lib/docs/reference/schema/donation
 node ./bin/migrate-images.js reference ./lib/docs/reference/schema/donation
 node ./bin/convert-embeds.js ./lib/docs/reference/schema/donation
 node ./bin/convert-hints.js ./lib/docs/reference/schema/donation

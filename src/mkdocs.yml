@@ -13,6 +13,8 @@ theme:
 extra_css:
   - assets/stylesheets/ask-ai-modal.css
   - assets/stylesheets/extra.css
+  - assets/stylesheets/tables.css
+  - assets/stylesheets/file-download.css
   - https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap
 extra_javascript:
   - https://cdn.jsdelivr.net/npm/marked@11.1.1/marked.min.js
