@@ -272,12 +272,10 @@ hide:
         display: block;
         line-height: 1.4;
         padding: 6px 0;
-        transition: padding-left 0.2s;
     }
 
     .panel-item-title:hover {
         text-decoration: underline;
-        padding-left: 8px;
     }
 
     .close-button {
