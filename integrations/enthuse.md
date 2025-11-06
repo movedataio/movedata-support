@@ -43,7 +43,7 @@ The Fundraising and Donations Extension is relevant to processing fundraising ac
 
 ### Setup
 
-**Enthuse API Credentials**
+#### Enthuse API Credentials
 
 To set up the Enthuse integration, you will need three credentials from Enthuse:
 
@@ -53,7 +53,7 @@ To set up the Enthuse integration, you will need three credentials from Enthuse:
 
 To obtain these credentials, please raise a support ticket directly with Enthuse requesting API access for your MoveData integration.
 
-**MoveData Enthuse Configuration**
+#### MoveData Enthuse Configuration
 
 <figure><img src="../.gitbook/assets/enthuse_wizard_1.png" alt=""><figcaption></figcaption></figure>
 

@@ -54,11 +54,11 @@ To set up the JustGiving integration, you will need four credentials from JustGi
 3. **Charity ID** - Your organisation's JustGiving charity identifier
 4. **Username & Password** - Your JustGiving account credentials
 
-**Obtaining API Credentials:**
+#### Obtaining API Credentials
 
 To access your Consumer and Data App IDs, contact JustGiving Support ([support@justgivingdeveloper.zendesk.com](mailto:support@justgivingdeveloper.zendesk.com)) requesting access to the Data and Consumer APIs for Production data.
 
-**Finding Your Charity ID:**
+#### Finding Your Charity ID
 
 <figure><img src="../.gitbook/assets/justgiving-charity-id.png" alt=""><figcaption></figcaption></figure>
 
@@ -66,7 +66,7 @@ To access your Consumer and Data App IDs, contact JustGiving Support ([support@j
 2. Navigate to **Settings → Your Charity → Edit charity account details**
 3. Note your Charity ID from the account details
 
-**MoveData JustGiving Configuration**
+#### MoveData JustGiving Configuration
 
 <figure><img src="../.gitbook/assets/justgiving-setup.png" alt=""><figcaption></figcaption></figure>
 

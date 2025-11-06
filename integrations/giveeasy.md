@@ -44,7 +44,7 @@ The Fundraising and Donations Extension is relevant to processing fundraising ac
 
 To set up the GiveEasy integration, you will need to configure webhooks in your GiveEasy platform to send donation events to MoveData.
 
-**MoveData GiveEasy Configuration**
+### MoveData GiveEasy Configuration
 
 <figure><img src="../.gitbook/assets/giveeasy-md.png" alt=""><figcaption></figcaption></figure>
 
@@ -55,7 +55,7 @@ To set up the GiveEasy integration, you will need to configure webhooks in your 
 5. Configure your webhook settings as needed (see Configurable Options below)
 6. Click **Save** to complete the setup
 
-**GiveEasy Webhook Setup**
+### GiveEasy Webhook Setup
 
 Contact your GiveEasy administrator or support team to configure webhooks:
 

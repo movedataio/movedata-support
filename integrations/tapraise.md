@@ -41,7 +41,7 @@ The Fundraising and Donations Extension is relevant to processing face-to-face f
 
 ## Setup
 
-**TapRaise API Credentials**
+### TapRaise API Credentials
 
 To set up the TapRaise integration, you will need to request API credentials from TapRaise:
 
@@ -49,7 +49,7 @@ To set up the TapRaise integration, you will need to request API credentials fro
 2. **Private Key ID** - Your 40-character private key identifier
 3. **Service Account Email** - Your TapRaise service account email address
 
-**MoveData TapRaise Configuration**
+### MoveData TapRaise Configuration
 
 <figure><img src="../.gitbook/assets/tapraise.png" alt=""><figcaption></figcaption></figure>
 

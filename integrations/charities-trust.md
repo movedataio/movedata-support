@@ -41,7 +41,7 @@ The Fundraising and Donations Extension is required to process workplace giving 
 
 ## Setup
 
-**Charities Trust Report Export**
+### Charities Trust Report Export
 
 To set up the Charities Trust integration, you will need to export donation reports from your Charities Trust platform. Contact your Charities Trust administrator for specific instructions on how to:
 
@@ -51,7 +51,7 @@ To set up the Charities Trust integration, you will need to export donation repo
 
 The exported CSV file should contain donation transaction data in Charities Trust's standard report format.
 
-**MoveData Charities Trust Configuration**
+### MoveData Charities Trust Configuration
 
 To create your Charities Trust Integration:
 
@@ -61,7 +61,7 @@ To create your Charities Trust Integration:
 4. Configure the **Donation Date** that will be used for processing uploaded files
 5. To upload a CSV file, click the **Upload File** button
 
-**CSV File Processing**
+### CSV File Processing
 
 The Charities Trust integration processes CSV donation files through manual upload. Upload your exported Charities Trust donation report using the **Upload File** button in your integration configuration.
 
@@ -79,7 +79,7 @@ The Charities Trust integration processes CSV donation files through manual uplo
 
 Charities Trust CSV files support two different report types, which are automatically detected by the integration:
 
-**Other Sources Format**
+### Other Sources Format
 
 For donations from various external sources, partner organisations, and direct payments:
 
@@ -107,9 +107,9 @@ For donations from various external sources, partner organisations, and direct p
 * `Preference Text` - SMS marketing preference (Yes/No)
 * `StatementText` - Statement text
 
-**Payroll Giving Format**
+### Payroll Giving Format
 
-For workplace giving through Charities Trust payroll (same format as CAF payroll):
+For workplace giving donations:
 
 * `AgencyName` - Must be "Charities Trust"
 * `Employer Name` - Employer organisation name

@@ -40,7 +40,7 @@ The Fundraising and Donations Extension is required to process Benevity informat
 
 ## Setup
 
-**Benevity CSV Export**
+### Benevity CSV Export
 
 To set up the Benevity integration, you will need to export disbursement reports from your Benevity platform. Please contact your Benevity administrator or refer to Benevity's documentation for specific instructions on how to:
 
@@ -54,7 +54,7 @@ The exported CSV file should contain donation data in Benevity's standard disbur
 [https://causeshelp.benevity.org/hc/en-us/articles/115003003423-Where-do-I-find-my-reports](https://causeshelp.benevity.org/hc/en-us/articles/115003003423-Where-do-I-find-my-reports)
 {% endhint %}
 
-**MoveData Benevity Configuration**
+### MoveData Benevity Configuration
 
 To create your Benevity Integration:
 
@@ -63,7 +63,7 @@ To create your Benevity Integration:
 3. Add a name for your integration and click **Save**
 4. To upload a CSV, click the **Upload File** button
 
-**Upload Benevity File**
+### Upload Benevity File
 
 The Benevity integration processes CSV disbursement files through manual upload. Upload your Benevity file using the **Upload File** button via **MoveData** → **Integrations** → **Benevity** → **Upload File**.
 
@@ -75,7 +75,7 @@ There are no configurable options for Benevity.
 
 Benevity CSV files follow a specific format with header information and donation records. The integration automatically parses the file structure and processes donation data between the "Company,Project" header and "Totals,,,," footer sections.
 
-**Required CSV Fields:**
+### Required CSV Fields
 
 * `Company` - Employer organisation name
 * `Project` - Donation project or cause name
@@ -99,7 +99,7 @@ Benevity CSV files follow a specific format with header information and donation
 * `Source` - Payment source/method
 * `Reason` - Donation reason
 
-**Reference File**
+### Reference File
 
 {% file src="../.gitbook/assets/benevity-example.csv" %}
 
@@ -113,12 +113,12 @@ Data migration can be completed via the file upload functionality. You will need
 
 The Benevity integration automatically creates a flexible campaign hierarchy in Salesforce:
 
-**Top-Level Campaign:**
+##### Top-Level Campaign
 
 * **Name**: "Benevity"
 * **Purpose**: Top-level container for all Benevity activity
 
-**Activity-Level Campaigns (When Activity Field Present):**
+##### Activity-Level Campaigns (When Activity Field Present)
 
 * **Name**: Based on `Activity` field value
 * **Purpose**: Represents specific activities within Benevity
@@ -127,20 +127,20 @@ The Benevity integration automatically creates a flexible campaign hierarchy in 
 
 Employee and employer donations are processed as separate but linked donation records.
 
-**Donation Processing:**
+##### Donation Processing
 
 * **Employee Donations**: When `Total Donation to be Acknowledged` > 0
 * **Employer Matched Donations**: When `Match Amount` > 0
 * **Combined Transactions**: Both employee and employer donations can occur in a single CSV row
 
-**Matching Logic:**
+##### Matching Logic
 
 * Employee donations are marked as `type: "donor"` in the donation structure
 * Employer matched donations are marked as `type: "match"` in the donation structure
 * MoveData links employee donations with their corresponding employer matched donations
 * Soft credits are created to recognise both the employee donor and employer matcher
 
-**Transaction Key Format**
+##### Transaction Key Format
 
 The integration can split a single line into two notifications.
 
@@ -165,13 +165,13 @@ The following custom fields are automatically included in MoveData notifications
 
 #### Fee Processing
 
-**Fee Types:**
+##### Fee Types
 
 * **Platform Fees**: `Cause Support Fee` - Benevity platform charges
 * **Gateway Fees**: `Merchant Fee` - Payment processing charges
 * **Total Fees**: Combined platform and gateway fees
 
-**Fee Allocation:**
+##### Fee Allocation
 
 * Fees are allocated to employee donation records
 * Employer matching contributions typically do not include fees
@@ -179,29 +179,29 @@ The following custom fields are automatically included in MoveData notifications
 
 ### Data Processing Notes
 
-**Anonymous Donations:**
+##### Anonymous Donations
 
 When donor information is marked as "Not shared by donor" or is empty, the donation is attributed appropriately based on available company information.
 
-**Address Handling:**
+##### Address Handling
 
 * Complete address information is processed into structured `mailingAddress` fields
 * Address quality index is calculated based on completeness
 * Postal codes are preserved in custom fields for additional reference
 
-**Currency Support:**
+##### Currency Support
 
 * Multi-currency support with currency codes preserved
 * Amounts processed as numeric values with appropriate decimal precision
 
-**Date Processing:**
+##### Date Processing
 
 * Donation dates are parsed and converted to ISO format
 * Validation ensures proper date formatting before processing
 
 ## Error Handling
 
-**Common Issues:**
+### Common Issues
 
 * **Invalid Dates**: Malformed dates in the CSV will cause processing errors. Ensure dates follow standard format (YYYY-MM-DD).  Avoid opening and resaving using Microsoft Excel.
 

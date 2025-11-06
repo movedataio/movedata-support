@@ -35,7 +35,7 @@ The Fundraising and Donations Extension is required to process workplace giving 
 
 ## Setup
 
-**Charitable Giving Report Export**
+### Charitable Giving Report Export
 
 To set up the Charitable Giving integration, you will need to export donation reports from your Charitable Giving platform. Contact your Charitable Giving administrator for specific instructions on how to:
 
@@ -45,7 +45,7 @@ To set up the Charitable Giving integration, you will need to export donation re
 
 The exported Excel file should contain donation transaction data in Charitable Giving's standard report format.
 
-**MoveData Charitable Giving Configuration**
+### MoveData Charitable Giving Configuration
 
 To create your Charitable Giving Integration:
 
@@ -55,7 +55,7 @@ To create your Charitable Giving Integration:
 4. Configure the **Donation Date** that will be used for processing uploaded files
 5. To upload an Excel file, click the **Upload File** button
 
-**Excel File Processing**
+### Excel File Processing
 
 The Charitable Giving integration processes Excel donation files through manual upload. Upload your exported Charitable Giving donation report using the **Upload File** button in your integration configuration.
 
@@ -73,7 +73,7 @@ The Charitable Giving integration processes Excel donation files through manual 
 
 Charitable Giving Excel files support two different report types, which are automatically detected by the integration:
 
-**Options Report Format**
+### Options Report Format
 
 For direct giving and options-based donations:
 
@@ -92,7 +92,7 @@ For direct giving and options-based donations:
 * `Donation` - Donation amount
 * `Date Processed` - Processing date (DD/MM/YYYY format)
 
-**Payroll Report Format**
+### Payroll Report Format
 
 For workplace giving through payroll deduction:
 
@@ -136,7 +136,7 @@ Data migration can be completed via the file upload functionality. You will need
 
 The Charitable Giving integration automatically creates a simple campaign hierarchy in Salesforce:
 
-**Top-Level Campaign:**
+##### Top-Level Campaign:
 
 * **Name**: "Charitable Giving"
 * **Type**: Campaign
@@ -146,13 +146,13 @@ The Charitable Giving integration automatically creates a simple campaign hierar
 
 The Charitable Giving integration provides sophisticated handling of employer-related donations:
 
-**Options Report Processing:**
+##### Options Report Processing:
 
 * **Corporate Donors**: When `Employer` field is populated, creates organisation accounts with associated contact records
 * **Individual Donors**: When `Employer` field is empty, creates individual contact records
 * **Anonymous Handling**: When donor surname is missing, processes as anonymous donation
 
-**Payroll Report Processing:**
+##### Payroll Report Processing:
 
 * **Employee Donations**: Processed as individual donations with employer context
 * **Employer Matching**: Separate donation records created for matched contributions
@@ -161,13 +161,13 @@ The Charitable Giving integration provides sophisticated handling of employer-re
 
 #### Recurring Donation Support
 
-**Options Report:**
+##### Options Report:
 
 * Regular donations automatically create recurring donation schedules
 * Monthly frequency with donation date determining the payment day
 * Uses donor reference (DREF) as the recurring donation key
 
-**Payroll Report:**
+##### Payroll Report:
 
 * All payroll donations are treated as part of recurring monthly schedules
 * Uses PGA Donor Reference Number as the recurring donation key
@@ -185,7 +185,7 @@ The following custom fields are automatically included in MoveData notifications
 
 #### Donation Custom Fields
 
-**Options Report:**
+##### Options Report:
 
 | Attribute Name      | Description                      | Example                                              |
 | ------------------- | -------------------------------- | ---------------------------------------------------- |
@@ -198,7 +198,7 @@ The following custom fields are automatically included in MoveData notifications
 | `accountNo`         | Masked bank account number       | `"xxxxxx95"`                                         |
 | `friendlyName`      | Human-readable notification name | `"[Charitable Giving: Options] Springer Verlag Ltd"` |
 
-**Payroll Report:**
+##### Payroll Report:
 
 | Attribute Name      | Description                        | Example                                       |
 | ------------------- | ---------------------------------- | --------------------------------------------- |
@@ -220,25 +220,25 @@ The following custom fields are automatically included in MoveData notifications
 
 ### Data Processing Notes
 
-**Anonymous Donation Handling:**
+#### Anonymous Donation Handling:
 
 * Options reports: Anonymous when surname is missing
 * Payroll reports: Anonymous when donor name contains "Anonymous" or "Anon"
 * Company donations: Anonymous when employer name is missing or "Anonymous"
 
-**Amount Processing:**
+#### Amount Processing:
 
 * All amounts processed in GBP currency
 * Fee calculations handled automatically for payroll reports
 * Gross amounts used where available, with net amounts calculated
 
-**Address Handling:**
+#### Address Handling:
 
 * Multi-line addresses processed into structured format
 * UK addresses with proper country and country code assignment
 * Postcode validation and standardisation
 
-**Communication Preferences:**
+#### Communication Preferences:
 
 * Payroll reports include comprehensive preference tracking
 * Yes/No values converted to boolean flags
@@ -246,7 +246,7 @@ The following custom fields are automatically included in MoveData notifications
 
 ## Error Handling
 
-**Common Issues:**
+### Common Issues:
 
 * **Missing Donation Date**: Integration requires donation date to be set before file upload
 * **Invalid Date Format**: Date must be in YYYY-MM-DD format
@@ -255,5 +255,4 @@ The following custom fields are automatically included in MoveData notifications
 
 ## Other Resources
 
-**Charitable Giving Platform:**\
-[https://charitablegiving.co.uk/](https://charitablegiving.co.uk/)
+**Charitable Giving Platform:** [https://charitablegiving.co.uk/](https://charitablegiving.co.uk/)

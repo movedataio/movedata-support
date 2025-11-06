@@ -41,11 +41,11 @@ The Fundraising and Donations Extension is required to process the matching of w
 
 ## Setup
 
-**Good2Give CSV Report Export**
+### Good2Give CSV Report Export
 
 To set up the Good2Give integration, you will need to your workplace giving report from Good2Give.  Typically, this is emailed to you on a monthly basis.
 
-**MoveData Good2Give Configuration**
+### MoveData Good2Give Configuration
 
 The Good2Give integration processes CSV files containing workplace giving data. Upload your exported Good2Give report through the Integrations tab in the MoveData application.
 

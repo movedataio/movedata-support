@@ -35,7 +35,7 @@ The Fundraising and Donations Extension is required to process direct giving, wo
 
 ## Setup
 
-**CAF Report Export**
+### CAF Report Export
 
 To set up the CAF integration, you will need to export donation reports from your CAF platform. Contact your CAF administrator for specific instructions on how to:
 
@@ -45,7 +45,7 @@ To set up the CAF integration, you will need to export donation reports from you
 
 The exported CSV file should contain donation transaction data in CAF's standard report format.
 
-**MoveData CAF Configuration**
+### MoveData CAF Configuration
 
 To create your CAF Integration:
 
@@ -55,7 +55,7 @@ To create your CAF Integration:
 4. Configure the **Donation Date** that will be used for processing uploaded files
 5. To upload a CSV file, click the **Upload File** button
 
-**CSV File Processing**
+### CSV File Processing
 
 The CAF integration processes CSV donation files through manual upload. Upload your exported CAF donation report using the **Upload File** button in your integration configuration.
 
@@ -73,7 +73,7 @@ The CAF integration processes CSV donation files through manual upload. Upload y
 
 CAF CSV files support two different report types, which are automatically detected by the integration:
 
-**Direct Donations Format**
+### Direct Donations Format
 
 For CAF account and direct donations:
 
@@ -110,7 +110,7 @@ For CAF account and direct donations:
 * `MarketingPreference` - Marketing consent preferences
 * `RemittanceAdviceReference` - Remittance reference
 
-**Payroll Giving Format**
+### Payroll Giving Format
 
 For workplace giving through CAF payroll:
 

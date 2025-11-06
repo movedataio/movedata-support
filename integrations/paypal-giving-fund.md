@@ -42,7 +42,7 @@ The Fundraising and Donations Extension is relevant to processing fundraising ac
 
 ## Setup
 
-**PayPal Giving Fund Report Export**
+### PayPal Giving Fund Report Export
 
 
 
@@ -53,7 +53,7 @@ To set up the PayPal Giving Fund integration, you will need to export payout rep
 3. Generate and download your **Payout Report** as a CSV file
 4. Ensure you're downloading the payout file format (not transaction reports)
 
-**MoveData PayPal Giving Fund Configuration**
+### MoveData PayPal Giving Fund Configuration
 
 <figure><img src="../.gitbook/assets/PPGF.png" alt=""><figcaption></figcaption></figure>
 
@@ -65,7 +65,7 @@ To create your PayPal Giving Fund Integration:
 4. Configure your integration settings based on your requirements (see Configurable Options below)
 5. To upload a CSV, click the **Upload File** button
 
-**CSV File Processing**
+### CSV File Processing
 
 The PayPal Giving Fund integration processes CSV payout files through manual upload. Upload your exported PayPal Giving Fund payout report using the **Upload File** button in your integration configuration.
 

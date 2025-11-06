@@ -42,7 +42,7 @@ Logic is required to map Funraisin notifications to your Salesforce data. To qui
 
 ## Setup
 
-**Funraisin API Credentials**
+### Funraisin API Credentials
 
 To set up the Funraisin integration, you will need your Funraisin API credentials:
 
@@ -58,7 +58,7 @@ To obtain these credentials, please follow the below steps:
 3. Ensure **API Access** is enabled
 4. Copy the 32-digit API Key
 
-**MoveData Funraisin Configuration Screen**
+### MoveData Funraisin Configuration Screen
 
 <figure><img src="../.gitbook/assets/funraisin-movedata-integration.png" alt=""><figcaption></figcaption></figure>
 

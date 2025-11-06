@@ -38,7 +38,7 @@ Logic is required to map Facebook donation notifications to your Salesforce data
 
 ## Setup
 
-**Facebook Transaction Report Export**
+### Facebook Transaction Report Export
 
 To set up the Facebook integration, you will need to export transaction reports from Facebook's fundraising platform:
 
@@ -47,14 +47,14 @@ To set up the Facebook integration, you will need to export transaction reports 
 3. Generate and download your **Transaction Report** as a CSV file
 4. Ensure the export includes all required fields (see Additional Field Mappings section below)
 
-**MoveData Facebook Configuration**
+### MoveData Facebook Configuration
 
 1. Open the MoveData app and select the **Integrations** tab
 2. Click **New Integration** and select **Facebook** from the list of available integrations
 3. Add a name for your integration and click **Save**
 4. Configure your integration settings based on your requirements
 
-**CSV File Processing**
+### CSV File Processing
 
 The Facebook integration processes CSV files containing transaction data. Upload your exported Facebook transaction report through the Integrations tab in the MoveData application.
 
@@ -72,19 +72,19 @@ Data migration can be completed via the file upload functionality. You will need
 
 The Facebook integration automatically creates a three-tier campaign hierarchy in Salesforce:
 
-**Tier 1: Facebook Platform Campaign**
+##### Tier 1: Facebook Platform Campaign
 
 * **Name**: "Facebook"
 * **Type**: Campaign
 * **Purpose**: Top-level container for all Facebook fundraising activity
 
-**Tier 2: Fundraiser Type Campaign**
+##### Tier 2: Fundraiser Type Campaign
 
 * **Name**: Based on `Fundraiser Type` field (e.g., "Personal Fundraiser", "Nonprofit Fundraiser")
 * **Type**: Team
 * **Purpose**: Groups fundraisers by their Facebook category
 
-**Tier 3: Individual Fundraiser Campaign**
+##### Tier 3: Individual Fundraiser Campaign
 
 * **Name**: Based on `Fundraiser Title` or auto-generated from source type
 * **Type**: Fundraiser
