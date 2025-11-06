@@ -62,7 +62,7 @@ MoveData notifications can have several status values that indicate their curren
 
 #### Filtering and Searching Notifications
 
-#### Pre-built Filter Views
+##### Pre-built Filter Views
 
 <figure><img src="../.gitbook/assets/integration-view-lists.png" alt=""><figcaption></figcaption></figure>
 
@@ -75,7 +75,7 @@ MoveData provides several pre-built filter views accessible from the dropdown me
 * **Successful Batch Jobs**: Successfully completed batch processing jobs
 * **Failed Batch Jobs**: Batch jobs that encountered errors
 
-#### Advanced Filtering
+##### Advanced Filtering
 
 <figure><img src="../.gitbook/assets/integration-view-filters.png" alt=""><figcaption></figcaption></figure>
 
@@ -86,7 +86,7 @@ Use the filter panel to create custom views:
 3. **Multiple Conditions**: Combine multiple filters for precise results
 4. **Save**: Applies the filter combination and updates the list view
 
-#### Search Functionality
+##### Search Functionality
 
 <figure><img src="../.gitbook/assets/integration-view-search.png" alt=""><figcaption></figcaption></figure>
 
@@ -96,7 +96,7 @@ The search bar allows you to quickly locate specific notifications:
 * Search by donor names or platform identifiers
 * Use partial text matching to find related notifications
 
-#### Context Menu
+##### Context Menu
 
 <figure><img src="../.gitbook/assets/integration-view-context-menu.png" alt=""><figcaption></figcaption></figure>
 
