@@ -11,7 +11,7 @@ description: >-
 
 The MoveData GiveEasy integration provides seamless, real-time synchronisation between your GiveEasy fundraising platform and Salesforce. This comprehensive integration ensures that all donation activities, supporter data, campaign information, and fundraising page activities are automatically transferred to your Salesforce environment, eliminating manual data entry whilst maintaining complete data accuracy.
 
-### Key Benefits:
+### Key Benefits
 
 * **Real-time webhook synchronisation** of all GiveEasy donation activities
 * **Intelligent campaign hierarchy** management supporting campaigns and fundraising pages

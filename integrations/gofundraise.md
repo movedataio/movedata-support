@@ -11,7 +11,7 @@ description: >-
 
 The MoveData GoFundraise integration provides seamless synchronisation between your GoFundraise fundraising platform and Salesforce. This powerful integration ensures that all donation activities, supporter registrations, campaign data and fundraising activities are automatically transferred to your Salesforce environment, eliminating manual data entry whilst maintaining complete data accuracy.
 
-### Key Benefits:
+### Key Benefits
 
 * **Automated data synchronisation** of all GoFundraise activities
 * **Intelligent campaign hierarchy** management for peer-to-peer fundraising

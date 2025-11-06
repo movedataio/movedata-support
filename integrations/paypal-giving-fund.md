@@ -11,7 +11,7 @@ description: >-
 
 The MoveData PayPal Giving Fund integration provides seamless data synchronisation between your PayPal Giving Fund payout reports and Salesforce. This powerful integration processes PayPal Giving Fund donation reports, ensuring that all donation activities and supporter information are automatically transferred to your Salesforce environment, eliminating manual data entry whilst maintaining complete data accuracy.
 
-### Key Benefits:
+### Key Benefits
 
 * **Automated CSV processing** of PayPal Giving Fund payout transaction reports
 * **Intelligent campaign hierarchy** management for multiple donation sources

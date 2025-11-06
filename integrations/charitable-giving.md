@@ -4,7 +4,7 @@
 
 The MoveData Charitable Giving integration provides seamless, automated synchronisation between your Charitable Giving workplace giving platform and Salesforce. This comprehensive integration processes Charitable Giving donation reports, ensuring that all employee donations, direct giving contributions, and supporter information are automatically transferred to your Salesforce environment, eliminating manual data entry whilst maintaining complete data accuracy.
 
-### Key Benefits:
+### Key Benefits
 
 * **Automated Excel file processing** of Charitable Giving workplace giving reports
 * **Intelligent donation type detection** supporting both regular and one-off contributions

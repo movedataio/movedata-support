@@ -11,7 +11,7 @@ description: >-
 
 The MoveData Grassrootz integration provides seamless, real-time synchronisation between your Grassrootz fundraising platform and Salesforce. This powerful integration ensures that all donation activities, supporter registrations, campaign data, team structures, and event information are automatically transferred to your Salesforce environment, eliminating manual data entry whilst maintaining complete data accuracy.
 
-### Key Benefits:
+### Key Benefits
 
 * **Real-time synchronisation** of all Grassrootz activities via webhooks
 * **Complex campaign hierarchy** management (Events → Campaigns → Teams → Fundraisers)

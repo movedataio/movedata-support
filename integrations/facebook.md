@@ -11,7 +11,7 @@ description: >-
 
 The MoveData Facebook integration provides seamless data synchronisation between your Facebook fundraising activities and Salesforce. This powerful integration processes Facebook donation reports, ensuring that all donation activities and supporter information are automatically transferred to your Salesforce environment, eliminating manual data entry whilst maintaining complete data accuracy.
 
-### Key Benefits:
+### Key Benefits
 
 * **Automated CSV processing** of Facebook donation transaction reports
 * **Intelligent campaign hierarchy** management for Facebook fundraisers

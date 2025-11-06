@@ -13,7 +13,7 @@ The MoveData GiveWP integration provides seamless, automated synchronisation bet
 
 GiveWP is a WordPress plugin which allows WordPress administrators to easily take one-off and regular donations from their WordPress website. The GiveWP integration for Salesforce operates in real-time and conforms to Salesforce best practices enjoyed by all MoveData customers.
 
-### Key Benefits:
+### Key Benefits
 
 * **Real-time API integration** processing all GiveWP donation activities automatically
 * **Comprehensive donor management** with intelligent contact and account creation

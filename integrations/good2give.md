@@ -11,7 +11,7 @@ description: >-
 
 The MoveData Good2Give integration provides seamless, automated synchronisation between your Good2Give workplace giving platform and Salesforce. This comprehensive integration processes workplace giving CSV reports, ensuring that all employee donations, employer matching contributions, and supporter information are automatically transferred to your Salesforce environment, eliminating manual data entry whilst maintaining complete data accuracy.
 
-### Key Benefits:
+### Key Benefits
 
 * **Automated CSV processing** of Good2Give workplace giving reports
 * **Intelligent employer matching** with comprehensive soft credit support

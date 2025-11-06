@@ -11,7 +11,7 @@ description: >-
 
 The MoveData TapRaise integration provides seamless, real-time synchronisation between your TapRaise face-to-face fundraising platform and Salesforce. This powerful integration ensures that all pledge activities, supporter registrations, payment data, and field team performance metrics are automatically transferred to your Salesforce environment, eliminating manual data entry whilst maintaining complete data accuracy.
 
-### Key Benefits:
+### Key Benefits
 
 * **Near-Real-time synchronisation** of all TapRaise face-to-face fundraising activities
 * **Comprehensive pledge management** with support for one-time and recurring donations

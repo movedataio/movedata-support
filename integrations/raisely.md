@@ -4,7 +4,7 @@
 
 The MoveData Raisely integration provides seamless, real-time synchronisation between your Raisely fundraising platform and Salesforce. This powerful integration ensures that all donation activities, supporter registrations, campaign and sales data are automatically transferred to your Salesforce environment, eliminating manual data entry whilst maintaining complete data accuracy.
 
-### Key Benefits:
+### Key Benefits
 
 * **Real-time synchronisation** of all Raisely activities
 * **Comprehensive data mapping** to Salesforce NPSP and Nonprofit Cloud

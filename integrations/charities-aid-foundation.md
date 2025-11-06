@@ -4,7 +4,7 @@
 
 The MoveData Charities Aid Foundation (CAF) integration provides seamless, automated synchronisation between your CAF giving platform and Salesforce. This comprehensive integration processes CAF donation reports, ensuring that all direct donations, workplace giving contributions, Gift Aid payments, and supporter information are automatically transferred to your Salesforce environment, eliminating manual data entry whilst maintaining complete data accuracy.
 
-### Key Benefits:
+### Key Benefits
 
 * **Automated CSV file processing** of CAF donation reports
 * **Comprehensive Gift Aid support** with separate payment tracking and compliance features
