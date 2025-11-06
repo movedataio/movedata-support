@@ -123,14 +123,7 @@ hide:
         background-color: var(--md-default-bg-color, white);
         border: 1px solid var(--md-default-fg-color--lightest, #e0e0e0);
         border-radius: 8px;
-        transition: transform 0.2s, box-shadow 0.2s;
         display: block;
-    }
-
-    .quick-link-card:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        border-color: var(--md-primary-fg-color, #4CAF50);
     }
 
     .quick-link-title {
@@ -158,12 +151,10 @@ hide:
         font-size: 0.95em;
         display: block;
         padding: 6px 0;
-        transition: padding-left 0.2s;
     }
 
     .quick-link-list a:hover {
         text-decoration: underline;
-        padding-left: 8px;
     }
 
     @media (max-width: 768px) {
