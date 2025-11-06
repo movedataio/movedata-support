@@ -16,7 +16,7 @@ hide:
     .search-box {
         display: flex;
         gap: 10px;
-        margin-bottom: 30px;
+        margin-bottom: 90px;
     }
 
     .search-input {
@@ -229,7 +229,7 @@ hide:
     }
 
     .panel {
-        padding: 20px;
+        padding: 24px;
         background-color: var(--md-default-bg-color, white);
         border: 1px solid var(--md-default-fg-color--lightest, #e0e0e0);
         border-radius: 8px;
@@ -237,10 +237,10 @@ hide:
     }
 
     .panel-title {
-        font-size: 1.5em;
+        font-size: 1.3em !important;
+        font-weight: 600 !important;
         color: var(--md-default-fg-color, #333);
-        margin: 0 0 .64em !important;
-        font-weight: 600;
+        margin: 0 0 16px !important;
         border-bottom: 2px solid var(--md-primary-fg-color, #4CAF50);
         padding-bottom: 8px;
     }
@@ -248,33 +248,36 @@ hide:
     .panel-items {
         display: flex;
         flex-direction: column;
-        gap: 12px;
+        gap: 10px;
     }
 
     .panel-item {
-        padding: 12px 16px;
-        background-color: var(--md-code-bg-color, #f9f9f9);
-        border-radius: 6px;
-        border-left: 4px solid var(--md-primary-fg-color, #4CAF50);
-        transition: transform 0.2s, box-shadow 0.2s;
+        padding: 0;
+        background-color: transparent;
+        border-radius: 0;
+        border-left: none;
+        transition: none;
     }
 
     .panel-item:hover {
-        transform: translateX(4px);
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        transform: none;
+        box-shadow: none;
     }
 
     .panel-item-title {
-        font-weight: 500;
+        font-weight: 400;
         color: var(--md-typeset-a-color, #1976d2);
         text-decoration: none;
-        font-size: 1.05em;
+        font-size: 0.95em;
         display: block;
         line-height: 1.4;
+        padding: 6px 0;
+        transition: padding-left 0.2s;
     }
 
     .panel-item-title:hover {
         text-decoration: underline;
+        padding-left: 8px;
     }
 
     .close-button {
