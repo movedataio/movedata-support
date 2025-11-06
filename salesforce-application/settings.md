@@ -28,13 +28,13 @@ The user context will be determined by logging in to Salesforce and granting Mov
 **Best Practice**: Use a dedicated integration user account with appropriate permissions rather than a personal user account. This ensures consistent access and prevents disruption if individual users leave the organisation.
 {% endhint %}
 
-**Configuration**:
+#### Configuration
 
 * **Authorised User**: Displays the currently authorised user (e.g., "System Administrator")
 * **Refresh**: Updates the authorisation token for the current user
 * **Authorise**: Allows you to change the authorised user
 
-**To change the authorised user**:
+##### To change the authorised user:
 
 1. Click **Authorise**
 2. Login as the desired user when prompted
@@ -51,7 +51,7 @@ If there is a failure processing a notification, MoveData will send an exception
 **Important**: Ensure the email address is actively monitored by technical staff who can respond to integration issues promptly.
 {% endhint %}
 
-**Configuration**:
+#### Configuration
 
 * **Email address**: Enter the email address to receive error notifications
 * **Update**: Click to save email address changes
@@ -66,22 +66,23 @@ Logging allows you to record events which occur when MoveData processes records 
 **Recommendation**: Start with "INFO: Default Reporting" and only increase to DEBUG when troubleshooting specific issues, as higher log levels can impact performance.
 {% endhint %}
 
-**Configuration Options**:
+#### Configuration Options
 
-**Log Sensitive Data**:
+##### Log Sensitive Data
 
 * **Active/Inactive Toggle**: Controls whether sensitive information is included in logs
 * When active, detailed field values and personal data such as Salesforce records are logged
 * When inactive, only data from the notification is recorded
 
-**Log Level**: Controls the verbosity of logging information
+##### Log Level
+Controls the verbosity of logging information
 
 * **INFO: Default Reporting** - Standard level showing successful operations and basic errors
 * **DEBUG** - Detailed information useful for troubleshooting integration issues
 * **WARN** - Warning messages about potential issues that don't prevent processing
 * **ERROR** - Only critical errors that prevent successful processing
 
-**Privacy Considerations**:
+##### Privacy Considerations
 
 * Only enable "Log Sensitive Data" when actively debugging issues
 * Disable sensitive data logging in production environments to maintain donor privacy

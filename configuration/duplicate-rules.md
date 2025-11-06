@@ -20,11 +20,11 @@ This approach ensures that when a donor makes multiple donations across differen
 
 MoveData employs a two-stage matching process to identify existing records:
 
-**Stage 1: Platform Unique Identifier Matching**
+#### Stage 1: Platform Unique Identifier Matching
 
 When your fundraising platform provides a unique identifier for contacts or accounts (such as a donor ID), MoveData stores this value against the corresponding Salesforce record. In subsequent integrations, MoveData first attempts to match using this platform-specific identifier, ensuring perfect accuracy for returning supporters.
 
-**Stage 2: Salesforce Duplicate Rules**
+#### Stage 2: Salesforce Duplicate Rules
 
 If no match is found using the platform's unique identifier, MoveData executes your configured Salesforce duplicate rules. This allows Salesforce to determine whether a matching record exists based on the criteria you've established (typically email address, name combinations, or other identifying information).
 
@@ -101,19 +101,19 @@ This configuration is useful when you have fundraisers making donations on behal
 
 ## Testing Your Configuration
 
-**Validation Steps**
+### Validation Steps
 
 1. **Create test records**: Use the MoveData integration to process a small sample of data
 2. **Verify duplicate detection**: Send the same supporter information multiple times to confirm existing records are updated rather than duplicated
 3. **Check rule execution**: Review the duplicate rule entry in the execution logs to ensure rules are firing correctly
 4. **Monitor notifications**: Use the MoveData app to confirm successful processing without errors
 
-## **Common Issues and Solutions**
+### Common Issues and Solutions
 
-**Integration failures due to Alert rules:**
+#### Integration failures due to Alert rules:
 
 * Solution: Verify MoveData Authorised User is excluded from all Alert duplicate rules
 
-**Unexpected duplicate creation:**
+#### Unexpected duplicate creation:
 
 * Solution: Review Report rule criteria to ensure appropriate matching fields are configured

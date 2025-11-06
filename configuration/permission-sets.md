@@ -19,7 +19,8 @@ MoveData uses Salesforce permission sets to control user access to the applicati
 
 MoveData permissions are organised into two main categories:
 
-**Application Permissions**: Core access to the MoveData Lightning App and basic functionality **Extension Permissions**: Specific access required for each MoveData extension you've installed (such as Fundraising and Donations, Commerce, etc)
+* **Application Permissions**: Core access to the MoveData Lightning App and basic functionality
+* **Extension Permissions**: Specific access required for each MoveData extension you've installed (such as Fundraising and Donations, Commerce, etc)
 
 Both permission types must be assigned to users who need to work with MoveData in your organisation.
 

@@ -126,18 +126,18 @@ The notification detail page opens with key information displayed prominently at
   * **Reprocess**: Retry processing this notification if it failed or needs to be run again
   * **Mark for Review**: Flag this notification for further investigation
 
-**Status Summary**:
+##### Status Summary
 
 * **Status**: Current processing state (Success, Failed, Processing, etc)
 * **Platform**: Source fundraising platform (Raisely, GiveEasy, etc)
 * **Created Date**: When the notification was first received
 * **Update Date**: When the notification was last modified
 
-### **Notification Summary**
+### Notification Summary
 
 The Summary tab provides an overview of notification processing and results, organised into three main sections:
 
-**Details Section**
+#### Details Section
 
 The Details section shows core processing information:
 
@@ -191,7 +191,7 @@ The Execution Log is organised into:
 
 The Variable Inspector provides detailed visibility into the variables at any point during a processing phase / group.  For example, the Contact phase of a donation notification will contain contact-specific for the contact being processed.  These variables are presented using the name that is made available to Salesforce Lightning Flows; to write your own business logic using these variables, please refer to the Developer site.
 
-**Accessing Variable Data**
+##### Accessing Variable Data
 
 1. **Variable Popup**: Click the "View Variables" button to open the detailed Variable Inspector window
 
@@ -205,21 +205,21 @@ The Variable Inspector window shows:
   * **Description**: Human-readable explanation of the variable's purpose
   * **Value**: Current value at this processing stage
 
-**Filter Options**:
+##### Filter Options
 
 * **Hide Null Variables**: Checkbox to focus only on variables with values
 * **Variable Group Tabs**: Switch between different categories of variables
 
 ### Using the Execution Log for Troubleshooting
 
-**Identifying Processing Issues**
+#### Identifying Processing Issues
 
 1. **Scan Timeline**: Look for any stages that show error indicators or unusual timing
 2. **Check Stage Output**: Click on failed or suspicious stages to examine their data output
 3. **Compare Variables**: Use the Variable Inspector to see how data changes between stages
 4. **Trace Data Flow**: Follow specific field values through multiple processing stages
 
-**Data Validation**
+#### Data Validation
 
 * **Field Mapping Verification**: Confirm that source data is correctly mapped to expected variables&#x20;
 * **Business Rule Application**: See how custom business rules modify data during processing&#x20;
