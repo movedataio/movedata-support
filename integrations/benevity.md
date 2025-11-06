@@ -10,7 +10,7 @@ description: >-
 
 The MoveData Benevity integration synchronizes your Benevity platform with Salesforce. It processes Benevity disbursement reports and transfers employee donations, employer matching contributions, and supporter information to Salesforce automatically.
 
-**Key Benefits:**
+### Key Benefits:
 
 * **Automated CSV processing** of Benevity disbursement reports
 * **Intelligent employer matching** with comprehensive soft credit support

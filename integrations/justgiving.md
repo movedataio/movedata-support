@@ -11,7 +11,7 @@ description: >-
 
 The MoveData JustGiving integration provides seamless, automated synchronisation between your JustGiving fundraising platform and Salesforce. This comprehensive integration ensures that all donation activities, supporter data, campaign information, fundraising pages, and payment data are automatically transferred to your Salesforce environment, eliminating manual data entry whilst maintaining complete data accuracy.
 
-**Key Benefits:**
+### Key Benefits:
 
 * **Automated synchronisation** of all JustGiving fundraising activities via scheduled polling
 * **Intelligent campaign hierarchy** management including events, campaigns, teams, and individual fundraisers

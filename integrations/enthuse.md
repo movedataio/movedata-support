@@ -4,7 +4,7 @@
 
 The MoveData Enthuse integration provides seamless, automated synchronisation between your Enthuse fundraising platform and Salesforce. This comprehensive integration ensures that all donation activities, supporter data, campaign information, and recurring donations are automatically transferred to your Salesforce environment, eliminating manual data entry whilst maintaining complete data accuracy.
 
-**Key Benefits:**
+### Key Benefits:
 
 * **Automated synchronisation** of all Enthuse fundraising activities via polling
 * **Intelligent campaign hierarchy** management including events, teams, and individual fundraisers

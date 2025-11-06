@@ -10,7 +10,7 @@ description: >-
 
 The MoveData Funraisin integration provides comprehensive, automated synchronisation between your Funraisin fundraising platform and Salesforce. This powerful integration ensures that all donation activities, supporter registrations, event data, sales transactions, raffles, and ticketing information are automatically transferred to your Salesforce environment, eliminating manual data entry whilst maintaining complete data accuracy.
 
-**Key Benefits:**
+### Key Benefits:
 
 * **Comprehensive data synchronisation** covering donations, events, teams, members, sales, and raffles
 * **Flexible polling intervals** configurable from 10 minutes to 24 hours

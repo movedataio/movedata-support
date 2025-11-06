@@ -10,7 +10,7 @@ description: >-
 
 The MoveData Charities Trust integration provides seamless, automated synchronisation between your Charities Trust giving platform and Salesforce. This comprehensive integration processes Charities Trust donation reports, ensuring that all workplace giving contributions, other source donations, supporter information, and diverse funding streams are automatically transferred to your Salesforce environment, eliminating manual data entry whilst maintaining complete data accuracy.
 
-**Key Benefits:**
+### Key Benefits:
 
 * **Automated CSV file processing** of Charities Trust donation reports
 * **Dual donation processing** supporting both workplace giving and other funding sources
