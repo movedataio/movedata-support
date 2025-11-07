@@ -93,3 +93,4 @@
 * [Map Raisely Campaign to Existing Salesforce Campaign](integration-raisely/map-raisely-campaign-to-existing-salesforce-campaign.md)
 * [Different Address on Donation vs Person Record](integration-raisely/different-address-on-donation-vs-person-record.md)
 * [Required fields are missing: \[LastName\]](integration-raisely/required-fields-are-missing-lastname.md)
+* [Connect your Raisely Campaign](integration-raisely/connect-your-raisely-campaign.md)
