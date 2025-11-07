@@ -16,9 +16,9 @@ import { fileURLToPath } from 'url';
  * - Scans all .md files in a directory recursively
  * - Extracts YAML frontmatter (content between --- delimiters)
  * - Finds the 'description' field in the frontmatter
- * - Removes the entire frontmatter section
+ * - Keeps the frontmatter intact at the top of the file
  * - Inserts the description content after the first H1 heading
- * - If no H1 heading exists, prepends the description to the content
+ * - If no H1 heading exists, prepends the description after the frontmatter
  * 
  * EXAMPLE TRANSFORMATION:
  * 
@@ -39,6 +39,15 @@ import { fileURLToPath } from 'url';
  * 
  * OUTPUT FILE:
  * ------------
+ * ---
+ * title: My Page
+ * description: >-
+ *   This is a detailed description
+ *   of what this page contains.
+ *   It can span multiple lines.
+ * author: John Doe
+ * ---
+ * 
  * # Welcome to My Page
  * 
  * This is a detailed description
@@ -121,27 +130,27 @@ function convertContent(content) {
   const description = parseDescription(extracted.frontmatter);
   
   if (!description) {
-    // No description in frontmatter, just remove frontmatter
-    return { converted: extracted.restOfContent, changed: true };
+    // No description in frontmatter, keep everything as-is
+    return { converted: content, changed: false };
   }
   
   // Find the first H1 heading
   const h1Match = extracted.restOfContent.match(/^(# .+)$/m);
   
   if (!h1Match) {
-    // No H1 found, just prepend description
-    const converted = `${description}\n\n${extracted.restOfContent}`;
+    // No H1 found, prepend description after frontmatter
+    const converted = `${extracted.fullMatch}${description}\n\n${extracted.restOfContent}`;
     return { converted, changed: true };
   }
   
-  // Insert description after H1
+  // Insert description after H1, keeping frontmatter at the top
   const h1Index = extracted.restOfContent.indexOf(h1Match[0]);
   const h1EndIndex = h1Index + h1Match[0].length;
   
   const beforeH1 = extracted.restOfContent.substring(0, h1EndIndex);
   const afterH1 = extracted.restOfContent.substring(h1EndIndex);
   
-  const converted = `${beforeH1}\n\n${description}${afterH1}`;
+  const converted = `${extracted.fullMatch}${beforeH1}\n\n${description}${afterH1}`;
   
   return { converted, changed: true };
 }

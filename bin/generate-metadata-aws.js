@@ -2,6 +2,8 @@
 
 import fs from 'fs';
 import path from 'path';
+import { execSync } from 'child_process';
+import { url } from 'inspector';
 
 /**
  * Generates AWS Bedrock metadata sidecar files by extracting YAML frontmatter
@@ -27,9 +29,42 @@ function parseYamlFrontmatter(content) {
   const lines = frontmatterText.split('\n');
   let currentKey = null;
   let currentArray = null;
+  let currentMultilineValue = null;
+  let multilineMode = null; // 'folded' (>-) or 'literal' (|-)
   
-  for (const line of lines) {
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
     const trimmed = line.trim();
+    
+    // Handle multi-line content continuation
+    if (currentMultilineValue !== null) {
+      // Check if this line is indented (continuation of multi-line value)
+      const leadingSpaces = line.match(/^ */)[0].length;
+      
+      if (leadingSpaces >= 2 && trimmed) {
+        // This is a continuation line
+        const contentLine = line.substring(2); // Remove 2-space indent
+        currentMultilineValue.push(contentLine);
+        continue;
+      } else if (!trimmed) {
+        // Empty line in multi-line content
+        continue;
+      } else {
+        // End of multi-line content, process it
+        if (multilineMode === 'folded') {
+          // Folded style (>-): join lines with spaces, remove line breaks
+          parsed[currentKey] = currentMultilineValue.join(' ').trim();
+        } else if (multilineMode === 'literal') {
+          // Literal style (|-): join lines with spaces, remove line breaks
+          parsed[currentKey] = currentMultilineValue.join(' ').trim();
+        }
+        currentMultilineValue = null;
+        multilineMode = null;
+        currentArray = null;
+        // Don't continue - process this line normally
+      }
+    }
+    
     if (!trimmed) continue;
     
     // Check for array items
@@ -52,7 +87,12 @@ function parseYamlFrontmatter(content) {
       const value = trimmed.substring(colonIndex + 1).trim();
       currentKey = key;
       
-      if (value) {
+      if (value === '>-' || value === '|-' || value === '>' || value === '|') {
+        // Start of multi-line value
+        multilineMode = value.startsWith('>') ? 'folded' : 'literal';
+        currentMultilineValue = [];
+        currentArray = null;
+      } else if (value) {
         // Parse simple value types and remove quotes
         let parsedValue = value.replace(/^["']|["']$/g, '');
         if (parsedValue.toLowerCase() === 'true') {
@@ -66,11 +106,22 @@ function parseYamlFrontmatter(content) {
         }
         parsed[key] = parsedValue;
         currentArray = null;
+        currentMultilineValue = null;
       } else {
         // Prepare for array
         currentArray = [];
         parsed[key] = currentArray;
+        currentMultilineValue = null;
       }
+    }
+  }
+  
+  // Handle any remaining multi-line content at end of frontmatter
+  if (currentMultilineValue !== null && currentKey) {
+    if (multilineMode === 'folded') {
+      parsed[currentKey] = currentMultilineValue.join(' ').trim();
+    } else if (multilineMode === 'literal') {
+      parsed[currentKey] = currentMultilineValue.join(' ').trim();
     }
   }
   
@@ -91,61 +142,109 @@ function parseYamlFrontmatter(content) {
   return { frontmatter: Object.keys(cleanedParsed).length > 0 ? cleanedParsed : null, contentWithoutFrontmatter };
 }
 
-function extractPathMetadata(filePath, rootPath) {
-  const relativePath = path.relative(rootPath, filePath);
-  const pathParts = relativePath.split(path.sep);
-  const fileName = path.basename(filePath, '.md');
-  
-  const pathMetadata = {
-    filename: fileName,
-    file_path: relativePath.replace(/\\/g, '/'), // Ensure forward slashes
-    relative_path: relativePath.replace(/\\/g, '/')
-  };
-  
-  // Determine section/category from path
-  if (pathParts.includes('knowledgebase')) {
-    pathMetadata.section = 'knowledgebase';
-    const kbIndex = pathParts.indexOf('knowledgebase');
-    if (kbIndex < pathParts.length - 2) {
-      pathMetadata.category = pathParts[kbIndex + 1];
+function getGitLastModifiedDate(filePath, rootPath, sourceRepoPath = null, debug = false) {
+  try {
+    // Determine which repository to query
+    const repoPath = sourceRepoPath || rootPath;
+    
+    // Calculate relative path from the repo root
+    const relativePath = path.relative(rootPath, filePath);
+    
+    if (debug) {
+      console.error(`  DEBUG: Looking up git history for: ${relativePath} in repo: ${repoPath}`);
     }
-  } else if (pathParts.includes('developer')) {
-    pathMetadata.section = 'developer';
-    const devIndex = pathParts.indexOf('developer');
-    if (devIndex < pathParts.length - 2) {
-      pathMetadata.category = pathParts[devIndex + 1];
+    
+    const timestamp = execSync(`git log -1 --pretty="format:%ct" "${relativePath}"`, { 
+      encoding: 'utf8',
+      cwd: repoPath, // Run git command in the source repository
+      stdio: ['pipe', 'pipe', 'ignore'] // Suppress stderr
+    }).trim();
+    
+    if (timestamp && /^\d+$/.test(timestamp)) {
+      return new Date(parseInt(timestamp) * 1000).toISOString().split('T')[0];
     }
-  } else if (pathParts.includes('documentation')) {
-    pathMetadata.section = 'documentation';
-    pathMetadata.category = 'general';
-  } else if (pathParts.includes('extension')) {
-    pathMetadata.section = 'extension';
-    const extIndex = pathParts.indexOf('extension');
-    if (extIndex < pathParts.length - 1) {
-      const extName = pathParts[extIndex + 1];
-      pathMetadata.extension_type = extName;
-      pathMetadata.category = 'extension';
-    }
-  } else if (pathParts.includes('schema')) {
-    pathMetadata.section = 'schema';
-    const schemaIndex = pathParts.indexOf('schema');
-    if (schemaIndex < pathParts.length - 1) {
-      const schemaName = pathParts[schemaIndex + 1];
-      pathMetadata.schema_type = schemaName;
-      pathMetadata.category = 'schema';
+  } catch (error) {
+    // Git command failed or file not in git - continue without last modified date
+    if (debug) {
+      console.error(`  DEBUG: Could not get git timestamp for ${filePath}: ${error.message}`);
     }
   }
   
+  return null;
+}
+
+function extractTitleFromMarkdown(content) {
+  // Try to find the first H1 heading (# Title)
+  const h1Match = content.match(/^#\s+(.+)$/m);
+  if (h1Match) {
+    return h1Match[1].trim();
+  }
+  
+  // If no H1, try to find the first H2 heading (## Title)
+  const h2Match = content.match(/^##\s+(.+)$/m);
+  if (h2Match) {
+    return h2Match[1].trim();
+  }
+  
+  return null;
+}
+
+function extractPathMetadata(filePath, rootPath, webPathPrefix = null) {
+  const relativePath = path.relative(rootPath, filePath).replace(/\\/g, '/'); // Ensure forward slashes
+  const relativePathWithoutMd = relativePath.replace(/\.md$/, ''); // Remove .md extension
+  const urlPath = webPathPrefix ? `/${path.join(webPathPrefix, relativePathWithoutMd)}` : `/${relativePathWithoutMd}`;
+  
+  let cleanedUrlPath = urlPath;
+  if (urlPath.endsWith('README')) {
+    cleanedUrlPath = urlPath.slice(0, -7); // Remove 'README'
+  }
+  
+  const pathMetadata = { url: cleanedUrlPath };
   return pathMetadata;
 }
 
-function createMetadataJson(frontmatter, pathMetadata) {
+function extractCollectionMetadata(webPathPrefix) {
+  if (!webPathPrefix) return null;
+
+  switch (webPathPrefix.toLowerCase()) {
+    case 'user_guide': return 'User Guide';
+    case 'knowledgebase': return 'Knowledge Base';
+    default: {
+      return webPathPrefix.split('/').map(part => part.replace(/[-_]/g, ' ').replace(/\b\w/g, c => c.toUpperCase())).join(' > ');
+    }
+  }
+}
+
+function extractHeirarchyMetadata(metadata, hierarchyNode) {
+  const result = {};
+  const convertName = (name) => (name?.replace) ? name.replace(/\.md$/, '').replace(/[-_]/g, ' ').replace(/\b\w/g, c => c.toUpperCase()) : null;
+
+  const breadcrumbs = [];
+  for (let i = 0; i < hierarchyNode.length; i++) {
+    const node = hierarchyNode[i];
+    const nodeName = convertName(node.name);
+    
+    if (i === 0) {
+      if (node.name !== 'README.md') breadcrumbs.unshift(metadata?.title ?? nodeName);
+    } else {
+      breadcrumbs.unshift(nodeName);
+    }
+  }
+
+  result.section = (hierarchyNode[hierarchyNode.length - 1].type === 'directory') ? convertName(hierarchyNode[hierarchyNode.length - 1].name) : null;
+
+  if (metadata?.collection) breadcrumbs.unshift(metadata.collection);
+  result.breadcrumb = breadcrumbs.join(' > ');
+
+  return result;
+}
+
+function createMetadataJson(frontmatter, metadata) {
   // Define GitBook layout keys that don't provide useful search context
   const gitbookLayoutKeys = [
     'layout',
     'width', 
     'title',
-    'description',
     'tableOfContents',
     'outline',
     'pagination',
@@ -175,21 +274,11 @@ function createMetadataJson(frontmatter, pathMetadata) {
     filteredFrontmatter[key] = value;
   }
   
-  // If no meaningful metadata remains after filtering, return null
-  if (Object.keys(filteredFrontmatter).length === 0) {
-    return null;
-  }
-  
   // Combine filtered frontmatter with path-based metadata
   const combinedMetadata = {
-    ...pathMetadata,
+    ...metadata,
     ...filteredFrontmatter
   };
-  
-  // Add processing metadata
-  combinedMetadata.processed_date = new Date().toISOString().split('T')[0];
-  combinedMetadata.content_type = 'documentation';
-  combinedMetadata.source_system = 'movedata-support';
   
   // Clean and validate metadata for AWS Bedrock
   const cleanedMetadata = {};
@@ -233,61 +322,71 @@ function createMetadataJson(frontmatter, pathMetadata) {
   return JSON.stringify(bedrockMetadata, null, 2);
 }
 
-function processMarkdownFile(filePath, rootPath, dryRun = false, debug = false) {
+function processMarkdownFile(filePath, rootPath, dryRun = false, debug = false, webPathPrefix = null, sourceRepoPath = null, hierarchyNode = null) {
+  const metadata = { url: null, title: null, modified_date: null };
+
   try {
-    const content = fs.readFileSync(filePath, 'utf8');
+    // Read file content
+    const content = fs.readFileSync(filePath, 'utf8');   
     
     if (debug) {
       console.error(`  DEBUG: Processing file: ${filePath}`);
       const first100Chars = content.substring(0, 100).replace(/\n/g, '\\n');
       console.error(`  DEBUG: File starts with: ${first100Chars}`);
     }
+
+    // Get last modified date from git
+    metadata.modified_date = getGitLastModifiedDate(filePath, rootPath, sourceRepoPath, debug);
+    if (!metadata.modified_date) {
+      if (debug) {
+        console.error(`  DEBUG: No valid last modified date.`);
+      }
+    } else if (debug) {
+      console.error(`  DEBUG: Last modified date:`, metadata.modified_date);
+    }
     
+    // Extract title from markdown content
+    const title = extractTitleFromMarkdown(content);
+    if (title) {
+      metadata.title = title;
+      if (debug) {
+        console.error(`  DEBUG: Extracted title: ${title}`);
+      }
+    } else if (debug) {
+      console.error(`  DEBUG: No title found in markdown content`);
+    }
+    
+    // Parse frontmatter
     const { frontmatter, contentWithoutFrontmatter } = parseYamlFrontmatter(content);
     
     if (!frontmatter || Object.keys(frontmatter).length === 0) {
       if (debug) {
         console.error(`  DEBUG: No valid frontmatter found in: ${filePath}`);
+        console.error(`  DEBUG: Will generate metadata from path information only`);
       }
-      return { success: true, changed: false, path: filePath, reason: 'no_frontmatter' };
-    }
-    
-    if (debug) {
+    } else if (debug) {
       console.error(`  DEBUG: Found frontmatter in: ${filePath}`);
       console.error(`  DEBUG: Frontmatter keys:`, Object.keys(frontmatter));
       console.error(`  DEBUG: Frontmatter:`, JSON.stringify(frontmatter, null, 2));
-      
-      // Check if this looks like GitBook layout metadata
-      const gitbookLayoutKeys = ['layout', 'width', 'title', 'description', 'tableOfContents', 'outline', 'pagination', 'metadata', 'visible'];
-      const hasGitbookKeys = Object.keys(frontmatter).some(key => gitbookLayoutKeys.includes(key));
-      const hasOnlyGitbookKeys = Object.keys(frontmatter).every(key => 
-        gitbookLayoutKeys.includes(key) || 
-        (typeof frontmatter[key] === 'object' && frontmatter[key] !== null && !Array.isArray(frontmatter[key]))
-      );
-      
-      if (hasGitbookKeys) {
-        console.error(`  DEBUG: Detected GitBook layout metadata (hasOnly: ${hasOnlyGitbookKeys})`);
-      }
     }
     
     // Extract path-based metadata
-    const pathMetadata = extractPathMetadata(filePath, rootPath);
+    Object.assign(metadata, extractPathMetadata(filePath, rootPath, webPathPrefix));
+
+    // Extract collection from webPathPrefix
+    metadata.collection = extractCollectionMetadata(webPathPrefix);
+
+    // Add hierarchy information if available
+    if (debug) console.log(`  DEBUG: Hierarchy information: ${JSON.stringify(hierarchyNode)}`);
+    Object.assign(metadata, extractHeirarchyMetadata(metadata, hierarchyNode));
     
     if (debug) {
-      console.error(`  DEBUG: Path metadata:`, pathMetadata);
+      console.error(`  DEBUG: Path metadata:`, metadata);
     }
     
-    // Create metadata JSON content
-    const metadataJsonContent = createMetadataJson(frontmatter, pathMetadata);
-    
-    // Check if meaningful metadata was generated
-    if (!metadataJsonContent) {
-      if (debug) {
-        console.error(`  DEBUG: Only GitBook layout metadata found, skipping file: ${filePath}`);
-      }
-      return { success: true, changed: false, path: filePath, reason: 'gitbook_layout_only' };
-    }
-    
+    // Create metadata JSON content (use empty object if no frontmatter)
+    const metadataJsonContent = createMetadataJson(frontmatter || {}, metadata);
+
     if (debug) {
       console.error(`  DEBUG: Generated metadata:`, metadataJsonContent);
     }
@@ -297,9 +396,11 @@ function processMarkdownFile(filePath, rootPath, dryRun = false, debug = false) 
       const metadataFilePath = `${filePath}.metadata.json`;
       fs.writeFileSync(metadataFilePath, metadataJsonContent, 'utf8');
       
-      // Write the markdown file without frontmatter
-      const cleanContent = contentWithoutFrontmatter.trim() + '\n';
-      fs.writeFileSync(filePath, cleanContent, 'utf8');
+      // Only update the markdown file if there was frontmatter to remove
+      if (frontmatter && Object.keys(frontmatter).length > 0) {
+        const cleanContent = contentWithoutFrontmatter.trim() + '\n';
+        fs.writeFileSync(filePath, cleanContent, 'utf8');
+      }
     }
     
     return { 
@@ -307,7 +408,9 @@ function processMarkdownFile(filePath, rootPath, dryRun = false, debug = false) 
       changed: true, 
       path: filePath, 
       metadataPath: `${filePath}.metadata.json`,
-      frontmatterKeys: Object.keys(frontmatter)
+      metadata: metadataJsonContent,
+      frontmatterKeys: frontmatter ? Object.keys(frontmatter) : [],
+      pathOnly: !frontmatter || Object.keys(frontmatter).length === 0
     };
   } catch (error) {
     return { success: false, error: error.message, path: filePath };
@@ -316,30 +419,76 @@ function processMarkdownFile(filePath, rootPath, dryRun = false, debug = false) 
 
 function getAllMarkdownFiles(dirPath) {
   const files = [];
+  const hierarchy = {};
   
-  function traverse(currentPath) {
+  function traverse(currentPath, parentPath = '') {
     const entries = fs.readdirSync(currentPath, { withFileTypes: true });
+    const relativePath = path.relative(dirPath, currentPath);
     
     for (const entry of entries) {
       const fullPath = path.join(currentPath, entry.name);
+      const relativeFullPath = path.relative(dirPath, fullPath);
       
       if (entry.isDirectory()) {
-        traverse(fullPath);
+        // Create directory node in hierarchy
+        if (!hierarchy[relativeFullPath]) {
+          hierarchy[relativeFullPath] = {
+            type: 'directory',
+            name: entry.name,
+            path: relativeFullPath,
+            parent: relativePath || null,
+            children: []
+          };
+        }
+        
+        // Add to parent's children
+        if (relativePath && hierarchy[relativePath]) {
+          hierarchy[relativePath].children.push(relativeFullPath);
+        }
+        
+        traverse(fullPath, relativeFullPath);
       } else if (entry.isFile() && entry.name.endsWith('.md')) {
+        // Create file node in hierarchy
+        hierarchy[relativeFullPath] = {
+          type: 'file',
+          name: entry.name,
+          path: relativeFullPath,
+          parent: relativePath || null,
+          depth: relativePath ? relativePath.split(path.sep).length : 0
+        };
+        
+        // Add to parent's children if parent exists
+        if (relativePath) {
+          if (!hierarchy[relativePath]) {
+            hierarchy[relativePath] = {
+              type: 'directory',
+              name: path.basename(currentPath),
+              path: relativePath,
+              parent: path.dirname(relativePath) !== '.' ? path.dirname(relativePath) : null,
+              children: []
+            };
+          }
+          hierarchy[relativePath].children.push(relativeFullPath);
+        }
+        
         files.push(fullPath);
       }
     }
   }
   
   traverse(dirPath);
-  return files;
+  return { files, hierarchy };
 }
 
-function processDirectory(contentPath, dryRun = false, debug = false) {
+function processDirectory(contentPath, dryRun = false, debug = false, webPathPrefix = null, sourceRepoPath = null) {
   console.error('='.repeat(60));
   console.error('AWS Bedrock Metadata Sidecar File Generator');
   console.error('='.repeat(60));
   console.error(`Content Path: ${contentPath}`);
+  
+  if (sourceRepoPath) {
+    console.error(`Source Repo: ${sourceRepoPath}`);
+  }
   
   if (dryRun) {
     console.error('DRY RUN MODE - No files will be modified');
@@ -352,8 +501,12 @@ function processDirectory(contentPath, dryRun = false, debug = false) {
   console.error('='.repeat(60));
   console.error(`\nScanning directory: ${contentPath}\n`);
   
-  const markdownFiles = getAllMarkdownFiles(contentPath);
+  const { files: markdownFiles, hierarchy } = getAllMarkdownFiles(contentPath);
   console.error(`Found ${markdownFiles.length} markdown files\n`);
+  
+  if (debug) {
+    console.error(`  DEBUG: Built hierarchy with ${Object.keys(hierarchy).length} nodes\n`);
+  }
   
   const results = {
     total: 0,
@@ -365,7 +518,26 @@ function processDirectory(contentPath, dryRun = false, debug = false) {
   
   for (const file of markdownFiles) {
     results.total++;
-    const result = processMarkdownFile(file, contentPath, dryRun, debug);
+    
+    // Get hierarchy node for this file
+    const relativePath = path.relative(contentPath, file);
+    // Build an array of hierarchy nodes from the file up to the root
+    const hierarchyNode = [];
+    let nodeKey = relativePath;
+    while (nodeKey) {
+      // Try both backslash and forward-slash variants for robustness
+      const node = hierarchy[nodeKey] || hierarchy[nodeKey.replace(/\\/g, '/')] || null;
+      if (!node) break;
+      hierarchyNode.push(node);
+      if (!node.parent) break;
+      nodeKey = node.parent;
+    }
+    // If nothing found, set to null for backward compatibility
+    if (hierarchyNode.length === 0) {
+      hierarchyNode = null;
+    }
+    
+    const result = processMarkdownFile(file, contentPath, dryRun, debug, webPathPrefix, sourceRepoPath, hierarchyNode);
     results.files.push(result);
     
     if (result.success) {
@@ -401,6 +573,8 @@ function processDirectory(contentPath, dryRun = false, debug = false) {
 // Export for use as a module
 export { 
   parseYamlFrontmatter,
+  getGitLastModifiedDate,
+  extractTitleFromMarkdown,
   extractPathMetadata,
   createMetadataJson,
   processMarkdownFile, 
@@ -416,17 +590,40 @@ const runningAsScript = process.argv[1] &&
 if (runningAsScript) {
   const args = process.argv.slice(2);
   
-  if (args.length < 1) {
-    console.error('Usage: node generate-metadata-aws.js <contentPath> [--dry-run] [--debug]');
-    console.error('Example: node generate-metadata-aws.js ./docs');
-    console.error('         node generate-metadata-aws.js ./docs --dry-run');
-    console.error('         node generate-metadata-aws.js ./docs --dry-run --debug');
+  // Filter out flag arguments to get positional arguments
+  const positionalArgs = args.filter(arg => !arg.startsWith('--'));
+  const dryRun = args.includes('--dry-run');
+  const debug = args.includes('--debug');
+  
+  // Check for --source-repo flag
+  const sourceRepoIndex = args.indexOf('--source-repo');
+  const sourceRepoPath = sourceRepoIndex !== -1 && args[sourceRepoIndex + 1] 
+    ? args[sourceRepoIndex + 1] 
+    : null;
+  
+  if (positionalArgs.length < 1) {
+    console.error('Usage: node generate-metadata-aws.js <contentPath> [webPathPrefix] [--source-repo <path>] [--dry-run] [--debug]');
+    console.error('');
+    console.error('Arguments:');
+    console.error('  contentPath      Path to the directory containing markdown files');
+    console.error('  webPathPrefix    Optional prefix for web paths (e.g., "documentation", "knowledgebase")');
+    console.error('');
+    console.error('Options:');
+    console.error('  --source-repo    Path to source git repository for looking up file history');
+    console.error('  --dry-run        Show what would be done without making changes');
+    console.error('  --debug          Enable detailed debug logging');
+    console.error('');
+    console.error('Examples:');
+    console.error('  node generate-metadata-aws.js ./docs');
+    console.error('  node generate-metadata-aws.js ./docs documentation');
+    console.error('  node generate-metadata-aws.js .tmp/docs documentation --source-repo ./movedata-support');
+    console.error('  node generate-metadata-aws.js ./docs knowledgebase --dry-run');
+    console.error('  node generate-metadata-aws.js ./docs developer --dry-run --debug');
     process.exit(1);
   }
 
-  const contentPath = args[0];
-  const dryRun = args.includes('--dry-run');
-  const debug = args.includes('--debug');
+  const contentPath = positionalArgs[0];
+  const webPathPrefix = positionalArgs[1] || null;
 
   if (!fs.existsSync(contentPath)) {
     console.error(`Error: Path does not exist: ${contentPath}`);
@@ -439,7 +636,7 @@ if (runningAsScript) {
   }
 
   try {
-    const results = processDirectory(contentPath, dryRun, debug);
+    const results = processDirectory(contentPath, dryRun, debug, webPathPrefix, sourceRepoPath);
     process.exit(results.errors > 0 ? 1 : 0);
   } catch (error) {
     console.error('Error:', error.message);
