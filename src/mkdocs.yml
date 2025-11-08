@@ -2,6 +2,7 @@ site_name: MoveData
 site_url: https://support.movedata.io
 theme:
   name: material
+  custom_dir: overrides
   palette:
     scheme: custom
   features:
