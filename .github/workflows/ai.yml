@@ -25,7 +25,6 @@ jobs:
 
       - name: Get Script
         run: |
-          #curl -H "Accept: application/vnd.github.v3.raw" https://api.github.com/repos/user/repo/contents/path/to/file
           curl -o build.ai.sh https://raw.githubusercontent.com/movedataio/movedata-support/main/build.ai.sh
           chmod +x build.ai.sh
         
