@@ -131,7 +131,11 @@ echo ""
 #pwd
 #ls -R
 
-cp ./movedata-support/package.json ./
+echo "Installing Algolia sync dependencies..."
+cd ./movedata-support
+git branch main
+cp package.json ../
+cd ..
 npm install
 
 echo "Uploading search records to Algolia..."
