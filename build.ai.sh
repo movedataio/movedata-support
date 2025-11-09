@@ -134,6 +134,8 @@ echo ""
 #pwd
 #ls -R
 
+npm install
+
 echo "Uploading search records to Algolia..."
 node ./bin/sync-to-algolia.js . \
     --app-id "$ALGOLIA_APP_ID" \
