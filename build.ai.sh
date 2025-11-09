@@ -8,9 +8,15 @@ set -e  # Exit on error
 # Configuration
 ENVIRONMENT="${ENVIRONMENT:-uat}"
 S3_BUCKET_PATH="s3://${ENVIRONMENT}-movedata-ai/support/"
-KNOWLEDGE_BASE_ID="IJDF9WCJTI"
-KNOWLEDGE_BASE_DATA_SOURCE_ID="GREZAHSG06"
+KNOWLEDGE_BASE_ID="${KNOWLEDGE_BASE_ID:-IJDF9WCJTI}"
+KNOWLEDGE_BASE_DATA_SOURCE_ID="${KNOWLEDGE_BASE_DATA_SOURCE_ID:-GREZAHSG06}"
+KNOWLEDGE_BASE_SUPPRESS="${KNOWLEDGE_BASE_SUPPRESS:-1}"
 AWS_REGION="ap-southeast-2"
+
+# Algolia Configuration
+ALGOLIA_APP_ID="${ALGOLIA_APP_ID:-EAEIU7PW2Y}"
+ALGOLIA_ADMIN_KEY="${ALGOLIA_ADMIN_KEY}"
+ALGOLIA_INDEX_NAME="${ALGOLIA_INDEX_NAME:-prod_support_index}"
 
 echo "======================================================================"
 echo "MoveData Support Documentation Sync"
@@ -19,6 +25,7 @@ echo "Environment: $ENVIRONMENT"
 echo "S3 Bucket: $S3_BUCKET_PATH"
 echo "Knowledge Base ID: $KNOWLEDGE_BASE_ID"
 echo "Data Source ID: $KNOWLEDGE_BASE_DATA_SOURCE_ID"
+echo "Algolia Index: $ALGOLIA_INDEX_NAME"
 echo "======================================================================"
 echo ""
 
@@ -142,7 +149,44 @@ echo ""
 # Go back to original directory
 cd ..
 
+# Sync to Algolia Search
+echo "======================================================================"
+echo "Syncing to Algolia Search"
+echo "======================================================================"
+echo "Target Index: $ALGOLIA_INDEX_NAME"
+echo ""
+
+echo "Uploading search records to Algolia..."
+node ./bin/sync-to-algolia.js .tmp \
+    --app-id "$ALGOLIA_APP_ID" \
+    --api-key "$ALGOLIA_ADMIN_KEY" \
+    --index-name "$ALGOLIA_INDEX_NAME" \
+    --clear-index
+
+if [ $? -eq 0 ]; then
+    echo "✓ Search records synced to Algolia"
+else
+    echo "❌ Failed to sync to Algolia"
+    exit 1
+fi
+echo ""
+
 # Execute Bedrock Knowledge Base Data Source Sync
+if [ "$KNOWLEDGE_BASE_SUPPRESS" = "1" ]; then
+    echo "======================================================================"
+    echo "Skipping AWS Bedrock Knowledge Base Ingestion (KNOWLEDGE_BASE_SUPPRESS=1)"
+    echo "======================================================================"
+    echo ""
+    echo "======================================================================"
+    echo "Sync Complete!"
+    echo "======================================================================"
+    echo "Environment: $ENVIRONMENT"
+    echo "S3 Bucket: $S3_BUCKET_PATH"
+    echo "Algolia Index: $ALGOLIA_INDEX_NAME"
+    echo "======================================================================"
+    exit 0
+fi
+
 echo "======================================================================"
 echo "Starting AWS Bedrock Knowledge Base Ingestion"
 echo "======================================================================"
@@ -226,5 +270,6 @@ echo "Sync Complete!"
 echo "======================================================================"
 echo "Environment: $ENVIRONMENT"
 echo "S3 Bucket: $S3_BUCKET_PATH"
+echo "Algolia Index: $ALGOLIA_INDEX_NAME"
 echo "Ingestion Job ID: $INGESTION_JOB_ID"
 echo "======================================================================"

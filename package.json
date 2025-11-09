@@ -23,5 +23,8 @@
     "build": "npm run transform && cd ./lib && mkdocs build && cd .. && npm run transform:post",
     "local": "cd ./lib && mkdocs serve",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "algoliasearch": "^5.17.1"
   }
 }

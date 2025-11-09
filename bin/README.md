@@ -589,6 +589,103 @@ When migrating from GitBook to MkDocs Material:
    node generate-metadata-aws.js ./docs
    ```
 
+9. **Sync to Algolia search** (optional):
+   ```bash
+   node sync-to-algolia.js .tmp/developer
+   ```
+
+---
+
+## sync-to-algolia.js
+
+**Purpose**: Sends markdown files to Algolia search index. Breaks documents into sections using H2 headers for better search granularity and uses metadata from `.metadata.json` sidecar files.
+
+**Usage**:
+```bash
+node sync-to-algolia.js <contentPath> [options]
+```
+
+**Arguments**:
+- `contentPath` - Path to directory containing markdown files
+
+**Options**:
+- `--app-id <id>` - Algolia Application ID (or `ALGOLIA_APP_ID` env var)
+- `--api-key <key>` - Algolia Admin API Key (or `ALGOLIA_ADMIN_KEY` env var)
+- `--index-name <name>` - Index name (default: `movedata_support`)
+- `--clear-index` - Clear the index before uploading
+- `--batch-size <number>` - Records per batch (default: 100)
+- `--dry-run` - Show what would be uploaded without sending
+- `--debug` - Enable detailed debug logging
+
+**Examples**:
+```bash
+# Sync using environment variables
+export ALGOLIA_APP_ID=ABC123DEF456
+export ALGOLIA_ADMIN_KEY=your_admin_api_key
+node sync-to-algolia.js .tmp/developer
+
+# Sync with CLI options
+node sync-to-algolia.js .tmp/developer \
+  --app-id ABC123DEF456 \
+  --api-key your_admin_api_key \
+  --index-name movedata_support_dev
+
+# Clear and rebuild index
+node sync-to-algolia.js .tmp/developer --clear-index
+
+# Dry run to preview
+node sync-to-algolia.js .tmp/developer --dry-run --debug
+```
+
+**Features**:
+1. Splits documents by H2 headings for granular search results
+2. Extracts metadata from `.metadata.json` sidecar files
+3. Generates unique `objectID` for each section: `{url}#{anchor}`
+4. Cleans markdown syntax (code blocks, links, images) for search
+5. Configures Algolia index with optimal settings for documentation
+6. Batch uploads with progress tracking
+7. Supports faceting by collection, category, section, extension, and tags
+
+**Index Settings**:
+- **Searchable attributes**: title, heading, content, breadcrumb, tags, category, section, collection
+- **Custom ranking**: Full documents rank higher, earlier sections rank higher
+- **Faceting**: Available for collection, category, section, extension, tags
+- **Highlighting**: Enabled for title, heading, content, excerpt
+- **Typo tolerance**: Enabled (min 4 chars for 1 typo, 8 for 2 typos)
+
+**Output structure** (Algolia record):
+```json
+{
+  "objectID": "developer/pipelines/donation-pipeline#overview",
+  "title": "Donation Pipeline",
+  "heading": "Overview",
+  "content": "The MoveData Donation Pipeline is a sophisticated...",
+  "excerpt": "The MoveData Donation Pipeline is a sophisticated multi-stage processing engine...",
+  "url": "/developer/pipelines/donation-pipeline",
+  "fullUrl": "/developer/pipelines/donation-pipeline#overview",
+  "anchor": "overview",
+  "collection": "Developer",
+  "section": "Pipelines",
+  "category": null,
+  "breadcrumb": "Developer > Pipelines > Donation Pipeline",
+  "extension": null,
+  "tags": [],
+  "lastModifiedDate": "2025-11-03",
+  "description": "A managed processing engine...",
+  "isFullDocument": false,
+  "sectionIndex": 0,
+  "contentLength": 456,
+  "indexedAt": "2025-11-09T12:00:00.000Z"
+}
+```
+
+**Notes**:
+- Requires `.metadata.json` files (run `generate-metadata-aws.js` first)
+- Skips `SUMMARY.md` and `index_*.md` files
+- Documents without metadata files are skipped
+- Full documents (no H2 sections) are indexed as single records
+- Use `--clear-index` to rebuild from scratch
+
 ---
 
 ## Requirements
@@ -596,6 +693,7 @@ When migrating from GitBook to MkDocs Material:
 - Node.js 18+ (ESM modules)
 - File system access (scripts modify files in place)
 - Proper directory structure for GitBook migrations
+- Algolia account and API credentials (for `sync-to-algolia.js`)
 
 ## Notes
 

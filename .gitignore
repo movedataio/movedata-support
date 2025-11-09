@@ -7,3 +7,6 @@ terraform.rc
 docs/*
 lib/*
 .tmp/*
+
+node_modules/*
+.vscode/*
