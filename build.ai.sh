@@ -121,6 +121,40 @@ process_branch "extension/non-profit-cloud" "extension/non-profit-cloud"
 process_branch "schema/commerce" "schema/commerce"
 process_branch "schema/donation" "schema/donation"
 
+echo "Cleaning up cloned repository..."
+rm -rf ./movedata-support
+
+# Sync to Algolia Search
+echo "======================================================================"
+echo "Syncing to Algolia Search"
+echo "======================================================================"
+echo "Target Index: $ALGOLIA_INDEX_NAME"
+echo ""
+
+#pwd
+#ls -R
+
+echo "Uploading search records to Algolia..."
+node ./bin/sync-to-algolia.js . \
+    --app-id "$ALGOLIA_APP_ID" \
+    --api-key "$ALGOLIA_ADMIN_KEY" \
+    --index-name "$ALGOLIA_INDEX_NAME" \
+    --clear-index
+
+if [ $? -eq 0 ]; then
+    echo "✓ Search records synced to Algolia"
+else
+    echo "❌ Failed to sync to Algolia"
+    exit 1
+fi
+echo ""
+
+# Clean up cloned repository
+echo "Cleaning up cloned bin folder..."
+rm -rf ./bin
+echo "✓ Cleanup complete"
+echo ""
+
 # Sync to S3
 echo "======================================================================"
 echo "Syncing to S3"
@@ -141,42 +175,6 @@ echo ""
 
 # Go back to original directory
 cd ..
-
-# Sync to Algolia Search
-echo "======================================================================"
-echo "Syncing to Algolia Search"
-echo "======================================================================"
-echo "Target Index: $ALGOLIA_INDEX_NAME"
-echo ""
-
-echo "Listing all files to be synced..."
-cd ..
-pwd
-ls -R
-echo ""
-
-
-echo "Uploading search records to Algolia..."
-node ./bin/sync-to-algolia.js .tmp \
-    --app-id "$ALGOLIA_APP_ID" \
-    --api-key "$ALGOLIA_ADMIN_KEY" \
-    --index-name "$ALGOLIA_INDEX_NAME" \
-    --clear-index
-
-if [ $? -eq 0 ]; then
-    echo "✓ Search records synced to Algolia"
-else
-    echo "❌ Failed to sync to Algolia"
-    exit 1
-fi
-echo ""
-
-# Clean up cloned repository
-echo "Cleaning up cloned repository..."
-rm -rf ./movedata-support
-rm -rf ./bin
-echo "✓ Cleanup complete"
-echo ""
 
 # Execute Bedrock Knowledge Base Data Source Sync
 if [ "$KNOWLEDGE_BASE_SUPPRESS" = "1" ]; then

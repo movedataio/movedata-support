@@ -319,6 +319,10 @@ function getAllMarkdownFiles(dirPath) {
       const fullPath = path.join(currentPath, entry.name);
       
       if (entry.isDirectory()) {
+        // Skip bin directories
+        if (entry.name === 'bin') {
+          continue;
+        }
         traverse(fullPath);
       } else if (entry.isFile() && entry.name.endsWith('.md')) {
         // Skip special files
