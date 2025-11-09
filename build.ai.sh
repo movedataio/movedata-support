@@ -121,13 +121,6 @@ process_branch "extension/non-profit-cloud" "extension/non-profit-cloud"
 process_branch "schema/commerce" "schema/commerce"
 process_branch "schema/donation" "schema/donation"
 
-# Clean up cloned repository
-echo "Cleaning up cloned repository..."
-rm -rf ./movedata-support
-rm -rf ./bin
-echo "✓ Cleanup complete"
-echo ""
-
 # Sync to S3
 echo "======================================================================"
 echo "Syncing to S3"
@@ -169,6 +162,13 @@ else
     echo "❌ Failed to sync to Algolia"
     exit 1
 fi
+echo ""
+
+# Clean up cloned repository
+echo "Cleaning up cloned repository..."
+rm -rf ./movedata-support
+rm -rf ./bin
+echo "✓ Cleanup complete"
 echo ""
 
 # Execute Bedrock Knowledge Base Data Source Sync
