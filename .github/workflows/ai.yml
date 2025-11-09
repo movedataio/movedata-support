@@ -10,10 +10,7 @@ on:
         required: true
 
 env:
-  ENVIRONMENT: uat  # Change this variable as needed
   S3_BUCKET_PATH: s3://${{ vars.ENVIRONMENT || 'uat' }}-movedata-ai/support/
-  KNOWLEDGE_BASE_ID: IJDF9WCJTI
-  KNOWLEDGE_BASE_DATA_SOURCE_ID: GREZAHSG06
 
 jobs:
   sync-documentation:
@@ -34,9 +31,9 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: ap-southeast-2
-          KNOWLEDGE_BASE_ID: ${{ env.KNOWLEDGE_BASE_ID }}
-          KNOWLEDGE_BASE_DATA_SOURCE_ID: ${{ env.KNOWLEDGE_BASE_DATA_SOURCE_ID }}
-          KNOWLEDGE_BASE_SUPPRESS: ${{ env.KNOWLEDGE_BASE_SUPPRESS }}
-          ALGOLIA_APP_ID: ${{ env.ALGOLIA_APP_ID }}
+          KNOWLEDGE_BASE_ID: ${{ vars.KNOWLEDGE_BASE_ID }}
+          KNOWLEDGE_BASE_DATA_SOURCE_ID: ${{ vars.KNOWLEDGE_BASE_DATA_SOURCE_ID }}
+          KNOWLEDGE_BASE_SUPPRESS: ${{ vars.KNOWLEDGE_BASE_SUPPRESS }}
+          ALGOLIA_APP_ID: ${{ vars.ALGOLIA_APP_ID }}
           ALGOLIA_ADMIN_KEY: ${{ secrets.ALGOLIA_ADMIN_KEY }}
-          ALGOLIA_INDEX_NAME: ${{ env.ALGOLIA_INDEX_NAME }}
+          ALGOLIA_INDEX_NAME: ${{ vars.ALGOLIA_INDEX_NAME }}
