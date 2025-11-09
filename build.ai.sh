@@ -128,8 +128,8 @@ echo "======================================================================"
 echo "Target Index: $ALGOLIA_INDEX_NAME"
 echo ""
 
-#pwd
-#ls -R
+pwd
+ls -R
 
 echo "Installing Algolia sync dependencies..."
 cd ./movedata-support
