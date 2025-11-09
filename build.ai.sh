@@ -121,9 +121,6 @@ process_branch "extension/non-profit-cloud" "extension/non-profit-cloud"
 process_branch "schema/commerce" "schema/commerce"
 process_branch "schema/donation" "schema/donation"
 
-echo "Cleaning up cloned repository..."
-rm -rf ./movedata-support
-
 # Sync to Algolia Search
 echo "======================================================================"
 echo "Syncing to Algolia Search"
@@ -134,6 +131,7 @@ echo ""
 #pwd
 #ls -R
 
+cp ./movedata-support/package.json ./
 npm install
 
 echo "Uploading search records to Algolia..."
@@ -152,7 +150,8 @@ fi
 echo ""
 
 # Clean up cloned repository
-echo "Cleaning up cloned bin folder..."
+echo "Cleaning up cloned repository..."
+rm -rf ./movedata-support
 rm -rf ./bin
 echo "✓ Cleanup complete"
 echo ""
