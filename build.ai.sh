@@ -149,6 +149,12 @@ echo "======================================================================"
 echo "Target Index: $ALGOLIA_INDEX_NAME"
 echo ""
 
+echo "Listing all files to be synced..."
+pwd
+ls -R
+echo ""
+
+
 echo "Uploading search records to Algolia..."
 node ./bin/sync-to-algolia.js .tmp \
     --app-id "$ALGOLIA_APP_ID" \
