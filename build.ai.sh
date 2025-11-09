@@ -150,6 +150,7 @@ echo "Target Index: $ALGOLIA_INDEX_NAME"
 echo ""
 
 echo "Listing all files to be synced..."
+cd ..
 pwd
 ls -R
 echo ""
