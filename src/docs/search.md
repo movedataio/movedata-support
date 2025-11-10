@@ -454,19 +454,11 @@ hide:
         }
 
         function displayResults(data) {
-            // Parse the answer JSON if it's a string
-            let parsedAnswer;
-            try {
-                parsedAnswer = typeof data.answer === 'string' ? JSON.parse(data.answer) : data.answer;
-            } catch (e) {
-                parsedAnswer = null;
-            }
+            // Support new format: { totalResults, results: [...] }
+            const totalResults = data.totalResults || 0;
+            const results = data.results || [];
 
-            const sources = data.sources || [];
-            const resultsFound = parsedAnswer?.results_found || sources.length;
-            const results = parsedAnswer?.results || [];
-
-            if (resultsFound === 0) {
+            if (totalResults === 0 || results.length === 0) {
                 resultsDiv.innerHTML = `
                     <div class="results-summary">
                         <div class="results-header">
@@ -482,69 +474,70 @@ hide:
             let html = `
                 <div class="results-summary">
                     <div class="results-header">
-                        <span>Found ${resultsFound} result${resultsFound !== 1 ? 's' : ''} for "${escapeHtml(searchInput.value)}"</span>
+                        <span>Found ${totalResults} result${totalResults !== 1 ? 's' : ''} for "${escapeHtml(searchInput.value)}"</span>
                         <button class="close-button" onclick="showPanels()" title="Close search results">✕</button>
                     </div>
                 </div>
             `;
 
-            // Display structured results if available
-            if (results.length > 0) {
-                // Sort results by rank
-                const sortedResults = [...results].sort((a, b) => a.rank - b.rank);
+            // Display results
+            results.forEach((result, index) => {
+                const score = result.score !== null && result.score !== undefined ? result.score : null;
+                const metadata = result.metadata || {};
+                const excerpt = metadata.excerpt || '';
                 
-                sortedResults.forEach(result => {
-                    // Use index to get the corresponding source (index is 1-based, so subtract 1 for 0-based array)
-                    const source = sources[result.index - 1];
-                    const url = source ? source.url : '#';
-                    const excerpt = source ? source.excerpt : '';
-                    
-                    // Strip markdown links from title and source
-                    const cleanTitle = stripMarkdownLinks(result.title);
-                    const cleanSource = stripMarkdownLinks(result.source);
+                // Truncate content for display if it's too long
+                const contentPreview = result.content && result.content.length > 300 
+                    ? result.content.substring(0, 300) + '...' 
+                    : result.content || '';
 
-                    html += `
-                        <div class="result-item">
-                            <div>
-                                <span class="result-rank">Rank ${result.rank}</span>
-                                ${result.relevance_score ? `
-                                    <span class="relevance-badge relevance-${escapeHtml(result.relevance_score)}">
-                                        ${escapeHtml(result.relevance_score)} relevance
-                                    </span>
-                                ` : ''}
-                            </div>
-                            <a href="${escapeHtml(url)}" class="result-title">${escapeHtml(cleanTitle)}</a>
-                            <div class="result-source">Source: ${escapeHtml(cleanSource)}</div>
-                            <div class="result-summary">${escapeHtml(result.summary)}</div>
-                            ${result.key_points && result.key_points.length > 0 ? `
-                                <div class="key-points">
-                                    <div class="key-points-title">Key Points:</div>
-                                    <ul>
-                                        ${result.key_points.map(point => `<li>${escapeHtml(point)}</li>`).join('')}
-                                    </ul>
-                                </div>
+                html += `
+                    <div class="result-item">
+                        <div>
+                            <span class="result-rank">Result ${index + 1}</span>
+                            ${score !== null ? `
+                                <span class="relevance-badge ${getRelevanceClass(score)}">
+                                    Score: ${(score * 100).toFixed(1)}%
+                                </span>
                             ` : ''}
-                            ${excerpt ? `<div class="result-excerpt">${escapeHtml(excerpt)}</div>` : ''}
                         </div>
-                    `;
-                });
-            } else {
-                // Fallback to sources only
-                sources.forEach((source, index) => {
-                    html += `
-                        <div class="result-item">
-                            <div>
-                                <span class="result-rank">Result ${index + 1}</span>
+                        <a href="${escapeHtml(result.url)}" class="result-title">${escapeHtml(result.title)}</a>
+                        
+                        ${metadata.breadcrumb ? `
+                            <div class="result-source">${escapeHtml(metadata.breadcrumb)}</div>
+                        ` : ''}
+                        
+                        ${metadata.description ? `
+                            <div class="result-summary">${escapeHtml(metadata.description)}</div>
+                        ` : ''}
+                        
+                        ${excerpt ? `
+                            <div class="result-excerpt">${escapeHtml(excerpt)}</div>
+                        ` : contentPreview ? `
+                            <div class="result-excerpt">${escapeHtml(contentPreview)}</div>
+                        ` : ''}
+                        
+                        ${metadata.collection || metadata.section ? `
+                            <div class="key-points">
+                                <div class="key-points-title">Document Info:</div>
+                                <ul>
+                                    ${metadata.collection ? `<li>Collection: ${escapeHtml(metadata.collection)}</li>` : ''}
+                                    ${metadata.section ? `<li>Section: ${escapeHtml(metadata.section)}</li>` : ''}
+                                    ${metadata.lastModifiedDate ? `<li>Last Modified: ${escapeHtml(metadata.lastModifiedDate)}</li>` : ''}
+                                </ul>
                             </div>
-                            <a href="${escapeHtml(source.url)}" class="result-title">${escapeHtml(source.title)}</a>
-                            <div class="result-summary">Relevance Score: ${(source.score * 100).toFixed(1)}%</div>
-                            ${source.excerpt ? `<div class="result-excerpt">${escapeHtml(source.excerpt)}</div>` : ''}
-                        </div>
-                    `;
-                });
-            }
+                        ` : ''}
+                    </div>
+                `;
+            });
 
             resultsDiv.innerHTML = html;
+        }
+
+        function getRelevanceClass(score) {
+            if (score >= 0.7) return 'relevance-high';
+            if (score >= 0.4) return 'relevance-medium';
+            return 'relevance-low';
         }
     })();
 </script>

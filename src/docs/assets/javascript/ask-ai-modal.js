@@ -47,6 +47,7 @@ function init() {
 
   // Create Ask AI button in header
   const askAiButton = document.createElement('button');
+  askAiButton.id = 'ask-ai-header-button';
   askAiButton.className = 'md-header__button ask-ai-header-button';
   askAiButton.title = 'Ask AI Assistant (Ctrl+K)';
   askAiButton.setAttribute('aria-label', 'Ask AI Assistant');
@@ -313,9 +314,25 @@ async function sendMessage() {
     }
     
     const data = await response.json();
+    console.log('Ask AI: Response received', data);
     removeLoading();
     
-    const answer = data.answer || data.response || JSON.stringify(data);
+    // Get the answer and unescape newlines if they're escaped
+    let answer = data.answer || data.response || JSON.stringify(data);
+    
+    // If the answer contains escaped newlines (\\n), convert them to actual newlines
+    if (typeof answer === 'string' && answer.includes('\\n')) {
+      answer = answer.replace(/\\n/g, '\n');
+    }
+    
+    // Build the complete response with sources if available
+    if (data.sources && Array.isArray(data.sources) && data.sources.length > 0) {
+      answer += '\n\n---\n\n**Sources:**\n';
+      data.sources.forEach((source, index) => {
+        answer += `${index + 1}. [${source.title}](${source.url})\n`;
+      });
+    }
+    
     addMessage('assistant', answer);
     conversationHistory.push({ role: 'assistant', content: answer });
     

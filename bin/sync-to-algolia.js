@@ -266,8 +266,6 @@ function processMarkdownFile(filePath, debug = false) {
         content: truncatedContent,
         excerpt: extractExcerpt(cleanContent, 200),
         url: metadata.url || '',
-        fullUrl: section.anchor ? `${metadata.url}#${section.anchor}` : metadata.url,
-        anchor: section.anchor,
         
         // Metadata for filtering and faceting
         collection: metadata.collection || null,

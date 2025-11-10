@@ -410,8 +410,18 @@ async function sendMessage() {
         
         // Add assistant response
         const answer = data.answer || data.response || JSON.stringify(data);
-        addMessage('assistant', answer);
-        conversationHistory.push({ role: 'assistant', content: answer });
+        
+        // Build the complete response with sources if available
+        let fullResponse = answer;
+        if (data.sources && Array.isArray(data.sources) && data.sources.length > 0) {
+            fullResponse += '\n\n---\n\n**Sources:**\n';
+            data.sources.forEach((source, index) => {
+                fullResponse += `${index + 1}. [${source.title}](${source.url})\n`;
+            });
+        }
+        
+        addMessage('assistant', fullResponse);
+        conversationHistory.push({ role: 'assistant', content: fullResponse });
         
     } catch (error) {
         removeLoading();

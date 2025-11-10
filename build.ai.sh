@@ -115,11 +115,11 @@ process_branch() {
 process_branch "documentation" "documentation" "user_guide"
 process_branch "knowledgebase" "knowledgebase"
 process_branch "developer" "developer"
-process_branch "extension/npsp-fundraising" "extension/npsp-fundraising"
-process_branch "extension/commerce" "extension/commerce"
-process_branch "extension/non-profit-cloud" "extension/non-profit-cloud"
-process_branch "schema/commerce" "schema/commerce"
-process_branch "schema/donation" "schema/donation"
+process_branch "extension/npsp-fundraising" "reference/extension/npsp-fundraising"
+process_branch "extension/commerce" "extension/commerce" "reference/extension/commerce"
+process_branch "extension/non-profit-cloud" "reference/extension/non-profit-cloud"
+process_branch "schema/commerce" "schema/commerce" "reference/schema/commerce"
+process_branch "schema/donation" "schema/donation" "reference/schema/donation"
 
 # Sync to Algolia Search
 echo "======================================================================"
@@ -174,7 +174,7 @@ echo ""
 # echo ""
 
 echo "Uploading files to S3..."
-aws s3 sync . "$S3_BUCKET_PATH" --delete --region $AWS_REGION
+aws s3 sync . "$S3_BUCKET_PATH" --delete --region $AWS_REGION --exclude "*" --include "*.md" --include "*.metadata.json" --exclude "node_modules/*"
 echo "✓ Files synced to S3"
 echo ""
 
