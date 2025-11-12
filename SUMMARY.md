@@ -39,3 +39,12 @@
 * [Flow Command Reference](reference/flow-command-reference.md)
 * [Flow Variable Reference](reference/flow-variable-reference.md)
 * [Pipeline Stage Reference](reference/pipeline-stage-reference.md)
+
+## Video Library
+
+* [Use Business Rules to Select a Different Campaign](video-library/use-business-rules-to-select-a-different-campaign.md)
+* [Write Rules to Store Platform Data on Salesforce Records](video-library/write-rules-to-store-platform-data-on-salesforce-records.md)
+* [How to map Raisely Campaigns into Salesforce](video-library/how-to-map-raisely-campaigns-into-salesforce.md)
+* [Connect Raisely Campaigns into Salesforce](video-library/connect-raisely-campaigns-into-salesforce.md)
+* [Conditional Business Rules based on Source Platform](video-library/conditional-business-rules-based-on-source-platform.md)
+* [How to Update Records after MoveData Hits Save](video-library/how-to-update-records-after-movedata-hits-save.md)
