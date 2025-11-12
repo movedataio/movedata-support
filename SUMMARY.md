@@ -48,3 +48,4 @@
 * [Connect Raisely Campaigns into Salesforce](video-library/connect-raisely-campaigns-into-salesforce.md)
 * [Conditional Business Rules based on Source Platform](video-library/conditional-business-rules-based-on-source-platform.md)
 * [How to Update Records after MoveData Hits Save](video-library/how-to-update-records-after-movedata-hits-save.md)
+* [How to set Different Record Types](video-library/how-to-set-different-record-types.md)
