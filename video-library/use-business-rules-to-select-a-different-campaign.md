@@ -6,8 +6,6 @@ description: >-
 
 # Use Business Rules to Select a Different Campaign
 
-{% embed url="https://vimeo.com/1135621990" %}
-
 ## Summary
 
 In this tutorial, James from MoveData demonstrates how to use business rules to route donations to different campaigns in Salesforce based on donation type. The video shows how to differentiate between recurring and one-off donations by checking for the presence of a recurring\_key variable. The solution involves creating a custom metadata table to store campaign mappings, building a Salesforce Flow with decision logic that queries this metadata table when a recurring key is detected, and registering the flow in the MoveData pipeline to run before the default integration. The tutorial also covers how to extend this approach with additional criteria for more complex campaign routing scenarios.
