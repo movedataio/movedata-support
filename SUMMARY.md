@@ -42,10 +42,11 @@
 
 ## Video Library
 
-* [Use Business Rules to Select a Different Campaign](video-library/use-business-rules-to-select-a-different-campaign.md)
-* [Write Rules to Store Platform Data on Salesforce Records](video-library/write-rules-to-store-platform-data-on-salesforce-records.md)
+* [Flow References](video-library/flow-references/README.md)
+  * [Use Business Rules to Select a Different Campaign](video-library/flow-references/use-business-rules-to-select-a-different-campaign.md)
+  * [Write Rules to Store Platform Data on Salesforce Records](video-library/flow-references/write-rules-to-store-platform-data-on-salesforce-records.md)
+  * [Conditional Business Rules based on Source Platform](video-library/flow-references/conditional-business-rules-based-on-source-platform.md)
+  * [How to Update Records after MoveData Hits Save](video-library/flow-references/how-to-update-records-after-movedata-hits-save.md)
+  * [How to set Different Record Types](video-library/flow-references/how-to-set-different-record-types.md)
 * [How to map Raisely Campaigns into Salesforce](video-library/how-to-map-raisely-campaigns-into-salesforce.md)
 * [Connect Raisely Campaigns into Salesforce](video-library/connect-raisely-campaigns-into-salesforce.md)
-* [Conditional Business Rules based on Source Platform](video-library/conditional-business-rules-based-on-source-platform.md)
-* [How to Update Records after MoveData Hits Save](video-library/how-to-update-records-after-movedata-hits-save.md)
-* [How to set Different Record Types](video-library/how-to-set-different-record-types.md)
