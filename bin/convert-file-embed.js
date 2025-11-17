@@ -80,22 +80,6 @@ function formatFileSize(bytes) {
   return Math.round(bytes / Math.pow(k, i) * 100) / 100 + ' ' + sizes[i];
 }
 
-function getFileIcon(ext) {
-  const iconMap = {
-    '.csv': '📊',
-    '.xlsx': '📊',
-    '.xls': '📊',
-    '.pdf': '📄',
-    '.json': '📋',
-    '.xml': '📋',
-    '.txt': '📝',
-    '.zip': '📦',
-    '.doc': '📄',
-    '.docx': '📄'
-  };
-  return iconMap[ext.toLowerCase()] || '📁';
-}
-
 function getFileType(ext) {
   const typeMap = {
     '.csv': 'CSV File',
@@ -114,7 +98,6 @@ function getFileType(ext) {
 
 function createDownloadComponent(filename, key, gitbookAssetsDir) {
   const ext = path.extname(filename).toLowerCase();
-  const icon = getFileIcon(ext);
   const fileType = getFileType(ext);
   const newPath = `/assets/files/${key}/${filename}`;
   
@@ -131,13 +114,11 @@ function createDownloadComponent(filename, key, gitbookAssetsDir) {
   }
 
   return `<div class="file-download-card">
-  <div class="file-download-icon">${icon}</div>
   <div class="file-download-content">
     <div class="file-download-title">${filename}</div>
     <div class="file-download-meta">${fileType}${fileSizeText ? ' • ' + fileSizeText : ''}</div>
   </div>
   <a href="${newPath}" download class="file-download-button">
-    <span class="file-download-button-icon">⬇</span>
     Download
   </a>
 </div>`;
@@ -248,12 +229,6 @@ function ensureStylesheetsExist() {
   box-shadow: 0 2px 8px rgba(0, 158, 210, 0.1);
 }
 
-.file-download-icon {
-  font-size: 32px;
-  line-height: 1;
-  flex-shrink: 0;
-}
-
 .file-download-content {
   flex: 1;
   min-width: 0;
@@ -292,11 +267,6 @@ function ensureStylesheetsExist() {
 
 .file-download-button:hover {
   background-color: #007BB8;
-}
-
-.file-download-button-icon {
-  font-size: 16px;
-  line-height: 1;
 }
 
 /* Responsive design for mobile */
