@@ -1,23 +1,23 @@
 # Welcome to the MoveData Guide
 
-## Who are we?
+### Who are we?
 
-We are MoveData, a specialist integration platform designed exclusively for nonprofits using Salesforce. We help charitable organisations streamline their fundraising operations, eliminate manual data entry, and maximise their impact through intelligent, real-time data synchronisation.
+MoveData is a [Salesforce AppExchange](https://appexchange.salesforce.com/appxListingDetail?listingId=a0N3u00000PFbeXEAT\&tab=r) application that connects information from fundraising platforms into Salesforce. We facilitate data integration through API connections or supported file types, enabling organisations to automate the transfer of fundraising data into Salesforce. We operate as a managed package within Salesforce, ensuring compatibility with existing Salesforce implementations. MoveData supports both Nonprofit Success Pack (NPSP) and Salesforce Nonprofit Cloud (NPC) configurations.
 
-MoveData intelligently connects information from your fundraising platforms directly into Salesforce to save time, ensure accuracy, and maximise impact. Whether you're using Raisely, JustGiving, Enthuse, Funraisin', Facebook, or other popular fundraising platforms, we automate the flow of donor data, campaign information, and donation records directly into your Salesforce org.
+### How is our Knowledge Base structured?
 
-MoveData was created after seeing so many nonprofits struggle to get their fundraising data into Salesforce. We understand the unique challenges that nonprofits face – limited resources, the need for accurate reporting, and the importance of maintaining strong donor relationships.&#x20;
+* **User Guide**
+* **Developer Guide**
+* **Troubleshooting**
+* **Reference**
+* **Ask MoveData Assistant**
 
-Our solution transforms these challenges into opportunities by providing:
+The **User Guide** is designed for non-technical, everyday users of MoveData. It contains practical information on how to use the platform for tasks such as managing fundraising integrations, monitoring data synchronisation between your fundraising platforms and Salesforce.
 
-**Time Savings**: Automate data entry using API connections between the fundraising tools you use and Salesforce, freeing your team to focus on mission-critical work rather than administrative tasks.
+The **Developer Guide** is designed for technical users, administrators, and Salesforce Administrators working with MoveData. It contains in-depth technical information on system architecture, API integrations, data structures, and configuration options. This guide is ideal for developers and Salesforce Partners who need to understand how MoveData works at a technical level, customise system behavior, implement integration business rules, or troubleshoot complex technical issues.
 
-**Data Accuracy**: Ensure Salesforce is current, accurate and trustworthy using native workflows with out-of-the-box support for NPSP and Salesforce Nonprofit Cloud.
+**Troubleshooting** contains articles addressing issues you may experience when using MoveData, providing quick and easy solutions to Salesforce or connected platform errors.
 
-**Seamless Integration**: Integrations are fully customisable and can be quickly extended to fit your needs using Lightning Flows, working with your existing Salesforce setup rather than requiring you to change how you work.
+**Reference** contains a suite of articles describing MoveData's different packages, and provides detailed technical information on schemas, variables, flows, objects, permissions and more for each MoveData package.
 
-**Proven Impact**: After implementing MoveData, charities are amazed with the time they save, the accuracy they get, and the new capabilities this enables in Salesforce. Our clients report savings of up to 67.5 hours per month and describe our service as transformational for their operations.
-
-Available on the Salesforce AppExchange with a 5-star rating, MoveData provides real-time integration capabilities that sync your fundraising data automatically, whether through webhooks for instant updates or scheduled polling for platforms with API limitations. We support both individual donations and complex campaign structures, handling everything from one-time gifts to recurring donations and multi-level fundraising hierarchies.
-
-Our commitment extends beyond just the technology – supporting your success is a cornerstone of MoveData. Every client is paired with a technical account manager who ensures smooth installation, configuration, and ongoing success with their integration.
+For personalised assistance, **Ask MoveData Assistant** allows you to submit a query and receive a structured AI response from our entire knowledge base, complete with links to relevant knowledge base articles.
