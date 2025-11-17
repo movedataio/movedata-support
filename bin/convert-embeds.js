@@ -31,8 +31,32 @@ function extractYouTubeId(url) {
   return null;
 }
 
+function extractVimeoId(url) {
+  // Handle various Vimeo URL formats
+  // https://vimeo.com/VIDEO_ID
+  // https://player.vimeo.com/video/VIDEO_ID
+  
+  const patterns = [
+    /vimeo\.com\/(\d+)/,
+    /player\.vimeo\.com\/video\/(\d+)/
+  ];
+  
+  for (const pattern of patterns) {
+    const match = url.match(pattern);
+    if (match) {
+      return match[1];
+    }
+  }
+  
+  return null;
+}
+
 function createYouTubeEmbed(videoId) {
   return `<iframe width="560" height="315" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+}
+
+function createVimeoEmbed(videoId) {
+  return `<div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/${videoId}?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Vimeo Video"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>`;
 }
 
 function convertEmbed(match, url) {
@@ -43,7 +67,14 @@ function convertEmbed(match, url) {
     return createYouTubeEmbed(youtubeId);
   }
   
-  // For non-YouTube URLs, create a generic iframe or link
+  // Check if it's a Vimeo URL
+  const vimeoId = extractVimeoId(url);
+  
+  if (vimeoId) {
+    return createVimeoEmbed(vimeoId);
+  }
+  
+  // For non-YouTube/Vimeo URLs, create a generic iframe or link
   // You can customize this behavior
   return `<iframe width="560" height="315" src="${url}" frameborder="0" allowfullscreen></iframe>`;
 }
@@ -159,7 +190,7 @@ function processDirectory(contentPath, dryRun = false) {
 }
 
 // Export for use as a module
-export { convertEmbeds, processMarkdownFile, processDirectory, getAllMarkdownFiles, extractYouTubeId };
+export { convertEmbeds, processMarkdownFile, processDirectory, getAllMarkdownFiles, extractYouTubeId, extractVimeoId };
 
 // CLI handling
 const runningAsScript = process.argv[1] && 
