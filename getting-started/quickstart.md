@@ -8,9 +8,9 @@ description: How to get MoveData installed and running in 45 minutes
 
 Get your MoveData integration up and running in Salesforce in 30-60 minutes. This guide follows the exact process demonstrated in our setup video, walking you through a complete integration with Raisely as an example.
 
-{% embed url="https://www.youtube.com/watch?v=qlzpclwUBoU" %}
+{% embed url="https://vimeo.com/1137881162" %}
 
-Follow along with James Kent as he demonstrates the complete setup process
+Follow along with James Kent as he demonstrates the setup process.
 
 ## What You'll Accomplish
 
@@ -100,7 +100,7 @@ _Video timestamp: 5:16_
 
 _Video timestamp: 6:14_
 
-These instructions explain how to get going using Raisely.  If you wish to use another integration, please select it from the New Integration dialog and follow the appropriate integration guide.
+These instructions explain how to get going using Raisely. If you wish to use another integration, please select it from the New Integration dialog and follow the appropriate integration guide.
 
 **Quick Actions:**
 
@@ -209,4 +209,3 @@ You've successfully completed the MoveData setup! As demonstrated in the video, 
 * **Marketing Attribution** - Track campaign sources and UTM parameters
 * **Refund Processing** - Handle donation refunds automatically
 * **Custom Business Rules** - Use Lightning Flows for organisation-specific logic
-
