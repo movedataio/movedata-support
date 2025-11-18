@@ -10,6 +10,10 @@ The architecture leverages industry-leading cloud services to provide scalable, 
 
 ## How MoveData works. <a href="#how-movedata-works" id="how-movedata-works"></a>
 
+{% hint style="warning" %}
+MoveData is explicitly a one-way data sync.  It does not support pushing data from Salesforce to third-party platforms.
+{% endhint %}
+
 MoveData's architecture follows a sophisticated three-stage lifecycle that transforms every meaningful fundraising interaction into actionable Salesforce data. This process operates continuously, handling everything from individual small donations to large-scale campaign activities with equal precision and reliability.
 
 The platform's event-driven architecture ensures that each transaction is processed individually, maintaining complete data integrity and enabling real-time responsiveness. Unlike traditional batch processing systems, MoveData's approach means your Salesforce data reflects current supporter activity immediately, enabling timely stewardship and responsive fundraising operations.
