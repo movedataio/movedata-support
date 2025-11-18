@@ -6,6 +6,7 @@ on:
       - main
       - documentation
       - developer
+      - knowledgebase
       - extension/commerce
       - extension/npsp-fundraising
       - extension/non-profit-cloud
@@ -84,3 +85,17 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
         AWS_REGION: ${{secrets.AWS_REGION}}
         S3_BUCKET: movedata-support-html
+
+  sync-ai:
+    needs: deploy
+    uses: ./.github/workflows/ai.yml
+    secrets:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_REGION: ap-southeast-2
+      KNOWLEDGE_BASE_ID: ${{ vars.KNOWLEDGE_BASE_ID }}
+      KNOWLEDGE_BASE_DATA_SOURCE_ID: ${{ vars.KNOWLEDGE_BASE_DATA_SOURCE_ID }}
+      KNOWLEDGE_BASE_SUPPRESS: ${{ vars.KNOWLEDGE_BASE_SUPPRESS }}
+      ALGOLIA_APP_ID: ${{ vars.ALGOLIA_APP_ID }}
+      ALGOLIA_ADMIN_KEY: ${{ secrets.ALGOLIA_ADMIN_KEY }}
+      ALGOLIA_INDEX_NAME: ${{ vars.ALGOLIA_INDEX_NAME }}
