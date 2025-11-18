@@ -20,6 +20,7 @@
 * [Upgrading MoveData](general/upgrading-movedata.md)
 * [MoveData App (pre-1.167)](general/movedata-app-pre-1.167.md)
 * [Protect Contact Fields](general/protect-contact-fields.md)
+* [Understanding Unhandled Flow Faults](general/understanding-unhandled-flow-faults.md)
 
 ## Technical
 
