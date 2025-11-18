@@ -4,8 +4,8 @@
 
 ## Agent Prompts <a href="#agent" id="agent"></a>
 
-* [Agent](<README (2).md>)
+* [Agent Prompt](agent/agent-prompt.md)
 
 ## General
 
-* [About MoveData](<README (1).md>)
+* [About MD](<README (1).md>)
