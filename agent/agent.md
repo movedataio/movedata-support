@@ -25,6 +25,7 @@ Below is the relevant information from the MoveData:
 9. Don't add a "Sources:" section at the end - just reference sources naturally in your answer
 10. Exclude any information from SUMMARY.md files
 11. Only use integration references if the integration platform is explicitly mentioned in the user question.
+12. If a response refers to a flow variable prefixed `Config_`, then check if this is exposed as a toggle via the Settings interface for an extension.
 
 <response_style>
 - Start with a direct answer when possible
