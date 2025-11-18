@@ -31,4 +31,4 @@ Click on a failed interview to open the detailed failure view, which presents th
 
 ## Advanced: Using Salesforce Debug Logs
 
-If the built-in execution logs do not provide sufficient detail, Salesforce's native debug logs can be enabled for the MoveData authorised user to capture the full Apex execution context. Common resolutions include correcting data quality issues in the source platform, adjusting validation rules that may be blocking record creation, ensuring the MoveData user has appropriate field-level permissions, and verifying that lookup relationships reference valid existing records.
+If the built-in execution logs do not provide sufficient detail, Salesforce's native debug logs can be enabled for the MoveData authorised user to capture the full Apex execution context.  These logs operate at a very detailed level and are often used when debugging at a higher level has failed.
