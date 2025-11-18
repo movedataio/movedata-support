@@ -8,5 +8,4 @@
 
 ## General
 
-* [About MD](general/readme.md)
 * [About MoveData](general/about-movedata.md)
