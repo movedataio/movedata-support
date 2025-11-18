@@ -1,5 +1,12 @@
 # Understanding Unhandled Flow Faults
 
+{% hint style="info" %}
+Metadata
+
+* category=technical
+* tags=flow,failure,debug
+{% endhint %}
+
 <figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 
 The error message "An unhandled fault has occurred in this flow" indicates that a Salesforce Lightning Flow encountered an unexpected exception during execution that was not captured by the flow's error handling logic. This is a generic Salesforce system error that occurs when a flow encounters a problem it cannot resolve on its own, such as validation rule failures, required field violations, duplicate value conflicts, permission issues, or business logic issues.
