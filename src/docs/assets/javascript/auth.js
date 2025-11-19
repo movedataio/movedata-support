@@ -13,8 +13,8 @@
      */
     function saveToken(token) {
         var expiry = Date.now() + TOKEN_TTL;
-        sessionStorage.setItem(TOKEN_KEY, token);
-        sessionStorage.setItem(TOKEN_EXPIRY_KEY, expiry.toString());
+        localStorage.setItem(TOKEN_KEY, token);
+        localStorage.setItem(TOKEN_EXPIRY_KEY, expiry.toString());
         console.log('Token saved, expires in 60 minutes');
     }
     
@@ -23,8 +23,8 @@
      * @returns {string|null} - The token or null if expired/missing
      */
     function getToken() {
-        var token = sessionStorage.getItem(TOKEN_KEY);
-        var expiry = sessionStorage.getItem(TOKEN_EXPIRY_KEY);
+        var token = localStorage.getItem(TOKEN_KEY);
+        var expiry = localStorage.getItem(TOKEN_EXPIRY_KEY);
         
         if (!token || !expiry) {
             return null;
@@ -43,8 +43,8 @@
      * Clear stored token
      */
     function clearToken() {
-        sessionStorage.removeItem(TOKEN_KEY);
-        sessionStorage.removeItem(TOKEN_EXPIRY_KEY);
+        localStorage.removeItem(TOKEN_KEY);
+        localStorage.removeItem(TOKEN_EXPIRY_KEY);
     }
     
     // Expose globally for API calls
