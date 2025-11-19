@@ -19,8 +19,8 @@ extra_css:
   - https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap
 extra_javascript:
   - https://cdn.jsdelivr.net/npm/marked@11.1.1/marked.min.js
-  - assets/javascript/ask-ai-modal.js
   - assets/javascript/auth.js
+  - assets/javascript/ask-ai-modal.js
 markdown_extensions:
   - admonition
   - pymdownx.details

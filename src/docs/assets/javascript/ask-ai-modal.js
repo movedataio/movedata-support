@@ -301,9 +301,15 @@ async function sendMessage() {
   showLoading();
   
   try {
-    const response = await fetch('https://api.uat.movedata.io/admin/support/agent', {
+    const token = window.getSalesforceToken ? window.getSalesforceToken() : null;
+    const rootUrl = (token) ? 'https://api.uat.movedata.io/app/admin' : 'https://api.uat.movedata.io/admin'
+
+    const headers = { 'Content-Type': 'application/json' };
+    if (token) headers['Authorization'] = `Bearer ${token}`;
+
+    const response = await fetch(`${rootUrl}/support/agent`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers,
       body: JSON.stringify({ question: question })
     });
     
