@@ -9,7 +9,7 @@ description: >-
 {% hint style="info" %}
 Metadata
 
-* category=technical
+* category=Technical
 * integration=all
 * tags=metadata,pipeline,disable,phase,video
 {% endhint %}

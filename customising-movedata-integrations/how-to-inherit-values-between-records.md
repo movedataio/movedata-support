@@ -9,7 +9,7 @@ description: >-
 {% hint style="info" %}
 Metadata
 
-* category=customise
+* category=Customising MoveData Integrations
 * integration=all
 * tags=inherit,flows,video
 {% endhint %}

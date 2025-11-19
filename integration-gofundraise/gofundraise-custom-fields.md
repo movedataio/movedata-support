@@ -3,6 +3,7 @@
 {% hint style="info" %}
 Metadata
 
+* group=Integration
 * category=GoFundraise
 * integration=gofundraise
 * tags=custom,questions

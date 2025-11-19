@@ -38,27 +38,27 @@
 * [Map Raisely Campaign to Existing Salesforce Campaign](integration-raisely/map-raisely-campaign-to-existing-salesforce-campaign.md)
 * [Different Address on Donation vs Person Record](integration-raisely/different-address-on-donation-vs-person-record.md)
 * [Required fields are missing: \[LastName\]](integration-raisely/required-fields-are-missing-lastname.md)
-* [How to map Raisely Campaigns into Salesforce](integration-raisely/how-to-map-raisely-campaigns-into-salesforce.md)
+* [How to map Raisely Campaigns into Salesforce](integration-raisely/connect-your-raisely-campaign.md)
 * [Connect Raisely Campaigns into Salesforce](integration-raisely/connect-raisely-campaigns-into-salesforce.md)
 
 ## Nonprofit Success Pack
 
-* [End Date must be later than the last Closed Won Opportunity's Close Date](nonprofit-success-pack/end-date-must-be-later-than-the-last-closed-won-opportunitys-close-date.md)
-* [You can't change the Household Account or Contact on a Recurring Donation with Closed Opportunities](nonprofit-success-pack/you-cant-change-the-household-account-or-contact-on-a-recurring-donation-with-closed-opportunities.md)
-* [Campaign Member Status Errors](nonprofit-success-pack/campaign-member-status-errors.md)
-* [You must select a Contact associated with this Household Account (Anonymous Account)](nonprofit-success-pack/you-must-select-a-contact-associated-with-this-household-account-anonymous-account.md)
-* [Organisation Accounts created as Anonymous Households](nonprofit-success-pack/organisation-accounts-created-as-anonymous-households.md)
-* [Fundraising & Donations Extension (pre-1.81)](nonprofit-success-pack/fundraising-and-donations-extension-pre-1.81.md)
-* [Map to Existing Records: NPSP](nonprofit-success-pack/map-to-existing-records-npsp.md)
+* [End Date must be later than the last Closed Won Opportunity's Close Date](extension-npsp/end-date-must-be-later-than-the-last-closed-won-opportunitys-close-date.md)
+* [You can't change the Household Account or Contact on a Recurring Donation with Closed Opportunities](extension-npsp/you-cant-change-the-household-account-or-contact-on-a-recurring-donation-with-closed-opportunities.md)
+* [Campaign Member Status Errors](extension-npsp/campaign-member-status-errors.md)
+* [You must select a Contact associated with this Household Account (Anonymous Account)](extension-npsp/you-must-select-a-contact-associated-with-this-household-account-anonymous-account.md)
+* [Organisation Accounts created as Anonymous Households](extension-npsp/organisation-accounts-created-as-anonymous-households.md)
+* [Fundraising & Donations Extension (pre-1.81)](extension-npsp/fundraising-and-donations-extension-pre-1.81.md)
+* [Map to Existing Records: NPSP](extension-npsp/map-to-existing-records-npsp.md)
 
 ## Nonprofit Cloud
 
-* [Non-Profit Cloud Licensing Requirements for MoveData](nonprofit-cloud/non-profit-cloud-licensing-requirements-for-movedata.md)
-* [Map to Existing Records: NPC](nonprofit-cloud/map-to-existing-records-npc.md)
+* [Non-Profit Cloud Licensing Requirements for MoveData](extension-npc/non-profit-cloud-licensing-requirements-for-movedata.md)
+* [Map to Existing Records: NPC](extension-npc/map-to-existing-records-npc.md)
 
 ## Commerce Schema
 
-* [A Product with this SKU already exists](commerce-schema/a-product-with-this-sku-already-exists.md)
+* [A Product with this SKU already exists](extension-commerce/a-product-with-this-sku-already-exists.md)
 
 ## Customising MoveData Integrations
 
@@ -72,32 +72,32 @@
 
 ## Technical
 
-* [About the MoveData Authorised User](technical/about-the-movedata-authorised-user.md)
-* [Apex CPU time limit exceeded](technical/apex-cpu-time-limit-exceeded.md)
-* [Campaign Name Overridden](technical/campaign-name-overridden.md)
-* [Change the MoveData Authorised User](technical/change-the-movedata-authorised-user.md)
+* [About the MoveData Authorised User](general/about-the-movedata-authorised-user.md)
+* [Apex CPU time limit exceeded](general/apex-cpu-time-limit-exceeded.md)
+* [Campaign Name Overridden](extension-general/campaign-name-overridden.md)
+* [Change the MoveData Authorised User](general/change-the-movedata-authorised-user.md)
 * [Change the SObject Type within a Phase](technical/change-the-sobject-type-within-a-phase.md)
-* [Convert Leads to Contacts](technical/convert-leads-to-contacts.md)
+* [Convert Leads to Contacts](general/convert-leads-to-contacts.md)
 * [Custom Errors](technical/custom-errors.md)
 * [Disable a MoveData Phase from Running](technical/disable-a-movedata-phase-from-running.md)
-* [Grant Salesforce Access to MoveData](technical/grant-salesforce-access-to-movedata.md)
-* [Make HTTP Callouts in Flows](technical/make-http-callouts-in-flows.md)
-* [MAXIMUM\_HIERARCHY\_LEVELS\_REACHED](technical/maximum_hierarchy_levels_reached.md)
-* [MoveData App (pre-1.167)](technical/movedata-app-pre-1.167.md)
-* [Offline donations not processed into Salesforce](technical/offline-donations-not-processed-into-salesforce.md)
+* [Grant Salesforce Access to MoveData](<README (1).md>)
+* [Make HTTP Callouts in Flows](general/make-http-callouts-in-flows.md)
+* [MAXIMUM\_HIERARCHY\_LEVELS\_REACHED](general/maximum_hierarchy_levels_reached.md)
+* [MoveData App (pre-1.167)](general/movedata-app-pre-1.167.md)
+* [Offline donations not processed into Salesforce](general/offline-donations-not-processed-into-salesforce.md)
 * [Platform Key Syntax](technical/platform-key-syntax.md)
-* [Protect Contact Fields](technical/protect-contact-fields.md)
+* [Protect Contact Fields](general/protect-contact-fields.md)
 * [Run Campaign Post and Donation Post Asynchronously](technical/run-campaign-post-and-donation-post-asynchronously.md)
-* [Salesforce Connected App Usage Restrictions](technical/salesforce-connected-app-usage-restrictions.md)
-* [Too many SOQL queries: 101](technical/too-many-soql-queries-101.md)
-* [Too many SOQL queries: 101 (dlrs)](technical/too-many-soql-queries-101-dlrs.md)
-* [Unable to Lock Row Error (UNABLE\_TO\_LOCK\_ROW)](technical/unable-to-lock-row-error-unable_to_lock_row.md)
-* [Understanding Unhandled Flow Faults](technical/understanding-unhandled-flow-faults.md)
-* [Uninstalling MoveData](technical/uninstalling-movedata.md)
-* [Upgrading MoveData](technical/upgrading-movedata.md)
-* [Viewing Polling Attempts](technical/viewing-polling-attempts.md)
-* [Whitelisting MoveData APIs](technical/whitelisting-movedata-apis.md)
+* [Salesforce Connected App Usage Restrictions](general/salesforce-connected-app-usage-restrictions.md)
+* [Too many SOQL queries: 101](general/too-many-soql-queries-101.md)
+* [Too many SOQL queries: 101 (dlrs)](general/too-many-soql-queries-101-dlrs.md)
+* [Unable to Lock Row Error (UNABLE\_TO\_LOCK\_ROW)](general/unable-to-lock-row-error-unable_to_lock_row.md)
+* [Understanding Unhandled Flow Faults](general/understanding-unhandled-flow-faults.md)
+* [Uninstalling MoveData](general/uninstalling-movedata.md)
+* [Upgrading MoveData](general/upgrading-movedata.md)
+* [Viewing Polling Attempts](general/viewing-polling-attempts.md)
+* [Whitelisting MoveData APIs](system/whitelisting-movedata-apis.md)
 
 ## Business
 
-* [Data Imports](business/data-imports.md)
+* [Data Imports](general/data-imports.md)

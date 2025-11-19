@@ -7,7 +7,7 @@ description: Map platform data to Salesforce records using Flow decision logic.
 {% hint style="info" %}
 Metadata
 
-* category=customise
+* category=Customising MoveData Integrations
 * integration=all
 * tags=flows,video
 {% endhint %}

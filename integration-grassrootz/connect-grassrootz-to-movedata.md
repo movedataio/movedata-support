@@ -3,6 +3,7 @@
 {% hint style="info" %}
 Metadata
 
+* group=Integration
 * category=Grassrootz
 * integration=Grassrootz
 * tags=config

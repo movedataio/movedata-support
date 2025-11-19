@@ -3,6 +3,7 @@
 {% hint style="info" %}
 Metadata
 
+* group=Integration
 * category=Grassrootz
 * integration=grassrootz
 * tags=fee

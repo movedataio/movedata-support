@@ -7,7 +7,7 @@ description: How to raise your own errors within a flow.
 {% hint style="info" %}
 Metadata
 
-* category=technical
+* category=Technical
 * tags=errors,custom,log,flow
 {% endhint %}
 

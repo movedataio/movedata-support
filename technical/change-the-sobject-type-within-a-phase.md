@@ -3,7 +3,7 @@
 {% hint style="info" %}
 Metadata
 
-* category=technical
+* category=Technical
 * tags=sobject,advanced
 {% endhint %}
 

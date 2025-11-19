@@ -3,6 +3,7 @@
 {% hint style="info" %}
 Metadata
 
+* group=Integration
 * category=JustGiving
 * integration=justgiving
 * tags=data,campaign

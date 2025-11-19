@@ -7,6 +7,7 @@ description: Set up webhook integration between Raisely and Salesforce via MoveD
 {% hint style="info" %}
 Metadata
 
+* group=Integration
 * category=Raisely
 * integration=raisely
 * tags=campaign,video

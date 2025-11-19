@@ -7,7 +7,7 @@ description: Add platform-specific business rules in Salesforce using Flow decis
 {% hint style="info" %}
 Metadata
 
-* category=customise
+* category=Customising MoveData Integrations
 * integration=all
 * tags=flows,video
 {% endhint %}

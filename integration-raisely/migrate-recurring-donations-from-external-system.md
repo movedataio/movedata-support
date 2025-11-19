@@ -3,6 +3,7 @@
 {% hint style="info" %}
 Metadata
 
+* group=Integration
 * category=Raisely
 * integration=raisely
 * tags=recurring,data,data migration,data import

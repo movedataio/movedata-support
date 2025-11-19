@@ -9,7 +9,8 @@ description: >-
 {% hint style="info" %}
 Metadata
 
-* category=funraisin
+* group=Integration
+* category=Funraisin
 * integration=funraisin
 * tags=campaign
 {% endhint %}

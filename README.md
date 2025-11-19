@@ -3,7 +3,8 @@
 {% hint style="info" %}
 Metadata
 
-* category=enthuse
+* group=Integration
+* category=Enthuse
 * integration=enthuse
 * tags=data
 {% endhint %}

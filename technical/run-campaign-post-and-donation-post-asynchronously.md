@@ -3,7 +3,7 @@
 {% hint style="info" %}
 Metadata
 
-* category=technical
+* category=Technical
 * tags=sync,limits
 {% endhint %}
 
@@ -17,7 +17,7 @@ In certain scenarios you may want to run Campaign and/or Donation Post Flows asy
 In a practical sense, this can provide SOQL relief where your processes are creating or updating records on the basis of Campaign, Campaign Member, or Opportunity records being created or updated.
 
 {% hint style="info" %}
-Related Article: [Too many SOQL queries: 101](too-many-soql-queries-101.md)
+Related Article: [Too many SOQL queries: 101](../general/too-many-soql-queries-101.md)
 {% endhint %}
 
 ### Disadvantages <a href="#h_f4c373e8d9" id="h_f4c373e8d9"></a>
