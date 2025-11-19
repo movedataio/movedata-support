@@ -12,23 +12,27 @@ hide:
     
     // Listen for token
     window.addEventListener('message', function(event) {
-        console.log('Listen Event', event);
+        // console.log('[Aura] Received message', event.origin, event.data);
 
         if (!salesforceOrigins.includes(event.origin)) {
-            console.warn('Rejected message from:', event.origin);
+            console.warn('[Aura] Rejected message from:', event.origin);
             return;
         }
         
         if (event.data.type === 'AUTH_TOKEN') {
-            var token = event.data.token; 
-            // Use the token
-            console.log('Received token', token);
+            console.log('[Aura] Received AUTH_TOKEN message');
+            var token = event.data.token;
+            window.setSalesforceToken(token);
+
+            console.log('[Support] Posting AUTH_READY message');
+            window.parent.postMessage({ type: 'AUTH_READY' }, '*');
         }
     });
+    console.log('[Support] postMessage API listener registered');
     
     // Tell parent we're ready
     if (window.parent !== window) {
-        console.log('Posting IFrame Ready');
+        console.log('[Support] Posting IFRAME_READY message');
         window.parent.postMessage({ type: 'IFRAME_READY' }, '*');
     }
 })();

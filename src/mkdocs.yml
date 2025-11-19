@@ -20,6 +20,7 @@ extra_css:
 extra_javascript:
   - https://cdn.jsdelivr.net/npm/marked@11.1.1/marked.min.js
   - assets/javascript/ask-ai-modal.js
+  - assets/javascript/auth.js
 markdown_extensions:
   - admonition
   - pymdownx.details
@@ -34,4 +35,4 @@ markdown_extensions:
           - overrides/.icons
 nav:
   - Home: index.md
-  - Knowledge: search.md
+  - Knowledge Base: search.md
