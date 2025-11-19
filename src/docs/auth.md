@@ -12,7 +12,7 @@ hide:
     
     // Listen for token
     window.addEventListener('message', function(event) {
-        console.log(event);
+        console.log('Listen Event', event);
 
         if (!salesforceOrigins.includes(event.origin)) {
             console.warn('Rejected message from:', event.origin);
