@@ -28,6 +28,7 @@ hide:
     
     // Tell parent we're ready
     if (window.parent !== window) {
+        console.log('Posting IFrame Ready');
         window.parent.postMessage({ type: 'IFRAME_READY' }, '*');
     }
 })();
