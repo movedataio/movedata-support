@@ -14,13 +14,13 @@ hide:
     window.addEventListener('message', function(event) {
         // console.log('[Aura] Received message', event.origin, event.data);
 
-        if (!salesforceOrigins.includes(event.origin)) {
-            console.warn('[Aura] Rejected message from:', event.origin);
+        if (!salesforceOrigins.some((sfOrigin) => event.origin.includes(sfOrigin))) {
+            console.warn('[Support] Rejected message from:', event.origin);
             return;
         }
         
         if (event.data.type === 'AUTH_TOKEN') {
-            console.log('[Aura] Received AUTH_TOKEN message');
+            console.log('[Support] Received AUTH_TOKEN message');
             var token = event.data.token;
             window.setSalesforceToken(token);
 
