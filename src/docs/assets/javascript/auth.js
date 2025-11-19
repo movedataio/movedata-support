@@ -60,10 +60,40 @@
         var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
         return match ? match[2] : null;
     }
+
+    
     
     // Expose globally for API calls
     window.setSalesforceToken = saveToken;
     window.getSalesforceToken = getToken;
     window.clearSalesforceToken = clearToken;
+
+    // ---------------------------------------------------------------
+    
+    /**
+     * Update header to show authentication status
+     */
+    function updateHeaderAuthStatus() {
+        var token = getToken();
+        var headerTopic = document.querySelector('.md-header__topic .md-ellipsis');
+        
+        if (headerTopic && token) {
+            var lockEmoji = headerTopic.querySelector('.auth-lock');
+            if (!lockEmoji) {
+                var span = document.createElement('span');
+                span.className = 'auth-lock';
+                span.textContent = ' 🔒';
+                headerTopic.appendChild(span);
+                console.log('[Auth] Added lock emoji to header');
+            }
+        }
+    }
+    
+    // Update header on load
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', updateHeaderAuthStatus);
+    } else {
+        updateHeaderAuthStatus();
+    }
 
 })();
