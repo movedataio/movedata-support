@@ -83,6 +83,8 @@
                 var span = document.createElement('span');
                 span.className = 'auth-lock';
                 span.textContent = ' 🔒';
+                span.title = 'Authenticated';
+                span.style.cursor = 'help';
                 headerTopic.appendChild(span);
                 console.log('[Auth] Added lock emoji to header');
             }
