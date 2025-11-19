@@ -32,8 +32,10 @@ hide:
     
     // Tell parent we're ready
     if (window.parent !== window) {
-        console.log('[Support] Posting IFRAME_READY message');
-        window.parent.postMessage({ type: 'IFRAME_READY' }, '*');
+        window.requestStorageAccess().then(function() {
+            console.log('[Support] Posting IFRAME_READY message');
+            window.parent.postMessage({ type: 'IFRAME_READY' }, '*');
+        });
     }
 })();
 </script>
