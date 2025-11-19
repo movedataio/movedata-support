@@ -23,12 +23,10 @@ hide:
             console.log('[Support] Received AUTH_TOKEN message');
             var token = event.data.token;
 
-            window.requestStorageAccess().then(function() {
-                window.setSalesforceToken(token);
+            window.setSalesforceToken(token);
 
-                console.log('[Support] Posting AUTH_READY message');
-                window.parent.postMessage({ type: 'AUTH_READY' }, '*');
-            });
+            console.log('[Support] Posting AUTH_READY message');
+            window.parent.postMessage({ type: 'AUTH_READY' }, '*');
         }
     });
     console.log('[Support] postMessage API listener registered');

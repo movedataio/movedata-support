@@ -5,44 +5,7 @@
 (function() {
     var TOKEN_KEY = 'sf_auth_token';
     var TOKEN_EXPIRY_KEY = 'sf_auth_token_expiry';
-    var TOKEN_TTL = 60 * 60 * 1000; // 60 minutes in milliseconds
-    var storageAccessGranted = false;
-    
-    /**
-     * Request unpartitioned storage access for cross-iframe localStorage
-     */
-    function requestStorageAccess() {
-        if (storageAccessGranted) {
-          console.log('[Auth] Unpartitioned storage already granted');
-          return Promise.resolve();
-        }
-
-        if (!document.requestStorageAccess) {
-            console.log('[Auth] Storage Access API not supported');
-            storageAccessGranted = true; // Assume access in unsupported browsers
-            return Promise.resolve();
-        }
-        
-        return document.requestStorageAccess()
-            .then(function() {
-                console.log('[Auth] Unpartitioned storage access granted');
-                storageAccessGranted = true;
-            })
-            .catch(function(err) {
-                console.warn('[Auth] Storage access denied:', err);
-                storageAccessGranted = false;
-            });
-    }
-    
-    /**
-     * Initialize storage access on load
-     */
-    if (window.parent !== window) {
-        // We're in an iframe, request storage access
-        requestStorageAccess();
-    } else {
-        storageAccessGranted = true;
-    }
+    var TOKEN_TTL = 60 * 60 * 1000; // 60 minutes in milliseconds   
     
     /**
      * Save token with expiration timestamp
@@ -50,9 +13,13 @@
      */
     function saveToken(token) {
         var expiry = Date.now() + TOKEN_TTL;
-        localStorage.setItem(TOKEN_KEY, token);
-        localStorage.setItem(TOKEN_EXPIRY_KEY, expiry.toString());
-        console.log('Token saved, expires in 60 minutes');
+        var expiryDate = new Date(expiry);
+        
+        // Use cookies for cross-context access
+        document.cookie = TOKEN_KEY + '=' + encodeURIComponent(token) + '; expires=' + expiryDate.toUTCString() + '; path=/; SameSite=None; Secure';
+        document.cookie = TOKEN_EXPIRY_KEY + '=' + expiry + '; expires=' + expiryDate.toUTCString() + '; path=/; SameSite=None; Secure';
+        
+        console.log('[Auth] Token saved as cookie, expires in 60 minutes');
     }
     
     /**
@@ -60,32 +27,41 @@
      * @returns {string|null} - The token or null if expired/missing
      */
     function getToken() {
-        var token = localStorage.getItem(TOKEN_KEY);
-        var expiry = localStorage.getItem(TOKEN_EXPIRY_KEY);
+        var token = getCookie(TOKEN_KEY);
+        var expiry = getCookie(TOKEN_EXPIRY_KEY);
         
         if (!token || !expiry) {
             return null;
         }
         
         if (Date.now() > parseInt(expiry, 10)) {
-            console.log('Token expired, clearing');
+            console.log('[Auth] Token expired, clearing');
             clearToken();
             return null;
         }
         
-        return token;
+        return decodeURIComponent(token);
     }
     
     /**
      * Clear stored token
      */
     function clearToken() {
-        localStorage.removeItem(TOKEN_KEY);
-        localStorage.removeItem(TOKEN_EXPIRY_KEY);
+        document.cookie = TOKEN_KEY + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; SameSite=None; Secure';
+        document.cookie = TOKEN_EXPIRY_KEY + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; SameSite=None; Secure';
+    }
+    
+    /**
+     * Helper to get cookie value
+     * @param {string} name - Cookie name
+     * @returns {string|null} - Cookie value or null
+     */
+    function getCookie(name) {
+        var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+        return match ? match[2] : null;
     }
     
     // Expose globally for API calls
-    window.requestStorageAccess = requestStorageAccess;
     window.setSalesforceToken = saveToken;
     window.getSalesforceToken = getToken;
     window.clearSalesforceToken = clearToken;
