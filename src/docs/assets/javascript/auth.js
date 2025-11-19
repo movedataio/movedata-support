@@ -12,7 +12,10 @@
      * Request unpartitioned storage access for cross-iframe localStorage
      */
     function requestStorageAccess() {
-        if (storageAccessGranted) return Promise.resolve();
+        if (storageAccessGranted) {
+          console.log('[Auth] Unpartitioned storage already granted');
+          return Promise.resolve();
+        }
 
         if (!document.requestStorageAccess) {
             console.log('[Auth] Storage Access API not supported');

@@ -22,20 +22,21 @@ hide:
         if (event.data.type === 'AUTH_TOKEN') {
             console.log('[Support] Received AUTH_TOKEN message');
             var token = event.data.token;
-            window.setSalesforceToken(token);
 
-            console.log('[Support] Posting AUTH_READY message');
-            window.parent.postMessage({ type: 'AUTH_READY' }, '*');
+            window.requestStorageAccess().then(function() {
+                window.setSalesforceToken(token);
+
+                console.log('[Support] Posting AUTH_READY message');
+                window.parent.postMessage({ type: 'AUTH_READY' }, '*');
+            });
         }
     });
     console.log('[Support] postMessage API listener registered');
-    
+
     // Tell parent we're ready
     if (window.parent !== window) {
-        window.requestStorageAccess().then(function() {
-            console.log('[Support] Posting IFRAME_READY message');
-            window.parent.postMessage({ type: 'IFRAME_READY' }, '*');
-        });
+        console.log('[Support] Posting IFRAME_READY message');
+        window.parent.postMessage({ type: 'IFRAME_READY' }, '*');
     }
 })();
 </script>
