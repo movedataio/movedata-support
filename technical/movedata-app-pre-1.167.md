@@ -10,7 +10,7 @@ Metadata
 {% hint style="info" %}
 If you use NPSP Fundraising & Donations Extension (pre-1.81) please complete the following upgrade and then return to this page:
 
-* [Fundraising & Donations Extension (pre-1.81)](../extension-npsp/fundraising-and-donations-extension-pre-1.81.md)
+* [Fundraising & Donations Extension (pre-1.81)](../nonprofit-success-pack/fundraising-and-donations-extension-pre-1.81.md)
 {% endhint %}
 
 MoveData App v1.167 introduces support for Commerce. This allows you to use MoveData to process ticket sales, merchandise sales, raffle ticket sales and other such information into Salesforce.
@@ -59,7 +59,7 @@ Below is a suite of SOQL checks you can execute to ensure the data has transferr
 Install the most recent version of the Fundraising & Donations Extension: [https://api.movedata.io/installer/npsp-extension](https://docs.movedata.io/en/articles/9744343-fundraising-donations-extension-pre-1-81)
 
 {% hint style="info" %}
-**Related Article:** [NPSP Fundraising & Donations Extension (pre-1.81)](../extension-npsp/fundraising-and-donations-extension-pre-1.81.md)
+**Related Article:** [NPSP Fundraising & Donations Extension (pre-1.81)](../nonprofit-success-pack/fundraising-and-donations-extension-pre-1.81.md)
 {% endhint %}
 
 ### Update Field Sets and Page Layouts <a href="#h_584d8f2d6f" id="h_584d8f2d6f"></a>
