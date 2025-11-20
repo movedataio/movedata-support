@@ -10,6 +10,7 @@ description: >-
 Metadata
 
 * category=Customising MoveData Integrations
+* subtitle=Explains how to work with dependant records; for example, a payment record that may be created after an opportunity.  Introduces the Post-Upsert phase.&#x20;
 * integration=all
 * tags=post-upsert,flows,video
 {% endhint %}

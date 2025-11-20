@@ -10,6 +10,7 @@ description: >-
 Metadata
 
 * category=Customising MoveData Integrations
+* subtitle=Often an organisation wants to assign a different campaign to the MoveData out-of-the-box logic.
 * integration=all
 * tags=campaign,flows,video
 {% endhint %}

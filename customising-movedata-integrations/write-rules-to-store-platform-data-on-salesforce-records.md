@@ -8,6 +8,7 @@ description: Map platform data to Salesforce records using Flow decision logic.
 Metadata
 
 * category=Customising MoveData Integrations
+* subtitle=Showcases how to set additional data for a MoveData notification using marketing / UTM data as an example.
 * integration=all
 * tags=flows,video
 {% endhint %}
