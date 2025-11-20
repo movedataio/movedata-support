@@ -10,6 +10,7 @@ description: >-
 Metadata
 
 * category=Customising MoveData Integrations
+* subtitle=Shows you how inherit a values from a parent record using Campaigns as an example.
 * integration=all
 * tags=inherit,flows,video
 {% endhint %}
