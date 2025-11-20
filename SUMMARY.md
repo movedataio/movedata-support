@@ -81,6 +81,7 @@
 * [Custom Errors](technical/custom-errors.md)
 * [Disable a MoveData Phase from Running](technical/disable-a-movedata-phase-from-running.md)
 * [Grant Salesforce Access to MoveData](<README (1).md>)
+* [How to Include / Exclude Fee Covered From Amount](technical/how-to-include-exclude-fee-covered-from-amount.md)
 * [Make HTTP Callouts in Flows](general/make-http-callouts-in-flows.md)
 * [MAXIMUM\_HIERARCHY\_LEVELS\_REACHED](general/maximum_hierarchy_levels_reached.md)
 * [MoveData App (pre-1.167)](general/movedata-app-pre-1.167.md)
