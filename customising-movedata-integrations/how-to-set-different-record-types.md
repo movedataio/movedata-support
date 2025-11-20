@@ -10,6 +10,7 @@ description: >-
 Metadata
 
 * category=Customising MoveData Integrations
+* subtitle=A practical example about how to select a different record type based on data contained within a notification.&#x20;
 * integration=all
 * tags=record,types,flows,video
 {% endhint %}
