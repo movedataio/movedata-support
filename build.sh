@@ -20,8 +20,9 @@ node ./bin/convert-lists.js ./lib/docs/knowledgebase
 node ./bin/convert-metadata.js ./lib/docs/knowledgebase
 node ./bin/update-fullwidth.js ./lib/docs/knowledgebase
 
-node ./bin/generate-index.js --includeFolderFilter knowledgebase --title "All Knowledge Base Articles by Category" --outputName ./lib/docs/knowledgebase/index_category.md --metadataGroup category
+node ./bin/generate-index.js --includeFolderFilter knowledgebase --title "All Knowledge Base Articles by Category" --outputName ./lib/docs/knowledgebase/index_category.md --metadataGroup group,category
 node ./bin/generate-index.js --includeFolderFilter knowledgebase --title "All Knowledge Base Articles by Alphabetical Order" --outputName ./lib/docs/knowledgebase/index_name.md
+node ./bin/generate-index.js --includeFolderFilter knowledgebase --title "Video Library" --description "List of all MoveData knowledge base video references." --outputName ./lib/index_video.md --metadataGroup category --tagFilter video --hideNavigation false --linkPrefix ../../knowledgebase --metadataPageDescription subtitle
 
 git clone --depth=1 --branch=documentation https://github.com/movedataio/movedata-support.git ./lib/docs/user_guide
 rm -rf ./lib/docs/user_guide/.git
@@ -48,8 +49,10 @@ node ./bin/convert-embeds.js ./lib/docs/developer
 node ./bin/convert-hints.js ./lib/docs/developer
 node ./bin/convert-lists.js ./lib/docs/developer
 node ./bin/convert-metadata.js ./lib/docs/developer
+mv ./lib/index_video.md ./lib/docs/developer/videos/video-library.md
 cat ./lib/docs/developer/SUMMARY-nav.yaml >> ./lib/mkdocs.yml
 
+echo "  - Knowledge Base: search.md" >> ./lib/mkdocs.yml
 echo "  - Reference:" >> ./lib/mkdocs.yml
 echo "    - "Home Page": reference/index.md " >> ./lib/mkdocs.yml
 

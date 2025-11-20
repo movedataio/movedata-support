@@ -35,4 +35,3 @@ markdown_extensions:
           - overrides/.icons
 nav:
   - Home: index.md
-  - Knowledge Base: search.md

@@ -27,8 +27,13 @@ import path from 'path';
  * --websiteRootFolder <path>    Root folder to scan (default: ./lib/docs)
  * --includeFolderFilter <path>  Specific subfolder to include (e.g., knowledgebase)
  * --title <string>             Title for the generated index
+ * --description <string>       Description text to appear below the title (optional)
  * --outputName <path>          Output file path for the index
  * --metadataGroup <field>      Group by metadata field (optional)
+ * --tagFilter <tag>            Filter files by tag (e.g., video)
+ * --linkPrefix <path>          Prefix to prepend to all links (e.g., /docs or https://example.com)
+ * --metadataPageDescription <field>  Metadata field to use as page description (e.g., subtitle)
+ * --hideNavigation <bool>      Hide navigation in output (default: true)
  * --dry-run                    Show what would be generated without writing
  * 
  * EXAMPLES:
@@ -41,6 +46,9 @@ import path from 'path';
  * 
  * # Generate index for specific schema folder
  * node generate-index.js --includeFolderFilter reference/schema/commerce --title "Commerce Schema Reference" --outputName ./lib/docs/reference/schema/commerce/index_all.md
+ * 
+ * # Generate index filtered by tag
+ * node generate-index.js --includeFolderFilter knowledgebase --title "Video Tutorials" --outputName ./lib/docs/knowledgebase/index_videos.md --tagFilter video
  */
 
 function parseYamlFrontmatter(content) {
@@ -119,13 +127,6 @@ function escapeMarkdownTitle(title) {
     .replace(/\]/g, '\\]'); // Escape closing brackets
 }
 
-function toProperCase(str) {
-  if (!str) return str;
-  return str.replace(/\w\S*/g, (txt) => 
-    txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
-  );
-}
-
 function getAllMarkdownFiles(dirPath, includeFolderFilter = null) {
   const files = [];
   
@@ -150,8 +151,8 @@ function getAllMarkdownFiles(dirPath, includeFolderFilter = null) {
       if (entry.isDirectory()) {
         traverse(fullPath, relativeFilePath);
       } else if (entry.isFile() && entry.name.endsWith('.md')) {
-        // Skip index files
-        if (entry.name.startsWith('index_')) {
+        // Skip index files and SUMMARY.md
+        if (entry.name.startsWith('index_') || entry.name === 'SUMMARY.md') {
           continue;
         }
         
@@ -169,7 +170,7 @@ function getAllMarkdownFiles(dirPath, includeFolderFilter = null) {
   return files;
 }
 
-function processMarkdownFiles(files) {
+function processMarkdownFiles(files, tagFilter = null) {
   const processedFiles = [];
   
   for (const file of files) {
@@ -177,6 +178,19 @@ function processMarkdownFiles(files) {
       const content = fs.readFileSync(file.fullPath, 'utf8');
       const metadata = parseYamlFrontmatter(content);
       const title = extractTitle(content) || file.baseName;
+      
+      // Apply tag filter if specified
+      if (tagFilter) {
+        const tags = metadata.tags || [];
+        const tagArray = Array.isArray(tags) ? tags : [tags];
+        const hasTag = tagArray.some(tag => 
+          tag.toString().toLowerCase() === tagFilter.toLowerCase()
+        );
+        
+        if (!hasTag) {
+          continue; // Skip files that don't have the required tag
+        }
+      }
       
       processedFiles.push({
         ...file,
@@ -188,51 +202,178 @@ function processMarkdownFiles(files) {
       console.error(`Warning: Could not process file ${file.fullPath}: ${error.message}`);
     }
   }
+
+  //processedFiles.forEach(f => console.log(f));
   
   return processedFiles;
 }
 
-function generateIndexContent(files, title, metadataGroup = null) {
-  let content = `---
+function generateIndexContent(files, title, metadataGroup = null, hideNavigation = true, description = null, linkPrefix = '', metadataPageDescription = null) {
+  let content = '';
+  
+  if (hideNavigation) {
+    content = `---
 hide:
   - navigation
 ---
 
-# ${title}\n\n`;
+`;
+  }
+  
+  content += `# ${title}\n\n`;
+  
+  if (description) {
+    content += `${description}\n\n`;
+  }
   
   if (metadataGroup) {
-    // Group by metadata field
-    const groups = {};
+    // Split metadataGroup by comma for hierarchical grouping
+    const groupFields = metadataGroup.split(',').map(f => f.trim());
     
-    for (const file of files) {
-      const groupValue = file.metadata[metadataGroup] || 'Uncategorised';
-      const groupKey = toProperCase(groupValue.toString());
+    if (groupFields.length === 1) {
+      // Single level grouping
+      const groups = {};
       
-      if (!groups[groupKey]) {
-        groups[groupKey] = [];
+      for (const file of files) {
+        const groupValue = file.metadata[groupFields[0]] || 'Uncategorised';
+        const groupKey = groupValue.toString();
+        
+        if (!groups[groupKey]) {
+          groups[groupKey] = [];
+        }
+        groups[groupKey].push(file);
       }
-      groups[groupKey].push(file);
-    }
-    
-    // Sort group keys alphabetically
-    const sortedGroupKeys = Object.keys(groups).sort();
-    
-    for (const groupKey of sortedGroupKeys) {
-      content += `## ${groupKey}\n\n`;
       
-      // Sort files within group alphabetically by title
-      const sortedFiles = groups[groupKey].sort((a, b) => 
-        a.title.localeCompare(b.title)
-      );
+      // Sort group keys alphabetically
+      const sortedGroupKeys = Object.keys(groups).sort();
       
-      for (const file of sortedFiles) {
-        const escapedTitle = escapeMarkdownTitle(file.title);
-        content += ` - [${escapedTitle}](${file.relativePath})\n`;
+      for (const groupKey of sortedGroupKeys) {
+        content += `## ${groupKey}\n\n`;
+        
+        // Sort files within group alphabetically by title
+        const sortedFiles = groups[groupKey].sort((a, b) => 
+          a.title.localeCompare(b.title)
+        );
+        
+        for (const file of sortedFiles) {
+          const escapedTitle = escapeMarkdownTitle(file.title);
+          const linkPath = linkPrefix ? `${linkPrefix}/${file.relativePath}` : file.relativePath;
+          content += ` - [${escapedTitle}](${linkPath})\n`;
+          
+          // Add page description if metadata field is specified
+          if (metadataPageDescription && file.metadata[metadataPageDescription]) {
+            const pageDesc = file.metadata[metadataPageDescription];
+            content += `   <br/>${pageDesc}\n`;
+          }
+        }
+        content += '\n';
       }
-      content += '\n';
+    } else {
+      // Hierarchical grouping (2+ levels)
+      const hierarchicalGroups = {};
+      
+      for (const file of files) {
+        // Get values for each grouping level
+        const groupValues = groupFields.map(field => {
+          const value = file.metadata[field];
+          return value ? value.toString() : null;
+        });
+        
+        // Determine the hierarchy
+        // If first field is null, use second field at top level
+        // If first field exists, use it as top level and second as child
+        let topLevelKey, childLevelKey;
+        
+        if (!groupValues[0]) {
+          // No top-level group, use second level as top
+          topLevelKey = groupValues[1] || 'Uncategorised';
+          childLevelKey = null;
+        } else {
+          // Top-level group exists
+          topLevelKey = groupValues[0];
+          childLevelKey = groupValues[1] || 'Uncategorised';
+        }
+        
+        // Initialize structure
+        if (!hierarchicalGroups[topLevelKey]) {
+          hierarchicalGroups[topLevelKey] = {};
+        }
+        
+        if (childLevelKey) {
+          if (!hierarchicalGroups[topLevelKey][childLevelKey]) {
+            hierarchicalGroups[topLevelKey][childLevelKey] = [];
+          }
+          hierarchicalGroups[topLevelKey][childLevelKey].push(file);
+        } else {
+          // No child level, add directly to top level
+          if (!hierarchicalGroups[topLevelKey].__direct) {
+            hierarchicalGroups[topLevelKey].__direct = [];
+          }
+          hierarchicalGroups[topLevelKey].__direct.push(file);
+        }
+      }
+      
+      // Sort and output hierarchical groups
+      const sortedTopKeys = Object.keys(hierarchicalGroups).sort();
+      
+      for (const topKey of sortedTopKeys) {
+        content += `## ${topKey}\n\n`;
+        
+        const childGroups = hierarchicalGroups[topKey];
+        
+        // Handle direct items first (no child grouping)
+        if (childGroups.__direct) {
+          const sortedFiles = childGroups.__direct.sort((a, b) => 
+            a.title.localeCompare(b.title)
+          );
+          
+          for (const file of sortedFiles) {
+            const escapedTitle = escapeMarkdownTitle(file.title);
+            const linkPath = linkPrefix ? `${linkPrefix}/${file.relativePath}` : file.relativePath;
+            content += ` - [${escapedTitle}](${linkPath})\n`;
+            
+            // Add page description if metadata field is specified
+            if (metadataPageDescription && file.metadata[metadataPageDescription]) {
+              const pageDesc = file.metadata[metadataPageDescription];
+              content += `   <br/>${pageDesc}\n`;
+            }
+          }
+          
+          if (Object.keys(childGroups).length > 1) {
+            content += '\n';
+          }
+        }
+        
+        // Handle child groups
+        const sortedChildKeys = Object.keys(childGroups)
+          .filter(key => key !== '__direct')
+          .sort();
+        
+        for (const childKey of sortedChildKeys) {
+          content += `### ${childKey}\n\n`;
+          
+          // Sort files within child group alphabetically by title
+          const sortedFiles = childGroups[childKey].sort((a, b) => 
+            a.title.localeCompare(b.title)
+          );
+          
+          for (const file of sortedFiles) {
+            const escapedTitle = escapeMarkdownTitle(file.title);
+            const linkPath = linkPrefix ? `${linkPrefix}/${file.relativePath}` : file.relativePath;
+            content += ` - [${escapedTitle}](${linkPath})\n`;
+            
+            // Add page description if metadata field is specified
+            if (metadataPageDescription && file.metadata[metadataPageDescription]) {
+              const pageDesc = file.metadata[metadataPageDescription];
+              content += `   <br/>${pageDesc}\n`;
+            }
+          }
+          content += '\n';
+        }
+      }
     }
   } else {
-    // Alphabetical listing
+    // Alphabetical listing (no grouping)
     content += `## All Articles\n\n`;
     
     // Sort files alphabetically by title
@@ -242,7 +383,14 @@ hide:
     
     for (const file of sortedFiles) {
       const escapedTitle = escapeMarkdownTitle(file.title);
-      content += ` - [${escapedTitle}](${file.relativePath})\n`;
+      const linkPath = linkPrefix ? `${linkPrefix}/${file.relativePath}` : file.relativePath;
+      content += ` - [${escapedTitle}](${linkPath})\n`;
+      
+      // Add page description if metadata field is specified
+      if (metadataPageDescription && file.metadata[metadataPageDescription]) {
+        const pageDesc = file.metadata[metadataPageDescription];
+        content += `   <br/>${pageDesc}\n`;
+      }
     }
     content += '\n';
   }
@@ -255,8 +403,13 @@ function generateIndex(options) {
     websiteRootFolder = './lib/docs',
     includeFolderFilter,
     title,
+    description,
     outputName,
     metadataGroup,
+    tagFilter,
+    linkPrefix,
+    metadataPageDescription,
+    hideNavigation = true,
     dryRun = false
   } = options;
   
@@ -266,8 +419,13 @@ function generateIndex(options) {
   console.error(`Website Root: ${websiteRootFolder}`);
   console.error(`Include Filter: ${includeFolderFilter || 'None (all files)'}`);
   console.error(`Title: ${title}`);
+  console.error(`Description: ${description || 'None'}`);
   console.error(`Output: ${outputName}`);
   console.error(`Metadata Group: ${metadataGroup || 'None (alphabetical)'}`);
+  console.error(`Tag Filter: ${tagFilter || 'None (all tags)'}`);
+  console.error(`Link Prefix: ${linkPrefix || 'None (relative paths)'}`);
+  console.error(`Page Description Field: ${metadataPageDescription || 'None'}`);
+  console.error(`Hide Navigation: ${hideNavigation}`);
   
   if (dryRun) {
     console.error('DRY RUN MODE - No files will be written');
@@ -303,12 +461,16 @@ function generateIndex(options) {
   
   // Process files and extract metadata
   console.error('Processing files and extracting metadata...');
-  const processedFiles = processMarkdownFiles(files);
+  const processedFiles = processMarkdownFiles(files, tagFilter);
   console.error(`Successfully processed ${processedFiles.length} files`);
+  
+  if (tagFilter && processedFiles.length === 0) {
+    console.error(`Warning: No files found with tag "${tagFilter}"`);
+  }
   
   // Generate index content
   console.error('Generating index content...');
-  const indexContent = generateIndexContent(processedFiles, title, metadataGroup);
+  const indexContent = generateIndexContent(processedFiles, title, metadataGroup, hideNavigation, description, linkPrefix, metadataPageDescription);
   
   if (dryRun) {
     console.error('\n' + '='.repeat(60));
@@ -335,6 +497,7 @@ function generateIndex(options) {
     console.error(`  Files processed: ${processedFiles.length}`);
     console.error(`  Output file: ${outputName}`);
     console.error(`  Grouping: ${metadataGroup ? `By ${metadataGroup}` : 'Alphabetical'}`);
+    console.error(`  Tag filter: ${tagFilter || 'None'}`);
     console.error('='.repeat(60));
     
     return { success: true, filesProcessed: processedFiles.length };
@@ -368,7 +531,12 @@ if (runningAsScript) {
       const value = args[i + 1];
       
       if (value && !value.startsWith('--')) {
-        options[key] = value;
+        // Handle boolean values
+        if (key === 'hideNavigation') {
+          options[key] = value.toLowerCase() === 'true';
+        } else {
+          options[key] = value;
+        }
         i++; // Skip next argument since we used it as a value
       } else {
         console.error(`Error: Missing value for ${arg}`);
@@ -385,13 +553,19 @@ if (runningAsScript) {
     console.error('  --websiteRootFolder <path>    Root folder to scan (default: ./lib/docs)');
     console.error('  --includeFolderFilter <path>  Specific subfolder to include');
     console.error('  --title <string>             Title for the generated index');
+    console.error('  --description <string>       Description text below title (optional)');
     console.error('  --outputName <path>          Output file path for the index');
     console.error('  --metadataGroup <field>      Group by metadata field (optional)');
+    console.error('  --tagFilter <tag>            Filter files by tag (optional)');
+    console.error('  --linkPrefix <path>          Prefix for links (e.g., /docs) (optional)');
+    console.error('  --metadataPageDescription <field>  Metadata field for page descriptions (optional)');
+    console.error('  --hideNavigation <bool>      Hide navigation in output (default: true)');
     console.error('  --dry-run                    Show what would be generated without writing');
     console.error('');
     console.error('Examples:');
     console.error('  node generate-index.js --includeFolderFilter knowledgebase --title "All Knowledge Base Articles" --outputName ./lib/docs/knowledgebase/index_alphabetical.md');
     console.error('  node generate-index.js --includeFolderFilter knowledgebase --title "All Knowledge Base Articles by Category" --outputName ./lib/docs/knowledgebase/index_category.md --metadataGroup category');
+    console.error('  node generate-index.js --includeFolderFilter knowledgebase --title "Video Tutorials" --outputName ./lib/docs/knowledgebase/index_videos.md --tagFilter video');
     process.exit(1);
   }
   
