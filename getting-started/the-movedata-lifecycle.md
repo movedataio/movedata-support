@@ -25,7 +25,7 @@ The lifecycle operates as a dynamic system that processes individual events thro
 ### Lifecycle Execution Flow
 
 {% hint style="info" %}
-References **Article:** [MoveData Architecture](https://support.movedata.io/developer/movedata/architectural-overview/) / **Video:** [Architecture 101](https://support.movedata.io/knowledgebase/technical/architecture-101/)
+**References** **Article:** [MoveData Architecture](https://support.movedata.io/developer/movedata/architectural-overview/) / **Video:** [Architecture 101](https://support.movedata.io/knowledgebase/technical/architecture-101/)
 {% endhint %}
 
 <figure><img src="../.gitbook/assets/movedata_lifecycle_svg (1).svg" alt=""><figcaption></figcaption></figure>
