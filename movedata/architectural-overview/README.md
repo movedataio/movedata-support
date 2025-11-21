@@ -1,5 +1,9 @@
 # Architectural Overview
 
+{% hint style="info" %}
+**Video:** [MoveData Architecture 101 Walkthrough](https://support.movedata.io/knowledgebase/technical/architecture-101/)
+{% endhint %}
+
 ## Overview <a href="#how-movedata-works" id="how-movedata-works"></a>
 
 MoveData operates as a modern, cloud-native integration platform specifically architected to bridge the gap between fundraising platforms and Salesforce environments for nonprofit organisations. Our platform transforms the complex challenge of data synchronisation into a seamless, automated process that respects your organisation's unique business rules whilst maintaining the highest standards of data integrity and security.
