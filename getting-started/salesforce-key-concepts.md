@@ -19,9 +19,7 @@ MoveData integrates directly with this platform, automatically syncing data from
 ### Nonprofit Data Architecture
 
 {% hint style="info" %}
-Nonprofit Success Pack Reference:
-
-Nonprofit Cloud Reference:
+[Nonprofit Success Pack Reference](https://support.movedata.io/reference/extension/npsp-fundraising/) / [Nonprofit Cloud Reference](https://support.movedata.io/reference/extension/non-profit-cloud/)
 {% endhint %}
 
 For nonprofit organisations, Salesforce uses specialised data models designed around the unique needs of mission-driven work. The most common architectures you'll encounter are:
@@ -43,7 +41,7 @@ In Salesforce, information is organised into "objects," which are like digital f
 * **Opportunities**: Donations, grants, or other fundraising activities
 * **Campaigns**: Marketing campaigns or fundraising initiatives
 
-**Custom Objects** are created to store information specific to your organisation's needs.  These can be created by the organisation or as part of third-party managed packages.
+**Custom Objects** are created to store information specific to your organisation's needs. These can be created by the organisation or as part of third-party managed packages.
 
 MoveData can integrate data into both standard and custom objects, automatically mapping fields from your external systems to the appropriate Salesforce fields. Our platform handles field matching intelligently, ensuring data flows into the right places within your Salesforce org.
 
