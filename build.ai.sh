@@ -6,17 +6,17 @@
 set -e  # Exit on error
 
 # Configuration
-ENVIRONMENT="${ENVIRONMENT:-uat}"
+ENVIRONMENT="${ENVIRONMENT:-prod}"
 S3_BUCKET_PATH="s3://${ENVIRONMENT}-movedata-ai/support/"
-KNOWLEDGE_BASE_ID="${KNOWLEDGE_BASE_ID:-IJDF9WCJTI}"
-KNOWLEDGE_BASE_DATA_SOURCE_ID="${KNOWLEDGE_BASE_DATA_SOURCE_ID:-GREZAHSG06}"
+KNOWLEDGE_BASE_ID="${KNOWLEDGE_BASE_ID:-USYYTXSDQW}"
+KNOWLEDGE_BASE_DATA_SOURCE_ID="${KNOWLEDGE_BASE_DATA_SOURCE_ID:-IH0ZDQZBLB}"
 KNOWLEDGE_BASE_SUPPRESS="${KNOWLEDGE_BASE_SUPPRESS:-1}"
 AWS_REGION="ap-southeast-2"
 
 # Algolia Configuration
-ALGOLIA_APP_ID="${ALGOLIA_APP_ID:-EAEIU7PW2Y}"
-ALGOLIA_ADMIN_KEY="${ALGOLIA_ADMIN_KEY}"
-ALGOLIA_INDEX_NAME="${ALGOLIA_INDEX_NAME:-prod_support_index}"
+ALGOLIA_APP_ID="${ALGOLIA_APP_ID:-T5JLHGQ4EC}"
+ALGOLIA_ADMIN_KEY="${ALGOLIA_ADMIN_KEY:-b0af5a1dee44d67310ca95726f53af48}"
+ALGOLIA_INDEX_NAME="${ALGOLIA_INDEX_NAME:-prod-movedata-support-website}"
 
 echo "======================================================================"
 echo "MoveData Support Documentation Sync"
@@ -95,8 +95,8 @@ process_branch() {
     echo "Converting metadata from note blocks to frontmatter..."
     node ./bin/convert-metadata.js ./movedata-support
     
-    echo "Generating AWS Bedrock metadata sidecar files..."
-    node ./bin/generate-metadata-aws.js ./movedata-support $web_path_prefix --source-repo ./movedata-support
+    #echo "Generating AWS Bedrock metadata sidecar files..."
+    #node ./bin/generate-metadata-aws.js ./movedata-support $web_path_prefix --source-repo ./movedata-support
     
     echo "Syncing files to output directory..."
     mkdir -p ./$output_dir
@@ -174,7 +174,7 @@ echo ""
 # echo ""
 
 echo "Uploading files to S3..."
-aws s3 sync . "$S3_BUCKET_PATH" --delete --region $AWS_REGION --exclude "*" --include "*.md" --include "*.metadata.json" --exclude "node_modules/*"
+aws s3 sync . "$S3_BUCKET_PATH" --delete --region $AWS_REGION --exclude "*" --include "*.md" --include "*.metadata.json" --exclude "node_modules/*" --exclude "package.json" --exclude "package-lock.json"
 echo "✓ Files synced to S3"
 echo ""
 

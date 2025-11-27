@@ -302,7 +302,7 @@ async function sendMessage() {
   
   try {
     const token = window.getSalesforceToken ? window.getSalesforceToken() : null;
-    const rootUrl = (token) ? 'https://api.uat.movedata.io/admin/app' : 'https://api.uat.movedata.io/admin'
+    const rootUrl = (token) ? 'https://api.movedata.io/admin/app' : 'https://api.movedata.io/admin'
 
     const headers = { 'Content-Type': 'application/json' };
     if (token) headers['Authorization'] = `Bearer ${token}`;
