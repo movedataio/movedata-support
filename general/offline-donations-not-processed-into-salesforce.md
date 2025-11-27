@@ -27,3 +27,13 @@ Since MoveData acts on instructions from your connected platform, completing the
 * Re-save the related donation from your source platform (which, for most platforms, will trigger a new notification and process into Salesforce)
 
 If you require specific functionality for offline donations (such as setting the field `Type` to `Offline`) then you must [modify your integration](https://intercom.help/movedata/en/collections/9038155) to accommodate.
+
+## Interactive Demo
+
+### For NPSP:
+
+
+
+### For NPC:
+
+{% embed url="https://movedata.share.arcade.software/share/UAJNy87Nr9ukpLXYqwRI" %}
