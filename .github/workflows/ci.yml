@@ -59,8 +59,75 @@ jobs:
           name: site-zip
           path: site.zip
 
-  deploy:
+  depends: 
     needs: build
+    environment: ${{ github.ref == 'refs/heads/uat' && 'uat' || 'prod' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set up Node.js
+        uses: actions/setup-node@v5
+
+      - name: Determine Environment
+        run: |
+          echo "GITHUB_REF=${GITHUB_REF}"
+          case "${GITHUB_REF##*/}" in
+            uat) echo "Environment: UAT"
+              echo "STAGE=uat" >> $GITHUB_ENV
+              #echo "::set-env name=ENVIRONMENT::uat"
+              ;;
+            *) echo "Environment: ${GITHUB_BASE_REF}"
+              echo "STAGE=prod" >> $GITHUB_ENV
+              #echo "::set-env name=ENVIRONMENT::prod"
+              ;;
+          esac
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Check terraform version
+        run: terraform --version
+
+      - uses: actions/checkout@v4
+
+      - name: Terraform Init
+        id: init
+        run: |
+          terraform init
+          terraform workspace select ${{ env.STAGE }}
+        env:
+          AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
+          AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+          AWS_REGION: ${{vars.AWS_REGION}}
+
+      - name: Terraform Validate
+        id: validate
+        run: |
+          terraform validate
+        env:
+          AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
+          AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+          AWS_REGION: ${{vars.AWS_REGION}}
+
+      - name: Terraform Plan
+        id: plan
+        run: |
+          terraform plan -out="./${{ env.STAGE }}.plan.tfplan"
+        env:
+          AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
+          AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+          AWS_REGION: ${{vars.AWS_REGION}}
+ 
+      - name: Terraform Apply
+        run: |
+          terraform apply -auto-approve -parallelism=30 ./${{ env.STAGE }}.plan.tfplan
+        env:
+          AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
+          AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+          AWS_REGION: ${{vars.AWS_REGION}}
+
+  deploy:
+    needs: depends
     runs-on: ubuntu-latest
     steps:
     - name: Download site.zip artifact
@@ -81,10 +148,10 @@ jobs:
       run: |
         aws s3 sync ./lib/site s3://$S3_BUCKET --delete --region $AWS_REGION
       env:
-        AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
-        AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
-        AWS_REGION: ${{secrets.AWS_REGION}}
-        S3_BUCKET: movedata-support-html
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_REGION: ${{ secrets.AWS_REGION }}
+        S3_BUCKET: ${{ vars.S3_BUCKET }}
 
   sync-ai:
     needs: deploy
@@ -92,7 +159,7 @@ jobs:
     secrets:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      AWS_REGION: ap-southeast-2
+      AWS_REGION: ${{ secrets.AWS_REGION }}
       KNOWLEDGE_BASE_ID: ${{ vars.KNOWLEDGE_BASE_ID }}
       KNOWLEDGE_BASE_DATA_SOURCE_ID: ${{ vars.KNOWLEDGE_BASE_DATA_SOURCE_ID }}
       KNOWLEDGE_BASE_SUPPRESS: ${{ vars.KNOWLEDGE_BASE_SUPPRESS }}
