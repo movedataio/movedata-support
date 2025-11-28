@@ -240,12 +240,19 @@ hide:
         // Check for notificationKey query parameter on page load
         const urlParams = new URLSearchParams(window.location.search);
         const notificationKey = urlParams.get('notificationKey');
+        const ts = urlParams.get('ts');
         
-        if (notificationKey) {
-            askInput.value = `Tell me about the following notification: ${notificationKey}`;
+        if (notificationKey && ts) {
+            // Check if timestamp is no older than 10 seconds
+            const currentTime = Math.floor(Date.now() / 1000); // Current Unix timestamp in seconds
+            const timestamp = parseInt(ts, 10);
+            
+            if (!isNaN(timestamp) && (currentTime - timestamp) <= 10) {
+                askInput.value = `Tell me about the following notification: ${notificationKey}`;
 
-            // Wait for page to fully load, then execute
-            setTimeout(() => openAIAssistant(), 500);
+                // Wait for page to fully load, then execute
+                setTimeout(() => openAIAssistant(), 500);
+            }
         }
 
         // Handle Enter key press
