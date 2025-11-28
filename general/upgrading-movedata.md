@@ -7,7 +7,7 @@ Metadata
 * tags=config,upgrade
 {% endhint %}
 
-Occasionally you may need to upgrade your version of MoveData to gain access to new features or functionality.
+Occasionally you may need to upgrade your version of MoveData and its extensions to gain access to new features or functionality.
 
 ### Upgrade the MoveData App <a href="#h_f2954470ad" id="h_f2954470ad"></a>
 
@@ -15,11 +15,18 @@ You can upgrade the MoveData app via [https://api.movedata.io/installer/app](htt
 
 <figure><img src="../.gitbook/assets/App Upgrade.png" alt=""><figcaption></figcaption></figure>
 
-### Upgrade the MoveData Extensions <a href="#h_0bab9bdd79" id="h_0bab9bdd79"></a>
+### Upgrading MoveData Extensions <a href="#h_0bab9bdd79" id="h_0bab9bdd79"></a>
 
-You can upgrade the MoveData Extensions by opening MoveData from the app launcher and clicking Settings → Extensions → Update and following the prompts.
+{% embed url="https://movedata.share.arcade.software/share/OLrOiv6NaU26lL94HCx3" %}
 
-<figure><img src="../.gitbook/assets/Extension Upgrade.png" alt=""><figcaption></figcaption></figure>
+### Transcription
+
+* Open Settings
+* Click Extension
+* Find the extension you wish to upgrade and click Update
+* Install for All Users or Admins Only. If you are unsure, select All Users
+* Accept terms and click Upgrade
+* Your Extension has been upgraded to the latest version
 
 ### Complex Upgrades <a href="#h_f570980243" id="h_f570980243"></a>
 
