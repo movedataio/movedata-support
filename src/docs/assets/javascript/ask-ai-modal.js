@@ -302,7 +302,7 @@ async function sendMessage() {
   
   try {
     const auth = window.getSalesforceToken ? window.getSalesforceToken() : null;
-    const rootHost = auth && auth.isProduction ? 'api.movedata.io' : 'api.uat.movedata.io';
+    const rootHost = auth && auth.isProduction === false ? 'api.uat.movedata.io' : 'api.movedata.io';
     const rootUrl = (auth) ? `https://${rootHost}/admin/app` : `https://${rootHost}/admin`;
 
     const headers = { 'Content-Type': 'application/json' };
