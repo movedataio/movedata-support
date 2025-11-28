@@ -16,6 +16,7 @@ on:
 
 jobs:
   build:
+    environment: ${{ github.ref == 'refs/heads/uat' && 'uat' || 'prod' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
