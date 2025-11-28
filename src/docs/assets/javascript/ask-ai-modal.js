@@ -302,8 +302,11 @@ async function sendMessage() {
   
   try {
     const auth = window.getSalesforceToken ? window.getSalesforceToken() : null;
+    console.log('Ask AI: Retrieved auth token', auth);
+
     const rootHost = auth && auth.isProduction ? 'api.movedata.io' : 'api.uat.movedata.io';
     const rootUrl = (auth) ? `https://${rootHost}/admin/app` : `https://${rootHost}/admin`;
+    console.log('Ask AI: Using root URL', rootUrl);
 
     const headers = { 'Content-Type': 'application/json' };
     if (auth && auth.token) headers['Authorization'] = `Bearer ${auth.token}`;
