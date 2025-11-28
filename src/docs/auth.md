@@ -22,8 +22,9 @@ hide:
         if (event.data.type === 'AUTH_TOKEN') {
             console.log('[Support] Received AUTH_TOKEN message');
             var token = event.data.token;
+            var isProduction = event.data.isProduction;
 
-            window.setSalesforceToken(token);
+            window.setSalesforceToken({ token, isProduction });
 
             console.log('[Support] Posting AUTH_READY message');
             window.parent.postMessage({ type: 'AUTH_READY' }, '*');

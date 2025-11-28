@@ -301,11 +301,12 @@ async function sendMessage() {
   showLoading();
   
   try {
-    const token = window.getSalesforceToken ? window.getSalesforceToken() : null;
-    const rootUrl = (token) ? 'https://api.movedata.io/admin/app' : 'https://api.movedata.io/admin'
+    const auth = window.getSalesforceToken ? window.getSalesforceToken() : null;
+    const rootHost = auth && auth.isProduction ? 'api.movedata.io' : 'api.uat.movedata.io';
+    const rootUrl = (auth) ? `https://${rootHost}/admin/app` : `https://${rootHost}/admin`;
 
     const headers = { 'Content-Type': 'application/json' };
-    if (token) headers['Authorization'] = `Bearer ${token}`;
+    if (auth && auth.token) headers['Authorization'] = `Bearer ${auth.token}`;
 
     const response = await fetch(`${rootUrl}/support/agent`, {
       method: 'POST',

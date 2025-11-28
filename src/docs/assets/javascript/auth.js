@@ -16,7 +16,7 @@
         var expiryDate = new Date(expiry);
         
         // Use cookies for cross-context access
-        document.cookie = TOKEN_KEY + '=' + encodeURIComponent(token) + '; expires=' + expiryDate.toUTCString() + '; path=/; SameSite=None; Secure';
+        document.cookie = TOKEN_KEY + '=' + encodeURIComponent(JSON.stringify(token)) + '; expires=' + expiryDate.toUTCString() + '; path=/; SameSite=None; Secure';
         document.cookie = TOKEN_EXPIRY_KEY + '=' + expiry + '; expires=' + expiryDate.toUTCString() + '; path=/; SameSite=None; Secure';
         
         console.log('[Auth] Token saved as cookie, expires in 60 minutes');
@@ -40,7 +40,7 @@
             return null;
         }
         
-        return decodeURIComponent(token);
+        return JSON.parse(decodeURIComponent(token));
     }
     
     /**
