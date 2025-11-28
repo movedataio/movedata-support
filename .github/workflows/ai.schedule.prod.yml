@@ -1,0 +1,27 @@
+name: [prod] Sync MoveData Support Documentation
+
+on:
+  schedule:
+    # Runs every 6 hours at 00:00, 06:00, 12:00, and 18:00 UTC
+    - cron: '0 0,6,12,18 * * *'
+  workflow_dispatch: # Allow manual trigger
+
+env:
+  ENVIRONMENT: prod
+
+jobs:
+  sync-ai:
+    needs: deploy
+    uses: ./.github/workflows/ai.yml
+    with:
+      ENVIRONMENT: ${{ env.ENVIRONMENT }}
+      KNOWLEDGE_BASE_ID: ${{ vars.KNOWLEDGE_BASE_ID }}
+      KNOWLEDGE_BASE_DATA_SOURCE_ID: ${{ vars.KNOWLEDGE_BASE_DATA_SOURCE_ID }}
+      KNOWLEDGE_BASE_SUPPRESS: "0"
+      ALGOLIA_APP_ID: ${{ vars.ALGOLIA_APP_ID }}
+      ALGOLIA_INDEX_NAME: ${{ vars.ALGOLIA_INDEX_NAME }}
+    secrets:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_REGION: ${{ secrets.AWS_REGION }}
+      ALGOLIA_ADMIN_KEY: ${{ secrets.ALGOLIA_ADMIN_KEY }}

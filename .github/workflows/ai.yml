@@ -1,8 +1,26 @@
 name: Sync MoveData Support Documentation
 
 on:
-  workflow_dispatch: # Allow manual trigger
   workflow_call: # Allow this workflow to be called by other workflows
+    inputs:
+      ENVIRONMENT:
+        required: false
+        type: string
+      KNOWLEDGE_BASE_ID:
+        required: false
+        type: string
+      KNOWLEDGE_BASE_DATA_SOURCE_ID:
+        required: false
+        type: string
+      KNOWLEDGE_BASE_SUPPRESS:
+        required: false
+        type: string
+      ALGOLIA_APP_ID:
+        required: false
+        type: string
+      ALGOLIA_INDEX_NAME:
+        required: false
+        type: string
     secrets:
       AWS_ACCESS_KEY_ID:
         required: true
@@ -10,25 +28,15 @@ on:
         required: true
       AWS_REGION: 
         required: true
-      KNOWLEDGE_BASE_ID:
-        required: true
-      KNOWLEDGE_BASE_DATA_SOURCE_ID:
-        required: true
-      KNOWLEDGE_BASE_SUPPRESS:
-        required: true
-      ALGOLIA_APP_ID:
-        required: true
       ALGOLIA_ADMIN_KEY:
-        required: true
-      ALGOLIA_INDEX_NAME:
         required: true
 
 env:
-  ENVIRONMENT: ${{ github.ref == 'refs/heads/main' && 'prod' || 'uat' }}
+  ENVIRONMENT: ${{ inputs.ENVIRONMENT != '' && inputs.ENVIRONMENT || (github.ref == 'refs/heads/main' && 'prod' || 'uat') }}
 
 jobs:
   sync-documentation:
-    environment: ${{ github.ref == 'refs/heads/main' && 'prod' || 'uat' }}
+    environment: ${{ inputs.ENVIRONMENT != '' && inputs.ENVIRONMENT || (github.ref == 'refs/heads/main' && 'prod' || 'uat') }}
     runs-on: ubuntu-latest
     
     steps:
@@ -48,9 +56,9 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: ${{ secrets.AWS_REGION }}
-          KNOWLEDGE_BASE_ID: ${{ secrets.KNOWLEDGE_BASE_ID || vars.KNOWLEDGE_BASE_ID }}
-          KNOWLEDGE_BASE_DATA_SOURCE_ID: ${{ secrets.KNOWLEDGE_BASE_DATA_SOURCE_ID || vars.KNOWLEDGE_BASE_DATA_SOURCE_ID }}
-          KNOWLEDGE_BASE_SUPPRESS: ${{ secrets.KNOWLEDGE_BASE_SUPPRESS || vars.KNOWLEDGE_BASE_SUPPRESS }}
-          ALGOLIA_APP_ID: ${{ secrets.ALGOLIA_APP_ID || vars.ALGOLIA_APP_ID }}
-          ALGOLIA_ADMIN_KEY: ${{ secrets.ALGOLIA_ADMIN_KEY || vars.ALGOLIA_ADMIN_KEY }}
-          ALGOLIA_INDEX_NAME: ${{ secrets.ALGOLIA_INDEX_NAME || vars.ALGOLIA_INDEX_NAME }}
+          KNOWLEDGE_BASE_ID: ${{ inputs.KNOWLEDGE_BASE_ID != '' && inputs.KNOWLEDGE_BASE_ID || vars.KNOWLEDGE_BASE_ID }}
+          KNOWLEDGE_BASE_DATA_SOURCE_ID: ${{ inputs.KNOWLEDGE_BASE_DATA_SOURCE_ID != '' && inputs.KNOWLEDGE_BASE_DATA_SOURCE_ID || vars.KNOWLEDGE_BASE_DATA_SOURCE_ID }}
+          KNOWLEDGE_BASE_SUPPRESS: ${{ inputs.KNOWLEDGE_BASE_SUPPRESS != '' && inputs.KNOWLEDGE_BASE_SUPPRESS || vars.KNOWLEDGE_BASE_SUPPRESS }}
+          ALGOLIA_APP_ID: ${{ inputs.ALGOLIA_APP_ID != '' && inputs.ALGOLIA_APP_ID || vars.ALGOLIA_APP_ID }}
+          ALGOLIA_ADMIN_KEY: ${{ secrets.ALGOLIA_ADMIN_KEY }}
+          ALGOLIA_INDEX_NAME: ${{ inputs.ALGOLIA_INDEX_NAME != '' && inputs.ALGOLIA_INDEX_NAME || vars.ALGOLIA_INDEX_NAME }}
