@@ -70,14 +70,9 @@ For example, if you add the field `company` and this field has a value, then Mov
 
 The following custom fields are automatically included in MoveData notifications:
 
-| Attribute Name   | Description                           | Example                            |
-| ---------------- | ------------------------------------- | ---------------------------------- |
-| `facebookId`     | Facebook User ID                      | `123456789`                        |
-| `accessToken`    | User Access Token                     | `88985ee81ea8cb1bfbf91fd120abdb59` |
-| `unsubscribedAt` | Date & Time when Contact unsubscribed | `2024-01-15T10:30:00Z`             |
-| `preferredName`  | User's Preferred Name                 | `Dan`                              |
+<details>
 
-#### Contact Custom Fields
+<summary>Contact Custom Fields</summary>
 
 | Attribute Name   | Description                           | Example                            |
 | ---------------- | ------------------------------------- | ---------------------------------- |
@@ -86,7 +81,11 @@ The following custom fields are automatically included in MoveData notifications
 | `unsubscribedAt` | Date & Time when Contact unsubscribed | `2024-01-15T10:30:00Z`             |
 | `preferredName`  | User's Preferred Name                 | `Dan`                              |
 
-#### Campaign Custom Fields
+</details>
+
+<details>
+
+<summary>Campaign Custom Fields</summary>
 
 | Attribute Name      | Description                        | Example               |
 | ------------------- | ---------------------------------- | --------------------- |
@@ -102,7 +101,11 @@ The following custom fields are automatically included in MoveData notifications
 | `exerciseTotal`     | Exercise for Profile               | `85`                  |
 | `exerciseTotalTime` | Time Exercising for Profile        | `3200`                |
 
-#### Donation Custom Fields
+</details>
+
+<details>
+
+<summary>Donation Custom Fields</summary>
 
 | Attribute Name       | Description                                  | Example                                                                                                  |
 | -------------------- | -------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
@@ -120,15 +123,21 @@ The following custom fields are automatically included in MoveData notifications
 | `receiptDownloadUrl` | Raisely Receipt PDF Link                     | `https://api.raisely.com/v3/receipt/...pdf`                                                              |
 | `cardMethodType`     | Payment Method Type                          | `card`, `apple_pay`, `google_pay`                                                                        |
 
-#### Recurring Donation Custom Fields
+</details>
+
+<details>
+
+<summary>Recurring Donation Custom Fields</summary>
 
 | Attribute Name | Description                          | Example                               |
 | -------------- | ------------------------------------ | ------------------------------------- |
 | `status`       | Original Raisely Subscription Status | `OK`, `FAILED`, `CANCELLED`, `PAUSED` |
 
-#### Commerce Schema Fields
+</details>
 
-**Catalog Custom Fields**
+<details>
+
+<summary>Catalog Custom Fields</summary>
 
 | Attribute Name   | Description                                       | Example             |
 | ---------------- | ------------------------------------------------- | ------------------- |
@@ -139,7 +148,11 @@ The following custom fields are automatically included in MoveData notifications
 | `startDate`      | Start Date that the Product is available for Sale | `2024-01-01`        |
 | `endDate`        | Last Date that the Product is available for Sale  | `2024-12-31`        |
 
-**Order Custom Fields:**
+</details>
+
+<details>
+
+<summary>Order Custom Fields</summary>
 
 | Attribute Name       | Description                                  | Example               |
 | -------------------- | -------------------------------------------- | --------------------- |
@@ -149,12 +162,18 @@ The following custom fields are automatically included in MoveData notifications
 | `gatewayDescription` | Payment Gateway Transaction Description      | `Order via Stripe`    |
 | `receiptDownloadUrl` | Raisely Receipt PDF Link                     | `https://receipt.url` |
 
-**Order Item Custom Fields:**
+</details>
+
+<details>
+
+<summary>Order Item Custom Fields</summary>
 
 | Attribute Name     | Description       | Example     |
 | ------------------ | ----------------- | ----------- |
 | `status`           | Order Item Status | `CONFIRMED` |
 | `attendanceStatus` | Attendance Status | `ATTENDED`  |
+
+</details>
 
 ### Other Resources
 
