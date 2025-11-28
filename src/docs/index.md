@@ -237,6 +237,17 @@ hide:
         const askInput = document.getElementById('askInput');
         const askButton = document.getElementById('askButton');
 
+        // Check for notificationKey query parameter on page load
+        const urlParams = new URLSearchParams(window.location.search);
+        const notificationKey = urlParams.get('notificationKey');
+        
+        if (notificationKey) {
+            askInput.value = `Tell me about the following notification: ${notificationKey}`;
+
+            // Wait for page to fully load, then execute
+            setTimeout(() => openAIAssistant(), 500);
+        }
+
         // Handle Enter key press
         askInput.addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
@@ -330,5 +341,6 @@ hide:
             childList: true,
             subtree: true
         });
+
     })();
 </script>
