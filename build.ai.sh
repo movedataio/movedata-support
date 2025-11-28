@@ -95,8 +95,8 @@ process_branch() {
     echo "Converting metadata from note blocks to frontmatter..."
     node ./bin/convert-metadata.js ./movedata-support
     
-    #echo "Generating AWS Bedrock metadata sidecar files..."
-    #node ./bin/generate-metadata-aws.js ./movedata-support $web_path_prefix --source-repo ./movedata-support
+    echo "Generating AWS Bedrock metadata sidecar files..."
+    node ./bin/generate-metadata-aws.js ./movedata-support $web_path_prefix --source-repo ./movedata-support
     
     echo "Syncing files to output directory..."
     mkdir -p ./$output_dir
@@ -137,6 +137,7 @@ git checkout main
 cp package.json ../
 cd ..
 npm install
+echo "Current Folder: $(pwd)"
 
 echo "Uploading search records to Algolia..."
 node ./bin/sync-to-algolia.js . \

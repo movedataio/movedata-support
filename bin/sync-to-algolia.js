@@ -575,12 +575,12 @@ async function syncToAlgolia(contentPath, options = {}) {
   const allRecords = [];
   let filesProcessed = 0;
   let filesSkipped = 0;
-  
+
   for (const file of markdownFiles) {
     if (debug) {
       console.error(`\nProcessing: ${file}`);
     }
-    
+  
     const records = processMarkdownFile(file, debug);
     
     if (records.length > 0) {

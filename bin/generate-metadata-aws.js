@@ -312,6 +312,11 @@ function createMetadataJson(frontmatter, metadata) {
     } else if (typeof value === 'number' || typeof value === 'boolean') {
       cleanedMetadata[key] = value;
     }
+
+    // Stop after 10 attributes
+    if (Object.keys(cleanedMetadata).length >= 10) {
+      break;
+    }
   }
   
   // Structure for AWS Bedrock Knowledge Base
