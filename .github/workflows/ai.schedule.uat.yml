@@ -1,4 +1,4 @@
-name: [uat] Sync MoveData Support Documentation
+name: "[uat] Sync MoveData Support Documentation"
 
 on:
   schedule:
@@ -11,10 +11,9 @@ env:
 
 jobs:
   sync-ai:
-    needs: deploy
     uses: ./.github/workflows/ai.yml
     with:
-      ENVIRONMENT: ${{ env.ENVIRONMENT }}
+      ENVIRONMENT: uat
       KNOWLEDGE_BASE_ID: ${{ vars.KNOWLEDGE_BASE_ID }}
       KNOWLEDGE_BASE_DATA_SOURCE_ID: ${{ vars.KNOWLEDGE_BASE_DATA_SOURCE_ID }}
       KNOWLEDGE_BASE_SUPPRESS: "0"
