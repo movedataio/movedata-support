@@ -24,12 +24,11 @@ on:
         required: true
 
 env:
-  ENVIRONMENT: ${{ github.ref == 'refs/heads/master' && 'prod' || 'uat' }}
+  ENVIRONMENT: ${{ github.ref == 'refs/heads/main' && 'prod' || 'uat' }}
 
 jobs:
   sync-documentation:
-    environment: ${{ github.ref == 'refs/heads/master' && 'prod' || 'uat' }}
-
+    environment: ${{ github.ref == 'refs/heads/main' && 'prod' || 'uat' }}
     runs-on: ubuntu-latest
     
     steps:
