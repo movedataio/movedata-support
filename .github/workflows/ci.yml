@@ -128,6 +128,7 @@ jobs:
 
   deploy:
     needs: depends
+    environment: ${{ github.ref == 'refs/heads/uat' && 'uat' || 'prod' }}
     runs-on: ubuntu-latest
     steps:
     - name: Download site.zip artifact
