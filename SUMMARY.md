@@ -22,6 +22,7 @@
 * [Grassrootz: Fee Information](integration-grassrootz/grassrootz-fee-information.md)
 * [Connect Grassrootz to MoveData](integration-grassrootz/connect-grassrootz-to-movedata.md)
 * [Foreign Currency Donations](integration-grassrootz/foreign-currency-donations.md)
+* [How to Infer Amount for Grassrootz Foreign Currency Donation](integration-grassrootz/how-to-infer-amount-for-grassrootz-foreign-currency-donation.md)
 
 ## Integration: JustGiving
 
