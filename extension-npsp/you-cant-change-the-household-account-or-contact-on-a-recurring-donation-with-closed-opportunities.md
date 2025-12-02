@@ -72,6 +72,18 @@ The same error can also occur when the duplicate rules detect multiple contacts 
 
 </details>
 
+??? note "Transcript #2"
+    * The notification has failed due to a Salesforce validation rule
+    * Open Execution #1
+    * Looking through the logs, we see the integration is trying to replace the contact. This is due to differences between the existing Salesforce record and the data issued by the source platform
+    * Open App Launcher and Select Contact Merge
+    * Click Search Contacts
+    * Search Contacts by Name
+    * Select the records you would like to merge and click Next
+    * Select the values you would like to retain and click Merge
+    * Go back to your failed notification and click Reprocess
+    * Observe that the notification is processed successfully
+
 #### Different Contact or Organisation Account
 
 The same error can also occur when the Account changes. For example:
