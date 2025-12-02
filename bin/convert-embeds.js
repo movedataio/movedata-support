@@ -80,7 +80,8 @@ function createVimeoEmbed(videoId) {
 }
 
 function createArcadeEmbed(arcadeId) {
-  return `<!--ARCADE EMBED START--><div style="position: relative; max-height: calc(41px + 70vh); aspect-ratio: 0.709459 / 1; margin: 0px auto;"><iframe src="https://demo.arcade.software/${arcadeId}?embed&embed_mobile=inline&embed_desktop=inline&show_copy_link=true" title="Arcade Demo" frameborder="0" loading="lazy" webkitallowfullscreen mozallowfullscreen allowfullscreen allow="clipboard-write" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; color-scheme: light;" ></iframe></div><!--ARCADE EMBED END-->`;
+  //return `<!--ARCADE EMBED START--><div style="position: relative; max-height: calc(41px + 70vh); aspect-ratio: 0.709459 / 1; margin: 0px auto;"><iframe src="https://demo.arcade.software/${arcadeId}?embed&embed_mobile=inline&embed_desktop=inline&show_copy_link=true" title="Arcade Demo" frameborder="0" loading="lazy" webkitallowfullscreen mozallowfullscreen allowfullscreen allow="clipboard-write" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; color-scheme: light;" ></iframe></div><!--ARCADE EMBED END-->`;
+  return `<!--ARCADE EMBED START--><div style="position: relative; max-height: 540px; width: 100%; aspect-ratio: 1; margin: 30px 10px;"><iframe src="https://demo.arcade.software/${arcadeId}?embed&embed_mobile=inline&embed_desktop=inline&show_copy_link=true" title="Arcade Demo" frameborder="0" loading="lazy" webkitallowfullscreen mozallowfullscreen allowfullscreen allow="clipboard-write" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; color-scheme: light;" ></iframe></div><!--ARCADE EMBED END-->`;
 }
 
 function convertEmbed(match, url) {
