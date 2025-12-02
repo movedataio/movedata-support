@@ -53,9 +53,20 @@ If your recurring donation has closed opportunities, this can trigger the `You c
 
 The same error can also occur when the duplicate rules detect multiple contacts due to two or more of the same records being present. MoveData will use the first duplicate with the highest confidence rating as determined by Salesforce.
 
-In the below example, two identical records have been detected with the same confidence. The `You can't change the Household Account or Contact on a Recurring Donation that has Closed Opportunities` error will produce if the first contact (`003Mp000006lF5pIAE`) is different to the existing contact on the Recurring Donation record (`003Mp000006suFkIAI`).
+{% embed url="https://app.arcade.software/share/CN5x7Mk5FVcDBHwWVTk6" %}
 
-<figure><img src="../.gitbook/assets/recurring-donation-duplicate-rule-match-2.png" alt=""><figcaption></figcaption></figure>
+#### Transcription
+
+* The notification has failed due to a Salesforce validation rule
+* Open Execution #1
+* Looking through the logs, we see the integration is trying to replace the contact. This is due to differences between the existing Salesforce record and the data issued by the source platform
+* Open App Launcher and Select Contact Merge
+* Click Search Contacts
+* Search Contacts by Name
+* Select the records you would like to merge and click Next
+* Select the values you would like to retain and click Merge
+* Go back to your failed notification and click Reprocess
+* Observe that the notification is processed successfully
 
 #### Different Contact or Organisation Account
 
