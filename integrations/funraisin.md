@@ -42,6 +42,8 @@ Logic is required to map Funraisin notifications to your Salesforce data. To qui
 
 ## Setup
 
+{% embed url="https://app.arcade.software/share/yxTxoTscqSdjctP8ZSK6" %}
+
 ### Funraisin API Credentials
 
 To set up the Funraisin integration, you will need your Funraisin API credentials:
@@ -68,18 +70,18 @@ The integration will automatically begin synchronising data based on the default
 
 ## Configurable Options
 
-| Option                    | Description                                                                                                    |
-| ------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| **API Endpoint**          | The Funraisin URL for your organisation.  ie. `https://fundraise.your-organisation.org`                        |
-| **API Key**               | Your Funraisin API access key (32-character hexadecimal string)                                                |
-| **Transaction Prefix**    | A prefix to add to each platform key.  Required for multiple Funraisin integrations to prevent key collisions. |
-| **Rollup DIY Campaign**   | Merge DIY events into parent campaigns rather than creating separate campaigns (default: false)                |
-| **Polling Interval**      | Frequency of data synchronisation (configurable from 10 minutes to 24 hours). Requires a support ticket.       |
-| **Data Delay Retrieval**  | Time offset for data retrieval to ensure complete records (default: null, configurable in minutes)             |
-| **Disable Product Sales** | Skip processing of sales/merchandise transactions (default: false)                                             |
-| **Disable Registrations** | Skip processing of event registrations/tickets (default: false)                                                |
-| **Timezone**              | Timezone for date/time processing (default: Australia/Sydney). Requires a support ticket.                      |
-| **Date Filter**           | Exclude records created before specified date (format: YYYY-MM-DD)                                             |
+| Option                    | Description                                                                                                   |
+| ------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| **API Endpoint**          | The Funraisin URL for your organisation. ie. `https://fundraise.your-organisation.org`                        |
+| **API Key**               | Your Funraisin API access key (32-character hexadecimal string)                                               |
+| **Transaction Prefix**    | A prefix to add to each platform key. Required for multiple Funraisin integrations to prevent key collisions. |
+| **Rollup DIY Campaign**   | Merge DIY events into parent campaigns rather than creating separate campaigns (default: false)               |
+| **Polling Interval**      | Frequency of data synchronisation (configurable from 10 minutes to 24 hours). Requires a support ticket.      |
+| **Data Delay Retrieval**  | Time offset for data retrieval to ensure complete records (default: null, configurable in minutes)            |
+| **Disable Product Sales** | Skip processing of sales/merchandise transactions (default: false)                                            |
+| **Disable Registrations** | Skip processing of event registrations/tickets (default: false)                                               |
+| **Timezone**              | Timezone for date/time processing (default: Australia/Sydney). Requires a support ticket.                     |
+| **Date Filter**           | Exclude records created before specified date (format: YYYY-MM-DD)                                            |
 
 ## Data Migration
 
@@ -135,13 +137,13 @@ Where possible, all fields are mapped to the appropriate schemas. Often there ar
 
 **Custom Field Naming Convention:**
 
-* Standard fields use the prefix `Funraisin_`&#x20;
+* Standard fields use the prefix `Funraisin_`
 * Funraisin Custom fields follow the pattern `Funraisin_Custom_{FieldName}`
 * Question responses are included in the `questions` entity where applicable
 
 ## Reference
 
-Below is a sample of some of the custom fields are automatically included in MoveData notifications.  As mentioned, this is dynamically generated from the Funraisin API responses.
+Below is a sample of some of the custom fields are automatically included in MoveData notifications. As mentioned, this is dynamically generated from the Funraisin API responses.
 
 **Contact Custom Fields (Members)**
 
@@ -274,7 +276,7 @@ Below is a sample of some of the custom fields are automatically included in Mov
 
 #### Context Classification
 
-MoveData automatically classifies notifications with context information to help with business rule processing.  These are true/false fields.
+MoveData automatically classifies notifications with context information to help with business rule processing. These are true/false fields.
 
 | Context Type | Description                             |
 | ------------ | --------------------------------------- |
@@ -298,8 +300,8 @@ MoveData automatically classifies notifications with context information to help
 
 ## Other Resources
 
-**Funraisin Developer Support:** \
+**Funraisin Developer Support:**\
 [https://support.funraisin.co/developers](https://support.funraisin.co/developers)
 
-**Funraisin API:** \
+**Funraisin API:**\
 [https://support.funraisin.co/blog/connecting-to-your-funraisin-api](https://support.funraisin.co/blog/connecting-to-your-funraisin-api)
