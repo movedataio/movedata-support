@@ -55,7 +55,9 @@ The same error can also occur when the duplicate rules detect multiple contacts 
 
 {% embed url="https://app.arcade.software/share/CN5x7Mk5FVcDBHwWVTk6" %}
 
-#### Transcription
+<details>
+
+<summary>Transcript</summary>
 
 * The notification has failed due to a Salesforce validation rule
 * Open Execution #1
@@ -67,6 +69,8 @@ The same error can also occur when the duplicate rules detect multiple contacts 
 * Select the values you would like to retain and click Merge
 * Go back to your failed notification and click Reprocess
 * Observe that the notification is processed successfully
+
+</details>
 
 #### Different Contact or Organisation Account
 
