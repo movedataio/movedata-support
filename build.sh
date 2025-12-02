@@ -15,6 +15,7 @@ node ./bin/convert-frontmatter.js ./lib/docs/knowledgebase
 node ./bin/convert-file-embed.js knowledgebase ./lib/docs/knowledgebase
 node ./bin/migrate-images.js knowledgebase ./lib/docs/knowledgebase
 node ./bin/convert-embeds.js ./lib/docs/knowledgebase
+node ./bin/convert-collapse.js ./lib/docs/knowledgebase
 node ./bin/convert-hints.js ./lib/docs/knowledgebase
 node ./bin/convert-lists.js ./lib/docs/knowledgebase
 node ./bin/convert-metadata.js ./lib/docs/knowledgebase
@@ -32,6 +33,7 @@ node ./bin/convert-frontmatter.js ./lib/docs/user_guide
 node ./bin/convert-file-embed.js user_guide ./lib/docs/user_guide
 node ./bin/migrate-images.js user_guide ./lib/docs/user_guide
 node ./bin/convert-embeds.js ./lib/docs/user_guide
+node ./bin/convert-collapse.js ./lib/docs/user_guide
 node ./bin/convert-hints.js ./lib/docs/user_guide
 node ./bin/convert-lists.js ./lib/docs/user_guide
 node ./bin/convert-metadata.js ./lib/docs/user_guide
@@ -46,6 +48,7 @@ node ./bin/convert-frontmatter.js ./lib/docs/developer
 node ./bin/convert-file-embed.js developer ./lib/docs/developer
 node ./bin/migrate-images.js developer ./lib/docs/developer
 node ./bin/convert-embeds.js ./lib/docs/developer
+node ./bin/convert-collapse.js ./lib/docs/developer
 node ./bin/convert-hints.js ./lib/docs/developer
 node ./bin/convert-lists.js ./lib/docs/developer
 node ./bin/convert-metadata.js ./lib/docs/developer
@@ -65,6 +68,7 @@ node ./bin/convert-frontmatter.js ./lib/docs/reference/extension/commerce
 node ./bin/convert-file-embed.js reference ./lib/docs/reference/extension/commerce
 node ./bin/migrate-images.js reference ./lib/docs/reference/extension/commerce
 node ./bin/convert-embeds.js ./lib/docs/reference/extension/commerce
+node ./bin/convert-collapse.js ./lib/docs/reference/extension/commerce
 node ./bin/convert-hints.js ./lib/docs/reference/extension/commerce
 node ./bin/convert-lists.js ./lib/docs/reference/extension/commerce
 node ./bin/convert-metadata.js ./lib/docs/reference/extension/commerce
@@ -79,6 +83,7 @@ node ./bin/convert-frontmatter.js ./lib/docs/reference/extension/npsp-fundraisin
 node ./bin/convert-file-embed.js reference ./lib/docs/reference/extension/npsp-fundraising
 node ./bin/migrate-images.js reference ./lib/docs/reference/extension/npsp-fundraising
 node ./bin/convert-embeds.js ./lib/docs/reference/extension/npsp-fundraising
+node ./bin/convert-collapse.js ./lib/docs/reference/extension/npsp-fundraising
 node ./bin/convert-hints.js ./lib/docs/reference/extension/npsp-fundraising
 node ./bin/convert-lists.js ./lib/docs/reference/extension/npsp-fundraising
 node ./bin/convert-metadata.js ./lib/docs/reference/extension/npsp-fundraising
@@ -93,6 +98,7 @@ node ./bin/convert-frontmatter.js ./lib/docs/reference/extension/non-profit-clou
 node ./bin/convert-file-embed.js reference ./lib/docs/reference/extension/non-profit-cloud
 node ./bin/migrate-images.js reference ./lib/docs/reference/extension/non-profit-cloud
 node ./bin/convert-embeds.js ./lib/docs/reference/extension/non-profit-cloud
+node ./bin/convert-collapse.js ./lib/docs/reference/extension/non-profit-cloud
 node ./bin/convert-hints.js ./lib/docs/reference/extension/non-profit-cloud
 node ./bin/convert-lists.js ./lib/docs/reference/extension/non-profit-cloud
 node ./bin/convert-metadata.js ./lib/docs/reference/extension/non-profit-cloud
@@ -107,6 +113,7 @@ node ./bin/convert-frontmatter.js ./lib/docs/reference/schema/commerce
 node ./bin/convert-file-embed.js reference ./lib/docs/reference/schema/commerce
 node ./bin/migrate-images.js reference ./lib/docs/reference/schema/commerce
 node ./bin/convert-embeds.js ./lib/docs/reference/schema/commerce
+node ./bin/convert-collapse.js ./lib/docs/reference/schema/commerce
 node ./bin/convert-hints.js ./lib/docs/reference/schema/commerce
 node ./bin/convert-lists.js ./lib/docs/reference/schema/commerce
 node ./bin/convert-metadata.js ./lib/docs/reference/schema/commerce
@@ -121,6 +128,7 @@ node ./bin/convert-frontmatter.js ./lib/docs/reference/schema/donation
 node ./bin/convert-file-embed.js reference ./lib/docs/reference/schema/donation
 node ./bin/migrate-images.js reference ./lib/docs/reference/schema/donation
 node ./bin/convert-embeds.js ./lib/docs/reference/schema/donation
+node ./bin/convert-collapse.js ./lib/docs/reference/schema/donation
 node ./bin/convert-hints.js ./lib/docs/reference/schema/donation
 node ./bin/convert-lists.js ./lib/docs/reference/schema/donation
 node ./bin/convert-metadata.js ./lib/docs/reference/schema/donation
