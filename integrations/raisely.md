@@ -18,7 +18,7 @@ This article summarises how to set up and maintain your Raisely integration.
 
 ### Integration Setup
 
-{% embed url="https://movedata.share.arcade.software/share/JMot2zEFr7vkYBuF09oL" %}
+{% embed url="https://app.arcade.software/share/JMot2zEFr7vkYBuF09oL" %}
 
 #### Raisely Events
 
