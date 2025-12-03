@@ -52,11 +52,19 @@ Please raise a ticket by emailing [support@movedata.io](mailto:support@movedata.
 
 ### Custom Fields
 
-Where possible, all fields are mapped to the appropriate schemas. Often there are fields that do not fit explicitly into a schema and these are appended as custom fields. Raisely Questions are dynamically added to Questions entries within the produced schema objects.
+Where possible, all fields are mapped to the appropriate schemas. Often there are fields that do not fit explicitly into a schema and these are appended within the produced schema objects.
+
+For Raisely these fall into three categories:
+
+| Type                  | Description                                                                                     |
+| --------------------- | ----------------------------------------------------------------------------------------------- |
+| Special Custom Fields | Custom fields created in Raisely which automatically enact specific actions in your integration |
+| Admin Custom Fields   | All other custom fields created in Raisely                                                      |
+| System Custom Fields  | System level information made available by Raisely                                              |
 
 #### Special Custom Fields
 
-Raisely allows users to add custom fields to their forms. Raisely's Special fields are listed below. If fields are added with specific Field IDs, MoveData will automatically enact business logic against those fields.
+Raisely's Special fields are listed below. If fields are added with specific Field IDs, MoveData will automatically enact specific actions against those fields.
 
 For example, if you add the field `company` and this field has a value, then MoveData will construct an Organisation Account record based on the `company` value.
 
@@ -68,9 +76,35 @@ For example, if you add the field `company` and this field has a value, then Mov
 | `company`      | Text           | Creates an Organisation Account for the company entered and establishes an Organisation Affiliation between the Contact and Organisation Account |
 | `salutation`   | Select Items   | Sets Salutation information against the Contact                                                                                                  |
 
-#### Standard Custom Fields
+#### Admin Custom Fields
 
-The following custom fields are automatically included in MoveData notifications:
+These are any other fields you add in Raisely which are not Special fields.
+
+For example, if you add the field `howDidYouHearAboutUs` and this field has a value, then this will be made available by Raisely like:
+
+```json
+    "data": {
+      "private": {
+        "howDidYouHearAboutUs": "Google",
+      },
+```
+
+In the MoveData schema this is available as:
+
+```json
+  "questions": [
+    {
+      "key": "howDidYouHearAboutUs",
+      "text": "howDidYouHearAboutUs",
+      "value": "Google"
+    },
+```
+
+In the MoveData variables this is available as `Questions_HowDidYouHearAboutUs: Google`.
+
+#### System Custom Fields
+
+The following system level fields are automatically included in MoveData notifications:
 
 <details>
 
