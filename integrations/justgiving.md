@@ -45,6 +45,23 @@ The Fundraising and Donations Extension is relevant to processing fundraising ac
 
 ## Setup
 
+{% embed url="https://app.arcade.software/share/0YPzWmfU9HYc3zMFz6nW" %}
+
+<details>
+
+<summary>Transcription</summary>
+
+* Open Integrations
+* Click New Integration
+* Select JustGiving
+* Enter a name for your JustGiving integration. You only require one JustGiving integration
+* Click Next
+* Enter your JustGiving credentials
+* Set the Notification Date Filter. MoveData will not process any notifications before this date.
+* Click Save
+
+</details>
+
 **JustGiving API Credentials**
 
 To set up the JustGiving integration, you will need four credentials from JustGiving:
@@ -65,24 +82,6 @@ To access your Consumer and Data App IDs, contact JustGiving Support ([support@j
 1. Log into your JustGiving Admin panel
 2. Navigate to **Settings → Your Charity → Edit charity account details**
 3. Note your Charity ID from the account details
-
-#### MoveData JustGiving Configuration
-
-<figure><img src="../.gitbook/assets/justgiving-setup.png" alt=""><figcaption></figcaption></figure>
-
-1. Open the MoveData app in Salesforce and select the **Integrations** tab
-2. Click **New Integration** and select **JustGiving** from the list of available integrations
-3. Add a descriptive name for your integration and click **Save**
-4. Enter your JustGiving credentials in the configuration screen:
-   * **JustGiving Data App ID**: Your Data API application identifier
-   * **JustGiving Consumer App ID**: Your Consumer API application identifier
-   * **JustGiving Charity ID**: Your charity identifier
-   * **JustGiving Username**: Your JustGiving account username
-   * **JustGiving Password**: Your JustGiving account password
-5. Configure additional options as needed (see Configurable Options below)
-6. Click **Save** to complete the setup
-
-The integration will automatically begin synchronising data based on the default schedule of 12 hours.
 
 ## Configurable Options
 
