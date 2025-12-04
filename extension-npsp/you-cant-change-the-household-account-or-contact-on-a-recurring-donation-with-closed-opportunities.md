@@ -13,39 +13,21 @@ Over time, and typically due to manually modifying records in Salesforce, a scen
 
 In this scenario, MoveData will act on the data being issued by the source platform, which can result in a contact or account being matched or created which is different to the one assigned to your recurring donation. If your recurring donation has closed opportunities, this can trigger the `You can't change the Household Account or Contact on a Recurring Donation that has Closed Opportunities` error and the notification will fail to process into Salesforce.
 
-### Worked Example
+{% embed url="https://app.arcade.software/share/UtklYQBU1VBPCP31xIQo" %}
 
-You have a recurring donation in your source platform owned by a contact with the following information:
+<details>
 
-| First Name | Joe                                             |
-| ---------- | ----------------------------------------------- |
-| Last Name  | Smith                                           |
-| Email      | [joesmith@gmail.com](mailto:joesmith@gmail.com) |
+<summary>Transcription</summary>
 
-When MoveData encounters the recurring donation from your source platform, it will match against an equivalent contact with the same information, or create a new contact if no matched contact is determined.
+* The notification has failed due to a Salesforce validation rule
+* The existing recurring donation is assigned to a contact
+* We can see Raisely has provided a different donor contact. This is most likely due to the profile being updated in Raisely
+* Open the contact record assigned to the recurring donation
+* Edit Name to match the provided Raisely donor contact
+* Go back to your failed notification and click Reprocess
+* Observe that the notification is processed successfully
 
-Related Article
-
-* [Step 4: Configure Duplicate Rules (5min)](https://intercom.help/movedata/en/articles/9144672-step-4-configure-duplicate-rules-5min)
-
-For various reasons, you assign the recurring donation to another contact in Salesforce and delete the contact created by MoveData out of Salesforce. The contact you choose to assign to has the following information:
-
-| First Name | Joseph                                            |
-| ---------- | ------------------------------------------------- |
-| Last Name  | Smith-Brown                                       |
-| Email      | [joe@smith-brown.com](mailto:joe@smith-brown.com) |
-
-Assuming you do not update the equivalent information in the source platform, the next time the recurring donation is processed the source platform will issue the originally supplied information:
-
-```
-    "firstName": "Joe",
-    "lastName": "Smith",
-    "email": "joesmith@gmail.com",
-```
-
-Depending on how your duplicate rules are configured, this may result in an inability for MoveData to match to the newly assigned contact, and result in MoveData matching or re-creating the originally assigned contact and attempting to assign to your existing recurring donation.
-
-If your recurring donation has closed opportunities, this can trigger the `You can't change the Household Account or Contact on a Recurring Donation that has Closed Opportunities` error and the notification will fail to process into Salesforce.
+</details>
 
 ### Other Possible Causes
 

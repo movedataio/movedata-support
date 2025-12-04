@@ -68,7 +68,7 @@ To specify the user MoveData is to execute under you first need to login as the 
 
 On the `General` you will see a section called `Authorise MoveData`. Click the `Authorise` button and a new tab will open to authorise MoveData under the user you are logged in as.
 
-<figure><img src="../.gitbook/assets/Authorise MoveData on Settings Page.png" alt=""><figcaption><p>Authorise MoveData on Settings Page</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/settings_general_authorised_user (1).png" alt=""><figcaption><p>Authorise MoveData on Settings Page</p></figcaption></figure>
 
 Salesforce will note that MoveData requires full access to Salesforce at any point in time. This is required for MoveData to function
 

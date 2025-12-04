@@ -14,7 +14,7 @@ Metadata
 {% endhint %}
 
 {% hint style="warning" %}
-### Warning: Salesforce Converts Lead into Contact and Organisation Account <a href="#h_5d8c66850f" id="h_5d8c66850f"></a>
+#### Warning: Salesforce Converts Lead into Contact and Organisation Account <a href="#h_5d8c66850f" id="h_5d8c66850f"></a>
 {% endhint %}
 
 Salesforce forces you to add a company information to your lead record:
