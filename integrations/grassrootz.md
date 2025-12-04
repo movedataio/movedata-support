@@ -42,9 +42,11 @@ The Fundraising and Donations Extension is relevant to processing fundraising ac
 
 ## Setup
 
+{% embed url="https://app.arcade.software/share/cAYa6HIL2vlLVvqfEgVW" %}
+
 #### Grassrootz API Access
 
-To set up the Grassrootz integration, you will need to coordinate with Grassrootz support to obtain your API credentials and configure webhook endpoints.&#x20;
+To set up the Grassrootz integration, you will need to coordinate with Grassrootz support to obtain your API credentials and configure webhook endpoints.
 
 #### MoveData Grassrootz Configuration (1/2)
 
@@ -86,7 +88,7 @@ Data Migration is available upon request. This is a custom service provided by M
 
 ## Additional Field Mappings
 
-* **Multi-Currency Handling**: The settlement amount isn't provided by Grassrootz.  MoveData automatic perform a currency conversion with using an exchange rate from Grassrootz.
+* **Multi-Currency Handling**: The settlement amount isn't provided by Grassrootz. MoveData automatic perform a currency conversion with using an exchange rate from Grassrootz.
 * **Achievement Processing**: Converts Grassrootz achievements into MoveData questions for milestone tracking
 * **Campaign Hierarchy**: Intelligent mapping of Events → Campaigns → Teams → Fundraisers
 * **Fee Allocation**: Detailed breakdown of platform fees, gateway fees, and tax calculations
