@@ -1,24 +1,10 @@
----
-description: >-
-  MoveData's JustGiving integration automatically polls APIs every 12 hours to
-  synchronise fundraising data into Salesforce, creating campaign structures and
-  donations (including UK Gift Aid)
----
-
 # JustGiving
 
-## Overview
+### Overview
 
-The MoveData JustGiving integration provides seamless, automated synchronisation between your JustGiving fundraising platform and Salesforce. This comprehensive integration ensures that all donation activities, supporter data, campaign information, fundraising pages, and payment data are automatically transferred to your Salesforce environment, eliminating manual data entry whilst maintaining complete data accuracy.
+This article summarises how to set up and maintain your Raisely integration.
 
-### Key Benefits
-
-* **Automated synchronisation** of all JustGiving fundraising activities via scheduled polling
-* **Intelligent campaign hierarchy** management including events, campaigns, teams, and individual fundraisers
-* **Date filtering capabilities** to exclude historical activity
-* **UK Gift Aid support** with comprehensive compliance tracking
-
-## Integration Summary
+#### Integration Summary
 
 | Field     | Value                                              |
 | --------- | -------------------------------------------------- |
@@ -26,24 +12,11 @@ The MoveData JustGiving integration provides seamless, automated synchronisation
 | Method    | Pull (Polling)                                     |
 | Frequency | Configurable (every 12 hours by default)           |
 
-## Demonstration Video
+#### Demonstration Video
 
 {% embed url="https://www.youtube.com/watch?v=DgYsx2INMk8" %}
 
-## Supported Modes
-
-Logic is required to map JustGiving notifications to your Salesforce data. To quickly and easily do so we recommend using one of the supported MoveData Extensions.
-
-| Extension                 | Supported |
-| ------------------------- | --------- |
-| Fundraising and Donations | ✅         |
-| Commerce                  | ❌         |
-
-{% hint style="info" %}
-The Fundraising and Donations Extension is relevant to processing fundraising activity and donation information into Salesforce.
-{% endhint %}
-
-## Setup
+### Integration Setup
 
 {% embed url="https://app.arcade.software/share/0YPzWmfU9HYc3zMFz6nW" %}
 
@@ -62,7 +35,7 @@ The Fundraising and Donations Extension is relevant to processing fundraising ac
 
 </details>
 
-**JustGiving API Credentials**
+#### **JustGiving API Credentials**
 
 To set up the JustGiving integration, you will need four credentials from JustGiving:
 
@@ -83,7 +56,7 @@ To access your Consumer and Data App IDs, contact JustGiving Support ([support@j
 2. Navigate to **Settings → Your Charity → Edit charity account details**
 3. Note your Charity ID from the account details
 
-## Configurable Options
+### Integration Settings
 
 | Option                              | Description                                                                                                                                                                                                                                                                                                                          |
 | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -91,7 +64,7 @@ To access your Consumer and Data App IDs, contact JustGiving Support ([support@j
 | **Notification Date Filter**        | Screens out notifications related to events concluded before a specific date. JustGiving frequently sends notifications for very old events, so this filter helps focus on recent activity. Set a date to exclude any fundraising pages, events, or donations that occurred before this threshold.                                   |
 | **Data Synchronisation Interval**   | Frequency of data polling from JustGiving APIs (default: every 12 hours)                                                                                                                                                                                                                                                             |
 
-## Data Migration
+### Bulk Data Import
 
 Data Migration is available upon request. This is a custom service provided by MoveData and is delivered by MoveData Professional Services.
 
@@ -99,10 +72,6 @@ Data Migration is available upon request. This is a custom service provided by M
 * Records will only be imported if available via the JustGiving API
 * Historical data limitations may apply for older records due to JustGiving's data retention policies
 * Data structures may have minor variations for older records
-
-## Additional Field Mappings
-
-Where possible, all fields are mapped to the appropriate schemas. Often there are fields that do not fit explicitly into a schema and these are appended as custom fields. JustGiving custom codes are dynamically included in fundraiser and campaign records.
 
 ### **Campaign Hierarchy**
 
@@ -129,21 +98,38 @@ The JustGiving integration includes comprehensive Gift Aid support for UK charit
 * **Compliance Tracking**: Maintains full audit trail for Gift Aid submission requirements
 * **Fee Allocation**: Separates Gift Aid processing fees from transaction fees
 
-## Reference
+### Custom Fields
 
-The following custom fields are automatically included in MoveData notifications:
+Where possible, all fields are mapped to the appropriate schemas. JustGiving does not provide the ability to add custom fields.&#x20;
 
-**Contact Custom Fields**
+For JustGiving these fall into the following category:
 
-| Attribute Name            | Description                     | Example                          |
-| ------------------------- | ------------------------------- | -------------------------------- |
-| `donorUserId`             | JustGiving Donor User ID        | `65086821`                       |
-| `privacyStatementVersion` | Privacy policy version accepted | `JustGiving Privacy Policy v3.0` |
-| `privacyStatementAt`      | Date privacy policy accepted    | `2024-05-08T14:22:47.000Z`       |
+| Type                 | Description                                           |
+| -------------------- | ----------------------------------------------------- |
+| System Custom Fields | System level information made available by JustGiving |
 
-**Campaign Custom Fields**
+#### System Custom Fields
 
-**Event Campaigns:**
+The following system level fields are automatically included in MoveData notifications:
+
+<details>
+
+<summary>Contact Custom Fields</summary>
+
+| Attribute Name                                | Description                     | Example                          |
+| --------------------------------------------- | ------------------------------- | -------------------------------- |
+| `donorUserId`                                 | JustGiving Donor User ID        | `65086821`                       |
+| `privacyStatementVersion`                     | Privacy policy version accepted | `JustGiving Privacy Policy v3.0` |
+| `privacyStatementAt`                          | Date privacy policy accepted    | `2024-05-08T14:22:47.000Z`       |
+| <p><code>communication.any</code><br><br></p> | Contact marketing consent       | `true`                           |
+
+</details>
+
+<details>
+
+<summary>Campaign Custom Fields</summary>
+
+Event Campaigns
 
 | Attribute Name  | Description                | Example                |
 | --------------- | -------------------------- | ---------------------- |
@@ -159,7 +145,7 @@ The following custom fields are automatically included in MoveData notifications
 | `location`      | Event Location             | `London, UK`           |
 | `eventType`     | Event Type                 | `Marathon`             |
 
-**Team Campaigns:**
+Team campaigns:
 
 | Attribute Name            | Description               | Example                    |
 | ------------------------- | ------------------------- | -------------------------- |
@@ -184,7 +170,7 @@ The following custom fields are automatically included in MoveData notifications
 | `code5`                   | Fundraising Page Code 5   | `PRIORITY:HIGH`            |
 | `code6`                   | Fundraising Page Code 6   | `REGION:NORTH`             |
 
-**Fundraiser Campaigns:**
+Fundraiser Campaigns:
 
 | Attribute Name          | Description                       | Example                                |
 | ----------------------- | --------------------------------- | -------------------------------------- |
@@ -207,7 +193,11 @@ The following custom fields are automatically included in MoveData notifications
 | `owner`                 | Owner Name                        | `Bart's Place`                         |
 | `ownerGuid`             | Owner GUID                        | `b2e0b348-795e-469d-ac42-e2de91a3256a` |
 
-**Donation Custom Fields**
+</details>
+
+<details>
+
+<summary>Donation Custom Fields</summary>
 
 | Attribute Name        | Description                     | Example                                 |
 | --------------------- | ------------------------------- | --------------------------------------- |
@@ -225,7 +215,11 @@ The following custom fields are automatically included in MoveData notifications
 | `thirdPartyReference` | Third Party Reference           | `f59d1c0f-a460-ef11-a493-005056aa20e8`  |
 | `charityId`           | JustGiving Charity ID           | `11190`                                 |
 
-**Context Classification**
+</details>
+
+<details>
+
+<summary>Context Custom Fields</summary>
 
 MoveData automatically classifies donations based on their fundraising context:
 
@@ -237,6 +231,8 @@ MoveData automatically classifies donations based on their fundraising context:
 | `contextCampaign`  | Is part of charity campaign     | `true`, `false`                                   |
 | `contextDiy`       | Is DIY/peer-to-peer fundraising | `true`, `false`                                   |
 | `contextDirect`    | Is direct donation to charity   | `true`, `false`                                   |
+
+</details>
 
 ## Other Resources
 
