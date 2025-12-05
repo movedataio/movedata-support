@@ -13,7 +13,17 @@ Occasionally you may need to upgrade your version of MoveData and its extensions
 
 You can upgrade the MoveData app via [https://api.movedata.io/installer/app](https://api.movedata.io/installer/app) and following the prompts.
 
-<figure><img src="../.gitbook/assets/App Upgrade.png" alt=""><figcaption></figcaption></figure>
+{% embed url="https://app.arcade.software/share/F5Zy6duS3yCcX1HGmlmb" %}
+
+### Transcription <a href="#h_0bab9bdd79" id="h_0bab9bdd79"></a>
+
+* To upgrade the MoveData App, your Salesfore environment must have the latest MoveData Extension versions installed
+* Open the MoveData upgrade link
+* Install for All Users or Admins Only. If you are unsure, select All Users
+* Click Upgrade
+* To confirm the MoveData App has been upgraded, open Setup
+* Open Installed Packages
+* Observe the MoveData App has been upgraded to the latest version. Note: Installed Packages may take a couple of minutes to update
 
 ### Upgrading MoveData Extensions <a href="#h_0bab9bdd79" id="h_0bab9bdd79"></a>
 
