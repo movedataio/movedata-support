@@ -70,6 +70,7 @@
 * [How to set Different Record Types](customising-movedata-integrations/how-to-set-different-record-types.md)
 * [How to Not Process Certain Information into Salesforce](customising-movedata-integrations/how-to-not-process-certain-information-into-salesforce.md)
 * [How to Inherit Values between Records](customising-movedata-integrations/how-to-inherit-values-between-records.md)
+* [Advanced Use Case: Salesforce Duplicate and Matching Rules](customising-movedata-integrations/advanced-use-case-salesforce-duplicate-and-matching-rules.md)
 
 ## Technical
 
