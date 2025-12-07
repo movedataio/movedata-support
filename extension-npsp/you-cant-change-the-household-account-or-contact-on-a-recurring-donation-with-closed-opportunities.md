@@ -13,19 +13,23 @@ Over time, and typically due to manually modifying records in Salesforce, a scen
 
 In this scenario, MoveData will act on the data being issued by the source platform, which can result in a contact or account being matched or created which is different to the one assigned to your recurring donation. If your recurring donation has closed opportunities, this can trigger the `You can't change the Household Account or Contact on a Recurring Donation that has Closed Opportunities` error and the notification will fail to process into Salesforce.
 
-{% embed url="https://app.arcade.software/share/UtklYQBU1VBPCP31xIQo" %}
+{% embed url="https://app.arcade.software/share/V2b9ATz25tejW8VKArsK" %}
 
 <details>
 
 <summary>Transcription</summary>
 
 * The notification has failed due to a Salesforce validation rule
-* The existing recurring donation is assigned to a contact
-* We can see Raisely has provided a different donor contact. This is most likely due to the profile being updated in Raisely
-* Open the contact record assigned to the recurring donation
-* Edit Name to match the provided Raisely donor contact
+* We typically see this error when customers have modified Salesforce data so it is no longer in parity with the information issued by their source platform
+* Looking through the logs, we see the integration is trying to replace the contact. This is due to differences between the existing Salesforce record and the data issued by the source platform
+* In the source platform, the recurring donation is under Jill Tester
+* In Salesforce, the recurring donation is under Joe Tester
+* You can solve this by opening the contact in Salesforce
+* Update the record so that Salesforce and source platform information is aligned
+* Confirm the recurring donation is under your newly updated contact
 * Go back to your failed notification and click Reprocess
 * Observe that the notification is processed successfully
+* Optionally, consider reviewing your duplicate and matching rules to ensure a match is produced in the first place
 
 </details>
 
