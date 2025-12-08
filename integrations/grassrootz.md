@@ -1,25 +1,10 @@
----
-description: >-
-  Real-time Grassrootz webhook integration supporting complex event hierarchies,
-  multi-currency donations, team structures, and achievement tracking with
-  comprehensive financial data.
----
-
 # Grassrootz
 
-## Overview
+### Overview
 
-The MoveData Grassrootz integration provides seamless, real-time synchronisation between your Grassrootz fundraising platform and Salesforce. This powerful integration ensures that all donation activities, supporter registrations, campaign data, team structures, and event information are automatically transferred to your Salesforce environment, eliminating manual data entry whilst maintaining complete data accuracy.
+This article summarises how to set up and maintain your Grassrootz integration.
 
-### Key Benefits
-
-* **Real-time synchronisation** of all Grassrootz activities via webhooks
-* **Complex campaign hierarchy** management (Events → Campaigns → Teams → Fundraisers)
-* **Multi-currency support** with intelligent exchange rate handling
-* **Achievement tracking** and milestone management
-* **Comprehensive financial data** including detailed fee breakdowns
-
-## Integration Summary
+#### Integration Summary
 
 | Field     | Value                                                      |
 | --------- | ---------------------------------------------------------- |
@@ -27,107 +12,72 @@ The MoveData Grassrootz integration provides seamless, real-time synchronisation
 | Method    | Push (Webhooks)                                            |
 | Frequency | Real-Time                                                  |
 
-## Supported Modes
-
-Logic is required to map Grassrootz notifications to your Salesforce data. To quickly and easily do so we recommend using one of the supported MoveData Extensions.
-
-| Extension                 | Supported |
-| ------------------------- | --------- |
-| Fundraising and Donations | ✅         |
-| Commerce                  | ❌         |
+### Demo Video
 
 {% hint style="info" %}
-The Fundraising and Donations Extension is relevant to processing fundraising activity and donation information into Salesforce.
+Coming Soon
 {% endhint %}
 
-## Setup
+### Integration Setup
 
 {% embed url="https://app.arcade.software/share/cAYa6HIL2vlLVvqfEgVW" %}
 
-#### Grassrootz API Access
+<details>
 
-To set up the Grassrootz integration, you will need to coordinate with Grassrootz support to obtain your API credentials and configure webhook endpoints.
+<summary>Transcription</summary>
 
-#### MoveData Grassrootz Configuration (1/2)
+* Email support@grassrootz.com requesting your API Key and Secret
+* Open Integrations
+* Click New Integration
+* Select Grassrootz
+* Enter a name for your Grassrootz integration
+* Click Next
+* Copy the URL created by MoveData
+* In Grassrootz, click Hi {Name}
+* Open Webhooks
+* Click Create Webhook
+* Enter the MoveData URL into the Webhook endpoint field
+* Click Save
+* Go back to MoveData and click Next
+* Enter your Grassrootz Client Key
+* Enter your Grassrootz Secret Key
+* Click Save. Grassrootz is now connected to Salesforce.
 
-<figure><img src="../.gitbook/assets/grassrootz-md-1.png" alt=""><figcaption></figcaption></figure>
+</details>
 
-1. Open the MoveData app and select the **Integrations** tab
-2. Click **New Integration** and select **Grassrootz** from the list of available integrations
-3. Add a Name for your integration
-4. Record the MoveData Integration URL
-5. Click **Next**, followed by **Cancel**
-
-#### Grassrootz Support
-
-To complete your integration you must enter your Grassrootz Client Key and Client Secret. These are not accessible via the Grassrootz admin panel, so you must email [support@grassrootz.com](mailto:support@grassrootz.com) to obtain these. At the same time, ask Grassrootz Support to connect the integration by pointing their webhooks to the MoveData Integration URL.
-
-#### MoveData Grassrootz Configuration (2/2)
-
-<figure><img src="../.gitbook/assets/grassrootz-md-2.png" alt=""><figcaption></figcaption></figure>
-
-1. Open the Integration in MoveData
-2. Edit the configuration and proceed to the second screen in the wizard.
-3. Enter the Client Key and Client Secret as communicated by Grassrootz.
-4. Configure additional options as needed (see Configurable Options below)
-5. Click **Save** to complete the setup
-
-### Configurable Options
+### Integration Settings
 
 | Option                        | Description                                                                                                                                                                                                                                                                                                                                                    |
 | ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Infer Settlement Currency** | <ul><li><strong>Enabled (Default)</strong> - Uses settlement currency (typically AUD) for donation amounts and creates detailed financial breakdowns with exchange rates</li><li><strong>Disabled</strong> - Uses original transaction currency and amounts as charged</li></ul>                                                                               |
 | **Exclude Donor Keys**        | <p>Used to stop replacing the details of fundraisers who donate on behalf of.<br></p><ul><li><strong>Enabled</strong> - Excludes donor key information from notifications; prevents overwriting of fundraiser details when donation on behalf of</li><li><strong>Disabled (Default)</strong> - Includes full donor key information in processed data</li></ul> |
 
-## Data Migration
+### Bulk Data Import
 
-Data Migration is available upon request. This is a custom service provided by MoveData and is delivered by MoveData Professional Services.
+Bulk data import is available upon request. This is a custom service provided by MoveData and is delivered by MoveData Professional Services.
 
 * Requires a CSV export of the desired data
 * Records will only be imported if available via the Grassrootz API
 
-## Additional Field Mappings
+Please raise a ticket by emailing [support@movedata.io](mailto:support@movedata.io) if you require bulk data import.
 
-* **Multi-Currency Handling**: The settlement amount isn't provided by Grassrootz. MoveData automatic perform a currency conversion with using an exchange rate from Grassrootz.
-* **Achievement Processing**: Converts Grassrootz achievements into MoveData questions for milestone tracking
-* **Campaign Hierarchy**: Intelligent mapping of Events → Campaigns → Teams → Fundraisers
-* **Fee Allocation**: Detailed breakdown of platform fees, gateway fees, and tax calculations
+### Custom Fields
 
-### Campaign Hierarchy Support
+Where possible, all fields are mapped to the appropriate schemas.
 
-The Grassrootz integration automatically creates and maintains complex campaign hierarchies:
+For Grassrootz these fall into the following category:
 
-**Event Level** (Top Level)
+|                      |                                                       |
+| -------------------- | ----------------------------------------------------- |
+| System Custom Fields | System level information made available by JustGiving |
 
-* Overall fundraising event (e.g., "HBF Run for a Reason 2024")
-* Contains multiple organisation campaigns
-* Tracks total event fundraising goals and progress
+#### System Custom Fields
 
-**Campaign Level** (Organisation Level)
+The following system level fields are automatically included in MoveData notifications:
 
-* Individual organisation participation in an event
-* Contains teams and individual fundraisers
-* Organisation-specific goals and branding
+<details>
 
-**Team Level** (Optional)
-
-* Groups of fundraisers working together
-* Team-specific targets and achievements
-* Team managers with full contact details
-
-**Fundraiser Level** (Individual Level)
-
-* Individual fundraising pages
-* Personal targets and achievements
-* Linked to team (if applicable)
-
-This hierarchy is automatically maintained in Salesforce with proper parent-child relationships between Campaign records.
-
-## Reference
-
-The Grassrootz integration provides extensive custom field mapping to capture the rich metadata available from the platform.
-
-#### Contact Custom Fields
+<summary>Contact Custom Fields</summary>
 
 | Attribute Name        | Description                              | Example             |
 | --------------------- | ---------------------------------------- | ------------------- |
@@ -136,7 +86,11 @@ The Grassrootz integration provides extensive custom field mapping to capture th
 | `displayName`         | Custom display name (if used)            | `Dan's Fundraising` |
 | `newsletter`          | Newsletter subscription status           | `true`              |
 
-#### Campaign Custom Fields
+</details>
+
+<details>
+
+<summary>Campaign Custom Fields</summary>
 
 | Attribute Name                | Description                           | Example                            |
 | ----------------------------- | ------------------------------------- | ---------------------------------- |
@@ -149,7 +103,11 @@ The Grassrootz integration provides extensive custom field mapping to capture th
 | `activePagesCount`            | Number of active fundraising pages    | `16`                               |
 | `targetAmount`                | Campaign fundraising target           | `1200000`                          |
 
-#### Team Custom Fields
+</details>
+
+<details>
+
+<summary>Team Custom Fields</summary>
 
 | Attribute Name           | Description                      | Example   |
 | ------------------------ | -------------------------------- | --------- |
@@ -160,7 +118,11 @@ The Grassrootz integration provides extensive custom field mapping to capture th
 | `fundraisersCount`       | Total number of team fundraisers | `9`       |
 | `fundraisersActiveCount` | Number of active fundraisers     | `7`       |
 
-#### Fundraiser Custom Fields
+</details>
+
+<details>
+
+<summary>Fundraiser Custom Fields</summary>
 
 | Attribute Name          | Description                       | Example  |
 | ----------------------- | --------------------------------- | -------- |
@@ -171,7 +133,11 @@ The Grassrootz integration provides extensive custom field mapping to capture th
 | `isAmbassador`          | Ambassador status                 | `false`  |
 | `isPublic`              | Whether page is publicly visible  | `true`   |
 
-#### Donation Custom Fields
+</details>
+
+<details>
+
+<summary>Donation Custom Fields</summary>
 
 | Attribute Name           | Description                      | Example                             |
 | ------------------------ | -------------------------------- | ----------------------------------- |
@@ -186,7 +152,11 @@ The Grassrootz integration provides extensive custom field mapping to capture th
 | `timezone`               | Transaction timezone             | `Australia/West`                    |
 | `cardMethodType`         | Payment Method Type              | `card`, `apple_pay`, `google_pay`   |
 
-#### Multi-Currency Fields (when inferSettlementCurrency is enabled)
+</details>
+
+<details>
+
+<summary>Multi-Currency Fields (when inferSettlementCurrency is enabled)</summary>
 
 | Attribute Name    | Description                    | Example   |
 | ----------------- | ------------------------------ | --------- |
@@ -198,7 +168,11 @@ The Grassrootz integration provides extensive custom field mapping to capture th
 | `settledAmount`   | Settled amount                 | `33.19`   |
 | `settledFee`      | Settled fee amount             | `5.61`    |
 
-#### Financial Breakdown Fields
+</details>
+
+<details>
+
+<summary>Financial Breakdown Fields</summary>
 
 | Attribute Name                        | Description                      | Example |
 | ------------------------------------- | -------------------------------- | ------- |
@@ -215,7 +189,11 @@ The Grassrootz integration provides extensive custom field mapping to capture th
 | `donationFeePercentage`               | Platform donation fee percentage | `0.05`  |
 | `donationNet`                         | Net amount after all fees        | `49.16` |
 
-#### Organisation Custom Fields
+</details>
+
+<details>
+
+<summary>Organisation Custom Fields</summary>
 
 | Attribute Name          | Description                | Example                               |
 | ----------------------- | -------------------------- | ------------------------------------- |
@@ -226,6 +204,8 @@ The Grassrootz integration provides extensive custom field mapping to capture th
 | `taxId`                 | Organisation tax ID        | `18332550061`                         |
 | `currency`              | Organisation base currency | `AUD`                                 |
 | `timezone`              | Organisation timezone      | `Australia/West`                      |
+
+</details>
 
 ### Other Resources
 
