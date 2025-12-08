@@ -12,7 +12,7 @@ This article summarises how to set up and maintain your Grassrootz integration.
 | Method    | Push (Webhooks)                                            |
 | Frequency | Real-Time                                                  |
 
-### Demo Video
+#### Demo Video
 
 {% hint style="info" %}
 Coming Soon
@@ -44,6 +44,17 @@ Coming Soon
 * Click Save. Grassrootz is now connected to Salesforce.
 
 </details>
+
+#### **Grassrootz API Credentials**
+
+To set up the JustGiving integration, you will need four credentials from JustGiving:
+
+1. **Client Key** - Your Grassrootz client identifier
+2. **Client Secret** - Your Grassrootz secret identifier
+
+#### Obtaining API Credentials
+
+To access your Consumer and Data App IDs, contact Grassrootz Support ([support@grassrootz.com](mailto:support@grassrootz.com)) requesting access to the Data and Consumer APIs for Production data.
 
 ### Integration Settings
 
