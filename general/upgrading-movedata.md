@@ -27,7 +27,7 @@ You can upgrade the MoveData app via [https://api.movedata.io/installer/app](htt
 
 ### Upgrading MoveData Extensions <a href="#h_0bab9bdd79" id="h_0bab9bdd79"></a>
 
-{% embed url="https://movedata.share.arcade.software/share/OLrOiv6NaU26lL94HCx3" %}
+{% embed url="https://app.arcade.software/share/OLrOiv6NaU26lL94HCx3" %}
 
 ### Transcription
 
