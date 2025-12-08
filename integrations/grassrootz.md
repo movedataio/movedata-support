@@ -54,7 +54,7 @@ To set up the JustGiving integration, you will need four credentials from JustGi
 
 #### Obtaining API Credentials
 
-To access your Consumer and Data App IDs, contact Grassrootz Support ([support@grassrootz.com](mailto:support@grassrootz.com)) requesting access to the Data and Consumer APIs for Production data.
+To access your Consumer and Data App IDs, contact Grassrootz Support ([support@grassrootz.com](mailto:support@grassrootz.com)) requesting access to your Client ID and Secret.
 
 ### Integration Settings
 
