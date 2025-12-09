@@ -2,7 +2,7 @@
 
 ### Overview
 
-This article summarises how to set up and maintain your Raisely integration.
+This article summarises how to set up and maintain your JustGiving integration.
 
 #### Integration Summary
 
