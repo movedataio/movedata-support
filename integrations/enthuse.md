@@ -2,17 +2,9 @@
 
 ### Overview
 
-The MoveData Enthuse integration provides seamless, automated synchronisation between your Enthuse fundraising platform and Salesforce. This comprehensive integration ensures that all donation activities, supporter data, campaign information, and recurring donations are automatically transferred to your Salesforce environment, eliminating manual data entry whilst maintaining complete data accuracy.
+This article summarises how to set up and maintain your Raisely integration.
 
-### Key Benefits
-
-* **Automated synchronisation** of all Enthuse fundraising activities via polling
-* **Intelligent campaign hierarchy** management including events, teams, and individual fundraisers
-* **Advanced financial tracking** including fees and Gift Aid
-* **Recurring donation management** with schedule tracking and status updates
-* **Marketing preference** synchronisation for GDPR compliance
-
-### Integration Summary
+#### Integration Summary
 
 | Field     | Value                                        |
 | --------- | -------------------------------------------- |
@@ -20,28 +12,34 @@ The MoveData Enthuse integration provides seamless, automated synchronisation be
 | Method    | Pull (Polling)                               |
 | Frequency | Configurable (10 minutes to 24 hours)        |
 
-### Demonstration Video
-
-{% embed url="https://www.youtube.com/watch?v=IWc1n8Q4Fnw" %}
-
-### Supported Modes
-
-Logic is required to map Enthuse notifications to your Salesforce data. To quickly and easily do so we recommend using one of the supported MoveData Extensions.
-
 {% hint style="warning" %}
 We do not currently integrate information from Enthuse's `Events` product (which has a completely separate API)
 {% endhint %}
 
-| Extension                 | Supported |
-| ------------------------- | --------- |
-| Fundraising and Donations | ✅         |
-| Commerce                  | ❌         |
+#### Demonstration Video
 
-{% hint style="info" %}
-The Fundraising and Donations Extension is relevant to processing fundraising activity and donation information into Salesforce
-{% endhint %}
+{% embed url="https://www.youtube.com/watch?v=IWc1n8Q4Fnw" %}
 
-### Setup
+### Integration Setup
+
+{% embed url="https://app.arcade.software/share/8wNJYApgy8AhFSMxOX4m" %}
+
+<details>
+
+<summary>Transcription</summary>
+
+* Email support@enthuse.com requesting your API Key, Client ID and Secret
+* Open Integrations
+* Click New Integration
+* Select Enthuse
+* Enter a name for your Enthuse integration
+* Click Next
+* Enter your Enthuse Client ID
+* Enter your Enthuse Client Secret
+* Enter your Entuse API Key
+* Click Save. Your Enthuse integration is now connected.
+
+</details>
 
 #### Enthuse API Credentials
 
@@ -53,45 +51,39 @@ To set up the Enthuse integration, you will need three credentials from Enthuse:
 
 To obtain these credentials, please raise a support ticket directly with Enthuse requesting API access for your MoveData integration.
 
-#### MoveData Enthuse Configuration
+### Integration Settings
 
-<figure><img src="../.gitbook/assets/enthuse_wizard_1.png" alt=""><figcaption></figcaption></figure>
+| Option                                  | Description                                                                                                                                  |
+| --------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Use Display Name**                    | Controls campaign naming for fundraising pages. When enabled, uses the supporter's display name; when disabled, uses the page title.         |
+| **Ignore Address2 when United Kingdom** | Enthuse pushes a duplicate of the city name in the Address2 field when the address is for the UK. Toggling this to true, ignores this value. |
 
-1. Open the MoveData app in Salesforce and select the **Integrations** tab
-2. Click **New Integration** and select **Enthuse** from the list of available integrations
-3. Add a descriptive name for your integration and click **Save**
-4. Enter your Enthuse credentials in the configuration screen:
-   * **Enthuse Client ID**: Your OAuth client identifier
-   * **Enthuse Client Secret**: Your OAuth client secret
-   * **Enthuse API Key**: Your reporting API key
-5. Configure additional options as needed (see Configurable Options below)
-6. Click **Save** to complete the setup
+### Bulk Data Import
 
-The integration will automatically begin synchronising data based on your configured schedule.
-
-### Configurable Options
-
-| Option                                  | Description                                                                                                                                   |
-| --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Production Environment**              | Toggle between Enthuse production and sandbox environments. When disabled, uses Enthuse's sandbox environment for testing.                    |
-| **Use Display Name**                    | Controls campaign naming for fundraising pages. When enabled, uses the supporter's display name; when disabled, uses the page title.          |
-| **Ignore Address2 when United Kingdom** | Enthuse pushes a duplicate of the city name in the Address2 field when the address is for the UK.  Toggling this to true, ignores this value. |
-| **Data Synchronisation Interval**       | Frequency of data polling (configurable from 10 minutes to 24 hours)                                                                          |
-| **Data Delay Buffer**                   | Time offset for data retrieval to ensure complete records (default: 24 hours)                                                                 |
-
-### Data Migration
-
-Data Migration is available upon request. This is a custom service provided by MoveData and is delivered by MoveData Professional Services.
+Buld data import is available upon request. This is a custom service provided by MoveData and is delivered by MoveData Professional Services.
 
 * Requires access to Enthuse's reporting API
 * Historical data available based on your Enthuse data retention policies
 * Configurable date ranges for initial data import
 
-### Additional Field Mappings
+### **Gift Aid Processing**
 
-Where possible, all fields are mapped to the appropriate schemas. Often there are fields that do not fit explicitly into a schema and these are appended as custom fields. Enthuse custom codes are automatically included in fundraiser and team records.
+The Enthuse integration includes comprehensive Gift Aid support for UK charities:
 
-**Custom Fields**
+* **Automatic Gift Aid Calculation**: Gift Aid amounts are automatically calculated and tracked
+* **HMRC Submission Tracking**: Monitor which donations have been submitted to HMRC
+* **Gift Aid Fee Tracking**: Separate tracking of Gift Aid processing fees
+* **Compliance Reporting**: Built-in fields for Gift Aid compliance and audit requirements
+
+### Custom Fields
+
+Where possible, all fields are mapped to the appropriate schemas. Often there are fields that do not fit explicitly into a schema and these are appended within the produced schema objects.For Raisely these fall into three categories:
+
+| Custom Codes Field   | Custom code fields created in Enthuse              |
+| -------------------- | -------------------------------------------------- |
+| System Custom Fields | System level information made available by Enthuse |
+
+#### **Custom Codes**
 
 Enthuse allows organisations to add custom codes to fundraising pages for additional tracking and reporting. MoveData automatically includes these in the resulting notification schema.
 
@@ -103,11 +95,13 @@ Enthuse allows organisations to add custom codes to fundraising pages for additi
 custom.codeNominalCode = "LM:U/4900"
 ```
 
-### Reference
+#### System Custom Fields
 
-The following custom fields are automatically included in MoveData notifications:
+The following system level fields are automatically included in MoveData notifications:
 
-**Contact Custom Fields**
+<details>
+
+<summary>Contact Custom Fields</summary>
 
 | Attribute Name             | Description                  | Example                |
 | -------------------------- | ---------------------------- | ---------------------- |
@@ -124,7 +118,11 @@ The following custom fields are automatically included in MoveData notifications
 | `smsOptIn`                 | SMS marketing permission     | `false`                |
 | `postOptIn`                | Postal marketing permission  | `false`                |
 
-**Campaign Custom Fields**
+</details>
+
+<details>
+
+<summary>Campaign Custom Fields</summary>
 
 | Attribute Name                | Description                          | Example                        |
 | ----------------------------- | ------------------------------------ | ------------------------------ |
@@ -132,7 +130,11 @@ The following custom fields are automatically included in MoveData notifications
 | `enthuseGiftaidAmount`        | Total Gift Aid amount                | `256.33`                       |
 | `code{CustomCodeName}`        | Dynamic custom code fields           | `codeNominalCode: "LM:U/4900"` |
 
-**Donation Custom Fields**
+</details>
+
+<details>
+
+<summary>Donation Custom Fields</summary>
 
 | Attribute Name       | Description                              | Example                                  |
 | -------------------- | ---------------------------------------- | ---------------------------------------- |
@@ -154,34 +156,17 @@ The following custom fields are automatically included in MoveData notifications
 | `contextDirect`      | Is a direct donation                     | `false`                                  |
 | `contextRecurring`   | Is a recurring donation                  | `false`                                  |
 
-**Recurring Donation Custom Fields**
+</details>
+
+<details>
+
+<summary>Recurring Donation Custom Fields</summary>
 
 | Attribute Name | Description              | Example                                   |
 | -------------- | ------------------------ | ----------------------------------------- |
 | `status`       | Enthuse recurring status | `Active`, `Failed`, `Cancelled`, `Paused` |
 
-#### UK-Specific Features
-
-**Gift Aid Processing**
-
-The Enthuse integration includes comprehensive Gift Aid support for UK charities:
-
-* **Automatic Gift Aid Calculation**: Gift Aid amounts are automatically calculated and tracked
-* **HMRC Submission Tracking**: Monitor which donations have been submitted to HMRC
-* **Gift Aid Fee Tracking**: Separate tracking of Gift Aid processing fees
-* **Compliance Reporting**: Built-in fields for Gift Aid compliance and audit requirements
-
-**Fee Models**
-
-Enthuse supports multiple fee models that are automatically detected and processed:
-
-* **Gifting Model**: Fees absorbed by the charity
-* **Donor Fee Cover**: Donor covers processing fees
-* **Platform Fees**: Separate tracking of platform vs. gateway fees
-
-**Authentication**
-
-The integration uses OAuth2 client credentials flow to authenticate with Enthuse's API.
+</details>
 
 ### Other Resources
 
