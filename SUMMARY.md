@@ -12,6 +12,7 @@
 * [Missing $0 Transactions](integration-funraisin/missing-usd0-transactions.md)
 * [Ticket Refunds](integration-funraisin/ticket-refunds.md)
 * [Web Forms](integration-funraisin/web-forms.md)
+* [Could not match on raffle ticket option](integration-funraisin/could-not-match-on-raffle-ticket-option.md)
 
 ## Integration: GoFundraise
 

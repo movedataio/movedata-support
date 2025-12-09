@@ -3,7 +3,7 @@
 {% hint style="info" %}
 Metadata
 
-* category=How MoveData Onboards New Clients
+* category=Business
 * subtitle=An in-depth guide to MoveData's onboarding process
 * integration=all
 * tags=movedata, onboarding, new, clients
