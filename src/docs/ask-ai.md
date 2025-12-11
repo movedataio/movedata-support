@@ -391,7 +391,7 @@ async function sendMessage() {
     showLoading();
     
     try {
-        const response = await fetch('https://api.uat.movedata.io/admin/support/agent', {
+        const response = await fetch('https://api.uat.movedata.io/admin/support/agentcore', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -403,25 +403,94 @@ async function sendMessage() {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
         
-        const data = await response.json();
-        
-        // Remove loading indicator
+        // Remove loading indicator before streaming starts
         removeLoading();
         
-        // Add assistant response
-        const answer = data.answer || data.response || JSON.stringify(data);
+        // Create the assistant message container
+        const messageDiv = document.createElement('div');
+        messageDiv.className = 'message assistant';
         
-        // Build the complete response with sources if available
-        let fullResponse = answer;
-        if (data.sources && Array.isArray(data.sources) && data.sources.length > 0) {
-            fullResponse += '\n\n---\n\n**Sources:**\n';
-            data.sources.forEach((source, index) => {
-                fullResponse += `${index + 1}. [${source.title}](${source.url})\n`;
-            });
+        const label = document.createElement('div');
+        label.className = 'message-label';
+        label.textContent = 'AI Assistant';
+        
+        const contentDiv = document.createElement('div');
+        contentDiv.className = 'message-content';
+        
+        messageDiv.appendChild(label);
+        messageDiv.appendChild(contentDiv);
+        
+        const messagesContainer = document.getElementById('chat-messages');
+        messagesContainer.appendChild(messageDiv);
+        
+        // Stream the response
+        const reader = response.body.getReader();
+        const decoder = new TextDecoder();
+        let buffer = '';
+        let displayBuffer = '';
+        
+        while (true) {
+            const { done, value } = await reader.read();
+            
+            if (done) break;
+            
+            const chunk = decoder.decode(value, { stream: true });
+            buffer += chunk;
+            
+            // Try to parse the JSON to extract the answer being built
+            try {
+                // Remove markdown code blocks if present
+                let cleanBuffer = buffer.trim();
+                if (cleanBuffer.startsWith('```json')) {
+                    cleanBuffer = cleanBuffer.replace(/^```json\s*/, '').replace(/```\s*$/, '');
+                } else if (cleanBuffer.startsWith('```')) {
+                    cleanBuffer = cleanBuffer.replace(/^```\s*/, '').replace(/```\s*$/, '');
+                }
+                
+                // Try to parse - it might be incomplete JSON
+                const data = JSON.parse(cleanBuffer);
+                
+                if (data.answer && data.answer !== displayBuffer) {
+                    displayBuffer = data.answer;
+                    contentDiv.innerHTML = marked.parse(displayBuffer);
+                    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                }
+            } catch (e) {
+                // JSON not complete yet, continue streaming
+            }
         }
         
-        addMessage('assistant', fullResponse);
-        conversationHistory.push({ role: 'assistant', content: fullResponse });
+        // Final parse to get sources
+        try {
+            let cleanBuffer = buffer.trim();
+            if (cleanBuffer.startsWith('```json')) {
+                cleanBuffer = cleanBuffer.replace(/^```json\s*/, '').replace(/```\s*$/, '');
+            } else if (cleanBuffer.startsWith('```')) {
+                cleanBuffer = cleanBuffer.replace(/^```\s*/, '').replace(/```\s*$/, '');
+            }
+            
+            const data = JSON.parse(cleanBuffer);
+            const answer = data.answer || data.response || JSON.stringify(data);
+            
+            // Build the complete response with sources if available
+            let fullResponse = answer;
+            if (data.sources && Array.isArray(data.sources) && data.sources.length > 0) {
+                fullResponse += '\n\n---\n\n**Sources:**\n';
+                data.sources.forEach((source, index) => {
+                    fullResponse += `${index + 1}. [${source.title}](${source.url})\n`;
+                });
+            }
+            
+            // Update with final content including sources
+            contentDiv.innerHTML = marked.parse(fullResponse);
+            conversationHistory.push({ role: 'assistant', content: fullResponse });
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            
+        } catch (error) {
+            console.error('Error parsing final response:', error);
+            // If parsing fails, at least show what we got
+            contentDiv.innerHTML = marked.parse(displayBuffer || buffer);
+        }
         
     } catch (error) {
         removeLoading();

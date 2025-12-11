@@ -308,7 +308,7 @@ async function sendMessage() {
     const headers = { 'Content-Type': 'application/json' };
     if (auth && auth.token) headers['Authorization'] = `Bearer ${auth.token}`;
 
-    const response = await fetch(`${rootUrl}/support/agent`, {
+    const response = await fetch(`${rootUrl}/support/agentcore`, {
       method: 'POST',
       headers,
       body: JSON.stringify({ question: question })
@@ -318,28 +318,108 @@ async function sendMessage() {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
     
-    const data = await response.json();
-    console.log('Ask AI: Response received', data);
+    // Remove loading indicator before streaming starts
     removeLoading();
     
-    // Get the answer and unescape newlines if they're escaped
-    let answer = data.answer || data.response || JSON.stringify(data);
+    // Get the messages container
+    const messagesContainer = document.getElementById('ask-ai-messages');
     
-    // If the answer contains escaped newlines (\\n), convert them to actual newlines
-    if (typeof answer === 'string' && answer.includes('\\n')) {
-      answer = answer.replace(/\\n/g, '\n');
+    // Remove welcome message on first message
+    const welcome = messagesContainer.querySelector('.ask-ai-welcome');
+    if (welcome) {
+      welcome.remove();
     }
     
-    // Build the complete response with sources if available
-    if (data.sources && Array.isArray(data.sources) && data.sources.length > 0) {
-      answer += '\n\n---\n\n**Sources:**\n';
-      data.sources.forEach((source, index) => {
-        answer += `${index + 1}. [${source.title}](${source.url})\n`;
-      });
+    // Create the assistant message container
+    const messageDiv = document.createElement('div');
+    messageDiv.className = 'ask-ai-message ask-ai-message--assistant';
+    
+    const label = document.createElement('div');
+    label.className = 'ask-ai-message__label';
+    label.textContent = 'AI Assistant';
+    
+    const contentDiv = document.createElement('div');
+    contentDiv.className = 'ask-ai-message__content';
+    
+    messageDiv.appendChild(label);
+    messageDiv.appendChild(contentDiv);
+    messagesContainer.appendChild(messageDiv);
+    
+    // Stream the response
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder();
+    let buffer = '';
+    let displayBuffer = '';
+    
+    while (true) {
+      const { done, value } = await reader.read();
+      
+      if (done) break;
+      
+      const chunk = decoder.decode(value, { stream: true });
+      buffer += chunk;
+      
+      // Try to parse the JSON to extract the answer being built
+      try {
+        // Remove markdown code blocks if present
+        let cleanBuffer = buffer.trim();
+        if (cleanBuffer.startsWith('```json')) {
+          cleanBuffer = cleanBuffer.replace(/^```json\s*/, '').replace(/```\s*$/, '');
+        } else if (cleanBuffer.startsWith('```')) {
+          cleanBuffer = cleanBuffer.replace(/^```\s*/, '').replace(/```\s*$/, '');
+        }
+        
+        // Try to parse - it might be incomplete JSON
+        const data = JSON.parse(cleanBuffer);
+        
+        if (data.answer && data.answer !== displayBuffer) {
+          displayBuffer = data.answer;
+          contentDiv.innerHTML = formatMarkdown(displayBuffer);
+          messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+      } catch (e) {
+        // JSON not complete yet, continue streaming
+      }
     }
     
-    addMessage('assistant', answer);
-    conversationHistory.push({ role: 'assistant', content: answer });
+    // Final parse to get sources
+    try {
+      let cleanBuffer = buffer.trim();
+      if (cleanBuffer.startsWith('```json')) {
+        cleanBuffer = cleanBuffer.replace(/^```json\s*/, '').replace(/```\s*$/, '');
+      } else if (cleanBuffer.startsWith('```')) {
+        cleanBuffer = cleanBuffer.replace(/^```\s*/, '').replace(/```\s*$/, '');
+      }
+      
+      const data = JSON.parse(cleanBuffer);
+      console.log('Ask AI: Response received', data);
+      
+      // Get the answer and unescape newlines if they're escaped
+      let answer = data.answer || data.response || JSON.stringify(data);
+      
+      // If the answer contains escaped newlines (\\n), convert them to actual newlines
+      if (typeof answer === 'string' && answer.includes('\\n')) {
+        answer = answer.replace(/\\n/g, '\n');
+      }
+      
+      // Build the complete response with sources if available
+      if (data.sources && Array.isArray(data.sources) && data.sources.length > 0) {
+        answer += '\n\n---\n\n**Sources:**\n';
+        data.sources.forEach((source, index) => {
+          answer += `${index + 1}. [${source.title}](${source.url})\n`;
+        });
+      }
+      
+      // Update with final content including sources
+      contentDiv.innerHTML = formatMarkdown(answer);
+      conversationHistory.push({ role: 'assistant', content: answer });
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+      
+    } catch (error) {
+      console.error('Error parsing final response:', error);
+      // If parsing fails, at least show what we got
+      contentDiv.innerHTML = formatMarkdown(displayBuffer || buffer);
+    }
     
   } catch (error) {
     removeLoading();
