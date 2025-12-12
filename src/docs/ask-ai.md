@@ -7,6 +7,7 @@ hide:
 # Ask AI Assistant
 
 <script src="https://cdn.jsdelivr.net/npm/marked@11.1.1/marked.min.js"></script>
+<script src="/assets/javascript/ask-ai-core.js"></script>
 
 <div id="chat-container">
     <div id="chat-messages"></div>
@@ -289,13 +290,7 @@ hide:
 
 <script>
 // Configure marked for security and proper rendering
-marked.setOptions({
-    breaks: true,        // Convert \n to <br>
-    gfm: true,          // GitHub Flavored Markdown
-    headerIds: false,    // Don't add IDs to headers
-    mangle: false,       // Don't escape email addresses
-    sanitize: false,     // We'll use DOMPurify if needed, but marked escapes by default
-});
+AskAICore.configureMarked();
 
 let conversationHistory = [];
 
@@ -313,7 +308,7 @@ function addMessage(role, content) {
     
     // For assistant messages, render markdown. For user messages, keep as plain text
     if (role === 'assistant') {
-        contentDiv.innerHTML = marked.parse(content);
+        contentDiv.innerHTML = AskAICore.formatMarkdown(content);
     } else {
         contentDiv.textContent = content;
     }
@@ -369,7 +364,8 @@ function showError(message) {
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
 }
 
-async function sendMessage() {
+// Make sendMessage globally accessible for onclick handler
+window.sendMessage = async function() {
     const input = document.getElementById('chat-input');
     const sendButton = document.getElementById('chat-send');
     const question = input.value.trim();
@@ -391,106 +387,32 @@ async function sendMessage() {
     showLoading();
     
     try {
-        const response = await fetch('https://api.uat.movedata.io/admin/support/agentcore', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ question: question })
-        });
-        
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        
-        // Remove loading indicator before streaming starts
-        removeLoading();
-        
-        // Create the assistant message container
-        const messageDiv = document.createElement('div');
-        messageDiv.className = 'message assistant';
-        
-        const label = document.createElement('div');
-        label.className = 'message-label';
-        label.textContent = 'AI Assistant';
-        
-        const contentDiv = document.createElement('div');
-        contentDiv.className = 'message-content';
-        
-        messageDiv.appendChild(label);
-        messageDiv.appendChild(contentDiv);
-        
+        // Get the loading div that was already created by showLoading()
         const messagesContainer = document.getElementById('chat-messages');
-        messagesContainer.appendChild(messageDiv);
+        const loadingDiv = document.getElementById('loading-indicator');
+        const contentDiv = loadingDiv ? loadingDiv.querySelector('.message-content') : null;
         
-        // Stream the response
-        const reader = response.body.getReader();
-        const decoder = new TextDecoder();
-        let buffer = '';
-        let displayBuffer = '';
-        
-        while (true) {
-            const { done, value } = await reader.read();
-            
-            if (done) break;
-            
-            const chunk = decoder.decode(value, { stream: true });
-            buffer += chunk;
-            
-            // Try to parse the JSON to extract the answer being built
-            try {
-                // Remove markdown code blocks if present
-                let cleanBuffer = buffer.trim();
-                if (cleanBuffer.startsWith('```json')) {
-                    cleanBuffer = cleanBuffer.replace(/^```json\s*/, '').replace(/```\s*$/, '');
-                } else if (cleanBuffer.startsWith('```')) {
-                    cleanBuffer = cleanBuffer.replace(/^```\s*/, '').replace(/```\s*$/, '');
-                }
-                
-                // Try to parse - it might be incomplete JSON
-                const data = JSON.parse(cleanBuffer);
-                
-                if (data.answer && data.answer !== displayBuffer) {
-                    displayBuffer = data.answer;
-                    contentDiv.innerHTML = marked.parse(displayBuffer);
-                    messagesContainer.scrollTop = messagesContainer.scrollHeight;
-                }
-            } catch (e) {
-                // JSON not complete yet, continue streaming
-            }
+        if (!contentDiv) {
+            throw new Error('Loading indicator not found');
         }
         
-        // Final parse to get sources
-        try {
-            let cleanBuffer = buffer.trim();
-            if (cleanBuffer.startsWith('```json')) {
-                cleanBuffer = cleanBuffer.replace(/^```json\s*/, '').replace(/```\s*$/, '');
-            } else if (cleanBuffer.startsWith('```')) {
-                cleanBuffer = cleanBuffer.replace(/^```\s*/, '').replace(/```\s*$/, '');
+        // Stream the response using shared core (no auth for standalone page)
+        const result = await AskAICore.streamResponse(question, contentDiv, messagesContainer, {
+            auth: null,
+            onFirstChunk: () => {
+                // Clear the loading dots when we start receiving data
+                const loadingDiv = document.getElementById('loading-indicator');
+                if (loadingDiv) {
+                    loadingDiv.removeAttribute('id'); // Remove ID so it's a normal message now
+                }
+            },
+            onComplete: ({ answer }) => {
+                conversationHistory.push({ role: 'assistant', content: answer });
+            },
+            onError: (error) => {
+                showError(error.message || 'Failed to get response from AI assistant');
             }
-            
-            const data = JSON.parse(cleanBuffer);
-            const answer = data.answer || data.response || JSON.stringify(data);
-            
-            // Build the complete response with sources if available
-            let fullResponse = answer;
-            if (data.sources && Array.isArray(data.sources) && data.sources.length > 0) {
-                fullResponse += '\n\n---\n\n**Sources:**\n';
-                data.sources.forEach((source, index) => {
-                    fullResponse += `${index + 1}. [${source.title}](${source.url})\n`;
-                });
-            }
-            
-            // Update with final content including sources
-            contentDiv.innerHTML = marked.parse(fullResponse);
-            conversationHistory.push({ role: 'assistant', content: fullResponse });
-            messagesContainer.scrollTop = messagesContainer.scrollHeight;
-            
-        } catch (error) {
-            console.error('Error parsing final response:', error);
-            // If parsing fails, at least show what we got
-            contentDiv.innerHTML = marked.parse(displayBuffer || buffer);
-        }
+        });
         
     } catch (error) {
         removeLoading();

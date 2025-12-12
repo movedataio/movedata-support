@@ -9,14 +9,7 @@ function init() {
   console.log('Ask AI: Initializing...');
   
   // Configure marked.js if available
-  if (typeof marked !== 'undefined') {
-    marked.setOptions({
-      breaks: true,
-      gfm: true,
-      headerIds: false,
-      mangle: false,
-      sanitize: false
-    });
+  if (AskAICore.configureMarked()) {
     console.log('Ask AI: marked.js configured');
   } else {
     console.warn('Ask AI: marked.js not found, will use basic formatting');
@@ -238,7 +231,7 @@ function addMessage(role, content) {
   
   // Simple markdown rendering
   if (role === 'assistant') {
-    contentDiv.innerHTML = formatMarkdown(content);
+    contentDiv.innerHTML = AskAICore.formatMarkdown(content);
   } else {
     contentDiv.textContent = content;
   }
@@ -302,24 +295,6 @@ async function sendMessage() {
   
   try {
     const auth = window.getSalesforceToken ? window.getSalesforceToken() : null;
-    const rootHost = auth && auth.isProduction === false ? 'api.uat.movedata.io' : 'api.movedata.io';
-    const rootUrl = (auth) ? `https://${rootHost}/admin/app` : `https://${rootHost}/admin`;
-
-    const headers = { 'Content-Type': 'application/json' };
-    if (auth && auth.token) headers['Authorization'] = `Bearer ${auth.token}`;
-
-    const response = await fetch(`${rootUrl}/support/agentcore`, {
-      method: 'POST',
-      headers,
-      body: JSON.stringify({ question: question })
-    });
-    
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    
-    // Remove loading indicator before streaming starts
-    removeLoading();
     
     // Get the messages container
     const messagesContainer = document.getElementById('ask-ai-messages');
@@ -330,96 +305,31 @@ async function sendMessage() {
       welcome.remove();
     }
     
-    // Create the assistant message container
-    const messageDiv = document.createElement('div');
-    messageDiv.className = 'ask-ai-message ask-ai-message--assistant';
+    // Get the loading div that was already created by showLoading()
+    const loadingDiv = document.getElementById('ask-ai-loading');
+    const contentDiv = loadingDiv ? loadingDiv.querySelector('.ask-ai-message__content') : null;
     
-    const label = document.createElement('div');
-    label.className = 'ask-ai-message__label';
-    label.textContent = 'AI Assistant';
-    
-    const contentDiv = document.createElement('div');
-    contentDiv.className = 'ask-ai-message__content';
-    
-    messageDiv.appendChild(label);
-    messageDiv.appendChild(contentDiv);
-    messagesContainer.appendChild(messageDiv);
-    
-    // Stream the response
-    const reader = response.body.getReader();
-    const decoder = new TextDecoder();
-    let buffer = '';
-    let displayBuffer = '';
-    
-    while (true) {
-      const { done, value } = await reader.read();
-      
-      if (done) break;
-      
-      const chunk = decoder.decode(value, { stream: true });
-      buffer += chunk;
-      
-      // Try to parse the JSON to extract the answer being built
-      try {
-        // Remove markdown code blocks if present
-        let cleanBuffer = buffer.trim();
-        if (cleanBuffer.startsWith('```json')) {
-          cleanBuffer = cleanBuffer.replace(/^```json\s*/, '').replace(/```\s*$/, '');
-        } else if (cleanBuffer.startsWith('```')) {
-          cleanBuffer = cleanBuffer.replace(/^```\s*/, '').replace(/```\s*$/, '');
-        }
-        
-        // Try to parse - it might be incomplete JSON
-        const data = JSON.parse(cleanBuffer);
-        
-        if (data.answer && data.answer !== displayBuffer) {
-          displayBuffer = data.answer;
-          contentDiv.innerHTML = formatMarkdown(displayBuffer);
-          messagesContainer.scrollTop = messagesContainer.scrollHeight;
-        }
-      } catch (e) {
-        // JSON not complete yet, continue streaming
-      }
+    if (!contentDiv) {
+      throw new Error('Loading indicator not found');
     }
     
-    // Final parse to get sources
-    try {
-      let cleanBuffer = buffer.trim();
-      if (cleanBuffer.startsWith('```json')) {
-        cleanBuffer = cleanBuffer.replace(/^```json\s*/, '').replace(/```\s*$/, '');
-      } else if (cleanBuffer.startsWith('```')) {
-        cleanBuffer = cleanBuffer.replace(/^```\s*/, '').replace(/```\s*$/, '');
+    // Stream the response using shared core
+    const result = await AskAICore.streamResponse(question, contentDiv, messagesContainer, {
+      auth,
+      onFirstChunk: () => {
+        // Clear the loading dots when we start receiving data
+        const loadingDiv = document.getElementById('ask-ai-loading');
+        if (loadingDiv) {
+          loadingDiv.removeAttribute('id'); // Remove ID so it's a normal message now
+        }
+      },
+      onComplete: ({ answer }) => {
+        conversationHistory.push({ role: 'assistant', content: answer });
+      },
+      onError: (error) => {
+        showError(error.message || 'Failed to get response');
       }
-      
-      const data = JSON.parse(cleanBuffer);
-      console.log('Ask AI: Response received', data);
-      
-      // Get the answer and unescape newlines if they're escaped
-      let answer = data.answer || data.response || JSON.stringify(data);
-      
-      // If the answer contains escaped newlines (\\n), convert them to actual newlines
-      if (typeof answer === 'string' && answer.includes('\\n')) {
-        answer = answer.replace(/\\n/g, '\n');
-      }
-      
-      // Build the complete response with sources if available
-      if (data.sources && Array.isArray(data.sources) && data.sources.length > 0) {
-        answer += '\n\n---\n\n**Sources:**\n';
-        data.sources.forEach((source, index) => {
-          answer += `${index + 1}. [${source.title}](${source.url})\n`;
-        });
-      }
-      
-      // Update with final content including sources
-      contentDiv.innerHTML = formatMarkdown(answer);
-      conversationHistory.push({ role: 'assistant', content: answer });
-      messagesContainer.scrollTop = messagesContainer.scrollHeight;
-      
-    } catch (error) {
-      console.error('Error parsing final response:', error);
-      // If parsing fails, at least show what we got
-      contentDiv.innerHTML = formatMarkdown(displayBuffer || buffer);
-    }
+    });
     
   } catch (error) {
     removeLoading();
@@ -432,28 +342,4 @@ async function sendMessage() {
   }
 }
 
-// Use marked.js for proper markdown rendering
-function formatMarkdown(text) {
-  // Check if marked is available
-  if (typeof marked !== 'undefined') {
-    // Configure marked for better rendering
-    marked.setOptions({
-      breaks: true,        // Convert \n to <br>
-      gfm: true,          // GitHub Flavored Markdown
-      headerIds: false,    // Don't add IDs to headers
-      mangle: false        // Don't escape email addresses
-    });
-    
-    return marked.parse(text);
-  }
-  
-  // Fallback to basic formatting if marked isn't loaded
-  console.warn('marked.js not available, using basic formatting');
-  return text
-    .replace(/```([\s\S]*?)```/g, '<pre><code>$1</code></pre>')
-    .replace(/`([^`]+)`/g, '<code>$1</code>')
-    .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
-    .replace(/\*([^*]+)\*/g, '<em>$1</em>')
-    .replace(/\n\n/g, '</p><p>')
-    .replace(/\n/g, '<br>');
-}
+// formatMarkdown is now imported from ask-ai-core.js

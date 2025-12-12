@@ -318,6 +318,36 @@
   color: var(--md-default-fg-color);
 }
 
+/* Headings in assistant messages */
+.ask-ai-message--assistant .ask-ai-message__content h1,
+.ask-ai-message--assistant .ask-ai-message__content h2,
+.ask-ai-message--assistant .ask-ai-message__content h3,
+.ask-ai-message--assistant .ask-ai-message__content h4,
+.ask-ai-message--assistant .ask-ai-message__content h5,
+.ask-ai-message--assistant .ask-ai-message__content h6 {
+  margin: 0.75rem 0 0.5rem 0;
+  line-height: 1.3;
+  font-weight: 600;
+}
+
+.ask-ai-message--assistant .ask-ai-message__content h1 {
+  font-size: 1.1rem;
+}
+
+.ask-ai-message--assistant .ask-ai-message__content h2 {
+  font-size: 1rem;
+}
+
+.ask-ai-message--assistant .ask-ai-message__content h3 {
+  font-size: 0.95rem;
+}
+
+.ask-ai-message--assistant .ask-ai-message__content h4,
+.ask-ai-message--assistant .ask-ai-message__content h5,
+.ask-ai-message--assistant .ask-ai-message__content h6 {
+  font-size: 0.9rem;
+}
+
 /* Links in assistant messages - use theme styling */
 .ask-ai-message--assistant .ask-ai-message__content a {
   color: var(--md-typeset-a-color, var(--md-primary-fg-color));
