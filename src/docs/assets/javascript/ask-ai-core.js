@@ -82,6 +82,14 @@ async function streamResponse(question, contentDiv, messagesContainer, options =
   if (auth && auth.token) {
     headers['Authorization'] = `Bearer ${auth.token}`;
   }
+  
+  // Get existing session key if available
+  if (!window.getSessionKey) console.warn('Ask AI: Auth functions not available, cannot get session key');
+  const existingSessionKey = window.getSessionKey ? window.getSessionKey() : null;
+  if (existingSessionKey) {
+    headers['X-Amzn-Bedrock-Agentcore-Runtime-Session-Id'] = existingSessionKey;
+    console.log('Ask AI: Using existing session ID');
+  }
 
   const response = await fetch(endpoint, {
     method: 'POST',
@@ -96,9 +104,17 @@ async function streamResponse(question, contentDiv, messagesContainer, options =
   }
   
   // Log the session ID from response headers
-  const sessionId = response.headers.get('x-amzn-bedrock-agentcore-runtime-session-id');
-  if (sessionId) {
-    console.log('Ask AI: Bedrock session ID:', sessionId);
+  if (!window.setSessionKey) console.warn('Ask AI: Auth functions not available, cannot set session key');
+  console.log('Ask AI: Response headers', Array.from(response.headers.entries()));
+  const sessionId = response.headers.get('X-Amzn-Bedrock-Agentcore-Runtime-Session-Id');
+  console.log(`Ask AI: Bedrock session ID (${sessionId ? 'received' : 'not received'}): ${sessionId}`);
+
+  if (sessionId) {    
+    // Persist session ID using auth.js
+    if (window.setSessionKey) {
+      window.setSessionKey(sessionId);
+      console.log('Ask AI: Session ID persisted');
+    }
   }
   
   // Stream the response
