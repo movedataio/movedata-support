@@ -102,7 +102,7 @@
 * [Upgrading MoveData](general/upgrading-movedata.md)
 * [Viewing Polling Attempts](general/viewing-polling-attempts.md)
 * [Whitelisting MoveData APIs](system/whitelisting-movedata-apis.md)
-* [How to set State and Country Code for Contact Address](technical/how-to-set-state-and-country-code-for-contact-address.md)
+* [How to set State and Country Code for Address](technical/how-to-set-state-and-country-code-for-address.md)
 
 ## Business
 

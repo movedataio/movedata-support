@@ -1,4 +1,4 @@
-# How to set State and Country Code for Contact Address
+# How to set State and Country Code for Address
 
 {% hint style="info" %}
 Metadata
@@ -9,7 +9,7 @@ Metadata
 
 MoveData provides an ability to set State and Country Codes for contact addresses, which is easily configurable in your MoveData Settings.
 
-If you do not see the necessary MoveData settings, please ensure the MoveData Extensions are updated to the latest version. Please see [Upgrading MoveData](../general/upgrading-movedata.md) for more information.
+If you do not see the necessary MoveData settings, please ensure your MoveData Extensions are updated to the latest version. Please see [Upgrading MoveData](../general/upgrading-movedata.md) for more information.
 
 ### Nonprofit Success Pack
 
