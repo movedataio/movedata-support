@@ -22,7 +22,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v5
         with:
-          ref: main
+          ref: ${{ github.ref == 'refs/heads/uat' && 'uat' || 'main' }}
 
       - name: Set up Node.js
         uses: actions/setup-node@v5
