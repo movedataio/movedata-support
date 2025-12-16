@@ -57,9 +57,7 @@ function getApiEndpoint(auth = null) {
   const isProduction = isUat ? false : (auth && auth.isProduction !== false);
 
   const rootHost = !isProduction ? 'api.uat.movedata.io' : 'api.movedata.io';
-  const rootUrl = (auth) ? `https://${rootHost}/admin/app` : `https://${rootHost}/admin`;
-
-  return `${rootUrl}/support/agentcore`;
+  return `https://${rootHost}/admin/support/agentcore`;
 }
 
 /**

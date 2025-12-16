@@ -323,7 +323,14 @@ hide:
 
 <script>
     (function() {
-        const SEARCH_ENDPOINT = 'https://api.uat.movedata.io/admin/support/search';
+        const auth = window.getSalesforceToken ? window.getSalesforceToken() : null;
+
+        // Force UAT environment when running on localhost
+        const isUat = window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost' || window.location.hostname === 'support.uat.movedata.io';
+        const isProduction = isUat ? false : (auth && auth.isProduction !== false);
+
+        const rootHost = !isProduction ? 'api.uat.movedata.io' : 'api.movedata.io';
+        const SEARCH_ENDPOINT = `https://${rootHost}/admin/support/searchcore`;
 
         const searchInput = document.getElementById('searchInput');
         const searchButton = document.getElementById('searchButton');
