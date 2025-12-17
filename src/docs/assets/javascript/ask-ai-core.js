@@ -57,7 +57,7 @@ function getApiEndpoint(auth = null) {
   const isProduction = isUat ? false : (auth && auth.isProduction !== false);
 
   const rootHost = !isProduction ? 'api.uat.movedata.io' : 'api.movedata.io';
-  return `https://${rootHost}/admin/support/agentcore`;
+  return `https://${rootHost}/admin/support/agent`;
 }
 
 /**
@@ -77,9 +77,7 @@ async function streamResponse(question, contentDiv, messagesContainer, options =
   
   const endpoint = getApiEndpoint(auth);
   const headers = { 'Content-Type': 'application/json' };
-  if (auth && auth.token) {
-    headers['Authorization'] = `Bearer ${auth.token}`;
-  }
+  if (auth && auth.token) headers['Authorization'] = `Bearer ${auth.token}`;
   
   // Get existing session key if available
   if (!window.getSessionKey) console.warn('Ask AI: Auth functions not available, cannot get session key');

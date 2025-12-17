@@ -330,7 +330,7 @@ hide:
         const isProduction = isUat ? false : (auth && auth.isProduction !== false);
 
         const rootHost = !isProduction ? 'api.uat.movedata.io' : 'api.movedata.io';
-        const SEARCH_ENDPOINT = `https://${rootHost}/admin/support/searchcore`;
+        const SEARCH_ENDPOINT = `https://${rootHost}/admin/support/search`;
 
         const searchInput = document.getElementById('searchInput');
         const searchButton = document.getElementById('searchButton');
