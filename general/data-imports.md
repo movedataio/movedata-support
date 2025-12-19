@@ -4,6 +4,8 @@
 Metadata
 
 * category=Business
+* subtitle=An overview of MoveData data imports
+* integration=all
 * tags=data,data import,data migration
 {% endhint %}
 
@@ -20,7 +22,7 @@ MoveData provides data import services at a fixed rate of 4h, per platform, per 
 MoveData requires a Statement of Work in place for data imports, and the data import will be performed according to the terms in your Statement of Work. Specifically for data imports please note the following terms as extracted from our Statement of Work:
 
 * **Development Environment**\
-  &#xNAN;_&#x59;ou will provide access to a development environment which is an accurate reflection of Production. If MoveData functionality passes Acceptance Testing in the development environment, and that same MoveData functionality is deployed to Production, and an error occurs in Production which does not occur in the development environment, then you will be responsible for remediating this issue and MoveData shall have no liability in this case._
+  \&#xNAN;_You will provide access to a development environment which is an accurate reflection of Production. If MoveData functionality passes Acceptance Testing in the development environment, and that same MoveData functionality is deployed to Production, and an error occurs in Production which does not occur in the development environment, then you will be responsible for remediating this issue and MoveData shall have no liability in this case._
 *   **Testing is Final**
 
     _When Acceptance Testing is passed in the development environment, your integration will be deployed into your production environment. If there are any errors in your production environment due to configuration difference, lack of testing, different dataset etc versus the development environment, then MoveData is not responsible for remediating, correcting or rectifying any records which have already been processed into that environment._

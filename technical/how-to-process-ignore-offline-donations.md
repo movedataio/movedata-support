@@ -4,7 +4,9 @@
 Metadata
 
 * category=Technical
-* tags=offline,offline donations
+* subtitle=Demonstrates how to process or ignore offline donations
+* integration=all
+* tags=offline,offline donations,ignore,process
 {% endhint %}
 
 MoveData provides an ability to process or ignore offline donations, which is easily configurable in your MoveData Settings.

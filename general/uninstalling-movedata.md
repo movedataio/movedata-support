@@ -4,6 +4,8 @@
 Metadata
 
 * category=Technical
+* subtitle=How to uninstall the MoveData App
+* integration=all
 * tags=config,uninstall
 {% endhint %}
 

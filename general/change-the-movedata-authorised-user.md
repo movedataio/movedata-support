@@ -4,6 +4,8 @@
 Metadata
 
 * category=Technical
+* subtitle=How to change the MoveData Authorised User
+* integration=all
 * tags=authorised user,user,authentication,settings
 {% endhint %}
 

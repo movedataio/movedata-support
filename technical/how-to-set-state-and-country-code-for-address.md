@@ -4,6 +4,8 @@
 Metadata
 
 * category=Technical
+* subtitle=A guide on how to set State and Country Codes
+* integration=all
 * tags=state,country,codes,contact,address
 {% endhint %}
 

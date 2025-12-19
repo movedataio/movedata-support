@@ -4,7 +4,9 @@
 Metadata
 
 * category=Technical
-* tags=config,upgrade
+* subtitle=How to upgrade your MoveData App and Extensions
+* integration=all
+* tags=config,upgrade,app,extensions
 {% endhint %}
 
 Occasionally you may need to upgrade your version of MoveData and its extensions to gain access to new features or functionality.

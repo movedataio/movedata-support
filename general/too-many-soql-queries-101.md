@@ -4,6 +4,8 @@
 Metadata
 
 * category=Technical
+* subtitle=A guide for Too many SOQL queries: 101 error
+* integration=all
 * tags=apex,soql,101,limit,governor
 {% endhint %}
 

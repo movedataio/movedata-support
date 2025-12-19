@@ -4,6 +4,8 @@
 Metadata
 
 * category=Technical
+* subtitle=How to upgrade the MoveData app (pre-1.167)
+* integration=all
 * tags=config,upgrade,legacy
 {% endhint %}
 

@@ -4,7 +4,9 @@
 Metadata
 
 * category=Technical
-* tags=security
+* subtitle=An update to Salesforce Connected App usage restrictions
+* integration=all
+* tags=security,salesforce,connected,app,usage,restriction
 {% endhint %}
 
 In September 2025, Salesforce made changes to the way connected apps work: [https://help.salesforce.com/s/articleView?id=005132365\&type=1](https://help.salesforce.com/s/articleView?id=005132365\&type=1).

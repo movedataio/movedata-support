@@ -4,7 +4,9 @@
 Metadata
 
 * category=Technical
-* tags=data,protect
+* subtitle=How to protect contact fields
+* integration=all
+* tags=data,protect,contact,fields
 {% endhint %}
 
 Occasionally, you may want to protect a contact from being overwritten by your MoveData integration. Built into our extensions, we have support for protecting the record using the following configurations:

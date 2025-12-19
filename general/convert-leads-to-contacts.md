@@ -10,6 +10,8 @@ description: >-
 Metadata
 
 * category=Technical
+* subtitle=How to convert leads to contacts
+* integration=all
 * tags=duplicate,convert,leads
 {% endhint %}
 

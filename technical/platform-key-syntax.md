@@ -4,6 +4,8 @@
 Metadata
 
 * category=Technical
+* subtitle=A guide to MoveData's Platform Key syntax
+* integration=all
 * tags=data,data import,data migration,keys,platform keys
 {% endhint %}
 

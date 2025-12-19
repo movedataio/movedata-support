@@ -4,7 +4,8 @@
 Metadata
 
 * category=Technical
-* extension=all
+* subtitle=How to protect a campaign record's name in Salesforce
+* integration=all
 * tags=campaign,name,protect
 {% endhint %}
 

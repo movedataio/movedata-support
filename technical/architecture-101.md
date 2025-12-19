@@ -1,12 +1,21 @@
 # Architecture 101
 
+{% hint style="info" %}
+Metadata
+
+* category=Technical
+* subtitle=A comprehensive guide to MoveData Architecture
+* integration=all
+* tags=architecture,101,getting,started
+{% endhint %}
+
 {% embed url="https://vimeo.com/1138795894" %}
 
 ## Summary
 
 James Kent explains how the system operates through a three-stage lifecycle: data ingestion (capturing events from fundraising platforms like donations and registrations), transformation (where MoveData enriches and standardises the data), and execution within Salesforce using the MoveData native application and Lightning Flows. The platform processes notifications through sophisticated pipelines that follow dependency-based sequences—for fundraising & donations, it follows creating accounts first, then contacts, campaigns, recurring subscriptions, and finally donation records—ensuring data integrity and proper relationships throughout.
 
-The video demonstrates how these pipelines work in practice by walking through the contact phase in detail. James shows how MoveData uses filters to determine whether to process records, platform keys to bind external contacts with Salesforce records, duplicate checking mechanisms, and mapping flows that populate data.&#x20;
+The video demonstrates how these pipelines work in practice by walking through the contact phase in detail. James shows how MoveData uses filters to determine whether to process records, platform keys to bind external contacts with Salesforce records, duplicate checking mechanisms, and mapping flows that populate data.
 
 He emphasizes the importance of metadata configuration in directing the business logic, showing how pipeline settings register specific flows with handlers that execute in a defined order. The demonstration uses a real Raisely notification example to illustrate how the transformation engine converts platform-specific formats into standardised MoveData notifications, ultimately executing the appropriate flows to create or update Salesforce records while maintaining all necessary relationships and business rules.
 

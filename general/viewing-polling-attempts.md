@@ -4,7 +4,9 @@
 Metadata
 
 * category=Technical
-* tags=batch,navigation
+* subtitle=How to view polling attempts
+* integration=all
+* tags=batch,navigation,polling,attempts
 {% endhint %}
 
 If you are using a platform that polls for notifications such as JustGiving or Funraisin, you may wish to see the polling attempts to verify the integration is active and pulling data.

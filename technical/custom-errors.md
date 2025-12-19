@@ -8,6 +8,8 @@ description: How to raise your own errors within a flow.
 Metadata
 
 * category=Technical
+* subtitle=How to implement custom errors&#x20;
+* integration=all
 * tags=errors,custom,log,flow
 {% endhint %}
 

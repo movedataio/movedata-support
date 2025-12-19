@@ -4,6 +4,8 @@
 Metadata
 
 * category=Technical
+* subtitle=An overview of Apex CPU time limit exceeded error
+* integration=all
 * tags=apex,cpu,timeout,limit,governor
 {% endhint %}
 

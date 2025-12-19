@@ -4,7 +4,9 @@
 Metadata
 
 * category=Technical
-* tags=ip address,whitelisting
+* subtitle=How to whitelist MoveData APIs
+* integration=all
+* tags=ip address,whitelisting,api
 {% endhint %}
 
 Some organisations will want to limit the IP address ranges that can talk with their Salesforce instance. This will reduce reduce the possible attack vector should the OAuth token hosted by MoveData become comprimised.

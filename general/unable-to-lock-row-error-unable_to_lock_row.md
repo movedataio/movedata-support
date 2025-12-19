@@ -4,7 +4,9 @@
 Metadata
 
 * category=Technical
-* tags=row lock,locking
+* subtitle=A guide for Unable to Lock Row Error (UNABLE\_TO\_LOCK\_ROW) Salesforce error
+* integration=all
+* tags=row lock,locking,error
 {% endhint %}
 
 When a record is being created or updated, Salesforce places a lock on that record to prevent other operations from updating the record at the same time (which might otherwise cause inconsistencies in data).
