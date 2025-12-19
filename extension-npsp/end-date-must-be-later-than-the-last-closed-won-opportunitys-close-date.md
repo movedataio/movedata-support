@@ -5,8 +5,9 @@ Metadata
 
 * group=Extension
 * category=Non-Profit Success Pack
+* subtitle=A summary on End Date must be later than the last Closed Won Opportunity's Close Date error
 * extension=npsp
-* tags=recurring
+* tags=recurring,end,date,later,close,won,error
 {% endhint %}
 
 This error can occur when recurring donation has been processed and cancelled on the same day.

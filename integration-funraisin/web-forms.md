@@ -5,6 +5,7 @@ Metadata
 
 * group=Integration
 * category=Funraisin
+* subtitle=A summary of Funraisin web forms
 * integration=funraisin
 * tags=forms
 {% endhint %}

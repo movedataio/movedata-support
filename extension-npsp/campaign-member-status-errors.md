@@ -9,6 +9,7 @@ Metadata
 
 * group=Extension
 * category=Non-Profit Success Pack
+* subtitle=A guide to Campaign Member Status error
 * extension=npsp
 * tags=campaign members,campaign members status
 {% endhint %}

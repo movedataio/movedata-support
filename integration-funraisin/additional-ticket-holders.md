@@ -5,8 +5,9 @@ Metadata
 
 * group=Integration
 * category=Funraisin
+* subtitle=A summary on additional ticket holders in Funraisin
 * integration=funraisin
-* tags=tickets,commerce
+* tags=additional,tickets,holders,commerce
 {% endhint %}
 
 <figure><img src="../.gitbook/assets/FR Ticket Holders.png" alt=""><figcaption></figcaption></figure>

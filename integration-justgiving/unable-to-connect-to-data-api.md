@@ -5,8 +5,9 @@ Metadata
 
 * group=Integration
 * category=JustGiving
+* subtitle=An overview for Unable to connect to Data API error
 * integration=justgiving
-* tags=config
+* tags=config,unable,connect,data,api,error
 {% endhint %}
 
 To connect your JustGiving account you must provide the following information:

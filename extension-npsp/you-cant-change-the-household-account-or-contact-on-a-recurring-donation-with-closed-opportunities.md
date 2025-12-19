@@ -5,8 +5,9 @@ Metadata
 
 * group=Extension
 * category=Non-Profit Success Pack
+* subtitle=Demonstrates how to fix You can't change the Household Account or Contact on a Recurring Donation with Closed Opportunities error
 * extension=npsp
-* tags=recurring
+* tags=recurring,change,household,account,contact,recurring,donation
 {% endhint %}
 
 Over time, and typically due to manually modifying records in Salesforce, a scenario can occur where the source platform issues information which is different to the contact or account assigned to your recurring donation.

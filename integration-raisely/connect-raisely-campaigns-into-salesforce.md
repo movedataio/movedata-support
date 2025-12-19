@@ -9,8 +9,9 @@ Metadata
 
 * group=Integration
 * category=Raisely
+* subtitle=Demonstrates how to connect Raisely campaigns into Salesforce
 * integration=raisely
-* tags=campaign,video
+* tags=campaign,video,connect,raisely
 {% endhint %}
 
 {% embed url="https://vimeo.com/1134018154" %}

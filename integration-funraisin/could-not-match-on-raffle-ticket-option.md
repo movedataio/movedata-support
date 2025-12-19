@@ -3,6 +3,7 @@
 {% hint style="info" %}
 Metadata
 
+* group=Integration
 * category=Funraisin
 * subtitle=An overview of Could not match on raffle ticket option Funraisin error
 * integration=Funraisin

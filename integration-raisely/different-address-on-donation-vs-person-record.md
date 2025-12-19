@@ -5,8 +5,9 @@ Metadata
 
 * group=Integration
 * category=Raisely
+* subtitle=A guide to correcting a different address on donations versus Salesforce person record
 * integration=raisely
-* tags=data,contact
+* tags=data,contact,different,address,salesforce,person,record
 {% endhint %}
 
 Sometimes in Raisely you will encounter a scenario where address information on the donation record is different to address information on the person record.

@@ -5,8 +5,9 @@ Metadata
 
 * group=Integration
 * category=Raisely
+* subtitle=A guide for mapping Raisely campaigns to existing Salesforce campaigns
 * integration=raisely
-* tags=campaign,data,data migration,data import
+* tags=campaign,data,data migration,data import,map,existing,salesforce
 {% endhint %}
 
 When you connect a campaign from Raisely, MoveData will automatically create an equivalent campaign record in Salesforce. If you need MoveData to match to an existing campaign record then you must follow the below steps:

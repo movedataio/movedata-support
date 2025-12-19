@@ -5,8 +5,9 @@ Metadata
 
 * group=Integration
 * category=Grassrootz
+* subtitle=A summary of Grassrootz foreign currency donations
 * integration=Grassrootz
-* tags=currency,foreign
+* tags=currency,foreign,donation
 {% endhint %}
 
 It is possible to take foreign currency donations using Grassrootz.

@@ -5,6 +5,7 @@ Metadata
 
 * group=Integration
 * category=Funraisin
+* subtitle=A summary of Funraisin ticket refunds
 * integration=funraisin
 * tags=refund,commerce
 {% endhint %}

@@ -5,6 +5,7 @@ Metadata
 
 * group=Integration
 * category=GoFundraise
+* subtitle=A summary of GoFundraise custom fields
 * integration=gofundraise
 * tags=custom,questions
 {% endhint %}

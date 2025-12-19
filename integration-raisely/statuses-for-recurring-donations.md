@@ -5,8 +5,9 @@ Metadata
 
 * group=Integration
 * category=Raisely
+* subtitle=A summary for recurring donation statuses
 * integration=raisely
-* tags=recurring
+* tags=recurring, donation,status
 {% endhint %}
 
 When a donor makes a recurring donation in Raisely, the status of that recurring donation can change over time.

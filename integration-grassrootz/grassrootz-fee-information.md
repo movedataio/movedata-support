@@ -5,6 +5,7 @@ Metadata
 
 * group=Integration
 * category=Grassrootz
+* subtitle=A summary of Grassrootz fee information
 * integration=grassrootz
 * tags=fee
 {% endhint %}

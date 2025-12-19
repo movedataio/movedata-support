@@ -5,6 +5,7 @@ Metadata
 
 * group=Integration
 * category=Enthuse
+* subtitle=Important information for missing Enthuse data
 * integration=enthuse
 * tags=data
 {% endhint %}

@@ -9,6 +9,7 @@ Metadata
 
 * group=Integration
 * category=Raisely
+* subtitle=Demonstrates how to map Raisely campaigns into Salesforce
 * integration=raisely
 * tags=campaign,video
 {% endhint %}

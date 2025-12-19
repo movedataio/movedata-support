@@ -5,8 +5,9 @@ Metadata
 
 * group=Integration
 * category=Funraisin
+* subtitle=A summary for Could not get participant record (Key: ####) error
 * integration=funraisin
-* tags=data
+* tags=data,participant,record,key,error
 {% endhint %}
 
 Whilst uncommon, you may from time to time encounter an error like: `Could not get participant record (Key: ####)`.

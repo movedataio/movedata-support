@@ -5,6 +5,7 @@ Metadata
 
 * group=Integration
 * category=Grassrootz
+* subtitle=Demonstrates how to infer amount for Grassrootz foreign currency donations
 * integration=Grassrootz
 * tags=currency,foreign,amount
 {% endhint %}

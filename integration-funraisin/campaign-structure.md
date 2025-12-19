@@ -1,9 +1,3 @@
----
-description: >-
-  An explainer about the different options that influence the structure of
-  Funraisin campaigns
----
-
 # Campaign Structure
 
 {% hint style="info" %}
@@ -11,6 +5,7 @@ Metadata
 
 * group=Integration
 * category=Funraisin
+* subtitle=An explainer about the different options that influence the structure of Funraisin campaigns
 * integration=funraisin
 * tags=campaign
 {% endhint %}

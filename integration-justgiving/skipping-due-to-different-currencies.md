@@ -5,8 +5,9 @@ Metadata
 
 * group=Integration
 * category=JustGiving
+* subtitle=A summary of skipping notifications due to different currencies
 * integration=justgiving
-* tags=currency,foreign
+* tags=currency,foreign,skip,different
 {% endhint %}
 
 When a foreign currency transaction is made on JustGiving, the equivalent settled currency amount is not provided. For example:

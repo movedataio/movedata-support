@@ -5,6 +5,7 @@ Metadata
 
 * group=Integration
 * category=Raisely
+* subtitle=A guide on how to migrate recurring donations from an external system
 * integration=raisely
 * tags=recurring,data,data migration,data import
 {% endhint %}

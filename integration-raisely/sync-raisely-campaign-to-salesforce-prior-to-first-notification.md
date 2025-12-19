@@ -5,8 +5,9 @@ Metadata
 
 * group=Integration
 * category=Raisely
+* subtitle=A summary on how to sync Raisely campaigns to Salesforce before your first notification
 * integration=raisely
-* tags=campaign
+* tags=campaign,sync,raisely,campaign
 {% endhint %}
 
 Ordinarily MoveData will sync your Raisely campaign into Salesforce when Raisely issues the first notification (e.g. donation, profile, order etc). In certain scenarios organisations may wish to sync their Raisely campaign into Salesforce before the first notification occurs. To do so:

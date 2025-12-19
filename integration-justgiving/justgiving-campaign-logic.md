@@ -5,8 +5,9 @@ Metadata
 
 * group=Integration
 * category=JustGiving
+* subtitle=A summary of JustGiving campaign logic
 * integration=justgiving
-* tags=campaign
+* tags=campaign,logic
 {% endhint %}
 
 JustGiving is a difficult platform to extract data from. MoveData use a suite of APIs to piece together a reasonably complete view of a transaction. As part of this, MoveData must create the following campaign structure:

@@ -5,8 +5,9 @@ Metadata
 
 * group=Integration
 * category=Grassrootz
+* subtitle=How to connect your Grassrootz integration to MoveData
 * integration=Grassrootz
-* tags=config
+* tags=config,connecting,grassrootz,integration
 {% endhint %}
 
 Connecting to the Grassrootz API requires your Client Key and Secret. These are issued by Grassrootz and are not available through their Admin panel. To obtain these please email [support@grassrootz.com](mailto:support@grassrootz.com).

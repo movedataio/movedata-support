@@ -5,6 +5,7 @@ Metadata
 
 * group=Integration
 * category=Raisely
+* subtitle=A summary on Required Fields are missing: \[LastName] error
 * integration=raisely
 * tags=data
 {% endhint %}
