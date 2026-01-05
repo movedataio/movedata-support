@@ -90,6 +90,7 @@
 * [MAXIMUM\_HIERARCHY\_LEVELS\_REACHED](general/maximum_hierarchy_levels_reached.md)
 * [MoveData App (pre-1.167)](general/movedata-app-pre-1.167.md)
 * [How to Process / Ignore Offline Donations](technical/how-to-process-ignore-offline-donations.md)
+* [How to Protect Campaign Parent](technical/how-to-protect-campaign-parent.md)
 * [Platform Key Syntax](technical/platform-key-syntax.md)
 * [Protect Contact Fields](general/protect-contact-fields.md)
 * [Run Campaign Post and Donation Post Asynchronously](technical/run-campaign-post-and-donation-post-asynchronously.md)
