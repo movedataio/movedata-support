@@ -12,7 +12,7 @@ This article summarises how to set up and maintain your Grassrootz integration.
 | Method    | Push (Webhooks)                                            |
 | Frequency | Real-Time                                                  |
 
-{% hint style="danger" %}
+{% hint style="warning" %}
 MoveData does not support ticket sale functionality through Grassrootz. This is because this is not a commonly used Grassrootz feature so we do not yet have a business case to develop and maintain integration of ticket sale data.
 {% endhint %}
 
