@@ -104,6 +104,7 @@
 * [Viewing Polling Attempts](general/viewing-polling-attempts.md)
 * [Whitelisting MoveData APIs](system/whitelisting-movedata-apis.md)
 * [How to set State and Country Code for Address](technical/how-to-set-state-and-country-code-for-address.md)
+* [How to add MoveData System Fields to Page Layouts](technical/how-to-add-movedata-system-fields-to-page-layouts.md)
 
 ## Business
 
