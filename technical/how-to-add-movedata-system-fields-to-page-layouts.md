@@ -27,6 +27,8 @@ MoveData has specific system fields which allow access to out-of-the-box functio
 * Click Save. Repeat this process to add the MoveData system fields for all record types currently in use
 * Observe the MoveData system field is now applied to your page layout
 
+For more information, please visit [Salesforce Trailhead: Configure Page Layouts and Create Record Types](https://trailhead.salesforce.com/content/learn/projects/set-up-salesforce-knowledge/configure-page-layouts-create-record-types)
+
 ### MoveData System Fields
 
 #### Nonprofit Success Pack
