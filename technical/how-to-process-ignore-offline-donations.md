@@ -13,7 +13,7 @@ MoveData provides an ability to process or ignore offline donations, which is ea
 
 ### Nonprofit Success Pack
 
-{% embed url="https://movedata.share.arcade.software/share/jrqglta6OSN491MQiIq8" %}
+{% embed url="https://app.arcade.software/share/jrqglta6OSN491MQiIq8" %}
 
 #### Transcription
 
@@ -27,7 +27,7 @@ MoveData provides an ability to process or ignore offline donations, which is ea
 
 ### Nonprofit Cloud
 
-{% embed url="https://movedata.share.arcade.software/share/UAJNy87Nr9ukpLXYqwRI" %}
+{% embed url="https://app.arcade.software/share/UAJNy87Nr9ukpLXYqwRI" %}
 
 #### Transcription
 
