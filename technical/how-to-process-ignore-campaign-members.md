@@ -20,10 +20,9 @@ MoveData provides an ability to process or ignore campaign members, which is eas
 
 * Navigate to Settings
 * Click Fundraising & Donations
-* Toggle Create Fundraising-specific Campaign Members to True
+* Scroll down to Campaign Members
+* To create campaign member records, select Create Fundraising-specific Campaign Members
 * Click Update
-* Navigate to your MoveData notification and click Reprocess
-* Observe Campaign Members are now being created. Note: Please ensure Campaign members related list is applied to the campaign page layouts
 
 ### NPC
 
@@ -31,9 +30,10 @@ MoveData provides an ability to process or ignore campaign members, which is eas
 
 #### Transcription
 
-* Navigate to Settings
+* Open Settings
 * Click Marketing
-* Toggle Create Campaign Members setting to True. Note: Please ensure the correct Campaign Member setting is toggled to True, depending on your organisation's preference
+* Scroll down to Campaign Members
+* To create campaign member records across all levels of the campaign hierarchy, select All Campaigns
+* To create campaign member records against only the top level of the campaign hierarchy, select Top Level Campaign
+* To create campaign member records against only the level of the campaign hierarchy to which that contact explicitly belongs, select Parent Campaign
 * Click Update
-* Navigate to your MoveData notification and click Reprocess
-* Observe the Campaign Members are now being created. Note: Please ensure Campaign Members related list is applied to the campaign page layout
