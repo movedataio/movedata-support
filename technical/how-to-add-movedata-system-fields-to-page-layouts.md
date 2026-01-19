@@ -3,7 +3,6 @@
 {% hint style="info" %}
 Metadata
 
-* group=Technical
 * category=Technical
 * subtitle=An overview of MoveData System Fields and how to add these to Salesforce page layouts
 * integration=all
