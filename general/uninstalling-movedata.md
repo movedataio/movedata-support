@@ -35,4 +35,4 @@ We always suggest you select `Save a copy of this package's data for 48 hours af
 
 <figure><img src="../.gitbook/assets/Uninstall Failed.png" alt=""><figcaption></figcaption></figure>
 
-f you have not removed all dependencies, you see a page listing all dependencies that must be addressed before the uninstall can proceed. Once these have been addressed, you will need to try again.
+If you have not removed all dependencies, you see a page listing all dependencies that must be addressed before the uninstall can proceed. Once these have been addressed, you will need to try again.
