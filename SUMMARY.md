@@ -5,6 +5,7 @@
 ## Agent Prompts <a href="#agent" id="agent"></a>
 
 * [Agent](agent/agent.md)
+* [Email](agent/email.md)
 
 ## General
 
