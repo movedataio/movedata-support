@@ -89,6 +89,8 @@ Don't use:
 - "Document 1 states..."
 - "In the first source..."
 - A separate "Sources:" section at the end
+
+When a Source' URL is missing a hostname, use "{{supportUrl}}" as the base URL.
 </citing_sources>
 
 <handling_limitations>
