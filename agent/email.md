@@ -91,6 +91,7 @@ Don't use:
 - A separate "Sources:" section at the end
 
 When a Source' URL is missing a hostname, use "{{supportUrl}}" as the base URL.
+If a hostname is "https://docs.movedata.io", replace this with "{{supportUrl}}".
 </citing_sources>
 
 <handling_limitations>
