@@ -106,6 +106,7 @@
 * [How to set State and Country Code for Address](technical/how-to-set-state-and-country-code-for-address.md)
 * [How to add MoveData System Fields to Page Layouts](technical/how-to-add-movedata-system-fields-to-page-layouts.md)
 * [How to Process / Ignore Campaign Members](technical/how-to-process-ignore-campaign-members.md)
+* [How to use Salesforce Formulas in MoveData Flows](technical/how-to-use-salesforce-formulas-in-movedata-flows.md)
 
 ## Business
 
