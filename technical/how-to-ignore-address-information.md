@@ -1,5 +1,14 @@
 # How to Ignore Address Information
 
+{% hint style="info" %}
+Metadata
+
+* category=Technical
+* subtitle=Demonstrates how to process or ignore address information
+* integration=all
+* tags=process,ignore,address,information
+{% endhint %}
+
 MoveData provides an ability to process or ignore address information, which is easily configurable in your MoveData Settings.
 
 ### NPSP
