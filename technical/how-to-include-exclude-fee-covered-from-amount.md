@@ -15,7 +15,7 @@ Metadata
 * tags=cover,fee,include,exclude,settings,video
 {% endhint %}
 
-{% embed url="https://movedata.share.arcade.software/share/pS0d7dvXpXMVjJWL8lw9" %}
+{% embed url="https://app.arcade.software/share/pS0d7dvXpXMVjJWL8lw9" %}
 
 {% embed url="https://vimeo.com/1138770830" %}
 
