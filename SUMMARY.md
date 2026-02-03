@@ -109,6 +109,7 @@
 * [How to Process / Ignore Campaign Members](technical/how-to-process-ignore-campaign-members.md)
 * [How to Process / Ignore Address Information](technical/how-to-process-ignore-address-information.md)
 * [Authorising MoveData after Salesforce Domain Name Change](technical/authorising-movedata-after-salesforce-domain-name-change.md)
+* [Salesforce Household Accounts (NPSP)](technical/salesforce-household-accounts-npsp.md)
 
 ## Business
 
