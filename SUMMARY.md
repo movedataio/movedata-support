@@ -31,6 +31,7 @@
 * [Unable to connect to Data API](integration-justgiving/unable-to-connect-to-data-api.md)
 * [Skipping due to Different Currencies](integration-justgiving/skipping-due-to-different-currencies.md)
 * [JustGiving Campaign Logic](integration-justgiving/justgiving-campaign-logic.md)
+* [How to Enable / Disable the JustGiving Notification Date Filter](integration-justgiving/how-to-enable-disable-the-justgiving-notification-date-filter.md)
 
 ## Integration: Raisely
 
@@ -42,6 +43,7 @@
 * [Required fields are missing: \[LastName\]](integration-raisely/required-fields-are-missing-lastname.md)
 * [How to map Raisely Campaigns into Salesforce](integration-raisely/connect-your-raisely-campaign.md)
 * [Connect Raisely Campaigns into Salesforce](integration-raisely/connect-raisely-campaigns-into-salesforce.md)
+* [How to Capture Donations Made on Behalf of an Organisation in Raisely](integration-raisely/how-to-capture-donations-made-on-behalf-of-an-organisation-in-raisely.md)
 
 ## Nonprofit Success Pack
 
