@@ -24,4 +24,4 @@ When re-authenticating MoveData in the sandbox, pay careful attention to:
 
 After re-authenticating MoveData, you can configure your integrations following the same process used in production. This ensures consistency between environments and helps identify issues before they affect your live system.
 
-For more information on connecting your Integration, please see our [User Guide](https://support.movedata.io/user_guide/) and locate your integration platform.
+For more information on connecting your Integration, please see our [User Guide](https://support.movedata.io/user_guide/).
