@@ -114,6 +114,7 @@
 * [Salesforce Household Accounts (NPSP)](technical/salesforce-household-accounts-npsp.md)
 * [Setting Up MoveData in a Salesforce Sandbox Environment](technical/setting-up-movedata-in-a-salesforce-sandbox-environment.md)
 * [Salesforce Lead Object and Matching](technical/salesforce-lead-object-and-matching.md)
+* [Using Enhanced Recurring Donations](technical/using-enhanced-recurring-donations.md)
 
 ## Business
 
