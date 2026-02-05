@@ -18,9 +18,9 @@ Once you have [created a sandbox](https://help.salesforce.com/s/articleView?id=p
 When re-authenticating MoveData in the sandbox, pay careful attention to:
 
 * **Authorised User**: Ensure the MoveData is authorised under a user with the necessary permissions. For additional information, please see [About the Authorised MoveData User](https://support.movedata.io/knowledgebase/general/about-the-movedata-authorised-user/). If you need to change the authorised user, please refer to [Change the MoveData Authorised User](https://support.movedata.io/knowledgebase/general/change-the-movedata-authorised-user/).&#x20;
-* **User Permissions**: Verify all necessary [MoveData permissions](https://support.movedata.io/user_guide/configuration/permission-sets/) are in place.
+* **User Permissions**: Verify the user is added to all necessary [MoveData permissions](https://support.movedata.io/user_guide/configuration/permission-sets/).
 * **Duplicate Rules**: Review any [Duplicate Rules](https://support.movedata.io/user_guide/configuration/duplicate-rules/) that may affect data processing.
-* **Supporting Configuration**: Be aware of configuration dependencies. For example, if using Payment2Us functionality, ensure the same merchant facilities exist in your sandbox or adjust your configuration accordingly.
+* **Supporting Configuration**: Be aware of configuration dependencies. For example, if using Payments2Us functionality, ensure the same merchant facilities exist in your sandbox or adjust your configuration accordingly.
 
 After re-authenticating MoveData, you can configure your integrations following the same process used in production. This ensures consistency between environments and helps identify issues before they affect your live system.
 
