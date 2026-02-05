@@ -1,4 +1,4 @@
-# Salesforce Lead Record Matching
+# Salesforce Lead Object and Matching
 
 {% hint style="info" %}
 Metadata
@@ -9,7 +9,7 @@ Metadata
 * tags=salesforce,lead,matching
 {% endhint %}
 
-{% hint style="danger" %}
+{% hint style="warning" %}
 Note: This is **not** a recommended by MoveData
 {% endhint %}
 
