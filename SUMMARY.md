@@ -112,6 +112,8 @@
 * [How to Process / Ignore Address Information](technical/how-to-process-ignore-address-information.md)
 * [Authorising MoveData after Salesforce Domain Name Change](technical/authorising-movedata-after-salesforce-domain-name-change.md)
 * [Salesforce Household Accounts (NPSP)](technical/salesforce-household-accounts-npsp.md)
+* [Setting Up MoveData in a Salesforce Sandbox Environment](technical/setting-up-movedata-in-a-salesforce-sandbox-environment.md)
+* [Salesforce Lead Record Matching](technical/salesforce-lead-record-matching.md)
 
 ## Business
 
