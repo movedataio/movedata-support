@@ -10,12 +10,12 @@ Metadata
 {% endhint %}
 
 {% hint style="warning" %}
-**Note**: Sandboxes are separate environments, so all configuration, authentication, and setup must be performed independently from your production instance.
+**Note**: Salesforce Sandboxes are separate environments, configuration, authentication, and integration setup must be performed independently from your production instance.
 {% endhint %}
 
 Once you have [created a sandbox](https://help.salesforce.com/s/articleView?id=platform.data_sandbox_create.htm\&type=5) from your Production Salesforce environment, MoveData and all necessary configuration will be copied onto the sandbox. However, you must re-authenticate MoveData as your production authentication will not carry over.
 
-When re-authenticating, pay careful attention to:
+When re-authenticating MoveData in the sandbox, pay careful attention to:
 
 * **Authorised User**: Ensure the MoveData is authorised under a user with the necessary permissions. For additional information, please see [About the Authorised MoveData User](https://support.movedata.io/knowledgebase/general/about-the-movedata-authorised-user/). If you need to change the authorised user, please refer to [Change the MoveData Authorised User](https://support.movedata.io/knowledgebase/general/change-the-movedata-authorised-user/).&#x20;
 * **User Permissions**: Verify all necessary [MoveData permissions](https://support.movedata.io/user_guide/configuration/permission-sets/) are in place.
@@ -24,4 +24,4 @@ When re-authenticating, pay careful attention to:
 
 After re-authenticating MoveData, you can configure your integrations following the same process used in production. This ensures consistency between environments and helps identify issues before they affect your live system.
 
-For more information on connecting your Integration, please see our [User Guide](https://support.movedata.io/user_guide/).
+For more information on connecting your Integration, please see our [User Guide](https://support.movedata.io/user_guide/) and locate your integration platform.
