@@ -10,14 +10,16 @@ Metadata
 {% endhint %}
 
 {% hint style="warning" %}
-Note: This is functionality is as-is.  MoveData uses standard **Salesforce** functions to convert from Leads to Contacts.
+Note: This is functionality is as-is.  MoveData uses standard **Salesforce** functions to convert from Leads to Contacts.\
+\
+This is only relevant when MoveData has access to a Lead Duplicate Detection rule.
 {% endhint %}
 
 **Lead Conversion in MoveData**
 
 MoveData automatically converts detected Leads to Contacts to support record processing—this is required because out-of-the-box extensions use Contacts or Person Contacts in contact phases.
 
-If a duplicate rule for Leads is not present, then this conversion will not be in-place.  If you have Lead duplicate detection rules and wish to exclude this from MoveData, then exclude the MoveData Authorised User from your Lead duplicate detection rule conditions.
+If you have Lead duplicate detection rules and wish to exclude this from MoveData, then exclude the MoveData Authorised User from your Lead duplicate detection rule using conditions.
 
 **How Salesforce Handles Lead Conversion**
 
