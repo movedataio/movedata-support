@@ -10,7 +10,7 @@ Metadata
 {% endhint %}
 
 {% hint style="warning" %}
-**Note**: Salesforce Sandboxes are separate environments, configuration, authentication, and integration setup must be performed independently from your production instance.
+Note: Salesforce Sandboxes are separate environments, configuration, authentication, and integration setup must be performed independently from your production instance.
 {% endhint %}
 
 Once you have [created a sandbox](https://help.salesforce.com/s/articleView?id=platform.data_sandbox_create.htm\&type=5) from your Production Salesforce environment, MoveData and all necessary configuration will be copied onto the sandbox. However, you must re-authenticate MoveData as your production authentication will not carry over.
