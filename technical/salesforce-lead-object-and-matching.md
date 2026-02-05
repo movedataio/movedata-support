@@ -10,7 +10,7 @@ Metadata
 {% endhint %}
 
 {% hint style="warning" %}
-Note: This is **not** a recommended by MoveData
+Note: This is **not** recommended by MoveData
 {% endhint %}
 
 When working with Salesforce Lead objects in MoveData, it is important to understand how Salesforce handles lead conversion and account assignment.
