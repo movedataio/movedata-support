@@ -20,3 +20,5 @@ When you create a lead in Salesforce, you must supply company information. This 
 When Salesforce determines a match from the Lead object and converts it, the system will apply the lead's company information as the Contact's Account rather than creating a Household Account. This behaviour is built into Salesforce's standard lead conversion process and is standard Salesforce functionality, not MoveData functionality.
 
 Any requirement to customise this behaviour **cannot** be attended to by MoveData. If you need to modify how leads are converted or how accounts are assigned during the conversion process, please consult with your Salesforce Administrator or Partner to explore available customisation options within Salesforce.
+
+For more information, please see [Convert Leads to Contacts](https://support.movedata.io/knowledgebase/general/convert-leads-to-contacts/).
