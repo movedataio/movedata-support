@@ -11,7 +11,7 @@ Metadata
 {% endhint %}
 
 {% hint style="warning" %}
-Note: This is functionality is as-is.  MoveData uses standard **Salesforce** functions to convert from Leads to Contacts.
+Note: MoveData uses standard **Salesforce** functions to convert from Leads to Contacts.
 
 This is only relevant when MoveData has access to a Lead Duplicate Detection rule.
 {% endhint %}
