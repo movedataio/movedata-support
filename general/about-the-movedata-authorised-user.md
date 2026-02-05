@@ -3,6 +3,7 @@
 {% hint style="info" %}
 Metadata
 
+* group=Technical
 * category=Technical
 * subtitle=An in-depth guide on the MoveData Authorised User
 * integration=all

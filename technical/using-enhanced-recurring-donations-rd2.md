@@ -1,8 +1,9 @@
-# Using Enhanced Recurring Donations
+# Using Enhanced Recurring Donations (RD2)
 
 {% hint style="info" %}
 Metadata
 
+* group=Technical
 * category=Technical
 * subtitle=An overview of Enhanced Recurring Donations (RD2) in MoveData
 * integration=all

@@ -1,8 +1,9 @@
-# How to Ignore Address Information
+# How to Process / Ignore Address Information
 
 {% hint style="info" %}
 Metadata
 
+* group=Technical
 * category=Technical
 * subtitle=Demonstrates how to process or ignore address information
 * integration=all

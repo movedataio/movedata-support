@@ -3,6 +3,7 @@
 {% hint style="info" %}
 Metadata
 
+* group=Technical
 * category=Technical
 * subtitle=How to grant Salesforce Access to MoveData
 * integration=all

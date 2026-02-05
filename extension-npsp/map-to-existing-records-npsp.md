@@ -5,6 +5,7 @@ Metadata
 
 * group=Extension
 * category=Non-Profit Success Pack
+* subtitle=An overview on how to map to existing records in Salesforce for NPSP
 * extension=npsp
 * tags=data,data import,data migration,keys,platform keys
 {% endhint %}

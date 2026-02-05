@@ -3,6 +3,7 @@
 {% hint style="info" %}
 Metadata
 
+* group=Technical
 * category=Technical
 * subtitle=A guide for Unable to Lock Row Error (UNABLE\_TO\_LOCK\_ROW) Salesforce error
 * integration=all

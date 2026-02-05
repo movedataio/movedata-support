@@ -3,6 +3,7 @@
 {% hint style="info" %}
 Metadata
 
+* group=Technical
 * category=Technical
 * subtitle=A guide for Too many SOQL queries: 101 error
 * integration=all

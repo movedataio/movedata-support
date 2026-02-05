@@ -3,6 +3,7 @@
 {% hint style="info" %}
 Metadata
 
+* group=Technical
 * category=Technical
 * subtitle=How to upgrade your MoveData App and Extensions
 * integration=all

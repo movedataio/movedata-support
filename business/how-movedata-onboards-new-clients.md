@@ -3,6 +3,7 @@
 {% hint style="info" %}
 Metadata
 
+* group=Business
 * category=Business
 * subtitle=An in-depth guide to MoveData's onboarding process
 * integration=all

@@ -7,6 +7,7 @@ description: Add platform-specific business rules in Salesforce using Flow decis
 {% hint style="info" %}
 Metadata
 
+* group=Customising MoveData Integration
 * category=Customising MoveData Integrations
 * subtitle=Demonstrates how to implement decisions based on data from a notification.
 * integration=all

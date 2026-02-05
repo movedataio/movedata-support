@@ -3,6 +3,7 @@
 {% hint style="info" %}
 Metadata
 
+* group=Technical
 * category=Technical
 * subtitle=An update to Salesforce Connected App usage restrictions
 * integration=all

@@ -3,6 +3,7 @@
 {% hint style="info" %}
 Metadata
 
+* group=Technical
 * category=Technical
 * subtitle=An overview on reauthorising MoveData after a Salesforce Domain Name Change
 * integration=all

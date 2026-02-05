@@ -9,6 +9,7 @@ description: >-
 {% hint style="info" %}
 Metadata
 
+* group=Customising MoveData Integration
 * category=Customising MoveData Integrations
 * subtitle=Often an organisation wants to assign a different campaign to the MoveData out-of-the-box logic.
 * integration=all

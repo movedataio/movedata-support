@@ -3,6 +3,7 @@
 {% hint style="info" %}
 Metadata
 
+* group=Technical
 * category=Technical
 * subtitle=An overview for setting up MoveData in a Salesforce sandbox environment
 * integration=all

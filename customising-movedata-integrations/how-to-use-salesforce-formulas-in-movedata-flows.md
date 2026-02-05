@@ -3,6 +3,7 @@
 {% hint style="info" %}
 Metadata
 
+* group=Customising MoveData Integration
 * category=Customising MoveData Integrations
 * subtitle=Demonstrates how to use Salesforce formulas in MoveData flows
 * integration=all

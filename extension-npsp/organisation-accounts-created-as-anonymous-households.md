@@ -5,6 +5,7 @@ Metadata
 
 * group=Extension
 * category=Non-Profit Success Pack
+* subtitle=An overview on Anonymous Household records created by MoveData
 * extension=npsp
 * tags=record type
 {% endhint %}

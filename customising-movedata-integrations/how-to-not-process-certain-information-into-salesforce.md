@@ -9,6 +9,7 @@ description: >-
 {% hint style="info" %}
 Metadata
 
+* group=Customising MoveData Integration
 * category=Customising MoveData Integrations
 * subtitle=Demonstrates how to cancel processing specific notifications using evaluations within a flow.
 * integration=all

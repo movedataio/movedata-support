@@ -5,6 +5,7 @@ Metadata
 
 * group=Extension
 * category=Nonprofit Cloud
+* subtitle=An overview on NPC licensing requirements for MoveData
 * extension=npc
 * tags=install,config
 {% endhint %}

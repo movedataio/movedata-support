@@ -3,6 +3,7 @@
 {% hint style="info" %}
 Metadata
 
+* group=Business
 * category=Business
 * subtitle=An overview of MoveData data imports
 * integration=all

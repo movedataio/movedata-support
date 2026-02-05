@@ -9,8 +9,9 @@ description: >-
 {% hint style="info" %}
 Metadata
 
+* group=Customising MoveData Integration
 * category=Customising MoveData Integrations
-* subtitle=A practical example about how to select a different record type based on data contained within a notification.&#x20;
+* subtitle=A practical example about how to select a different record type based on data contained within a notification.
 * integration=all
 * tags=record,types,flows,video
 {% endhint %}

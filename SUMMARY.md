@@ -99,7 +99,7 @@
 * [Run Campaign Post and Donation Post Asynchronously](technical/run-campaign-post-and-donation-post-asynchronously.md)
 * [Salesforce Connected App Usage Restrictions](general/salesforce-connected-app-usage-restrictions.md)
 * [Too many SOQL queries: 101](general/too-many-soql-queries-101.md)
-* [Too many SOQL queries: 101 (dlrs)](general/too-many-soql-queries-101-dlrs.md)
+* [Too many SOQL queries: 101 (DLRS)](general/too-many-soql-queries-101-dlrs.md)
 * [Unable to Lock Row Error (UNABLE\_TO\_LOCK\_ROW)](general/unable-to-lock-row-error-unable_to_lock_row.md)
 * [Understanding Unhandled Flow Faults](general/understanding-unhandled-flow-faults.md)
 * [Uninstalling MoveData](general/uninstalling-movedata.md)

@@ -9,6 +9,7 @@ Metadata
 
 * group=Extension
 * category=Commerce
+* subtitle=A overview of "Product with this SKU already exists" error
 * extension=commerce
 * tags=products
 {% endhint %}

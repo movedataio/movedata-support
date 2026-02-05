@@ -3,6 +3,7 @@
 {% hint style="info" %}
 Metadata
 
+* group=Technical
 * category=Technical
 * subtitle=Shows you how to include / exclude cover fee from opportunity amount.
 * integration=all

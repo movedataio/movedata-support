@@ -9,6 +9,7 @@ description: >-
 {% hint style="info" %}
 Metadata
 
+* group=Technical
 * category=Technical
 * subtitle=How to disable a MoveData phase from running
 * integration=all

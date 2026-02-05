@@ -3,6 +3,7 @@
 {% hint style="info" %}
 Metadata
 
+* group=Customising MoveData Integration
 * category=Customising MoveData Integrations
 * subtitle=A practical example about how to update Salesforce Duplicate and Matching Rules for MoveData
 * integration=all

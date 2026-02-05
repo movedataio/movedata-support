@@ -5,6 +5,7 @@ Metadata
 
 * group=Extension
 * category=Non-Profit Success Pack
+* subtitle=An overview of Fundraising & Donations Extension (version pre-1.81)
 * extension=npsp
 * tags=upgrade,legacy
 {% endhint %}

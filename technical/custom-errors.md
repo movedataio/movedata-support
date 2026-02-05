@@ -7,6 +7,7 @@ description: How to raise your own errors within a flow.
 {% hint style="info" %}
 Metadata
 
+* group=Technical
 * category=Technical
 * subtitle=How to implement custom errors&#x20;
 * integration=all

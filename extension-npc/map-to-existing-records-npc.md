@@ -5,6 +5,7 @@ Metadata
 
 * group=Extension
 * category=Nonprofit Cloud
+* subtitle=An overview on how to map to existing records in Salesforce for NPC
 * extension=npc
 * tags=data,data import,data migration,keys,platform keys
 {% endhint %}

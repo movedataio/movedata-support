@@ -5,6 +5,7 @@ Metadata
 
 * group=Extension
 * category=Non-Profit Success Pack
+* subtitle=An overview for the "You must select a Contact associated with this Household Account" error
 * extension=npsp
 * tags=recurring,contact,merge
 {% endhint %}
