@@ -115,6 +115,7 @@
 * [Setting Up MoveData in a Salesforce Sandbox Environment](technical/setting-up-movedata-in-a-salesforce-sandbox-environment.md)
 * [Salesforce Lead Object and Matching](technical/salesforce-lead-object-and-matching.md)
 * [Using Enhanced Recurring Donations (RD2)](technical/using-enhanced-recurring-donations-rd2.md)
+* [OAuth Error: Approve Uninstalled Connected Apps](technical/oauth-error-approve-uninstalled-connected-apps.md)
 
 ## Business
 
