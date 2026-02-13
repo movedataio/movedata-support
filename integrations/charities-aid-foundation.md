@@ -212,7 +212,10 @@ The CAF integration provides comprehensive Gift Aid support for UK charities:
 
 **Direct Donations:**
 
-* CAF Account Regular Donations and Standing Order Donations create recurring schedules
+* Donations are flagged as recurring when the `DonationType` is one of the following:
+  * `CAF Account Regular Donation`
+  * `Standing Order Donation`
+* All other donation types (e.g., "CAF Account Donation", "CAF Account Voucher") are processed as one-off transactions
 * Monthly frequency with payment date determining the payment day
 * Uses donation type reference as the recurring donation key
 
