@@ -189,8 +189,9 @@ The CAF integration provides comprehensive Gift Aid support for UK charities:
 
 **Gift Aid Processing Logic:**
 
-* **Automatic Consolidation**: Gift Aid records are automatically linked to their parent donation transactions during preprocessing (where possible)
-* **Combined Processing**: When both donation and Gift Aid amounts exist with the same reference, they're merged into a single comprehensive record
+* **Record Matching via Donation Reference**: The `DonationReference` field is the key used to match Gift Aid records to their parent donation transaction. A Gift Aid record and its corresponding donation will share the same `DonationReference` value. When investigating Gift Aid records, always verify the `DonationReference` matches between the donation and Gift Aid rows — if the references differ, the Gift Aid record does not relate to that donation.
+* **Automatic Consolidation**: Gift Aid records are automatically linked to their parent donation transactions during preprocessing (where possible) using the shared `DonationReference`
+* **Combined Processing**: When both donation and Gift Aid amounts exist with the same `DonationReference`, they're merged into a single comprehensive record
 * **Gift Aid-Only Records**: Created when `GiftAidAmount` > 0 and `DonationAmount` is null or zero
 * **Separate Settlement**: Different settlement dates tracked for donations and Gift Aid payments
 * **HMRC Status Tracking**: Monitors Gift Aid submission and receipt status for compliance
