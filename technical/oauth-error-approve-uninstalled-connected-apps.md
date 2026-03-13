@@ -9,13 +9,16 @@ Metadata
 * tags=salesforce,oauth,authorise
 {% endhint %}
 
-### Overview
+## Overview
 
 When authorising MoveData via **Settings → General → Authorise MoveData** or during the **Setup Wizard**, you may encounter a Salesforce OAuth error page preventing authentication from completing.
 
-This error occurs when the Salesforce user's profile does not have permission to approve access to connected apps that are not installed in the current organisation.
+There are two possiblities for the error:&#x20;
 
-### Error Details
+* the Salesforce user's profile does not have permission to approve access to connected apps that are not installed in the current organisation;
+* the Connected App must be installed and configured first
+
+## Missing Permissions Error
 
 <figure><img src="../.gitbook/assets/Screenshot 2026-02-11 at 1.31.21 pm.png" alt=""><figcaption></figcaption></figure>
 
@@ -72,6 +75,45 @@ Once MoveData has been successfully authorised, restore the profile permission t
 {% hint style="warning" %}
 **Security Best Practice**: Only enable this permission temporarily for the duration of the authorisation process. Disable it once authorisation is complete to maintain your organisation's security posture.
 {% endhint %}
+
+## Connected App Error
+
+### Cause
+
+The MoveData application has not been approved as a Connected App.
+
+### Resolution
+
+#### Step 1: Install the Connected App
+
+<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+
+1. Navigate to **Setup → Apps → Connected Apps → Connected App OAuth Usage**
+2. Find "MoveData" in the list
+3. Click **Install** button
+4. A new window will appear; Click **Install** to install the Connected App
+
+{% hint style="info" %}
+Depending on the number of attempts to authorise, Salesforce may have marked the Connected App as blocked.  We recommend navigating back to the Connected App OAuth Usage page and ensuring that Unblock button is disabled; if not, please click the **Unblock** button.
+{% endhint %}
+
+#### Step 3: Grant permissions to the Connected App
+
+<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+
+1. The connected app will appear
+   1. This can also be viewed by navigating to **Setup → Apps → Connected Apps → Manage Connected Apps**
+2. Scroll down to **Profiles** and click **Manage Profiles**
+3. Select the Profile assigned to the user who is authorising MoveData
+4. Click **Save**
+
+#### Step 2: Authorise MoveData
+
+1. Navigate to **MoveData → Settings → General**
+2. Click **Authorise**
+3. Log in as the desired user when prompted
+4. Grant the necessary permissions
+5. Verify the new user appears in the **Authorised User** field
 
 ### Additional Resources
 

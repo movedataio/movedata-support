@@ -10,19 +10,19 @@ Metadata
 * tags=flow,failure,debug.unhandled,error,fault
 {% endhint %}
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
 
 The error message "An unhandled fault has occurred in this flow" indicates that a Salesforce Lightning Flow encountered an unexpected exception during execution that was not captured by the flow's error handling logic. This is a generic Salesforce system error that occurs when a flow encounters a problem it cannot resolve on its own, such as validation rule failures, required field violations, duplicate value conflicts, permission issues, or business logic issues.
 
 ## Identifying the Failing Flow
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 To troubleshoot this error when it occurs during MoveData notification processing, navigate to the failed notification in the MoveData Notifications interface and access the Execution tab to view the detailed execution log. The execution log provides a chronological timeline of each processing stage, allowing you to identify exactly where the failure occurred. The log will tell you which flow was executing, where failure is taking place.
 
 ## Viewing the Failed Flow
 
-<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
 
 Once the failing flow has been identified, its error can be traced using the "Paused and Failed Flow Interviews" functionality. Navigate to Setup and search for "Paused and Failed Flow Interviews" in the Quick Find box. This Salesforce feature captures failed flow executions and provides specific error details not available in the generic error message, including the exact element where the failure occurred, the specific error text, and the variable values at the time of failure. The list often appears empty by default, so toggle the view filter to show failed interviews rather than paused ones.
 
