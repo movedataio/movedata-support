@@ -1,9 +1,9 @@
 name: "[prod] Sync MoveData Support Documentation"
 
 on:
-  schedule:
+  #schedule:
     # Runs every 6 hours at 00:00, 06:00, 12:00, and 18:00 UTC
-    - cron: '0 0,6,12,18 * * *'
+    #- cron: '0 0,6,12,18 * * *'
   workflow_dispatch: # Allow manual trigger
 
 env:
